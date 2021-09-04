@@ -17,17 +17,29 @@ function SignUpForm({
                   <p className='text-center mb-4'>Присоединяйтесь с помощью социальных сетей</p>
                   <div className='d-flex justify-content-between'>
                      <button className='btn btn-hover btn-vk' onClick={() => {
-                        window.open('http://localhost:5000/users/auth/vkontakte', '_self');
+                        if (process?.env?.NODE_ENV === 'development') {
+                           window.open('http://localhost:5000/users/auth/vkontakte', '_self');
+                        } else {
+                           window.open('/users/auth/vkontakte', '_self');
+                        }
                      }}>
                         <i className='fab fa-vk'></i>
                      </button>
                      <button className='btn btn-hover btn-discord' onClick={() => {
-                        window.open('http://localhost:5000/users/auth/discord', '_self');
+                        if (process?.env?.NODE_ENV === 'development') {
+                           window.open('http://localhost:5000/users/auth/discord', '_self');
+                        } else {
+                           window.open('/users/auth/discord', '_self');
+                        }
                      }}>
                         <i className='fab fa-discord'></i>
                      </button>
                      <button className='btn btn-hover btn-google' onClick={() => {
-                        window.open('http://localhost:5000/users/auth/google', '_self');
+                        if (process?.env?.NODE_ENV === 'development') {
+                           window.open('http://localhost:5000/users/auth/google', '_self');
+                        } else {
+                           window.open('/users/auth/google', '_self');
+                        }
                      }}>
                         <i className='fab fa-google'></i>
                      </button>
