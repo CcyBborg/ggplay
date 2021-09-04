@@ -36,16 +36,15 @@ function InitStep({
                   alt={`Тренер ${coach.title} | GGPlay`} />
                 <div className='ml-3'>
                   <h5>{coach.title}</h5>
-                  <div class="d-flex jusitfy-content-start flex-column align-items-start coach-card__footer pt-1">
-                    <span class="text text-secondary font-weight-bold"
-                    >Sucker</span>
+                  <div className='pt-1 text text-secondary font-weight-bold'>
+                    {coach.status}
                   </div>
                 </div>
               </div>
               <div>
                 <div className='d-flex align-items-center mt-2 mb-2'>
                   <ul
-                    class="
+                    className='
                     coach-rating
                     p-0
                     m-0
@@ -54,13 +53,13 @@ function InitStep({
                     d-flex
                     align-items-center
                     justify-content-left
-                  "
+                  '
                   >
                     <li>
-                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i className='fa fa-star' aria-hidden='true'></i>
                     </li>
                   </ul>
-                  <span class="text text-secondary ml-2">4.4 (36)</span>
+                  <span className='text text-secondary ml-2'>4.4 (36)</span>
                 </div>
               </div>
             </div>
@@ -73,14 +72,14 @@ function InitStep({
                 </li>
               ))}
             </ul>
-            <div className="coach-booking pt-3 pb-3">
-              <p className="text tex-secondary text-center">Выберите вид тренировки</p>
+            <div className='coach-booking pt-3 pb-3'>
+              <p className='text tex-secondary text-center'>Выберите вид тренировки</p>
               <LessonSelect
                 list={coach.lessons}
                 selectedLesson={selectedLesson}
                 onSelect={onSelectLesson} />
               <div className='mt-3'>
-                {/* <div className="schedule-amount d-flex justify-content-between align-items-center">
+                {/* <div className='schedule-amount d-flex justify-content-between align-items-center'>
                   <button
                     className={`schedule-amount__minus pl-3 pr-3 ${amount === 1 ? 'schedule-amount__disabled' : ''}`}
                     disabled={amount === 1}
@@ -92,7 +91,7 @@ function InitStep({
                     className={`schedule-amount__plus pl-3 pr-3 ${amount === 5 ? 'schedule-amount__disabled' : ''}`}
                     disabled={amount === 5}
                     onClick={() => handleSetAmount(amount + 1)}>
-                    <i className="fas fa-plus"></i>
+                    <i className='fas fa-plus'></i>
                   </button>
                 </div> */}
                 <button className='btn btn-hover btn-lg btn-schedule-coach' onClick={onNextStep}>
@@ -124,11 +123,11 @@ function InitStep({
                       >
                         {[...Array(r.rating)].map(i => (
                           <li key={i}>
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i className='fa fa-star' aria-hidden='true'></i>
                           </li>
                         ))}
                       </ul>
-                      <p className="mt-2">{r.review}</p>
+                      <p className='mt-2'>{r.review}</p>
                     </li>
                   ))}
                 </ul>
