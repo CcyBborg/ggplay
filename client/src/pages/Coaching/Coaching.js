@@ -74,7 +74,7 @@ function Coaching({
     <>
       <section className='content'>
         <div className='container pt-4 pb-5'>
-          <h4 className='main-title mb-3'>Тренировки</h4>
+          <p className='mt-2 mb-4 lead' style={{maxWidth: '800px'}}>Обучение от&nbsp;топовых тренеров. Лучшие проверенные тренеры, которые помогли более чем 500 ученикам реализовать свои цели в&nbsp;играх.</p>
           <GameSelect
             selectedGame={selectedGameId}
             gameList={games.gameList}
@@ -109,7 +109,7 @@ function Coaching({
                         onChange={setSelectedTags} />
                     </div>
                   )}
-                  <div className='pt-5'>
+                  <div className='pt-4'>
                     <h5 className='mb-3'>Топ тренера</h5>
                     <div className='row'>
                       {coachList.slice(0, 3).map(coach => (

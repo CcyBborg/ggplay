@@ -3155,7 +3155,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
 }
 
 .poll-footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: #141414!important;
 }
@@ -3268,6 +3268,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
   max-width: 100%;
   margin: 0;
   padding-bottom: 5px;
+  overflow-x: hidden;
 }
 
 .tag-select-list {
@@ -3722,8 +3723,13 @@ header .navbar ul li .sub-menu li:hover > a::before {
 }
 
 @media (max-width: 780px) {
+  .slide-item {
+    max-width: 310px!important;
+  }
+
   .favorites-grid {
     padding-top: 10px;
+    justify-content: center;
   }
 
   .poll-content {

@@ -31,6 +31,16 @@ function Layout({ user, children, fetchUserInfo }) {
                                         <div className='menu-main-menu-container'>
                                             <ul id='top-menu' className='navbar-nav ml-auto'>
                                                 <li className='menu-item'>
+                                                    <a>
+                                                        Курсы <sup style={{
+                                                            fontSize: '8px',
+                                                            color: 'var(--iq-primary)',
+                                                            position:'relative',
+                                                            top: '-10px'
+                                                            }}>Скоро</sup>
+                                                    </a>
+                                                </li>
+                                                <li className='menu-item'>
                                                     <a href='/coaching'>Тренировки</a>
                                                 </li>
                                             </ul>
