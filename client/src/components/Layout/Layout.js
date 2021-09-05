@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Popover } from 'react-tiny-popover'
 import Spinner from '../Spinner/Spinner';
+import { fetchUserInfo } from './actions';
 
-function Layout({ user, children }) {
-    const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+function Layout({ user, children, fetchUserInfo }) {
+    useEffect(() => {
+        fetchUserInfo();
+    }, [fetchUserInfo]);
 
     if (user.isLoading) {
         return (
@@ -38,36 +40,6 @@ function Layout({ user, children }) {
                                         {user.info ? (
                                             <>
                                                 <ul className='d-flex align-items-center list-inline m-0'>
-                                                    <li className='menu-item position-relative'>
-                                                        <Popover
-                                                            containerClassName='notification-popover-container'
-                                                            isOpen={isNotificationsOpen}
-                                                            positions={['top', 'left']} // if you'd like, you can limit the positions
-                                                            padding={10} // adjust padding here!
-                                                            reposition={false} // prevents automatic readjustment of content position that keeps your popover content within its parent's bounds
-                                                            onClickOutside={() => setIsNotificationsOpen(false)} // handle click events outside of the popover/target here!
-                                                            content={({ position, nudgedLeft, nudgedTop }) => ( // you can also provide a render function that injects some useful stuff!
-                                                                <div>
-                                                                    <div className='popover__header d-flex justify-content-between align-items-center'>
-                                                                        <span className='text h6 m-0'>Уведомления</span>
-                                                                        <span className='text h6 m-0'>0</span>
-                                                                    </div>
-                                                                    <div className='empty-notifications text-center'>
-                                                                        <i className='text-primary far fa-bell'></i>
-                                                                        <p>Здесь будут уведомления о&nbsp;предстоящих тренировках.</p>
-                                                                    </div>
-                                                                </div>
-                                                            )}
-                                                        >
-                                                            <a
-                                                                tabindex='0'
-                                                                role='button'
-                                                                className='btn btn-link'
-                                                                onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}>
-                                                                <i className='fas fa-bell'></i>
-                                                            </a>
-                                                        </Popover>
-                                                    </li>
                                                     <li className='menu-item'>
                                                         <a href='/dashboard' className='btn btn-link'>
                                                             <i className='fas fa-home'></i>
@@ -173,4 +145,6 @@ function Layout({ user, children }) {
 
 export default connect(({ user }) => ({
     user
-}))(Layout);
+}), {
+    fetchUserInfo
+})(Layout);

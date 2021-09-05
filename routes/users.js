@@ -1,12 +1,17 @@
 const express = require('express');
-const { Client, Intents } = require('discord.js');
+const { ensureAuthenticated } = require('../middleware');
 const passport = require('passport');
 const User = require('../models/User');
 const LessonSlot = require('../models/LessonSlot');
 
 const router = express.Router();
 
-const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.sendStatus(401);
+function toUTC(date) {
+    return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
+}
+
+const NOTIF_PERIOD = 60 * 60 * 1000; // One Hour
 
 // Local auth
 router.post('/', async (req, res) => {
@@ -95,34 +100,40 @@ router.get('/auth/discord/callback', passport.authenticate('discord', {
 
 // Authorized user's info
 router.get('/info', ensureAuthenticated, async (req, res) => {
-    res.json({
-        id: req.user.id,
-        nickname: req.user.nickname,
-        email: req.user.email,
-        profile: req.user.profile
-    });
+    try {
+        const slots = await LessonSlot.find({ user: req.user._id }).populate('lesson');
+
+        const now = toUTC(new Date());
+        const notifications = slots?.map(slot => {
+            const slotDate = toUTC(new Date(slot.timestamp));
+            if (Math.abs(slotDate - now) < NOTIF_PERIOD) {
+                return {
+                    _id: slot._id,
+                    lesson: slot.lesson,
+                    timestamp: slot.timestamp,
+                    invite: slot.invite
+                };
+            }
+        });
+
+        res.json({
+            id: req.user.id,
+            nickname: req.user.nickname,
+            email: req.user.email,
+            profile: req.user.profile,
+            notifications
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: 'Произошла ошибка. Попробуйте позже.'
+        });
+    }
 });
 
 router.get('/logout', (req, res) => {
     req.logOut();
     res.send('Success!');
-});
-
-router.post('/book-slot', ensureAuthenticated, async (req, res) => {
-    try {
-        const lessonSlot = await LessonSlot.findOne({
-            '_id': req.body.slotId
-        });
-        const user = await User.findOne({ '_id': req.userId });
-        lessonSlot.user = req.userId;
-        user.slots.push(lessonSlot['_id'])
-        await lessonSlot.save();
-        await user.save();
-
-        res.send('Booked');
-    } catch (err) {
-        res.status(500).send('Nope');
-    }
 });
 
 module.exports = router;

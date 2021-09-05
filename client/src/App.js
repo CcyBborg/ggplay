@@ -1,14 +1,14 @@
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 import store from './store';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
-import AuthWrapper from './components/AuthWrapper/AuthWrapper';
 import Coaching from './pages/Coaching/Coaching';
 import Layout from './components/Layout/Layout';
 import Coach from './pages/Coach/Coach';
@@ -19,6 +19,9 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
+          <Route path='/' exact>
+            <Redirect to='/coaching' />
+          </Route>
           <Route path='/sign-up'>
             <>
               <Helmet>
@@ -35,23 +38,22 @@ function App() {
               <SignIn />
             </>
           </Route>
-          <AuthWrapper>
-            <Route path='/coaching'>
-              <Layout>
-                <>
-                  <Helmet>
-                    <title>Тренировки | GGPlay</title>
-                  </Helmet>
-                  <Coaching />
-                </>
-              </Layout>
-            </Route>
-            <Route path='/dashboard'>
-              <Layout>
-                <Dashboard />
-              </Layout>
-            </Route>
-          </AuthWrapper>
+          <Route path='/coaching'>
+            <Layout>
+              <Helmet>
+                <title>Тренировки | GGPlay</title>
+              </Helmet>
+              <Coaching />
+            </Layout>
+          </Route>
+          <Route path='/dashboard'>
+            <Layout>
+              <Helmet>
+                <title>Мои тренировки | GGPlay</title>
+              </Helmet>
+              <Dashboard />
+            </Layout>
+          </Route>
         </Switch>
         <Route path='/coaching/:id' component={Coach} />
       </Router>

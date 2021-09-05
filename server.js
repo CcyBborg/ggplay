@@ -3,7 +3,6 @@ const cors = require('cors')
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const Discord = require('discord.js');
 const cookieParser = require('cookie-parser');
 require('dotenv/config');
 
@@ -29,64 +28,12 @@ require('./passportConfig')(passport);
 const gamesRoute = require('./routes/games');
 const usersRoute = require('./routes/users');
 const coachesRoute = require('./routes/coaches');
+const slotsRoute = require('./routes/slots');
 
 app.use('/games', gamesRoute);
 app.use('/users', usersRoute);
 app.use('/coaches', coachesRoute);
-
-// Discord client setup
-// const client = new Discord.Client();
-
-// let invite = null;
-
-// client.on('ready', () => {
-//     const guild = client.guilds.cache.get('881126214448840755');
-//     // const everyoneRole = guild.roles.cache.find(r => r.name === '@everyone');
-
-//     console.log('discord client is ready');
-
-//     client.guilds.cache.forEach(g => console.log(g.name))
-
-//     guild.roles.create({
-//         data: {
-//             name: 'student'
-//         }
-//     }).then(role => {
-//         guild.channels.create('zalupa', {
-//             type: 'GUILD_VOICE',
-//             topic: 'ULLALALLAA',
-//             // permissionOverwrites: [{
-//             //     id: everyoneRole.id,
-//             //     deny: [
-//             //         Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE,
-//             //         Discord.Permissions.FLAGS.VIEW_CHANNEL,
-//             //         Discord.Permissions.FLAGS.CONNECT,
-//             //         Discord.Permissions.FLAGS.SPEAK,
-//             //     ]
-//             // },{
-//             //     id: role.id,
-//             //     allow: [
-//             //         Discord.Permissions.FLAGS.VIEW_CHANNEL,
-//             //         Discord.Permissions.FLAGS.CONNECT,
-//             //         Discord.Permissions.FLAGS.SPEAK
-//             //     ]
-//             // }]
-//         }).then(res => {
-//             res.createInvite({
-//                 maxUses: 1,
-//                 unique: true,
-//                 maxAge: 0,
-//                 reason: 'Это приглашение в канал для вашей тренировки :P'
-//             }).then(c => console.log(c.code)).catch();
-//         });
-//     });
-// });
-
-// client.on("guildMemberAdd", async (member) => {
-//     console.log('YOOOOOO!!!OO!O!');
-//   });
-
-//   client.login('ODgxMTEwNjA4NTU5MzYyMDQ5.YSoEMw.znn3tZOVECQQ9DYz8NlsvePUpKs');
+app.use('/slots', slotsRoute);
 
 mongoose.connect(
     process.env.DB_CONNECTION,

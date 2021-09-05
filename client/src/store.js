@@ -4,7 +4,7 @@ import signUp from './pages/SignUp/reducer';
 import signIn from './pages/SignIn/reducer';
 import coaching from './pages/Coaching/reducer';
 import coach from './pages/Coach/reducer';
-import user from './components/AuthWrapper/reducer';
+import user from './components/Layout/reducer';
 
 export default createStore(combineReducers({
     signUp,
