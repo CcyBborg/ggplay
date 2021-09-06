@@ -11,7 +11,6 @@ function GameSelectList({
                 className={`
                             slide-item
                             col-lg-6 col-md-4 col-sm-6 col-12
-                            wl-child
                             ${selectedGame === game['_id'] ? 'slide-selected' : ''}
                         `}
                 onClick={() => onSelectGame(game['_id'])}

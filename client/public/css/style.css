@@ -403,7 +403,6 @@ a:hover {
 li.slide-item {
   position: relative;
   padding: 10px;
-  cursor: pointer;
 }
 
 li.slide-item .block-images {
@@ -3219,6 +3218,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
   margin: 0;
   padding-bottom: 5px;
   overflow-x: hidden;
+}
+
+.favorites-grid * {
+  cursor: pointer;
 }
 
 .tag-select-list {
