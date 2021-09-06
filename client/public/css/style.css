@@ -3366,11 +3366,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
   width: 100vw;
   height: 100vh;
   position: fixed;
-}
-
-.poll.poll-sign-up {
-  height: auto;
-  min-height: 100vh;
+  overflow-y: scroll;
 }
 
 #navbarSupportedContent {
