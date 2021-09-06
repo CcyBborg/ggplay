@@ -30,7 +30,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                         <img className='logo' src='/images/logo.png' alt='GGPlay' />
                                     </a>
                                     <button
-                                        className='navbar-toggler btn btn-link mt-2 mb-2'
+                                        className='navbar-toggler btn btn-link mt-2 mb-2 pr-0'
                                         type='button'
                                         onClick={() => setIsMobileMenu(true)}>
                                         <i className='fas fa-bars'></i>
@@ -159,11 +159,14 @@ function Layout({ user, children, fetchUserInfo }) {
                 <div className='mobile-menu'>
                     <div className='mobile-header text-center'>
                         <img className='mobile-header__logo' src='/images/small-logo.png' alt='GGPlay' />
+                        <button className='btn btn-link close-mobile-menu' type='button' onClick={() => setIsMobileMenu(false)}>
+                            <i className='fas fa-times'></i>
+                        </button>
                     </div>
                     <nav>
                         <ul className='d-flex align-items-center flex-column list-inline m-0'>
                             <li className='menu-item'>
-                                <a>
+                                <a className='btn btn-link'>
                                     Курсы <sup style={{
                                         fontSize: '10px',
                                         color: 'var(--iq-primary)',
@@ -173,9 +176,47 @@ function Layout({ user, children, fetchUserInfo }) {
                                 </a>
                             </li>
                             <li className='menu-item'>
-                                <a href='/coaching'>Тренировки</a>
+                                <a href='/coaching' className='btn btn-link'>Тренировки</a>
                             </li>
                         </ul>
+                        {user.info ? (
+                            <>
+                                <ul className='d-flex flex-column align-items-center justify-content-center list-inline m-0'>
+                                    <li className='menu-item'>
+                                        <a href='/dashboard' className='btn btn-link'>
+                                            <i className='fas fa-home'></i>
+                                        </a>
+                                    </li>
+                                    <li className='menu-item'>
+                                        <a href='' className='btn btn-link'>
+                                            <span className='font-weight-bold mr-2' style={{
+                                                fontSize: '16px',
+                                                textTransform: 'none'
+                                            }}>
+                                                {user.info.nickname}
+                                            </span>
+                                            <img className='mr-2' src={user.info.profile.game.logo} height='28' />
+                                            <i style={{
+                                                fontSize: '12px'
+                                            }} className='fas fa-chevron-down'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </>
+                        ) : (
+                            <ul className='d-flex align-items-center flex-column list-inline m-0'>
+                                <li className='menu-item'>
+                                    <a href='/sign-up' className='btn btn-link'>
+                                        Регистрация
+                                    </a>
+                                </li>
+                                <li className='menu-item'>
+                                    <a href='/sign-in' className='btn btn-link'>
+                                        Вход
+                                    </a>
+                                </li>
+                            </ul>
+                        )}
                     </nav>
                 </div>
             )}

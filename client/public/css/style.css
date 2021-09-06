@@ -3322,7 +3322,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 .rank-select {
   list-style: none;
-  padding: 0 0 20px 0;
+  padding: 0 0 50px 0;
   margin: 0;
 }
 
@@ -3792,3 +3792,9 @@ header .navbar ul li .sub-menu li:hover > a::before {
   width: 200px;
 }
 
+.close-mobile-menu {
+  font-size: 22px;
+  position: absolute;
+  top: 15px;
+  right: 5px;
+}
