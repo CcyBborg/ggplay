@@ -3366,7 +3366,11 @@ header .navbar ul li .sub-menu li:hover > a::before {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.sign-in-page {
+  padding-bottom: 80px;
 }
 
 #navbarSupportedContent {
