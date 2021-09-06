@@ -14,7 +14,7 @@ function GameSelectList({
                             wl-child
                             ${selectedGame === game['_id'] ? 'slide-selected' : ''}
                         `}
-                onClick={() => onSelectGame(game['_id'])}
+                onMouseDown={() => onSelectGame(game['_id'])}
             >
                 <div
                     className='

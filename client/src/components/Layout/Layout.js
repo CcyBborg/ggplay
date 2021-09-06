@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../Spinner/Spinner';
 import { fetchUserInfo } from './actions';
@@ -7,6 +7,8 @@ function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
         fetchUserInfo();
     }, [fetchUserInfo]);
+
+    const [isMobileMenu, setIsMobileMenu] = useState(false);
 
     if (user.isLoading) {
         return (
@@ -27,26 +29,29 @@ function Layout({ user, children, fetchUserInfo }) {
                                     <a className='navbar-brand' href='/'>
                                         <img className='logo' src='/images/logo.png' alt='GGPlay' />
                                     </a>
-                                    <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-                                        <div className='menu-main-menu-container'>
-                                            <ul id='top-menu' className='navbar-nav ml-auto'>
-                                                <li className='menu-item'>
-                                                    <a>
-                                                        Курсы <sup style={{
-                                                            fontSize: '8px',
-                                                            color: 'var(--iq-primary)',
-                                                            position:'relative',
-                                                            top: '-10px'
-                                                            }}>Скоро</sup>
-                                                    </a>
-                                                </li>
-                                                <li className='menu-item'>
-                                                    <a href='/coaching'>Тренировки</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className='navbar-right menu-right'>
+                                    <button
+                                        className='navbar-toggler btn btn-link mt-2 mb-2'
+                                        type='button'
+                                        onClick={() => setIsMobileMenu(true)}>
+                                        <i className='fas fa-bars'></i>
+                                    </button>
+                                    <div className='collapse navbar-collapse'>
+                                        <ul className='navbar-nav mr-auto'>
+                                            <li className='menu-item'>
+                                                <a>
+                                                    Курсы <sup style={{
+                                                        fontSize: '10px',
+                                                        color: 'var(--iq-primary)',
+                                                        position: 'relative',
+                                                        top: '-10px'
+                                                    }}>Скоро</sup>
+                                                </a>
+                                            </li>
+                                            <li className='menu-item'>
+                                                <a href='/coaching'>Тренировки</a>
+                                            </li>
+                                        </ul>
+
                                         {user.info ? (
                                             <>
                                                 <ul className='d-flex align-items-center list-inline m-0'>
@@ -149,6 +154,31 @@ function Layout({ user, children, fetchUserInfo }) {
                     </div>
                 </div>
             </footer>
+
+            {isMobileMenu && (
+                <div className='mobile-menu'>
+                    <div className='mobile-header text-center'>
+                        <img className='mobile-header__logo' src='/images/small-logo.png' alt='GGPlay' />
+                    </div>
+                    <nav>
+                        <ul className='d-flex align-items-center flex-column list-inline m-0'>
+                            <li className='menu-item'>
+                                <a>
+                                    Курсы <sup style={{
+                                        fontSize: '10px',
+                                        color: 'var(--iq-primary)',
+                                        position: 'relative',
+                                        top: '-10px'
+                                    }}>Скоро</sup>
+                                </a>
+                            </li>
+                            <li className='menu-item'>
+                                <a href='/coaching'>Тренировки</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            )}
         </>
     );
 }

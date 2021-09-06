@@ -45,7 +45,7 @@ function SignUp({
     }
 
     return (
-        <div className='poll'>
+        <div className={`poll ${step === 2 ? 'poll-sign-up' : ''}`}>
             <div className='container position-relative'>
                 <nav className='d-flex justify-content-between align-items-center pt-3 pb-3 pt-md-4 pb-md-4'>
                     {step > 0 ? (
@@ -115,7 +115,6 @@ function SignUp({
                         onClick={() => setStep(step + 1)}>
                         Следующий шаг <i className='fas fa-chevron-right'></i>
                     </button>
-                    <span></span>
                 </footer>
             )}
         </div>

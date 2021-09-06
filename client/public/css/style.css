@@ -6,58 +6,23 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-header#main-header {
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  text-align: center;
-  z-index: 999;
-  background: var(--iq-bg1) !important;
-}
-
 header .navbar-light .navbar-brand img.logo {
   width: 100px;
 }
 
 header#main-header {
   position: fixed;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   text-align: center;
   z-index: 999;
   background: var(--iq-bg1) !important;
-  -webkit-backdrop-filter: blur(10px);
 }
 
 /*--------------------------------------------------------------
                        Navigation
 --------------------------------------------------------------*/
-
-header#main-header.menu-sticky {
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
-}
-
-header#main-header.menu-sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(20, 20, 20, 0.5) !important;
-  -webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
-  z-index: 9999;
-}
-
-header .navbar .menu-header-menu-container,
-header .navbar .menu-all-pages-container,
-header .navbar .menu-testing-menu-container,
-header .navbar .menu-short-container,
-header .navbar .menu-main-menu-container {
-  display: inline-block;
-  width: 100%;
-}
 
 header .navbar ul.navbar-nav {
   display: block;
@@ -77,7 +42,7 @@ header .navbar ul li {
   display: inline-block;
 }
 
-header .navbar ul li.menu-item a {
+li.menu-item a {
   font-size: 16px;
   font-weight: 400;
   position: relative;
@@ -2689,16 +2654,16 @@ h6 {
   margin-right: 0;
 }
 
-.navbar ul.navbar-nav > li.menu-item:hover > a,
-.navbar ul.navbar-nav > li.menu-item:hover > i {
+li.menu-item:hover > a,
+li.menu-item:hover > i {
   color: var(--iq-primary);
 }
 
-.navbar ul.navbar-nav > li.menu-item > a {
+li.menu-item > a {
   text-transform: uppercase;
 }
 
-.navbar ul li.menu-item a {
+li.menu-item a {
   font-size: 16px;
   font-weight: 400;
   position: relative;
@@ -2759,7 +2724,7 @@ h6 {
   overflow: hidden;
 }
 
-.navbar ul li.menu-item a {
+li.menu-item a {
   font-size: 16px;
   font-weight: 400;
   position: relative;
@@ -2788,22 +2753,6 @@ h6 {
   width: 4px;
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
-  transition: all 0.5s ease-in-out;
-}
-
-header .navbar ul li .sub-menu li.current-menu-parent > a::after,
-header
-  .navbar
-  ul
-  li
-  .sub-menu
-  li
-  .sub-menu
-  li.menu-item.current-menu-item
-  > a::after,
-header .navbar ul li .sub-menu li .sub-menu li.menu-item:hover > a::after {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
   transition: all 0.5s ease-in-out;
 }
 
@@ -3372,7 +3321,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 .rank-select {
   list-style: none;
-  padding: 0;
+  padding: 0 0 20px 0;
   margin: 0;
 }
 
@@ -3413,6 +3362,15 @@ header .navbar ul li .sub-menu li:hover > a::before {
   width: 100vw;
   height: 100vh;
   position: fixed;
+}
+
+.poll.poll-sign-up {
+  height: auto;
+  min-height: 100vh;
+}
+
+#navbarSupportedContent {
+  margin: 0 auto;
 }
 
 /* Social auth */
@@ -3802,3 +3760,34 @@ header .navbar ul li .sub-menu li:hover > a::before {
   background-color: var(--iq-body-bg);
   padding: 20px 15px;
 }
+
+
+.navbar-toggler {
+  font-size: 28px;
+  border: none;
+}
+
+.navbar-toggler:hover i,
+.navbar-toggler:focus i {
+  color: var(--iq-primary-hover);
+  transition: .5s ease-out;
+}
+
+.navbar-toggler i {
+  color: var(--iq-white);
+}
+
+.mobile-menu {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--iq-bg1);
+  z-index: 99999;
+}
+
+.mobile-header__logo {
+  width: 200px;
+}
+

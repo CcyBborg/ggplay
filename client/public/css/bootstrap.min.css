@@ -4062,7 +4062,7 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
     -ms-flex-pack: start;
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 
   .navbar-expand-md .navbar-nav {
