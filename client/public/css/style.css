@@ -403,6 +403,7 @@ a:hover {
 li.slide-item {
   position: relative;
   padding: 10px;
+  cursor: pointer;
 }
 
 li.slide-item .block-images {
