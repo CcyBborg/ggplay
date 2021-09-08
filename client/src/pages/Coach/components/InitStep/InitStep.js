@@ -28,23 +28,22 @@ function InitStep({
           </div>
         ) : (
           <>
-            <div className='coach-info pb-3 d-flex justify-content-between'>
-              <div className='d-flex'>
-                <img
-                  className='coach-info__img'
-                  src={coach.img}
-                  alt={`Тренер ${coach.title} | GGPlay`} />
-                <div className='ml-3'>
-                  <h5>{coach.title}</h5>
-                  <div className='pt-1 text text-secondary font-weight-bold'>
-                    {coach.status}
+            <div className='coach-info pb-3 d-flex'>
+              <img
+                className='coach-info__img'
+                src={coach.img}
+                alt={`Тренер ${coach.title} | GGPlay`} />
+              <div className='ml-3 flex-fill'>
+                <div className='d-flex justify-content-between align-items-start'>
+                  <div>
+                    <h5>{coach.title}</h5>
+                    <div className='pt-1 text text-secondary font-weight-bold'>
+                      {coach.status}
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div>
-                <div className='d-flex align-items-center mt-2 mb-2'>
-                  <ul
-                    className='
+                  <div className='d-flex align-items-center'>
+                    <ul
+                      className='
                     coach-rating
                     p-0
                     m-0
@@ -54,24 +53,25 @@ function InitStep({
                     align-items-center
                     justify-content-left
                   '
-                  >
-                    <li>
-                      <i className='fa fa-star' aria-hidden='true'></i>
-                    </li>
-                  </ul>
-                  <span className='text text-secondary ml-2'>4.4 (36)</span>
+                    >
+                      <li>
+                        <i className='fa fa-star' aria-hidden='true'></i>
+                      </li>
+                    </ul>
+                    <span className='text text-secondary ml-2'>4.4 (36 отзывов)</span>
+                  </div>
                 </div>
+                <ul className='coach-labels__list d-flex mt-1 flex-wrap'>
+                  {tags.map(t => (
+                    <li key={t.key} className='mr-1'>
+                      <span
+                        className='badge border border-secondary text-secondary'
+                      >{t.label}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <ul className='coach-labels__list d-flex'>
-              {tags.map(t => (
-                <li key={t.key} className='mr-1'>
-                  <span
-                    className='badge border border-secondary text-secondary'
-                  >{t.label}</span>
-                </li>
-              ))}
-            </ul>
             <div className='coach-booking pt-3 pb-3'>
               <p className='text tex-secondary text-center'>Выберите вид тренировки</p>
               <LessonSelect

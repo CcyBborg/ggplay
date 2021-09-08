@@ -1,14 +1,26 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import Copier from '../Copier/Copier';
 import Spinner from '../Spinner/Spinner';
+import AddReview from './components/AddReview/AddReview';
 import { fetchUserInfo } from './actions';
+import { postReview } from './api';
 
 function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
         fetchUserInfo();
     }, [fetchUserInfo]);
 
+    const notification = user.info?.notification;
+
+    useEffect(() => {
+        if (notification) {
+            setIsNotification(true);
+        }
+    }, [notification]);
+
     const [isMobileMenu, setIsMobileMenu] = useState(false);
+    const [isNotification, setIsNotification] = useState(false);
 
     if (user.isLoading) {
         return (
@@ -57,7 +69,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                                 <ul className='d-flex align-items-center list-inline m-0'>
                                                     <li className='menu-item'>
                                                         <a href='/dashboard' className='btn btn-link'>
-                                                            <i className='fas fa-home'></i>
+                                                            Мои тренировки
                                                         </a>
                                                     </li>
                                                     <li className='menu-item'>
@@ -184,7 +196,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                 <ul className='d-flex flex-column align-items-center justify-content-center list-inline m-0'>
                                     <li className='menu-item'>
                                         <a href='/dashboard' className='btn btn-link'>
-                                            <i className='fas fa-home'></i>
+                                            Мои тренировки
                                         </a>
                                     </li>
                                     <li className='menu-item'>
@@ -219,6 +231,50 @@ function Layout({ user, children, fetchUserInfo }) {
                         )}
                     </nav>
                 </div>
+            )}
+
+            {isNotification && (
+                notification.type === 'SOON' ? (
+                    <div className='modal-container'>
+                        <div className='modal' style={{
+                            width: '400px'
+                        }}>
+                            <header className='modal-header d-flex justify-content-center align-items-center'>
+                                <h4 className='m-0 h6 text-center'>Уведомление о тренировке</h4>
+                                <button className='btn-close' onClick={() => setIsNotification(false)}>
+                                    <i className='fas fa-times'></i>
+                                </button>
+                            </header>
+                            <div className='modal-body'>
+                                <p className='lead text-center mb-5 text-white'>
+                                    Сегодня в<strong>&nbsp;{new Date(notification.timestamp).toLocaleString('ru', {
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}&nbsp;</strong>у тебя "<strong>{notification.lesson.title}</strong>".
+                                </p>
+                                <div className='mb-4'>
+                                    <p className='mb-2'>Канал для твоей тренировки:</p>
+                                    <Copier text={notification.channel} />
+                                </div>
+                                <div>
+                                    <p className='mb-2'>Приглашение в наш Discord-сервер:</p>
+                                    <Copier text={notification.invite} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <AddReview
+                        lesson={notification.lesson}
+                        onPostReview={(rating, comment) => {
+                            postReview({
+                                slotId: notification._id,
+                                rating,
+                                comment
+                            });
+                        }}
+                        onClose={() => setIsNotification(false)} />
+                )
             )}
         </>
     );

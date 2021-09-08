@@ -16,6 +16,13 @@ const LessonSlotSchema = mongoose.Schema({
     },
     invite: {
         type: String,
+    },
+    channel: {
+        type: String
+    },
+    review: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Reviews'
     }
 });
 

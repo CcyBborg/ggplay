@@ -21,7 +21,7 @@ function SignIn({
         <div className='poll'>
             <div className='container'>
                 <nav className='d-flex justify-content-between align-items-center pt-4 pb-4'>
-                    <a className='navbar-brand' href='https://templates.iqonic.design/streamit/frontend/html/index.html'>
+                    <a className='navbar-brand' href='/'>
                         <img className='img-fluid logo' width='100' src='./images/logo.png' alt='GGPlay' />
                     </a>
                     <a href='/sign-up'>Регистрация</a>

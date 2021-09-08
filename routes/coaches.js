@@ -2,8 +2,6 @@ const express = require('express');
 
 const Coach = require('../models/Coach');
 require('../models/Lesson');
-require('../models/CoachReview');
-require('../models/LessonSlot');
 
 const router = express.Router();
 

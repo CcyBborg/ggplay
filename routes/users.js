@@ -8,7 +8,7 @@ const router = express.Router();
 
 function toUTC(date) {
     return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
-            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
+        date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
 }
 
 const NOTIF_PERIOD = 60 * 60 * 1000; // One Hour
@@ -101,27 +101,99 @@ router.get('/auth/discord/callback', passport.authenticate('discord', {
 // Authorized user's info
 router.get('/info', ensureAuthenticated, async (req, res) => {
     try {
-        const slots = await LessonSlot.find({ user: req.user._id }).populate('lesson');
+        const slots = await LessonSlot.find({ user: req.user._id })
+            .populate('lesson')
+            .populate('review')
+            .populate({
+                path: 'lesson',
+                populate: {
+                    path: 'coach',
+                }
+            });;
 
-        const now = toUTC(new Date());
-        const notifications = slots?.map(slot => {
-            const slotDate = toUTC(new Date(slot.timestamp));
-            if (Math.abs(slotDate - now) < NOTIF_PERIOD) {
-                return {
-                    _id: slot._id,
-                    lesson: slot.lesson,
-                    timestamp: slot.timestamp,
-                    invite: slot.invite
-                };
+        slots.sort((slotA, slotB) => {
+            const slotATime = toUTC(new Date(slotA.timestamp));
+            const slotBTime = toUTC(new Date(slotB.timestamp));
+
+            if (slotATime > slotBTime) {
+                return -1;
+            } else if (slotATime < slotBTime) {
+                return 1;
+            } else {
+                return 0;
             }
         });
+
+        const now = toUTC(new Date());
+        let notification = slots?.find(
+            ({ timestamp }) => Math.abs(toUTC(new Date(timestamp)) - now) < NOTIF_PERIOD
+        );
+
+        if (notification) {
+            notification = {
+                _id: notification._id,
+                type: 'SOON',
+                lesson: notification.lesson,
+                timestamp: notification.timestamp,
+                invite: notification.invite,
+                channel: notification.channel
+            };
+        } else {
+            notification = slots?.find(({ timestamp, lesson }) => {
+                const slotTime = toUTC(new Date(timestamp));
+
+                return slotTime < now && now - slotTime > lesson.duration * 1000;
+            });
+
+            if (notification) {
+                notification = {
+                    _id: notification._id,
+                    type: 'REVIEW',
+                    lesson: notification.lesson,
+                    timestamp: notification.timestamp
+                };
+            }
+        }
 
         res.json({
             id: req.user.id,
             nickname: req.user.nickname,
             email: req.user.email,
             profile: req.user.profile,
-            notifications
+            notification
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: 'Произошла ошибка. Попробуйте позже.'
+        });
+    }
+});
+
+router.get('/slots', ensureAuthenticated, async (req, res) => {
+    try {
+        const slots = await LessonSlot.find({ user: req.user._id })
+            .populate('lesson')
+            .populate({
+                path: 'lesson',
+                populate: {
+                    path: 'coach',
+                }
+            });
+
+        res.json({
+            slots: slots.sort((slotA, slotB) => {
+                const slotATime = toUTC(new Date(slotA.timestamp));
+                const slotBTime = toUTC(new Date(slotB.timestamp));
+
+                if (slotATime > slotBTime) {
+                    return -1;
+                } else if (slotATime < slotBTime) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            })
         });
     } catch (err) {
         console.log(err);

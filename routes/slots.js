@@ -1,6 +1,8 @@
 const express = require('express');
+
 const { createChannel } = require('../discord-client');
 const LessonSlot = require('../models/LessonSlot');
+const Review = require('../models/Review');
 const { ensureAuthenticated } = require('../middleware');
 
 const router = express.Router();
@@ -9,33 +11,62 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
     try {
         const lessonSlot = await LessonSlot.findOne({
             '_id': req.body.slotId
-        });
-        // const user = await User.findOne({ '_id': req.userId });
+        }).populate('lesson');
+
+        if (lessonSlot.user) {
+            throw new Error('Запись уже занята');
+        }
+
         lessonSlot.user = req.user.id;
         req.user.slots.push(lessonSlot['_id'])
+
+        const channelName = `${req.user.nickname} ${String(lessonSlot._id).slice(0, 4)}`;
+        const invite = await createChannel(channelName, lessonSlot.lesson.maxParticipants);
+        lessonSlot.invite = invite;
+        lessonSlot.channel = channelName;
+
         await lessonSlot.save();
         await req.user.save();
 
         res.send('Booked');
     } catch (err) {
-        res.status(500).send('Nope');
+        console.log(err);
+        res.status(500).json({
+            error: 'Произошла ошибка. Попробуйте позже.'
+        });
     }
 });
 
-router.post('/:slotId/activate', ensureAuthenticated, async (req, res) => {
+router.post('/:slotId/review', ensureAuthenticated, async (req, res) => {
     try {
         const lessonSlot = await LessonSlot.findOne({
             '_id': req.params.slotId,
-            'user': req.userId
+            'user': req.user.id
+        }).populate('lesson');
+
+        if (!lessonSlot) {
+            throw new Error('Нет такого слота');
+        }
+
+        console.log(req.body);
+        
+        let review = new Review({
+            slot: lessonSlot,
+            rating: req.body.rating,
+            comment: req.body.comment
         });
-        lessonSlot.invite = await createChannel(`${req.user.nickname} ${lessonSlot._id.slice(0, 3)}`);
+
+        review = await review.save();
+
+        lessonSlot.review = review._id;
         await lessonSlot.save();
 
-        res.json({
-            invite: lessonSlot.invite
-        });
+        res.send('Ok');
     } catch (err) {
-        res.status(500).send('Unexpected error');
+        console.log(err);
+        res.status(500).json({
+            error: 'Произошла ошибка. Попробуйте позже.'
+        });
     }
 });
 

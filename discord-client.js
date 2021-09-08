@@ -18,6 +18,7 @@ async function createChannel(name, maxMembers) {
     const channel = await guild.channels.create(name, {
         type: 'GUILD_VOICE',
         topic: 'Добро пожаловать на тренировку!',
+        parent: '881126215279333377',
         userLimit: maxMembers + 1
     });
     const invite = await channel.createInvite({

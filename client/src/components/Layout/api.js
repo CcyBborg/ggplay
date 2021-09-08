@@ -5,3 +5,10 @@ export function fetchUserInfo() {
         withCredentials: true
     });
 }
+
+export function postReview({ slotId, rating, comment }) {
+    return axios.post(`/slots/${slotId}/review`, {
+        rating,
+        comment
+    });
+}

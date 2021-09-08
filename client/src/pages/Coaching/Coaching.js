@@ -74,7 +74,15 @@ function Coaching({
     <>
       <section className='content'>
         <div className='container pt-4 pb-5'>
-          <p className='mt-2 mb-4 lead' style={{maxWidth: '800px'}}>Обучение от&nbsp;топовых тренеров. Лучшие проверенные тренеры, которые помогли более чем 500 ученикам реализовать свои цели в&nbsp;играх.</p>
+          <div className='banner pl-5 pr-5 pt-4 pb-4 mb-5 d-flex justify-content-between align-items-center'>
+            <div>
+              <h3>Обучение от&nbsp;топовых тренеров</h3>
+              <p className='mt-2 mb-4 lead' style={{maxWidth: '700px'}}>Лучшие проверенные тренеры, которые помогли более чем 1000 ученикам реализовать свои цели в&nbsp;играх.</p>
+            </div>
+            <div>
+              <img width='280' src='/images/coaching.png' />
+            </div>
+          </div>
           <GameSelect
             selectedGame={selectedGameId}
             gameList={games.gameList}
