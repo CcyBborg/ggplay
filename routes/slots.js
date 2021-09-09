@@ -4,6 +4,7 @@ const { createChannel } = require('../discord-client');
 const LessonSlot = require('../models/LessonSlot');
 const Review = require('../models/Review');
 const { ensureAuthenticated } = require('../middleware');
+const Coach = require('../models/Coach');
 
 const router = express.Router();
 
@@ -47,8 +48,6 @@ router.post('/:slotId/review', ensureAuthenticated, async (req, res) => {
         if (!lessonSlot) {
             throw new Error('Нет такого слота');
         }
-
-        console.log(req.body);
         
         let review = new Review({
             slot: lessonSlot,
@@ -60,6 +59,10 @@ router.post('/:slotId/review', ensureAuthenticated, async (req, res) => {
 
         lessonSlot.review = review._id;
         await lessonSlot.save();
+
+        const coach = await Coach.findOne({ '_id': lessonSlot.lesson.coach });
+        coach.reviews.push(review._id)
+        await coach.save();
 
         res.send('Ok');
     } catch (err) {

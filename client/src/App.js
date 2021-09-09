@@ -55,7 +55,7 @@ function App() {
             </Layout>
           </Route>
         </Switch>
-        <Route path='/coaching/:id' component={Coach} />
+        <Route path='*/coach/:id' component={Coach} />
       </Router>
     </Provider>
   );

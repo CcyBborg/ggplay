@@ -17,7 +17,7 @@ function InitStep({
     <div className='modal'>
       <header className='modal-header d-flex justify-content-center align-items-center'>
         <h4 className='m-0 h6 text-center'>Профиль тренера</h4>
-        <button className='btn-close' onClick={() => history.push({ pathname: '/coaching' })}>
+        <button className='btn-close' onClick={history.goBack}>
           <i className='fas fa-times'></i>
         </button>
       </header>
@@ -78,26 +78,9 @@ function InitStep({
                 list={coach.lessons}
                 selectedLesson={selectedLesson}
                 onSelect={onSelectLesson} />
-              <div className='mt-3'>
-                {/* <div className='schedule-amount d-flex justify-content-between align-items-center'>
-                  <button
-                    className={`schedule-amount__minus pl-3 pr-3 ${amount === 1 ? 'schedule-amount__disabled' : ''}`}
-                    disabled={amount === 1}
-                    onClick={() => handleSetAmount(amount - 1)}>
-                    <i className='fas fa-minus'></i>
-                  </button>
-                  <span className='schedule-amount__counter pl-2 pr-2'>{amount}</span>
-                  <button
-                    className={`schedule-amount__plus pl-3 pr-3 ${amount === 5 ? 'schedule-amount__disabled' : ''}`}
-                    disabled={amount === 5}
-                    onClick={() => handleSetAmount(amount + 1)}>
-                    <i className='fas fa-plus'></i>
-                  </button>
-                </div> */}
-                <button className='btn btn-hover btn-lg btn-schedule-coach' onClick={onNextStep}>
-                  <i className='far fa-calendar-alt mr-4'></i> Запланировать урок
-                </button>
-              </div>
+              <button className='btn btn-hover btn-lg btn-schedule-coach mt-3' onClick={onNextStep}>
+                <i className='far fa-calendar-alt mr-4'></i> Запланировать урок
+              </button>
             </div>
             <div className='pt-3 mb-4'>
               <h6 className='mb-3'>О себе:</h6>
@@ -127,7 +110,7 @@ function InitStep({
                           </li>
                         ))}
                       </ul>
-                      <p className='mt-2'>{r.review}</p>
+                      <p className='mt-2'>{r.comment}</p>
                     </li>
                   ))}
                 </ul>

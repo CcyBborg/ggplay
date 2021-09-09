@@ -139,10 +139,10 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
                 channel: notification.channel
             };
         } else {
-            notification = slots?.find(({ timestamp, lesson }) => {
+            notification = slots?.find(({ timestamp, lesson, review }) => {
                 const slotTime = toUTC(new Date(timestamp));
 
-                return slotTime < now && now - slotTime > lesson.duration * 1000;
+                return !review && (slotTime < now && now - slotTime > lesson.duration * 1000);
             });
 
             if (notification) {
@@ -174,6 +174,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
     try {
         const slots = await LessonSlot.find({ user: req.user._id })
             .populate('lesson')
+            .populate('review')
             .populate({
                 path: 'lesson',
                 populate: {

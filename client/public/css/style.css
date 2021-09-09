@@ -269,7 +269,7 @@ li.slide-item:hover .block-images {
 
 .img-box img {
   width: 310px;
-  height: 175px;
+  height: 150px;
   object-fit: cover;
   object-position: center;
 }
@@ -398,7 +398,8 @@ a:hover {
 
 li.slide-item {
   position: relative;
-  padding: 10px;
+  padding: 0;
+  padding: 15px;
 }
 
 li.slide-item .block-images {
@@ -3606,6 +3607,14 @@ header .navbar ul li .sub-menu li:hover > a::before {
     left: -5px;
   }
 
+  .banner {
+    text-align: center;
+  }
+
+  .banner h3 {
+    font-size: 22px;
+  }
+
   .coach-game-select__next {
     right: -5px;
   }
@@ -3726,9 +3735,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 /* Slot card */
 .slot-list {
-  width: 100%;
   max-width: 480px;
-  margin: 0 auto;
 }
 
 .slot-card {

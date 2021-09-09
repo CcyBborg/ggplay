@@ -7,7 +7,7 @@ function CoachCard({
   img
 }) {
   return (
-    <div className='coach-card' onClick={() => history.push({ pathname: `/coaching/${id}` })}>
+    <div className='coach-card' onClick={() => history.push({ pathname: `/coaching/coach/${id}${window.location.search}` })}>
       <div className='p-3'>
         <div className='d-flex'>
           <div className='mr-3'>

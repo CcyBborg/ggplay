@@ -9,10 +9,6 @@ const CoachSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    discord: {
-        type: String,
-        required: true
-    },
     img: {
         type: String,
         required: true
@@ -29,7 +25,7 @@ const CoachSchema = mongoose.Schema({
     tags: [String],
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'CoachReviews'
+        ref: 'Reviews'
     }]
 });
 
