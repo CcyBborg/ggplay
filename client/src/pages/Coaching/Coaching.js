@@ -77,7 +77,7 @@ function Coaching({
           <div className='banner p-3 pl-sm-5 pr-sm-5 pt-sm-4 pb-sm-4 mb-5 d-sm-flex justify-content-between align-items-center'>
             <div>
               <h1 className='h3 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
-              <p className='mt-2 mb-4 lead' style={{maxWidth: '700px'}}>Лучшие проверенные тренеры, которые помогли более чем 1000 ученикам реализовать свои цели в&nbsp;играх.</p>
+              <p className='mt-2 mb-4 lead' style={{ maxWidth: '700px' }}>Лучшие проверенные тренеры, которые помогли более чем 1000 ученикам реализовать свои цели в&nbsp;играх.</p>
             </div>
             <div>
               <img width='280' src='/images/coaching.png' />
@@ -95,7 +95,7 @@ function Coaching({
             </div>
           ) : (
             <>
-              <h4 className='mt-4 mb-4'>{selectedGame.title}</h4>
+              <h4 className='mt-4 mb-4'>Тренера по {selectedGame.title}</h4>
               <div className='coach-list-block position-relative pt-1'>
                 <div className='trending-custom-tab'>
                   {selectedGame?.filters?.[0] && (
@@ -118,23 +118,9 @@ function Coaching({
                     </div>
                   )}
                   <div className='pt-4'>
-                    <h5 className='mb-3'>Топ тренера</h5>
                     <div className='row'>
-                      {coachList.slice(0, 3).map(coach => (
-                        <div className='col-xs-12 col-md-auto mb-3' key={coach['_id']}>
-                          <CoachCard
-                            id={coach['_id']}
-                            title={coach.title}
-                            img={coach.img} />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className='pt-5'>
-                    <h5 className='mb-3'>Свободные тренера</h5>
-                    <div className='row'>
-                      {coachList.slice(3).map(coach => (
-                        <div className='col-xs-12 col-md-auto mb-3' key={coach['_id']}>
+                      {coachList.map(coach => (
+                        <div className='col-xs-12 col-md-auto mb-4' key={coach['_id']}>
                           <CoachCard
                             id={coach['_id']}
                             title={coach.title}

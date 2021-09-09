@@ -400,6 +400,7 @@ li.slide-item {
   position: relative;
   padding: 0;
   padding: 15px;
+  cursor: pointer;
 }
 
 li.slide-item .block-images {
