@@ -42,24 +42,6 @@ header .navbar ul li {
   display: inline-block;
 }
 
-li.menu-item a {
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  padding: 0px 0px 0px 10px;
-  line-height: 70px;
-  position: relative;
-  z-index: 9;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  text-transform: uppercase;
-}
-
 .nav-open .nav-overlay {
   visibility: visible;
   -webkit-transition: 0.3s;
@@ -2542,28 +2524,6 @@ li.menu-item:hover > i {
   color: var(--iq-primary);
 }
 
-li.menu-item > a {
-  text-transform: uppercase;
-}
-
-li.menu-item a {
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  padding: 0px 0px 0px 10px;
-  line-height: 70px;
-  position: relative;
-  z-index: 9;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  text-transform: capitalize;
-}
-
 .navbar ul li .sub-menu {
   display: none;
 }
@@ -2622,7 +2582,7 @@ li.menu-item a {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .navbar ul li .sub-menu li > a::before {
@@ -3700,6 +3660,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
   bottom: 0;
   background-color: var(--iq-bg1);
   z-index: 99999;
+}
+
+.mobile-menu .menu-item .btn.btn-link {
+  padding: 0;
 }
 
 .mobile-header__logo {
