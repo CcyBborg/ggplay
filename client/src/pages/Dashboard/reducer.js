@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                slots: action.data.slots
+                slots: action.data
             };
         case FETCH_SLOTS_FAILURE:
             return {

@@ -182,19 +182,35 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
                 }
             });
 
-        res.json({
-            slots: slots.sort((slotA, slotB) => {
-                const slotATime = toUTC(new Date(slotA.timestamp));
-                const slotBTime = toUTC(new Date(slotB.timestamp));
+        slots.sort((slotA, slotB) => {
+            const slotATime = toUTC(new Date(slotA.timestamp));
+            const slotBTime = toUTC(new Date(slotB.timestamp));
 
-                if (slotATime > slotBTime) {
-                    return -1;
-                } else if (slotATime < slotBTime) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            })
+            if (slotATime > slotBTime) {
+                return -1;
+            } else if (slotATime < slotBTime) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        const now = toUTC(new Date());
+        const present = [];
+        const past = slots.filter(slot => {
+            const slotTime = toUTC(new Date(slot.timestamp));
+
+            const isPast = slotTime < now && now - slotTime > slot.lesson.duration * 1000;
+            if (!isPast) {
+                present.push(slot);
+            }
+
+            return isPast;
+        });
+
+        res.json({
+            past,
+            present 
         });
     } catch (err) {
         console.log(err);
