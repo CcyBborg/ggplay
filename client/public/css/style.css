@@ -247,6 +247,7 @@ li.slide-item .block-images {
 
 li.slide-item:hover .block-images {
   overflow: visible;
+  cursor: pointer;
 }
 
 .img-box img {
@@ -380,9 +381,7 @@ a:hover {
 
 li.slide-item {
   position: relative;
-  padding: 0;
   padding: 15px;
-  cursor: pointer;
 }
 
 li.slide-item .block-images {
@@ -3168,7 +3167,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 .rank-select {
   list-style: none;
-  padding: 0 0 50px 0;
+  padding: 0;
   margin: 0;
 }
 
@@ -3614,6 +3613,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
   .lead {
     font-size: 18px;
+  }
+
+  .poll-content {
+    padding-bottom: 60px;
   }
 }
 

@@ -45,7 +45,6 @@ function GameSelect({
                             wl-child
                             ${game['_id'] === selectedGame ? 'slide-selected' : ''}
                           `}
-                onClick={() => onSelect(game['_id'])}
               >
                 <div
                   className='
@@ -53,7 +52,7 @@ function GameSelect({
                               position-relative
                               watchlist-img watchlist-first
                             '
-                >
+                  onClick={() => onSelect(game['_id'])}>
                   <div className='img-box'>
                     <img
                       src={game.img}
