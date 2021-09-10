@@ -50,6 +50,10 @@ function SignUp({
                 <nav className='d-flex justify-content-between align-items-center pt-3 pb-3 pt-md-4 pb-md-4'>
                     {step > 0 ? (
                         <button className='sign-up-btn' onClick={() => {
+                            if (step === 1) {
+                                setSelectedRank(null);
+                            }
+
                             if (step !== 0) {
                                 setStep(step - 1);
                             }

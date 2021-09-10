@@ -3,6 +3,7 @@ import SwiperCore, {
   Navigation
 } from 'swiper';
 import 'swiper/swiper.min.css';
+import GameTile from '../../../../components/GameTile/GameTile';
 
 SwiperCore.use([
   Navigation,
@@ -46,26 +47,10 @@ function GameSelect({
                             ${game['_id'] === selectedGame ? 'slide-selected' : ''}
                           `}
               >
-                <div
-                  className='
-                              block-images
-                              position-relative
-                              watchlist-img watchlist-first
-                            '
-                  onClick={() => onSelect(game['_id'])}>
-                  <div className='img-box'>
-                    <img
-                      src={game.img}
-                      className='img-fluid'
-                      alt={game.title}
-                    />
-                  </div>
-                  <div className='block-description'>
-                    <h6 className='iq-title'>
-                      <a href='#'>{game.title}</a>
-                    </h6>
-                  </div>
-                </div>
+                <GameTile
+                  img={game.img}
+                  title={game.title}
+                  onClick={() => onSelect(game['_id'])} />
               </li>
             </SwiperSlide>
           ))}
