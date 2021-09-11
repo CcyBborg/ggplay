@@ -90,6 +90,7 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     failureRedirect: '/sign-up'
 }), async (req, res) => {
     if (req.user) {
+        console.log('\n\n\n!!!!!YPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP\n\n\n\n');
         const game = req.session.game;
         const rank = req.session.rank;
     
