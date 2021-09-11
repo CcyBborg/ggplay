@@ -93,9 +93,9 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
         const game = req.session.game;
         const rank = req.session.rank;
     
-        req.user.game = req.session.game;
+        req.user.game = game;
         if (rank) {
-            req.user.rank = req.session.rank;
+            req.user.rank = rank;
         }
 
         await req.user.save();
