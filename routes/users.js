@@ -1,5 +1,5 @@
 const express = require('express');
-const { ensureAuthenticated } = require('../middleware');
+const { ensureAuthenticated, persistGameRank } = require('../middleware');
 const passport = require('passport');
 const User = require('../models/User');
 const LessonSlot = require('../models/LessonSlot');
@@ -70,7 +70,7 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 // Google oauth
-router.get('/auth/google', passport.authenticate('google', {
+router.get('/auth/google', persistGameRank, passport.authenticate('google', {
     scope: [
         'profile',
         'email'
@@ -88,7 +88,19 @@ router.get('/auth/vkontakte', passport.authenticate('vkontakte'));
 router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     successRedirect: '/dashboard',
     failureRedirect: '/sign-up'
-}));
+}), async (req, res) => {
+    if (req.user) {
+        const game = req.session.game;
+        const rank = req.session.rank;
+    
+        req.user.game = req.session.game;
+        if (rank) {
+            req.user.rank = req.session.rank;
+        }
+
+        await req.user.save();
+    }
+});
 
 // Discord oauth
 router.get('/auth/discord', passport.authenticate('discord'));

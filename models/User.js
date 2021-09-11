@@ -38,8 +38,7 @@ var UserSchema = new Schema({
         },
         rank: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ranks',
-            required: true
+            ref: 'Ranks'
         }
     },
     slots: [{

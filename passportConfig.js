@@ -61,7 +61,6 @@ module.exports = passport => {
                         email: profileEmail,
                         profile: {
                             game: '6110f38fa9258e24cce20f65',
-                            rank: '61137d6de26eaa711b78c984'
                         }
                     });
                     newUser.save(function (err) {
@@ -96,7 +95,6 @@ module.exports = passport => {
                     vkontakte: profile.id,
                     profile: {
                         game: '6110f38fa9258e24cce20f65',
-                        rank: '61137d6de26eaa711b78c984'
                     }
                 });
                 newUser.save(function (err) {
@@ -141,8 +139,7 @@ module.exports = passport => {
                     discord: profile.id,
                     email: profile.email,
                     profile: {
-                        game: '6110f38fa9258e24cce20f65',
-                        rank: '61137d6de26eaa711b78c984'
+                        game: '6110f38fa9258e24cce20f65'
                     }
                 });
                 newUser.save(function (err) {
