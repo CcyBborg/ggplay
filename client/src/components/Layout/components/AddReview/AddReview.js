@@ -16,9 +16,6 @@ function AddReview({
             }}>
                 <header className='modal-header d-flex justify-content-center align-items-center'>
                     <h4 className='m-0 h6 text-center'>Оцени прошедшую тренировку</h4>
-                    <button className='btn-close' onClick={onClose}>
-                        <i className='fas fa-times'></i>
-                    </button>
                 </header>
                 <div className='modal-body'>
                     <div className='text-center mb-4'>
@@ -52,7 +49,10 @@ function AddReview({
                     <button
                         className='btn btn-hover btn-block mt-2'
                         disabled={!rating}
-                        onClick={() => onPostReview(rating, comment)}>
+                        onClick={() => {
+                            onPostReview(rating, comment);
+                            onClose();
+                        }}>
                         Отправить отзыв
                     </button>
                 </div>

@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 function SignUpForm({
    onCreateUser,
+   selectedGame,
+   selectedRank,
    error
 }) {
    const [nickname, setNickname] = useState('');
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
+
+   const formOauthURL = useCallback(url => {
+      if (selectedRank) {
+         return `${url}?game=${selectedGame}&rank=${selectedRank}`;
+      } else {
+         return `${url}?game=${selectedGame}`;
+      }
+   }, [selectedGame, selectedRank]);
 
    return (
       <div className='sign-in-page'>
@@ -18,27 +28,27 @@ function SignUpForm({
                   <div className='d-flex justify-content-between'>
                      <button className='btn btn-hover btn-vk' onClick={() => {
                         if (process?.env?.NODE_ENV === 'development') {
-                           window.open('http://localhost:5000/users/auth/vkontakte', '_self');
+                           window.open(formOauthURL('http://localhost:5000/users/auth/vkontakte'), '_self');
                         } else {
-                           window.open('/users/auth/vkontakte', '_self');
+                           window.open(formOauthURL('/users/auth/vkontakte'), '_self');
                         }
                      }}>
                         <i className='fab fa-vk'></i>
                      </button>
                      <button className='btn btn-hover btn-discord' onClick={() => {
                         if (process?.env?.NODE_ENV === 'development') {
-                           window.open('http://localhost:5000/users/auth/discord', '_self');
+                           window.open(formOauthURL('http://localhost:5000/users/auth/discord'), '_self');
                         } else {
-                           window.open('/users/auth/discord', '_self');
+                           window.open(formOauthURL('/users/auth/discord'), '_self');
                         }
                      }}>
                         <i className='fab fa-discord'></i>
                      </button>
                      <button className='btn btn-hover btn-google' onClick={() => {
                         if (process?.env?.NODE_ENV === 'development') {
-                           window.open('http://localhost:5000/users/auth/google', '_self');
+                           window.open(formOauthURL('http://localhost:5000/users/auth/google'), '_self');
                         } else {
-                           window.open('/users/auth/google', '_self');
+                           window.open(formOauthURL('/users/auth/google'), '_self');
                         }
                      }}>
                         <i className='fab fa-google'></i>

@@ -100,6 +100,8 @@ function SignUp({
                     {STEPS[step].id === SIGN_UP_STEP && (
                         <SignUpForm
                             error={error}
+                            selectedGame={selectedGame}
+                            selectedRank={selectedRank}
                             onCreateUser={params =>
                                 createUser({
                                     ...params,

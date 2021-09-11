@@ -78,24 +78,24 @@ router.get('/auth/google', passport.authenticate('google', {
 }));
 
 router.get('/auth/google/callback', passport.authenticate('google', {
-    successRedirect: 'http://localhost:3000/dashboard',
-    failureRedirect: 'http://localhost:3000/sign-up'
+    successRedirect: '/dashboard',
+    failureRedirect: '/sign-up'
 }));
 
 // Vkontakte oauth
 router.get('/auth/vkontakte', passport.authenticate('vkontakte'));
 
 router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
-    successRedirect: 'http://localhost:3000/dashboard',
-    failureRedirect: 'http://localhost:3000/sign-up'
+    successRedirect: '/dashboard',
+    failureRedirect: '/sign-up'
 }));
 
 // Discord oauth
 router.get('/auth/discord', passport.authenticate('discord'));
 
 router.get('/auth/discord/callback', passport.authenticate('discord', {
-    successRedirect: 'http://localhost:3000/dashboard',
-    failureRedirect: 'http://localhost:3000/sign-up'
+    successRedirect: '/dashboard',
+    failureRedirect: '/sign-up'
 }));
 
 // Authorized user's info
