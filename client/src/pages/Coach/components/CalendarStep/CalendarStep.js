@@ -54,9 +54,7 @@ function CalendarStep({
   }, [selectedDate]);
 
   return (
-    <div className='modal modal-sm' style={{
-      height: selectedDate ? '800px' : '588px'
-    }}>
+    <div className='modal modal-sm'>
       <header className='modal-header d-flex justify-content-center align-items-center'>
         <button className='modal__btn-back' onClick={onPrevStep}>
           <i className='fas fa-arrow-left'></i>
@@ -66,7 +64,9 @@ function CalendarStep({
           <i className='fas fa-times'></i>
         </button>
       </header>
-      <div className='modal-body'>
+      <div className='modal-body' style={{
+        height: selectedDate ? '740px' : '528px'
+      }}>
         <Calendar
           className='calendar'
           locale='ru'

@@ -22,7 +22,7 @@ function LessonSelect({
                             <p className='text text-secondary m-0'>{lesson.description}</p>
                           </div>
                         </div>
-                        <div className='d-flex flex-column align-items-end ml-4'>
+                        <div className='d-flex flex-column align-items-end ml-2 ml-md-4'>
                           <span className='coaching-select__time text text-secondary'>{lesson.duration}&nbsp;минут</span>
                           <span className='coaching-select__price'>{lesson.price}&nbsp;₽</span>
                         </div>

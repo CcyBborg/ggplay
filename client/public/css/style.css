@@ -3604,7 +3604,9 @@ header .navbar ul li .sub-menu li:hover > a::before {
   }
 
   .modal-body {
-    padding-top: 58px;
+    padding: 10px;
+    padding-top: 80px;
+    min-height: 100vh;
   }
 
   h1 {
@@ -3617,6 +3619,11 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
   .poll-content {
     padding-bottom: 60px;
+  }
+
+  .coach-info__img {
+    width: 60px;
+    height: 60px;
   }
 }
 
