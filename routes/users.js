@@ -70,7 +70,7 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 // Google oauth
-router.get('/auth/google', persistGameRank, passport.authenticate('google', {
+router.get('/auth/google', passport.authenticate('google', {
     scope: [
         'profile',
         'email'
@@ -78,15 +78,15 @@ router.get('/auth/google', persistGameRank, passport.authenticate('google', {
 }));
 
 router.get('/auth/google/callback', passport.authenticate('google', {
-    successRedirect: '/dashboard',
+    successRedirect: '/coaching',
     failureRedirect: '/sign-up'
 }));
 
 // Vkontakte oauth
-router.get('/auth/vkontakte', passport.authenticate('vkontakte'));
+router.get('/auth/vkontakte', persistGameRank, passport.authenticate('vkontakte'));
 
 router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
-    successRedirect: '/dashboard',
+    successRedirect: '/coaching',
     failureRedirect: '/sign-up'
 }), async (req, res) => {
     if (req.user) {
@@ -106,7 +106,7 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
 router.get('/auth/discord', passport.authenticate('discord'));
 
 router.get('/auth/discord/callback', passport.authenticate('discord', {
-    successRedirect: '/dashboard',
+    successRedirect: '/coaching',
     failureRedirect: '/sign-up'
 }));
 
