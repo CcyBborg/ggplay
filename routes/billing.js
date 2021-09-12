@@ -16,7 +16,7 @@ router.post('/notify', async (req, res) => {
                 user.slots.push(slot._id)
                 slot.user = user._id;
 
-                slot.channel = `${user.nickname} ${String(slots._id).slice(0, 4)}`;
+                slot.channel = `${user.nickname} ${String(slot._id).slice(0, 4)}`;
                 slot.invite = await createChannel(slot.channel, slot.lesson.maxParticipants);
 
                 await slot.save();
