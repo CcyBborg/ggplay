@@ -2407,7 +2407,6 @@ li.menu-item a {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
-  text-transform: uppercase;
 }
 
 .navbar ul li .sub-menu li > a::before {
