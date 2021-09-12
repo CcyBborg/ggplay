@@ -37,6 +37,9 @@ function Slot({
                 <div className='text-center'>
                     <h5>{lesson.title}</h5>
                     <button
+                        style={{
+                            margin: '0 auto'
+                        }}
                         className='btn btn-link mt-2 d-flex align-items-center justify-content-center'
                         onClick={() => history.push({ pathname: `/dashboard/coach/${lesson.coach._id}` })}>
                         <img
