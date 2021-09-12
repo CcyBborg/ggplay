@@ -33,7 +33,7 @@ function SignUp({
     }, [step]);
 
     if (isUserSignedIn) {
-        history.push({ pathname: '/dashboard' });
+        history.push({ pathname: '/coaching' });
     }
 
     if (isLoading) {

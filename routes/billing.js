@@ -9,11 +9,10 @@ router.post('/notify', async (req, res) => {
     try {
         if (req.body.Success) {
             if (req.body.Status === 'CONFIRMED') {
-                const order = Order.findOne({ _id: req.body.OrderId });
-                const user = User.findOne({ _id: order.user });
-                const slot = LessonSlot.findOne({ _id: order.slot }).populate('lesson');
+                const order = await Order.findOne({ _id: req.body.OrderId });
+                const user = await User.findOne({ _id: order.user });
+                const slot = await LessonSlot.findOne({ _id: order.slot }).populate('lesson');
 
-                console.log(user);
                 user.slots.push(slot._id)
                 slot.user = user._id;
 

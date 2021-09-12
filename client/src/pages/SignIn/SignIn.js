@@ -14,7 +14,7 @@ function SignIn({
     const [password, setPassword] = useState('')
 
     if (isUserSignedIn) {
-        history.push({ pathname: '/dashboard' });
+        history.push({ pathname: '/coaching' });
     }
 
     return (
