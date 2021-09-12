@@ -4,9 +4,9 @@ import {
     FETCH_COACH_SUCCESS,
     FETCH_COACH_FAILURE,
 
-    BOOK_SLOT_REQUEST,
-    BOOK_SLOT_SUCCESS,
-    BOOK_SLOT_FAILURE
+    PAY_SLOT_REQUEST,
+    PAY_SLOT_SUCCESS,
+    PAY_SLOT_FAILURE,
 } from './action-types';
 
 export function fetchCoach(id) {
@@ -30,22 +30,22 @@ export function fetchCoach(id) {
     };
 }
 
-export function bookSlot(slotId) {
+export function paySlot(slotId) {
     return async dispatch => {
         dispatch({
-            type: BOOK_SLOT_REQUEST,
+            type: PAY_SLOT_REQUEST,
         });
 
         try {
             const res = await API.bookSlot(slotId);
 
             dispatch({
-                type: BOOK_SLOT_SUCCESS,
+                type: PAY_SLOT_SUCCESS,
                 data: res.data
             });
         } catch (err) {
             dispatch({
-                type: BOOK_SLOT_FAILURE
+                type: PAY_SLOT_FAILURE
             });
         }
     };

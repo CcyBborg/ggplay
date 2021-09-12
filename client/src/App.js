@@ -10,9 +10,11 @@ import store from './store';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
 import Coaching from './pages/Coaching/Coaching';
+import ConfidentialPolicy from './pages/ConfidentialPolicy/ConfidentialPolicy';
 import Layout from './components/Layout/Layout';
 import Coach from './pages/Coach/Coach';
 import Dashboard from './pages/Dashboard/Dashboard';
+import TermsOfService from './pages/TermsOfService/TermsOfService';
 
 function App() {
   return (
@@ -52,6 +54,22 @@ function App() {
                 <title>Мои тренировки | GGPlay</title>
               </Helmet>
               <Dashboard />
+            </Layout>
+          </Route>
+          <Route path='/confidential-policy'>
+            <Layout>
+              <Helmet>
+                <title>Политика конфиденциальности | GGPlay</title>
+              </Helmet>
+              <ConfidentialPolicy />
+            </Layout>
+          </Route>
+          <Route path='/terms-of-service'>
+            <Layout>
+              <Helmet>
+                <title>Пользовательской соглашение | GGPlay</title>
+              </Helmet>
+              <TermsOfService />
             </Layout>
           </Route>
         </Switch>

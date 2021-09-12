@@ -123,17 +123,17 @@ function Layout({ user, children, fetchUserInfo }) {
                                 <div className='widget text-left'>
                                     <div className='menu-footer-link-1-container'>
                                         <ul id='menu-footer-link-1' className='menu p-0'>
-                                            <li id='menu-item-7118' className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7118'>
+                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7118'>
                                                 <a href='https://templates.iqonic.design/streamit/frontend/html/faq.html'>Служба поддержки</a>
                                             </li>
-                                            <li id='menu-item-7118' className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7118'>
+                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7118'>
                                                 <a href='https://templates.iqonic.design/streamit/frontend/html/watch-video.html'>Контакты</a>
                                             </li>
-                                            <li id='menu-item-7314' className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7314'>
-                                                <a href='https://templates.iqonic.design/streamit/frontend/html/index.html#'>Пользовательское соглашение</a>
+                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7314'>
+                                                <a href='/terms-of-service'>Пользовательское соглашение</a>
                                             </li>
-                                            <li id='menu-item-7316' className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7316'>
-                                                <a href='https://templates.iqonic.design/streamit/frontend/html/privacy-policy.html'>Политика конфиденциальности</a>
+                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7316'>
+                                                <a href='/confidential-policy'>Политика конфиденциальности</a>
                                             </li>
                                         </ul>
                                     </div>

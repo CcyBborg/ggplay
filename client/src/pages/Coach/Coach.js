@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchCoach, bookSlot } from './actions';
+import { fetchCoach, paySlot } from './actions';
 import CalendarStep from './components/CalendarStep/CalendarStep';
 import ConfirmStep from './components/ConfirmStep/ConfirmStep';
 import InitStep from './components/InitStep/InitStep';
@@ -17,7 +17,8 @@ function Coach({
   isError,
   match,
   fetchCoach,
-  bookSlot
+  paymentUrl,
+  paySlot
 }) {
   useEffect(() => {
     fetchCoach(match.params.id);
@@ -27,6 +28,10 @@ function Coach({
 
   const [selectedLesson, setLesson] = useState(0);
   const [step, setStep] = useState(steps.INIT);
+
+  if (paymentUrl) {
+    window.open(paymentUrl, '_self');
+  }
 
   if (isError) {
     return (
@@ -60,7 +65,7 @@ function Coach({
           selectedLesson={selectedLesson}
           onPrevStep={() => setStep(steps.SCHEDULE)}
           onConfirm={() => {
-            bookSlot(selectedSlot.source['_id']);
+            paySlot(selectedSlot.source['_id']);
           }} />
       )}
     </div>
@@ -70,8 +75,9 @@ function Coach({
 export default connect(({ coach }) => ({
   isLoading: coach.isLoading,
   isError: coach.isError,
-  coach: coach.coach
+  coach: coach.coach,
+  paymentUrl: coach.paymentUrl
 }), {
   fetchCoach,
-  bookSlot
+  paySlot
 })(Coach);

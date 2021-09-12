@@ -1,7 +1,9 @@
 import {
     FETCH_COACH_REQUEST,
     FETCH_COACH_SUCCESS,
-    FETCH_COACH_FAILURE
+    FETCH_COACH_FAILURE,
+
+    PAY_SLOT_SUCCESS
 } from './action-types';
 
 const initialState = {
@@ -23,6 +25,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 isLoading: false,
                 coach: action.data
+            };
+        case PAY_SLOT_SUCCESS:
+            console.log(action.data);
+            return {
+                ...state,
+                paymentUrl: action.data.url
             };
         case FETCH_COACH_FAILURE:
             return {

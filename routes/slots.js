@@ -1,10 +1,12 @@
 const express = require('express');
+const axios = require('axios');
 
 const { createChannel } = require('../discord-client');
 const LessonSlot = require('../models/LessonSlot');
 const Review = require('../models/Review');
 const { ensureAuthenticated } = require('../middleware');
 const Coach = require('../models/Coach');
+const Order = require('../models/Order');
 
 const router = express.Router();
 
@@ -18,18 +20,41 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
             throw new Error('Запись уже занята');
         }
 
-        lessonSlot.user = req.user.id;
-        req.user.slots.push(lessonSlot['_id'])
+        let order = new Order({
+            slot: lessonSlot._id,
+            user: req.user._id,
+            status: 'placed'
+        });
 
-        const channelName = `${req.user.nickname} ${String(lessonSlot._id).slice(0, 4)}`;
-        const invite = await createChannel(channelName, lessonSlot.lesson.maxParticipants);
-        lessonSlot.invite = invite;
-        lessonSlot.channel = channelName;
+        order = await order.save();
 
-        await lessonSlot.save();
-        await req.user.save();
+        const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
+            TerminalKey: process.env.TERMINAL_KEY,
+            Amount: lessonSlot.lesson.price * 100,
+            Description: lessonSlot.lesson.title,
+            OrderId: order._id
+        });
 
-        res.send('Booked');
+        if (response.data.Success) {
+            res.json({
+                url: response.data.PaymentURL
+            });
+        } else {
+            throw new Error();
+        }
+
+        // lessonSlot.user = req.user.id;
+        // req.user.slots.push(lessonSlot['_id'])
+
+        // const channelName = `${req.user.nickname} ${String(lessonSlot._id).slice(0, 4)}`;
+        // const invite = await createChannel(channelName, lessonSlot.lesson.maxParticipants);
+        // lessonSlot.invite = invite;
+        // lessonSlot.channel = channelName;
+
+        // await lessonSlot.save();
+        // await req.user.save();
+
+        // res.send('Booked');
     } catch (err) {
         console.log(err);
         res.status(500).json({
