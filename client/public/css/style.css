@@ -1009,55 +1009,6 @@ ul.f-link li a:hover {
   margin: 0;
 }
 
-.main-content.movi {
-  padding-top: 30px;
-}
-
-.share {
-  position: relative;
-}
-
-.share-box {
-  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
-  display: none;
-  position: absolute;
-  width: 105px;
-  top: 3px;
-  right: 40px;
-  left: auto;
-  background-color: var(--iq-bg1);
-  padding: 0px 10px;
-  border-radius: 0px;
-  text-align: center;
-  z-index: 2;
-  animation: side-in 0.5s forwards;
-  margin-bottom: 10px;
-  transition: all 0.45s ease 0s;
-}
-
-.share:hover .share-box {
-  display: inline-block;
-}
-
-.share-box a {
-  background: transparent !important;
-  color: var(--iq-body) !important;
-  margin-right: 15px;
-}
-
-.share-box i {
-  font-size: px !important;
-}
-
-.share-box a:hover {
-  color: var(--iq-primary) !important;
-}
-
-.banner-wrapper .trending-info .trending-dec {
-  width: 100%;
-}
-
 .play-ico {
   font-size: 22px;
 }
@@ -1203,14 +1154,6 @@ video {
   width: 98%;
 }
 
-.lang-dropdown
-  .select2-container
-  .select2-search--inline
-  .select2-search__field {
-  margin-top: 0px;
-  font-size: 14px;
-}
-
 .a-border {
   border: 1px solid;
   border-image-slice: 1;
@@ -1224,35 +1167,6 @@ video {
 }
 
 /*-----------------------*/
-
-.setting a:hover {
-  color: var(--iq-primary) !important;
-}
-
-.edit-icon {
-  position: absolute;
-  right: 25px;
-  top: 25px;
-}
-
-.setting-wrapper .btn-hover {
-  white-space: normal;
-}
-
-.pricing .table th {
-  border-top: none;
-}
-
-.pricing .table th {
-  border-bottom: 1px solid var(--iq-body-bg);
-}
-
-.prc-box {
-  background: var(--iq-body-bg);
-  padding: 15px;
-  position: relative;
-  transition: all 0.4s ease;
-}
 
 .type {
   color: var(--iq-white);
@@ -1298,67 +1212,8 @@ video {
   font-size: 22px;
 }
 
-.p-image {
-  position: absolute;
-  top: auto;
-  right: 6px;
-  bottom: 10px;
-  transition: all 0.3s ease;
-  background: var(--iq-primary);
-  color: var(--iq-white);
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  line-height: 28px;
-  text-align: center;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.child-cell {
-  transition: all 0.4s ease;
-}
-
 .child-cell.active {
   color: var(--iq-primary);
-}
-
-/*---------------------------------------------------------------------
-                      Back to Top
------------------------------------------------------------------------*/
-
-#back-to-top .top {
-  z-index: 999;
-  position: fixed;
-  margin: 0px;
-  color: var(--iq-white);
-  background: var(--iq-primary);
-  bottom: 30px;
-  right: 25px;
-  font-size: 26px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  border-radius: 90px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-#back-to-top .top:hover {
-  color: var(--iq-white) !important;
-  background: var(--iq-primary);
-}
-
-#back-to-top {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-#back-to-top.show {
-  opacity: 1;
-  transition: opacity 0.6s ease;
 }
 
 /*---------------------------------------------------------------------
@@ -1493,26 +1348,6 @@ video {
   color: #d9d5d5 !important;
 }
 
-.f-link:hover {
-  color: var(--iq-primary);
-}
-
-/*---------------------------------------------------------------------
-                      Privacy and terms
-    -----------------------------------------------------------------------*/
-
-.iq-terms-of-use p {
-  color: var(--iq-body-text);
-}
-
-.iq-terms-of-use ul li {
-  color: var(--iq-body-text);
-}
-
-.iq-privacy-policy p {
-  color: var(--iq-body-text);
-}
-
 /*---------------------------------------------------------------------
      Footer
     -----------------------------------------------------------------------*/
@@ -1520,11 +1355,6 @@ video {
 footer .footer-standard .widget ul li {
   display: inline-block;
   padding-right: 30px;
-}
-
-#menu-footer-link-1 li.menu-link {
-  padding-right: 15px;
-  text-transform: none;
 }
 
 footer .footer-standard .widget ul > li > a {
@@ -1605,15 +1435,6 @@ ul.iq-contact li a:before {
 .widget.widget_nav_menu ul li .sub-menu li a,
 .widget ul.menu li .sub-menu li a {
   font-size: 14px;
-}
-
-footer .widget .rss-date {
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  display: inline-block;
-  width: 100%;
-  margin: 5px 0;
 }
 
 footer.footer-one .widget .textwidget p {

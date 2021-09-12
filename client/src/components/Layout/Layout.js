@@ -119,20 +119,20 @@ function Layout({ user, children, fetchUserInfo }) {
                 <div className='footer-top'>
                     <div className='container'>
                         <div className='row footer-standard'>
-                            <div className='col-lg-7'>
+                            <div className='col-lg-10'>
                                 <div className='widget text-left'>
                                     <div className='menu-footer-link-1-container'>
                                         <ul id='menu-footer-link-1' className='menu p-0'>
-                                            <li className='menu-item'>
-                                                <a href='https://templates.iqonic.design/streamit/frontend/html/faq.html'>Служба поддержки</a>
+                                            <li>
+                                                <a href='/support'>Служба поддержки</a>
                                             </li>
-                                            <li className='menu-item'>
-                                                <a href='https://templates.iqonic.design/streamit/frontend/html/watch-video.html'>Контакты</a>
+                                            <li>
+                                                <a href='/contacts'>Контакты</a>
                                             </li>
-                                            <li className='menu-item'>
+                                            <li>
                                                 <a href='/terms-of-service'>Пользовательское соглашение</a>
                                             </li>
-                                            <li className='menu-item'>
+                                            <li>
                                                 <a href='/confidential-policy'>Политика конфиденциальности</a>
                                             </li>
                                         </ul>
@@ -145,7 +145,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-lg-2 offset-lg-3 col-md-6 mt-4 mt-lg-0'>
+                            <div className='col-lg-2 col-md-6 mt-4 mt-lg-0'>
                                 <h6 className='footer-link-title'>
                                     Мы&nbsp;в&nbsp;соцсетях&nbsp;:
                                 </h6>
