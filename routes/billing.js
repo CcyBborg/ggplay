@@ -1,13 +1,40 @@
 const express = require('express');
-const axios = require('axios');
-
+const Order = require('../models/Order');
+const User = require('../models/User');
+const LessonSlot = require('../models/LessonSlot');
+const { createChannel } = require('../discord-client');
 const router = express.Router();
 
 router.post('/notify', async (req, res) => {
     try {
-        console.log('\n\n\n\n\n');
-        console.log(req.body);
-        console.log('\n\n\n\n\n');
+        if (req.body.Success) {
+            if (req.body.Status === 'CONFIRMED') {
+                const order = Order.findOne({ _id: req.body.OrderId });
+                const user = User.findOne({ _id: order.user });
+                const slot = LessonSlot.findOne({ _id: order.slot }).populate('lesson');
+
+                user.slots.push(lessonSlot['_id'])
+
+                slot.channel = `${user.nickname} ${String(slots._id).slice(0, 4)}`;
+                slot.invite = await createChannel(slot.channel, slot.lesson.maxParticipants);
+
+                await slot.save();
+                await user.save();
+
+                order.status = 'confirmed';
+                await order.save();
+            }
+
+            res.send('OK');
+        } else {
+            const order = Order.findOne({ _id: req.body.OrderId });
+
+            if (order) {
+                order.status = 'failed';
+            }
+
+            res.send('ERROR');
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({

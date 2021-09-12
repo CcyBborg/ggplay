@@ -3,7 +3,7 @@ import {
     FETCH_COACH_SUCCESS,
     FETCH_COACH_FAILURE,
 
-    PAY_SLOT_SUCCESS
+    BOOK_SLOT_SUCCESS
 } from './action-types';
 
 const initialState = {
@@ -26,7 +26,7 @@ export default function reducer(state = initialState, action) {
                 isLoading: false,
                 coach: action.data
             };
-        case PAY_SLOT_SUCCESS:
+        case BOOK_SLOT_SUCCESS:
             console.log(action.data);
             return {
                 ...state,

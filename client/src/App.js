@@ -72,6 +72,14 @@ function App() {
               <TermsOfService />
             </Layout>
           </Route>
+          <Route path='/slot-booked'>
+            <Layout>
+              <Helmet>
+                <title>Поздравляем с записью! | GGPlay</title>
+              </Helmet>
+              <SlotBooked />
+            </Layout>
+          </Route>
         </Switch>
         <Route path='*/coach/:id' component={Coach} />
       </Router>

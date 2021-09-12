@@ -1,7 +1,6 @@
 const express = require('express');
 const axios = require('axios');
 
-const { createChannel } = require('../discord-client');
 const LessonSlot = require('../models/LessonSlot');
 const Review = require('../models/Review');
 const { ensureAuthenticated } = require('../middleware');
@@ -42,19 +41,6 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
         } else {
             throw new Error();
         }
-
-        // lessonSlot.user = req.user.id;
-        // req.user.slots.push(lessonSlot['_id'])
-
-        // const channelName = `${req.user.nickname} ${String(lessonSlot._id).slice(0, 4)}`;
-        // const invite = await createChannel(channelName, lessonSlot.lesson.maxParticipants);
-        // lessonSlot.invite = invite;
-        // lessonSlot.channel = channelName;
-
-        // await lessonSlot.save();
-        // await req.user.save();
-
-        // res.send('Booked');
     } catch (err) {
         console.log(err);
         res.status(500).json({
