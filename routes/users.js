@@ -11,7 +11,7 @@ function toUTC(date) {
         date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
 }
 
-const NOTIF_PERIOD = 60 * 60 * 1000; // One Hour
+const NOTIF_PERIOD = 20 * 60 * 1000; // One Hour
 
 // Local auth
 router.post('/', async (req, res) => {

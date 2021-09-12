@@ -38,7 +38,7 @@ function Dashboard({
                 </div>
             ) : (
                 <div className='row'>
-                    <div className='col'>
+                    <div className='col mb-4'>
                         <h4 className='mb-3 mb-md-5'>Предстоящие тренировки</h4>
                         {slots.slots.present.length ? (
                             <div className='slot-list d-flex flex-column align-items-stretch'>
@@ -61,7 +61,7 @@ function Dashboard({
                         )
                         }
                     </div>
-                    <div className='col mb-5'>
+                    <div className='col mb-4'>
                         <h4 className='mb-3 mb-md-5'>Пройденные тренировки</h4>
                         {slots.slots.past.length ? (
                             <div className='slot-list d-flex flex-column align-items-stretch'>

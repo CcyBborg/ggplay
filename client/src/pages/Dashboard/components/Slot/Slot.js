@@ -13,7 +13,7 @@ function Slot({
 
     return (
         <div className='slot-card d-flex p-3 mb-3'>
-            <div className='slot-card__schedule pr-3 d-flex flex-column align-items-center'>
+            <div className='slot-card__schedule pr-2 pr-md-3 d-flex flex-column align-items-center'>
                 <div className='d-flex justify-content-between flex-column align-items-center'>
                     <span className='slot-card__date'>
                         {time.toLocaleString('ru', {
@@ -33,7 +33,7 @@ function Slot({
                     })}
                 </div>
             </div>
-            <div className='slot-card__info pl-3 flex-fill'>
+            <div className='slot-card__info pl-2 pl-md-3 flex-fill'>
                 <div className='text-center'>
                     <h5>{lesson.title}</h5>
                     <button
