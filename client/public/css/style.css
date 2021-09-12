@@ -1522,6 +1522,11 @@ footer .footer-standard .widget ul li {
   padding-right: 30px;
 }
 
+#menu-footer-link-1 li.menu-link {
+  padding-right: 15px;
+  text-transform: none;
+}
+
 footer .footer-standard .widget ul > li > a {
   padding: 0;
   font-weight: 400;
@@ -3572,11 +3577,11 @@ header .navbar ul li .sub-menu li:hover > a::before {
   }
 
   h3 {
-    font-size: 22px;
+    font-size: 22px!important;
   }
 
   h4 {
-    font-size: 20px;
+    font-size: 20px!important;
   }
 
   .coach-game-select__next {

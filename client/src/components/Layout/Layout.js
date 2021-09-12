@@ -123,16 +123,16 @@ function Layout({ user, children, fetchUserInfo }) {
                                 <div className='widget text-left'>
                                     <div className='menu-footer-link-1-container'>
                                         <ul id='menu-footer-link-1' className='menu p-0'>
-                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7118'>
+                                            <li className='menu-item'>
                                                 <a href='https://templates.iqonic.design/streamit/frontend/html/faq.html'>Служба поддержки</a>
                                             </li>
-                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7118'>
+                                            <li className='menu-item'>
                                                 <a href='https://templates.iqonic.design/streamit/frontend/html/watch-video.html'>Контакты</a>
                                             </li>
-                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7314'>
+                                            <li className='menu-item'>
                                                 <a href='/terms-of-service'>Пользовательское соглашение</a>
                                             </li>
-                                            <li className='menu-item menu-item-type-post_type menu-item-object-page menu-item-7316'>
+                                            <li className='menu-item'>
                                                 <a href='/confidential-policy'>Политика конфиденциальности</a>
                                             </li>
                                         </ul>
