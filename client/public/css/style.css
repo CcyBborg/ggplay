@@ -3575,7 +3575,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
     font-size: 22px;
   }
 
-  .h4 {
+  h4 {
     font-size: 20px;
   }
 

@@ -77,7 +77,7 @@ function Dashboard({
                             </div>
                         ) : (
                             <div className='text-center'>
-                                <p className='lead'>У&nbsp;тебя пока нет пройденных тренировок, но&nbsp;скоро появится :)</p>
+                                <p className='lead'>У&nbsp;тебя пока нет пройденных тренировок, но&nbsp;скоро появятся :)</p>
                             </div>
                         )}
                     </div>
