@@ -13,6 +13,7 @@ router.post('/notify', async (req, res) => {
                 const user = User.findOne({ _id: order.user });
                 const slot = LessonSlot.findOne({ _id: order.slot }).populate('lesson');
 
+                console.log(user);
                 user.slots.push(slot._id)
                 slot.user = user._id;
 
