@@ -39,7 +39,7 @@ function Dashboard({
             ) : (
                 <div className='row'>
                     <div className='col'>
-                        <h4 className='mb-5'>Предстоящие тренировки</h4>
+                        <h4 className='mb-3 mb-md-5'>Предстоящие тренировки</h4>
                         {slots.slots.present.length ? (
                             <div className='slot-list d-flex flex-column align-items-stretch'>
                                 {slots.slots.present.map(slot => (
@@ -54,14 +54,15 @@ function Dashboard({
                                 )}
                             </div>
                         ) : (
-                            <div>
-                                Епта
+                            <div className='text-center'>
+                                <p className='lead pb-3'>У&nbsp;тебя нет предстоящих записей на&nbsp;тренировки. Найди свою тренировку в&nbsp;разделе &laquo;Тренировки&raquo;.</p>
+                                <a className='btn btn-hover' href='/coaching'>Найти тренировку</a>
                             </div>
                         )
                         }
                     </div>
-                    <div className='col'>
-                        <h4 className='mb-5'>Пройденные тренировки</h4>
+                    <div className='col mb-5'>
+                        <h4 className='mb-3 mb-md-5'>Пройденные тренировки</h4>
                         {slots.slots.past.length ? (
                             <div className='slot-list d-flex flex-column align-items-stretch'>
                                 {slots.slots.past.map(slot => (
@@ -75,8 +76,8 @@ function Dashboard({
                                 )}
                             </div>
                         ) : (
-                            <div>
-                                Jdd
+                            <div className='text-center'>
+                                <p className='lead'>У&nbsp;тебя пока нет пройденных тренировок, но&nbsp;скоро появится :)</p>
                             </div>
                         )}
                     </div>
