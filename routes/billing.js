@@ -13,7 +13,8 @@ router.post('/notify', async (req, res) => {
                 const user = User.findOne({ _id: order.user });
                 const slot = LessonSlot.findOne({ _id: order.slot }).populate('lesson');
 
-                user.slots.push(lessonSlot['_id'])
+                user.slots.push(slot._id)
+                slot.user = user._id;
 
                 slot.channel = `${user.nickname} ${String(slots._id).slice(0, 4)}`;
                 slot.invite = await createChannel(slot.channel, slot.lesson.maxParticipants);
