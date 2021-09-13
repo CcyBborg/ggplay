@@ -32,6 +32,12 @@ function SignUp({
         }
     }, [step]);
 
+    useEffect(() => {
+        if (STEPS[step].id === SELECT_RANK_STEP && !isLoading && rankList && rankList.length === 0) {
+            setStep(step + 1);
+        }
+    }, [step, rankList, isLoading]);
+
     if (isUserSignedIn) {
         history.push({ pathname: '/coaching' });
     }
@@ -50,12 +56,16 @@ function SignUp({
                 <nav className='d-flex justify-content-between align-items-center pt-3 pb-3 pt-md-4 pb-md-4'>
                     {step > 0 ? (
                         <button className='sign-up-btn' onClick={() => {
-                            if (step === 1) {
+                            if (STEPS[step].id === SELECT_RANK_STEP) {
                                 setSelectedRank(null);
                             }
 
-                            if (step !== 0) {
+                            if (STEPS[step].id !== SELECT_GAME_STEP) {
                                 setStep(step - 1);
+                            }
+
+                            if (STEPS[step].id === SIGN_UP_STEP && rankList.length === 0) {
+                                setStep(step - 2);
                             }
                         }}>
                             <i className='fas fa-arrow-left'></i>
@@ -64,7 +74,7 @@ function SignUp({
                         <div style={{width: '25px'}} />
                     )}
                     <div className='m-auto'>
-                        Шаг {step + 1} из {STEPS.length}
+                        <img src='/images/logo.png' width='100' />
                     </div>
                     <button
                         className='sign-up-btn'

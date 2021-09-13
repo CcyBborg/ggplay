@@ -235,6 +235,7 @@ li.slide-item .block-images {
   width: 100%;
   transition: all 0.45s ease 0s;
   overflow: hidden;
+  cursor: pointer;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
@@ -310,6 +311,7 @@ li.slide-item:not(.slide-selected):hover .block-images {
 
 li.slide-item .block-images::before {
   position: absolute;
+  pointer-events: none;
   content: "";
   top: 0;
   bottom: 0;
@@ -323,6 +325,7 @@ li.slide-item .block-images::before {
 
 li.slide-item:hover .block-images::before,
 li.slide-selected .block-images::before {
+  pointer-events: none;
   opacity: 1;
   z-index: 9;
 }
@@ -350,6 +353,7 @@ li.slide-item.slick-current:hover .block-images {
 
 li.slide-item .block-images::after {
   position: absolute;
+  pointer-events: none;
   content: "";
   top: 0;
   bottom: 0;
@@ -416,6 +420,7 @@ li.slide-item.slide-selected .block-images  {
 }
 
 li.slide-item .block-images::after {
+  pointer-events: none;
   content: "";
   position: absolute;
   top: 0;

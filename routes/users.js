@@ -89,9 +89,7 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     successRedirect: '/coaching',
     failureRedirect: '/sign-up'
 }), (req, res) => {
-    console.log('\n\n\nNOOOO!!!!!YPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP\n\n\n\n');
     if (req.user) {
-        console.log('\n\n\n!!!!!YPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP\n\n\n\n');
         const game = req.session.game;
         const rank = req.session.rank;
     
