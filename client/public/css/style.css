@@ -68,6 +68,7 @@ header .navbar ul li:last-child {
 /*--------------------------*/
 
 li.slide-item .block-images {
+  border: none;
   position: relative;
   width: 100%;
   transition: all 0.45s ease 0s;
@@ -81,6 +82,10 @@ li.slide-item .block-images {
   -webkit-transition: all 0.6s ease 0s;
   -moz-transition: all 0.6s ease 0s;
   -o-transition: all 0.6s ease 0s;
+}
+
+li.slide-item .block-images * {
+  pointer-events: none;
 }
 
 li.slide-item:hover .block-images {
@@ -238,10 +243,6 @@ li.slide-item.slide-selected .block-images  {
   border-left: 5px solid var(--iq-primary-hover);
   transition: color border-color ease-in-out .8s!important;
   color: var(--iq-primary-hover);
-}
-
-li.slide-item .block-images * {
-  pointer-events: none;
 }
 
 li.slide-item .block-images::after {
