@@ -10,10 +10,10 @@ function GameTile({
                     position-relative
                     watchlist-img watchlist-first
                   '
-            onClick={onClick}
         >
             <div className='img-box'>
                 <img
+                    onClick={onClick}
                     src={img}
                     className='img-fluid'
                     alt={`${title} | GGPlay`}
