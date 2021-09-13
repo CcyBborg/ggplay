@@ -419,6 +419,14 @@ li.slide-item.slide-selected .block-images  {
   color: var(--iq-primary-hover);
 }
 
+li.slide-item .block-images:hover * {
+  cursor: pointer;
+}
+
+li.slide-item .block-images:hover {
+  cursor: pointer;
+}
+
 li.slide-item .block-images::after {
   pointer-events: none;
   content: "";
@@ -429,7 +437,7 @@ li.slide-item .block-images::after {
   bottom: 0;
 }
 
-li.slide-item:hover .block-images{
+li.slide-item:hover .block-images {
   overflow: visible;
 }
 
