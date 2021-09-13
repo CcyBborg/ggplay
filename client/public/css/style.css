@@ -2199,10 +2199,6 @@ header .navbar ul li .sub-menu li:hover > a::before {
   overflow-x: hidden;
 }
 
-.favorites-grid * {
-  cursor: pointer;
-}
-
 .tag-select-list {
   list-style: none;
   display: flex;
