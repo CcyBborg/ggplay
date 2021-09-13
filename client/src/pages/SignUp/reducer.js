@@ -27,6 +27,7 @@ export default function reducer(state = initialState, action) {
         case CREATE_USER_REQUEST:
             return {
                 ...state,
+                rankList: null,
                 isLoading: true,
                 error: null
             };

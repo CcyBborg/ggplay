@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import Copier from '../Copier/Copier';
 import Spinner from '../Spinner/Spinner';
 import AddReview from './components/AddReview/AddReview';
+import ProfileButton from './components/ProfileButton/ProfileButton';
 import { fetchUserInfo } from './actions';
-import { postReview } from './api';
+import { postReview, logout } from './api';
 
 function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
@@ -73,18 +74,14 @@ function Layout({ user, children, fetchUserInfo }) {
                                                         </a>
                                                     </li>
                                                     <li className='menu-item'>
-                                                        <a href='' className='btn btn-link'>
-                                                            <span className='font-weight-bold mr-2' style={{
-                                                                fontSize: '16px',
-                                                                textTransform: 'none'
-                                                            }}>
-                                                                {user.info.nickname}
-                                                            </span>
-                                                            <img className='mr-2' src={user.info.profile.game.logo} height='28' />
-                                                            <i style={{
-                                                                fontSize: '12px'
-                                                            }} className='fas fa-chevron-down'></i>
-                                                        </a>
+                                                        <ProfileButton
+                                                            nickname={user.info.nickname}
+                                                            logo={user.info.profile.game.logo}
+                                                            onLogout={() => {
+                                                                logout().then(() => {
+                                                                    window.open('https://ggplay.ru/coaching', '_self');
+                                                                });
+                                                            }} />
                                                     </li>
                                                 </ul>
                                             </>
@@ -160,6 +157,11 @@ function Layout({ user, children, fetchUserInfo }) {
                                             <i className='fab fa-instagram'></i>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a target='_blank' href='https://discord.gg/NnUWEmJgfy'>
+                                            <i class='fab fa-discord'></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -200,18 +202,14 @@ function Layout({ user, children, fetchUserInfo }) {
                                         </a>
                                     </li>
                                     <li className='menu-item'>
-                                        <a href='' className='btn btn-link'>
-                                            <span className='font-weight-bold mr-2' style={{
-                                                fontSize: '16px',
-                                                textTransform: 'none'
-                                            }}>
-                                                {user.info.nickname}
-                                            </span>
-                                            <img className='mr-2' src={user.info.profile.game.logo} height='28' />
-                                            <i style={{
-                                                fontSize: '12px'
-                                            }} className='fas fa-chevron-down'></i>
-                                        </a>
+                                        <ProfileButton
+                                            nickname={user.info.nickname}
+                                            logo={user.info.profile.game.logo}
+                                            onLogout={() => {
+                                                logout().then(() => {
+                                                    window.open('https://ggplay.ru/coaching', '_self');
+                                                });
+                                            }} />
                                     </li>
                                 </ul>
                             </>

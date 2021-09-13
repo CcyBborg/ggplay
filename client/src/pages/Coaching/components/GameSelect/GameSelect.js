@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
   Navigation
@@ -14,6 +15,14 @@ function GameSelect({
   selectedGame,
   onSelect
 }) {
+  const [swiper, setSwiper] = useState(null);
+
+  useEffect(() => {
+    if (swiper) {
+      swiper.slideTo(gameList.findIndex(game => game._id === selectedGame));
+    }
+  }, [swiper, selectedGame, gameList]);
+
   return (
     <div className='position-relative game-select'>
       <button className='coach-game-select__prev'>
@@ -26,6 +35,7 @@ function GameSelect({
             nextEl: '.coach-game-select__next',
             prevEl: '.coach-game-select__prev'
           }}
+          activeSlideKey={selectedGame}
           breakpoints={{
             640: {
               slidesPerView: 3,
@@ -36,15 +46,15 @@ function GameSelect({
             1280: {
               slidesPerView: 5,
             }
-          }}>
+          }}
+          onSwiper={setSwiper}>
           {gameList.map(game => (
-            <SwiperSlide>
+            <SwiperSlide key={game._id}>
               <li
-                key={game['_id']}
                 className={`
                             slide-item
                             wl-child
-                            ${game['_id'] === selectedGame ? 'slide-selected' : ''}
+                            ${game._id === selectedGame ? 'slide-selected' : ''}
                           `}
               >
                 <GameTile

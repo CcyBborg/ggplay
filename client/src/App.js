@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
+import ReactGA from 'react-ga';
 import store from './store';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
@@ -16,8 +17,14 @@ import Coach from './pages/Coach/Coach';
 import Dashboard from './pages/Dashboard/Dashboard';
 import SlotBooked from './pages/SlotBooked/SlotBooked';
 import TermsOfService from './pages/TermsOfService/TermsOfService';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    ReactGA.initialize('G-V95C6GGCNZ');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>

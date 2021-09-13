@@ -12,3 +12,7 @@ export function postReview({ slotId, rating, comment }) {
         comment
     });
 }
+
+export function logout() {
+    return axios.get('/users/logout');
+}
