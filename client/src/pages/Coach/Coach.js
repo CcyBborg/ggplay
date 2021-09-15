@@ -21,7 +21,8 @@ function Coach({
   fetchCoach,
   paymentUrl,
   paySlot,
-  history
+  history,
+  user
 }) {
   useEffect(() => {
     fetchCoach(match.params.id);
@@ -31,6 +32,12 @@ function Coach({
 
   const [selectedLesson, setLesson] = useState(0);
   const [step, setStep] = useState(steps.INIT);
+
+  useEffect(() => {
+    if(step === steps.SCHEDULE && !user.info) {
+      history.push({ pathname: '/sign-in' });
+    }
+  }, [step, user.info]);
 
   if (paymentUrl) {
     window.open(paymentUrl, '_self');
@@ -57,7 +64,7 @@ function Coach({
       {step === steps.SCHEDULE && (
         <Modal title='Выбери дату тренировки' size='sm' onBack={() => setStep(steps.INIT)} onClose={history.goBack}>
           <CalendarStep
-            slots={coach.lessons[selectedLesson].slots.filter(slot => !slot.user)}
+            slots={coach.lessons[selectedLesson].slots?.filter(slot => !slot.user && new Date(slot.timestamp) - new Date() > 15)}
             onNextStep={slot => {
               setSelectedSlot(slot);
               setStep(steps.CONFIRM);
@@ -80,11 +87,12 @@ function Coach({
   );
 }
 
-export default connect(({ coach }) => ({
+export default connect(({ coach, user }) => ({
   isLoading: coach.isLoading,
   isError: coach.isError,
   coach: coach.coach,
-  paymentUrl: coach.paymentUrl
+  paymentUrl: coach.paymentUrl,
+  user
 }), {
   fetchCoach,
   paySlot

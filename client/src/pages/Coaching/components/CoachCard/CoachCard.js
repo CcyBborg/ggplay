@@ -6,6 +6,8 @@ function CoachCard({
   status,
   price,
   history,
+  reviewsLength,
+  rating,
   img
 }) {
   return (
@@ -27,25 +29,28 @@ function CoachCard({
         </div>
       </div>
       <div className='d-flex justify-content-between align-items-center coach-card__footer p-3'>
-        <div className='d-flex align-items-center'>
-          <ul
-            className='
-                  coach-rating
-                  p-0
-                  m-0
-                  list-inline
-                  text-primary
-                  d-flex
-                  align-items-center
-                  justify-content-left
-                '
-          >
-            <li>
-              <i className='fa fa-star' aria-hidden='true'></i>
-            </li>
-          </ul>
-          <span className='text ml-2'>4.4 (36)</span>
-        </div>
+      {Boolean(reviewsLength) && (
+                <div className='d-flex align-items-center'>
+          
+                <ul
+                  className='
+                        coach-rating
+                        p-0
+                        m-0
+                        list-inline
+                        text-primary
+                        d-flex
+                        align-items-center
+                        justify-content-left
+                      '
+                >
+                  <li>
+                    <i className='fa fa-star' aria-hidden='true'></i>
+                  </li>
+                </ul>
+                <span className='text ml-2'>{rating}&nbsp;({reviewsLength}&nbsp;отзывов)</span>
+              </div>
+      )}
         <span className='text'>от&nbsp;{price}&nbsp;₽</span>
       </div>
     </div>

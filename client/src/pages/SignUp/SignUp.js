@@ -30,7 +30,7 @@ function SignUp({
         } else if (STEPS[step].id === SELECT_RANK_STEP) {
             fetchRanks(selectedGame);
         }
-    }, [step]);
+    }, [step, fetchGames, fetchRanks, selectedGame]);
 
     useEffect(() => {
         if (STEPS[step].id === SELECT_RANK_STEP && !isLoading && rankList && rankList.length === 0) {

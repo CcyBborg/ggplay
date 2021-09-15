@@ -50,7 +50,7 @@ function Coaching({
         game: selectedGameId
       });
     }
-  }, [selectedGameId]);
+  }, [selectedGameId, fetchCoaches]);
 
   if (games.isLoading) {
     return (
@@ -80,7 +80,7 @@ function Coaching({
               <p className='mt-2 mb-4 lead' style={{ maxWidth: '700px' }}>Лучшие проверенные тренеры, которые помогли более чем 1000 ученикам реализовать свои цели в&nbsp;играх.</p>
             </div>
             <div>
-              <img width='280' src='/images/coaching.png' />
+              <img width='280' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
             </div>
           </div>
           <GameSelect
@@ -126,6 +126,8 @@ function Coaching({
                             id={coach['_id']}
                             title={coach.title}
                             price={coach.price}
+                            rating={coach.rating}
+                            reviewsLength={coach.reviewsLength}
                             img={coach.img} />
                         </div>
                       )) : (

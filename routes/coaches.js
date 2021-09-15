@@ -5,11 +5,6 @@ require('../models/Lesson');
 
 const router = express.Router();
 
-function toUTC(date) {
-    return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
-        date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
-}
-
 router.get('/', async (req, res) => {
     try {
         const filters = {};
@@ -24,6 +19,7 @@ router.get('/', async (req, res) => {
 
         res.json(coaches.map(coach => {
             const lessons = coach.lessons.sort((l1, l2) => l2.price - l1.price);
+
             return ({
                 _id: coach._id,
                 title: coach.title,
@@ -31,7 +27,8 @@ router.get('/', async (req, res) => {
                 img: coach.img,
                 tags: coach.tags,
                 price: lessons[0]?.price,
-
+                rating: coach.reviews.reduce((acc, cur) => acc + Number(cur?.rating), 0) / coach.reviews.length,
+                reviewsLength: coach.reviews.length
             });
         }));
     } catch (err) {
@@ -52,12 +49,18 @@ router.get('/:coachId', async (req, res) => {
             .populate('reviews')
             .populate('game');
 
-        const now = toUTC(new Date());
-        coach.slots = coach.slots?.filter(({timestamp}) => toUTC(new Date(timestamp)) - now - 60 * 1000 > 0);
-
-        res.json(coach);
+        res.json({
+            _id: coach._id,
+            title: coach.title,
+            status: coach.status,
+            img: coach.img,
+            tags: coach.tags,
+            game: coach.game,
+            about: coach.about,
+            reviews: coach.reviews,
+            lessons: coach.lessons
+        });
     } catch (err) {
-        console.log(err);
         res.json({ message: err });
     }
 })
