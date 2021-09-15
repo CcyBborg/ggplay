@@ -61,9 +61,11 @@ function Dashboard({
                         )
                         }
                     </div>
-                    <div className='col mb-4'>
-                        <h4 className='mb-3 mb-md-5'>Пройденные тренировки</h4>
-                        {slots.slots.past.length ? (
+
+
+                    {slots.slots.past?.length && (
+                        <div className='col mb-4'>
+                            <h4 className='mb-3 mb-md-5'>Пройденные тренировки</h4>
                             <div className='slot-list d-flex flex-column align-items-stretch'>
                                 {slots.slots.past.map(slot => (
                                     <div key={slot._id}>
@@ -72,19 +74,13 @@ function Dashboard({
                                             review={slot.review}
                                             lesson={slot.lesson} />
                                     </div >
-                                )
-                                )}
+                                ))}
                             </div>
-                        ) : (
-                            <div className='text-center'>
-                                <p className='lead'>У&nbsp;тебя пока нет пройденных тренировок, но&nbsp;скоро появятся :)</p>
-                            </div>
-                        )}
-                    </div>
-                </div>
+                        </div>
+                    )}
+                </div >
             )}
-        </div >
-    );
+        </div>);
 }
 
 export default connect(({ user, slots }) => ({
