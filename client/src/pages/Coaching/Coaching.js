@@ -66,7 +66,7 @@ function Coaching({
 
   if (!coaches.isLoading) {
     coachList = selectedTags ? (
-      coaches.coachList.filter(c => selectedTags.every(t => c.tags.includes(t.value)))
+      coaches.coachList?.filter(c => selectedTags.every(t => c.tags.includes(t.value)))
     ) : (coaches.coachList);
   }
 
@@ -119,14 +119,22 @@ function Coaching({
                   )}
                   <div className='pt-4'>
                     <div className='row'>
-                      {coachList.map(coach => (
+
+                      {coachList?.length ? coachList.map(coach => (
                         <div className='col-xs-12 col-md-auto mb-4' key={coach['_id']}>
                           <CoachCard
                             id={coach['_id']}
                             title={coach.title}
+                            price={coach.price}
                             img={coach.img} />
                         </div>
-                      ))}
+                      )) : (
+                        <div className='banner p-4'>
+                          <p className='lead p-3'>Таких тренеров пока нет</p>
+                          <p className='text text-primary'>Но мы уже их ищем</p>
+                        </div>
+                      )}
+
                     </div>
                   </div>
                 </div>

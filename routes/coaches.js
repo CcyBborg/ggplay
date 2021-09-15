@@ -13,10 +13,24 @@ router.get('/', async (req, res) => {
             filters.game = req.query.game;
         }
 
-        const coaches = await Coach.find(filters);
+        const coaches = await Coach.find(filters)
+            .populate('lessons')
+            .populate('reviews');
 
-        res.json(coaches);
+        res.json(coaches.map(coach => {
+            const lessons = coach.lessons.sort((l1, l2) => l2.price - l1.price);
+            return ({
+                _id: coach._id,
+                title: coach.title,
+                status: coach.status,
+                img: coach.img,
+                tags: coach.tags,
+                price: lessons[0]?.price,
+
+            });
+        }));
     } catch (err) {
+        console.log(err);
         res.json({ message: err })
     }
 });

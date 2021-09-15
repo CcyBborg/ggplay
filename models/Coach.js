@@ -5,6 +5,9 @@ const CoachSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    status: {
+        type: String
+    },
     about: {
         type: String,
         required: true

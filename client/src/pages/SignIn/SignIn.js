@@ -52,15 +52,6 @@ function SignIn({
                                         }}>
                                             <i className='fab fa-discord'></i>
                                         </button>
-                                        <button className='btn btn-hover btn-google' onClick={() => {
-                                            if (process?.env?.NODE_ENV === 'development') {
-                                                window.open('http://localhost:5000/users/auth/google', '_self');
-                                            } else {
-                                                window.open('/users/auth/google', '_self');
-                                            }
-                                        }}>
-                                            <i className='fab fa-google'></i>
-                                        </button>
                                     </div>
                                     <p className='text-center mt-4'>или вашей почты</p>
                                     <form className='mt-4' action='index.html'>

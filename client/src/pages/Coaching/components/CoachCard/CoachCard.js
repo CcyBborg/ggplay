@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 function CoachCard({
   id,
   title,
+  status,
+  price,
   history,
   img
 }) {
@@ -20,7 +22,7 @@ function CoachCard({
           <div>
             <h6 className='mb-0'>{title}</h6>
             <span className='text font-weight-bold'
-            >Immortal</span>
+            >{status}</span>
           </div>
         </div>
       </div>
@@ -44,7 +46,7 @@ function CoachCard({
           </ul>
           <span className='text ml-2'>4.4 (36)</span>
         </div>
-        <span className='text'>от 1200₽ / час</span>
+        <span className='text'>от&nbsp;{price}&nbsp;₽</span>
       </div>
     </div>
   );
