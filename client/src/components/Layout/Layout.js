@@ -265,7 +265,7 @@ function Layout({ user, children, fetchUserInfo }) {
                     <AddReview
                         lesson={notification.lesson}
                         onPostReview={(rating, comment) => {
-                            postReview({
+                            return postReview({
                                 slotId: notification._id,
                                 rating,
                                 comment

@@ -55,7 +55,6 @@ function Dashboard({
                             </div>
                         ) : (
                             <div className='text-center'>
-                                <p className='lead pb-3'>У&nbsp;тебя нет предстоящих записей на&nbsp;тренировки. Найди свою тренировку в&nbsp;разделе &laquo;Тренировки&raquo;.</p>
                                 <a className='btn btn-hover' href='/coaching'>Найти тренировку</a>
                             </div>
                         )
@@ -63,7 +62,7 @@ function Dashboard({
                     </div>
 
 
-                    {slots.slots.past?.length && (
+                    {Boolean(slots.slots.past?.length) && (
                         <div className='col mb-4'>
                             <h4 className='mb-3 mb-md-5'>Пройденные тренировки</h4>
                             <div className='slot-list d-flex flex-column align-items-stretch'>

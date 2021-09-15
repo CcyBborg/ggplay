@@ -92,7 +92,7 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     if (req.user) {
         const game = req.session.game;
         const rank = req.session.rank;
-    
+
         req.user.game = game;
         if (rank) {
             req.user.rank = rank;
@@ -212,7 +212,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
         const past = slots.filter(slot => {
             const slotTime = toUTC(new Date(slot.timestamp));
 
-            const isPast = slotTime < now && now - slotTime > slot.lesson.duration * 1000;
+            const isPast = now - slotTime < now - 20 * 1000;
             if (!isPast) {
                 present.push(slot);
             }
@@ -222,7 +222,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
 
         res.json({
             past,
-            present 
+            present
         });
     } catch (err) {
         console.log(err);

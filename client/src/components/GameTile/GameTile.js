@@ -3,6 +3,7 @@ function GameTile({
     img,
     onClick
 }) {
+
     return (
         <div
             className='
@@ -11,6 +12,7 @@ function GameTile({
                     watchlist-img watchlist-first
                   '
             onClick={onClick}
+            onTouchStart={onClick}
         >
             <div className='img-box'>
                 <img

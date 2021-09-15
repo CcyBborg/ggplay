@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCoach, paySlot } from './actions';
 import CalendarStep from './components/CalendarStep/CalendarStep';
 import ConfirmStep from './components/ConfirmStep/ConfirmStep';
 import InitStep from './components/InitStep/InitStep';
+import Modal from '../../components/Modal/Modal';
 
 const steps = {
   INIT: 'INIT',
@@ -18,7 +20,8 @@ function Coach({
   match,
   fetchCoach,
   paymentUrl,
-  paySlot
+  paySlot,
+  history
 }) {
   useEffect(() => {
     fetchCoach(match.params.id);
@@ -40,35 +43,40 @@ function Coach({
   }
 
   return (
-    <div className='modal-container'>
+    <>
       {step === steps.INIT && (
-        <InitStep
-          coach={coach}
-          isLoading={isLoading}
-          selectedLesson={selectedLesson}
-          onSelectLesson={setLesson}
-          onNextStep={() => setStep(steps.SCHEDULE)} />
+        <Modal title='Профиль тренера' onClose={history.goBack}>
+          <InitStep
+            coach={coach}
+            isLoading={isLoading}
+            selectedLesson={selectedLesson}
+            onSelectLesson={setLesson}
+            onNextStep={() => setStep(steps.SCHEDULE)} />
+        </Modal>
       )}
       {step === steps.SCHEDULE && (
-        <CalendarStep
-          slots={coach.lessons[selectedLesson].slots.filter(slot => !slot.user)}
-          onNextStep={slot => {
-            setSelectedSlot(slot);
-            setStep(steps.CONFIRM);
-          }}
-          onPrevStep={() => setStep(steps.INIT)} />
+        <Modal title='Выбери дату тренировки' size='sm' onBack={() => setStep(steps.INIT)} onClose={history.goBack}>
+          <CalendarStep
+            slots={coach.lessons[selectedLesson].slots.filter(slot => !slot.user)}
+            onNextStep={slot => {
+              setSelectedSlot(slot);
+              setStep(steps.CONFIRM);
+            }} />
+        </Modal>
       )}
       {step === steps.CONFIRM && (
-        <ConfirmStep
-          selectedSlot={selectedSlot}
-          coach={coach}
-          selectedLesson={selectedLesson}
-          onPrevStep={() => setStep(steps.SCHEDULE)}
-          onConfirm={() => {
-            paySlot(selectedSlot.source['_id']);
-          }} />
+        <Modal title='Подтверджение тренировки' size='sm' onBack={() => setStep(steps.SCHEDULE)} onClose={history.goBack}>
+          <ConfirmStep
+            selectedSlot={selectedSlot}
+            coach={coach}
+            selectedLesson={selectedLesson}
+            onConfirm={() => {
+              paySlot(selectedSlot.source['_id']);
+            }}
+            onPrevStep={() => setStep(steps.SCHEDULE)} />
+        </Modal>
       )}
-    </div>
+    </>
   );
 }
 
@@ -80,4 +88,4 @@ export default connect(({ coach }) => ({
 }), {
   fetchCoach,
   paySlot
-})(Coach);
+})(withRouter(Coach));

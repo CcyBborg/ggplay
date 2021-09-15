@@ -5,6 +5,11 @@ require('../models/Lesson');
 
 const router = express.Router();
 
+function toUTC(date) {
+    return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+        date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
+}
+
 router.get('/', async (req, res) => {
     try {
         const filters = {};
@@ -47,8 +52,12 @@ router.get('/:coachId', async (req, res) => {
             .populate('reviews')
             .populate('game');
 
+        const now = toUTC(new Date());
+        coach.slots = coach.slots?.filter(({timestamp}) => toUTC(new Date(timestamp)) - now - 60 * 1000 > 0);
+
         res.json(coach);
     } catch (err) {
+        console.log(err);
         res.json({ message: err });
     }
 })

@@ -2139,8 +2139,9 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 .modal {
   width: 640px;
-  height: 740px;
   overflow-y: auto;
+  top: 100px;
+  bottom: 100px;
 }
 
 .modal-header {
@@ -2538,7 +2539,6 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 .modal-sm {
   width: 500px;
-  height: 600px;
 }
 
 /* Calendar */
@@ -2684,6 +2684,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
     max-width: 310px!important;
   }
 
+  .react-calendar__tile {
+    padding: 12px 10px!important;
+  }
+
   .favorites-grid {
     padding-top: 10px;
     justify-content: center;
@@ -2724,13 +2728,13 @@ header .navbar ul li .sub-menu li:hover > a::before {
     width: 100%;
   }
 
+  .modal-container,
   .modal {
-    width: 100vw;
-    height: 100vh;
-  }
-
-  .modal-body {
-    min-height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 
   .modal-header {
@@ -2748,6 +2752,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
   h1 {
     font-size: 26px!important;
+  }
+
+  .h6 {
+    font-size: 16px!important;
   }
 
   .lead {

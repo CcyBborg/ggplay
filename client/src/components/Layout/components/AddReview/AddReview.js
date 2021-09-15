@@ -50,7 +50,9 @@ function AddReview({
                         className='btn btn-hover btn-block mt-2'
                         disabled={!rating}
                         onClick={() => {
-                            onPostReview(rating, comment);
+                            onPostReview(rating, comment).then(() => {
+                                window.open('/dashboard', '_self');
+                            });
                             onClose();
                         }}>
                         Отправить отзыв

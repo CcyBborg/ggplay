@@ -1,7 +1,4 @@
-import { withRouter } from 'react-router-dom';
-
 function ConfirmStep({
-    history,
     coach,
     selectedSlot,
     selectedLesson,
@@ -22,19 +19,7 @@ function ConfirmStep({
     }
 
     return (
-        <div className='modal modal-sm' style={{
-            height: '400px'
-        }}>
-        <header className='modal-header d-flex justify-content-center align-items-center'>
-          <button className='modal__btn-back' onClick={onPrevStep}>
-            <i className='fas fa-arrow-left'></i>
-          </button>
-          <h4 className='m-0 h6 text-center'>Подтвердите запись на тренировку</h4>
-          <button className='btn-close' onClick={() => history.push({ pathname: '/coaching' })}>
-            <i className='fas fa-times'></i>
-          </button>
-        </header>
-        <div className='modal-body'>
+        <>
             <div className='text-center'>
                 <i className='confirm__icon text-primary far fa-calendar-check'></i>
                 <p className='h6 font-weight-normal mt-3'>
@@ -58,9 +43,8 @@ function ConfirmStep({
                     </button>
                 </div>
             </div>
-        </div>
-      </div>
+        </>
     );
 }
 
-export default withRouter(ConfirmStep);
+export default ConfirmStep;
