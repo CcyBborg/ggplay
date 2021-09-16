@@ -8,7 +8,7 @@ function InitStep({
   onSelectLesson,
   onNextStep
 }) {
-  const tags = coach?.game.filters[0].tags.filter(t => coach.tags.includes(t.key));
+  const tags = coach?.game.filters[0]?.tags.filter(t => coach.tags.includes(t.key));
 
   return (
     <>
@@ -51,15 +51,17 @@ function InitStep({
                   <span className='text text-secondary ml-2'>{coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length} ({coach.reviews.length}&nbsp;отзывов)</span>
                 </div>
               </div>
-              <ul className='coach-labels__list d-flex mt-1 flex-wrap'>
-                {tags.map(t => (
-                  <li key={t.key} className='mr-1'>
-                    <span
-                      className='badge border border-secondary text-secondary'
-                    >{t.label}</span>
-                  </li>
-                ))}
-              </ul>
+              {tags && (
+                <ul className='coach-labels__list d-flex mt-1 flex-wrap'>
+                  {tags.map(t => (
+                    <li key={t.key} className='mr-1'>
+                      <span
+                        className='badge border border-secondary text-secondary'
+                      >{t.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
           <div className='coach-booking pt-3 pb-3'>
@@ -74,7 +76,7 @@ function InitStep({
           </div>
           <div className='pt-3 mb-4'>
             <h6 className='mb-3'>О себе:</h6>
-            <p>{coach.about}</p>
+            <p style={{ whiteSpace: 'pre-wrap' }}>{coach.about}</p>
           </div>
           <div className='coach-reviews mt-3'>
             <h6>Отзывы:</h6>

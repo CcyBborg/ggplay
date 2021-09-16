@@ -127,6 +127,7 @@ function Coaching({
                             title={coach.title}
                             price={coach.price}
                             rating={coach.rating}
+                            status={coach.status}
                             reviewsLength={coach.reviewsLength}
                             img={coach.img} />
                         </div>

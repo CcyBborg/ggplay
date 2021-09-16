@@ -20,7 +20,7 @@ function LessonSelect({
                         </div>
                         <div className='coaching-select__description'>
                             <h5 className='h6'>{lesson.title}</h5>
-                            <p className='text text-secondary m-0'>{lesson.description}</p>
+                            <p className='text text-secondary m-0' style={{ whiteSpace: 'pre-wrap' }}>{lesson.description}</p>
                         </div>
                     </div>
                     <div className='d-flex flex-column align-items-end ml-2 ml-md-4'>
