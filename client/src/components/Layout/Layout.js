@@ -121,12 +121,6 @@ function Layout({ user, children, fetchUserInfo }) {
                                     <div className='menu-footer-link-1-container'>
                                         <ul id='menu-footer-link-1' className='menu p-0'>
                                             <li>
-                                                <a href='/support'>Служба поддержки</a>
-                                            </li>
-                                            <li>
-                                                <a href='/contacts'>Контакты</a>
-                                            </li>
-                                            <li>
                                                 <a href='/terms-of-service'>Пользовательское соглашение</a>
                                             </li>
                                             <li>
