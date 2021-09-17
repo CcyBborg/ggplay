@@ -46,7 +46,8 @@ module.exports = passport => {
             } else {
                 const newUser = new User({
                     nickname: profile.displayName,
-                    vkontakte: profile.id
+                    vkontakte: profile.id,
+                    game: 'NO'
                 });
 
                 if (req.session?.game) {
