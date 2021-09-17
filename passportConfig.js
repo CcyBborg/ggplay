@@ -46,12 +46,16 @@ module.exports = passport => {
             } else {
                 const newUser = new User({
                     nickname: profile.displayName,
-                    vkontakte: profile.id,
-                    profile: {
-                        game: req?.session.game,
-                        rank: req?.session.rank
-                    }
+                    vkontakte: profile.id
                 });
+
+                if (req.session?.game) {
+                    newUser.profile = {
+                        game: req.session.game,
+                        rank: req.session.rank
+                    };
+                }
+
                 newUser.save(function (err) {
                     if (err) {
                         return done(err);
