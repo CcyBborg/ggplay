@@ -68,7 +68,7 @@ module.exports = passport => {
         clientSecret: process.env.DISCORD_CLIENT_SECRET,
         scope: ['identify', 'email'],
         callbackURL: '/users/auth/discord/callback'
-    }, (accessToken, refreshToken, profile, done) => {
+    }, (req, accessToken, refreshToken, profile, done) => {
         User.findOne({ discord: profile.id }, function (err, user) {
             if (err) {
                 return done(err);
