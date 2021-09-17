@@ -76,7 +76,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                                     <li className='menu-item'>
                                                         <ProfileButton
                                                             nickname={user.info.nickname}
-                                                            logo={user.info.profile.game.logo}
+                                                            logo={user.info.profile?.game.logo}
                                                             onLogout={() => {
                                                                 logout().then(() => {
                                                                     window.open('https://ggplay.ru/coaching', '_self');
@@ -198,7 +198,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                     <li className='menu-item'>
                                         <ProfileButton
                                             nickname={user.info.nickname}
-                                            logo={user.info.profile.game.logo}
+                                            logo={user.info.profile?.game.logo}
                                             onLogout={() => {
                                                 logout().then(() => {
                                                     window.open('https://ggplay.ru/coaching', '_self');
