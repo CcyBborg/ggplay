@@ -33,3 +33,14 @@ export function signInUser({
         password
     });
 }
+
+export function editUser({
+    game,
+    rank
+}) {
+    return axios.post('/users/edit', {
+        game,
+        rank
+    });
+}
+

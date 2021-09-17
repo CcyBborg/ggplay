@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import Copier from '../Copier/Copier';
 import Spinner from '../Spinner/Spinner';
 import AddReview from './components/AddReview/AddReview';
@@ -9,7 +10,9 @@ import { postReview, logout } from './api';
 
 function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
-        fetchUserInfo();
+        if (!user.info) {
+            fetchUserInfo();
+        }
     }, [fetchUserInfo]);
 
     const notification = user.info?.notification;
@@ -28,6 +31,15 @@ function Layout({ user, children, fetchUserInfo }) {
             <div className='d-flex align-items-center justify-content-center' style={{ height: '100vh' }}>
                 <Spinner />
             </div>
+        );
+    }
+
+    if (user.info && !user.info.profile?.game) {
+        return (
+            <Redirect to={{
+                pathname: '/sign-up',
+                state: { isSocial: true }
+            }} />
         );
     }
 

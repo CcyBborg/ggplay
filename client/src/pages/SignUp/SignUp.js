@@ -6,6 +6,7 @@ import RankSelectList from './components/RankSelectList/RankSelectList';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import Spinner from '../../components/Spinner/Spinner';
 import { fetchGames } from './actions';
+import { editUser } from './api';
 import { STEPS, SELECT_GAME_STEP, SELECT_RANK_STEP, SIGN_UP_STEP } from './constants/steps';
 import { fetchRanks, createUser } from './actions';
 
@@ -18,7 +19,8 @@ function SignUp({
     fetchRanks,
     gameList,
     rankList,
-    createUser
+    createUser,
+    location
 }) {
     const [selectedGame, setSelectedGame] = useState(null);
     const [selectedRank, setSelectedRank] = useState(null);
@@ -27,10 +29,14 @@ function SignUp({
     useEffect(() => {
         if (STEPS[step].id === SELECT_GAME_STEP) {
             fetchGames();
-        } else if (STEPS[step].id === SELECT_RANK_STEP) {
+        }
+    }, [step, fetchGames]);
+
+    useEffect(() => {
+        if (STEPS[step].id === SELECT_RANK_STEP) {
             fetchRanks(selectedGame);
         }
-    }, [step, fetchGames, fetchRanks, selectedGame]);
+    }, [step, selectedGame, fetchRanks]);
 
     useEffect(() => {
         if (STEPS[step].id === SELECT_RANK_STEP && !isLoading && rankList && rankList.length === 0) {
@@ -71,7 +77,7 @@ function SignUp({
                             <i className='fas fa-arrow-left'></i>
                         </button>
                     ) : (
-                        <div style={{width: '25px'}} />
+                        <div style={{ width: '25px' }} />
                     )}
                     <div className='m-auto'>
                         <img src='/images/logo.png' width='100' />
@@ -128,8 +134,24 @@ function SignUp({
                         type='submit'
                         disabled={isLoading || (!selectedGame && STEPS[step].id === SELECT_GAME_STEP) || (!selectedRank && STEPS[step].id === SELECT_RANK_STEP)}
                         className='btn btn-lg btn-hover'
-                        onClick={() => setStep(step + 1)}>
-                        Следующий шаг <i className='fas fa-chevron-right'></i>
+                        onClick={() => {
+                            if (STEPS[step].id === SELECT_RANK_STEP && location.state?.isSocial) {
+                                editUser({ game: selectedGame, rank: selectedRank }).then(() => {
+                                    window.open('/coaching', '_self');
+                                });
+                            } else {
+                                setStep(step + 1);
+                            }
+                        }}>
+                        {STEPS[step].id === SELECT_RANK_STEP && location.state?.isSocial ? (
+                            <>
+                                Закончить регистрацию
+                            </>
+                        ) : (
+                            <>
+                                Следующий шаг <i className='fas fa-chevron-right'></i>
+                            </>
+                        )}
                     </button>
                 </footer>
             )}
@@ -137,7 +159,7 @@ function SignUp({
     );
 }
 
-export default connect(({ signUp }) => ({
+export default connect(({ signUp }, ownProps) => ({
     isLoading: signUp.isLoading,
     error: signUp.error,
     isUserSignedIn: signUp.isUserSignedIn,

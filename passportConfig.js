@@ -34,9 +34,6 @@ module.exports = passport => {
         clientSecret: process.env.VKONTAKTE_APP_SECRET,
         callbackURL: '/users/auth/vkontakte/callback',
     }, (req, accessToken, refreshToken, params, profile, done) => {
-        console.log('\n\n\n\n\n\n\n\n!!!!');
-        console.log(req.session);
-        console.log('!!!!!\n\n\n\n\n\n\n\n');
         User.findOne({ vkontakte: profile.id }, function (err, user) {
             if (err) {
                 return done(err);
@@ -46,15 +43,12 @@ module.exports = passport => {
             } else {
                 const newUser = new User({
                     nickname: profile.displayName,
-                    vkontakte: profile.id
-                });
-
-                if (req.session?.game) {
-                    newUser.profile = {
+                    vkontakte: profile.id,
+                    profile: {
                         game: req.session.game,
                         rank: req.session.rank
-                    };
-                }
+                    }
+                });
 
                 newUser.save(function (err) {
                     if (err) {

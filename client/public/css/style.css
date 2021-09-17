@@ -2141,13 +2141,16 @@ header .navbar ul li .sub-menu li:hover > a::before {
   width: 640px;
   overflow-y: auto;
   top: 100px;
-  bottom: 100px;
+  bottom: 50px;
 }
 
 .modal-header {
   background-color: var(--iq-body-bg);
   padding: 20px 15px;
-  position: relative;
+  position: fixed;
+  top: 42px;
+  width: 640px;
+  z-index: 99999999px;
 }
 
 .btn-close {
