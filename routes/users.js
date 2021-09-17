@@ -88,20 +88,7 @@ router.get('/auth/vkontakte', persistGameRank, passport.authenticate('vkontakte'
 router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     successRedirect: '/coaching',
     failureRedirect: '/sign-up'
-}), (req, res) => {
-    console.log('\n\n\n\n\nYOOOOOOOOOOOOOOO\n\n\n\n\n\n');
-    if (req.user) {
-        const game = req.session.game;
-        const rank = req.session.rank;
-
-        req.user.game = game;
-        if (rank) {
-            req.user.rank = rank;
-        }
-
-        req.user.save();
-    }
-});
+}));
 
 // Discord oauth
 router.get('/auth/discord', passport.authenticate('discord'));

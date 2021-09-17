@@ -82,7 +82,10 @@ module.exports = passport => {
         clientID: process.env.VKONTAKTE_APP_ID,
         clientSecret: process.env.VKONTAKTE_APP_SECRET,
         callbackURL: '/users/auth/vkontakte/callback',
-    }, (accessToken, refreshToken, params, profile, done) => {
+    }, (req, accessToken, refreshToken, params, profile, done) => {
+        console.log('\n\n\n\n\n\n\n\n!!!!');
+        console.log(req.session);
+        console.log('!!!!!\n\n\n\n\n\n\n\n');
         User.findOne({ vkontakte: profile.id }, function (err, user) {
             if (err) {
                 return done(err);
