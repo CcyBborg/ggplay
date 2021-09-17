@@ -48,8 +48,8 @@ module.exports = passport => {
                     nickname: profile.displayName,
                     vkontakte: profile.id,
                     profile: {
-                        game: req.session.game,
-                        rank: req.session.rank
+                        game: req?.session.game,
+                        rank: req?.session.rank
                     }
                 });
                 newUser.save(function (err) {
