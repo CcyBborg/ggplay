@@ -33,8 +33,7 @@ var UserSchema = new Schema({
     profile: {
         game: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Games',
-            required: true
+            ref: 'Games'
         },
         rank: {
             type: mongoose.Schema.Types.ObjectId,
