@@ -44,6 +44,14 @@ function SignUp({
         }
     }, [step, rankList, isLoading]);
 
+    useEffect(() => {
+        if (STEPS[step].id === SIGN_UP_STEP && location.state?.isSocial) {
+            editUser({ game: selectedGame, rank: selectedRank }).then(() => {
+                window.open('/coaching', '_self');
+            });
+        }
+    }, [editUser, selectedGame, selectedRank, step, location.state?.isSocial]);
+
     if (isUserSignedIn) {
         history.push({ pathname: '/coaching' });
     }
@@ -134,15 +142,7 @@ function SignUp({
                         type='submit'
                         disabled={isLoading || (!selectedGame && STEPS[step].id === SELECT_GAME_STEP) || (!selectedRank && STEPS[step].id === SELECT_RANK_STEP)}
                         className='btn btn-lg btn-hover'
-                        onClick={() => {
-                            if (STEPS[step].id === SELECT_RANK_STEP && location.state?.isSocial) {
-                                editUser({ game: selectedGame, rank: selectedRank }).then(() => {
-                                    window.open('/coaching', '_self');
-                                });
-                            } else {
-                                setStep(step + 1);
-                            }
-                        }}>
+                        onClick={() => setStep(step + 1)}>
                         {STEPS[step].id === SELECT_RANK_STEP && location.state?.isSocial ? (
                             <>
                                 Закончить регистрацию
