@@ -92,7 +92,8 @@ module.exports = passport => {
                     discord: profile.id,
                     email: profile.email,
                     profile: {
-                        game: '6110f38fa9258e24cce20f65'
+                        game: req.session.game,
+                        rank: req.session.rank
                     }
                 });
                 newUser.save(function (err) {
