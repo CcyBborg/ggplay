@@ -34,6 +34,9 @@ module.exports = passport => {
         clientSecret: process.env.VKONTAKTE_APP_SECRET,
         callbackURL: '/users/auth/vkontakte/callback',
     }, (req, accessToken, refreshToken, params, profile, done) => {
+        console.log('\n\n\n\n\n\n\n\n!!!!');
+        console.log(req.session);
+        console.log('!!!!!\n\n\n\n\n\n\n\n');
         User.findOne({ vkontakte: profile.id }, function (err, user) {
             if (err) {
                 return done(err);
@@ -67,10 +70,7 @@ module.exports = passport => {
         clientSecret: process.env.DISCORD_CLIENT_SECRET,
         scope: ['identify', 'email'],
         callbackURL: '/users/auth/discord/callback'
-    }, (req, accessToken, refreshToken, profile, done) => {
-        console.log('\n\n\n!!!!!!!!!!!!!!!!!!');
-        console.log(req.session);
-        console.log('!!!!!!!!!!!!!!!!!\n\n\n\n');
+    }, (accessToken, refreshToken, profile, done) => {
         User.findOne({ discord: profile.id }, function (err, user) {
             if (err) {
                 return done(err);
@@ -94,8 +94,7 @@ module.exports = passport => {
                     discord: profile.id,
                     email: profile.email,
                     profile: {
-                        game: req.session.game,
-                        rank: req.session.rank
+                        game: '6110f38fa9258e24cce20f65'
                     }
                 });
                 newUser.save(function (err) {

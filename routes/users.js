@@ -81,9 +81,14 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
 router.get('/auth/discord', persistGameRank, passport.authenticate('discord'));
 
 router.get('/auth/discord/callback', passport.authenticate('discord', {
-    successRedirect: '/coaching',
     failureRedirect: '/sign-up'
-}));
+}), (req, res) => {
+    console.log('\n\n\n\n\n!!!!!!');
+    console.log(req.session);
+    console.log('!!!!!!\n\n\n\n\n');
+
+    res.redirect('/coaching');
+});
 
 // Authorized user's info
 router.get('/info', ensureAuthenticated, async (req, res) => {
