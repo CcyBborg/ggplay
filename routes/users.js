@@ -193,7 +193,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
         const past = slots.filter(slot => {
             const slotTime = toUTC(new Date(slot.timestamp));
 
-            const isPast = now - slotTime < now - 20 * 1000;
+            const isPast = slotTime - now < -20 * 1000;
             if (!isPast) {
                 present.push(slot);
             }
