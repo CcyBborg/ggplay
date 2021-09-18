@@ -159,7 +159,7 @@ function SignUp({
     );
 }
 
-export default connect(({ signUp }, ownProps) => ({
+export default connect(({ signUp }) => ({
     isLoading: signUp.isLoading,
     error: signUp.error,
     isUserSignedIn: signUp.isUserSignedIn,
