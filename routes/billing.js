@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.post('/notify', async (req, res) => {
     try {
+        console.log(req.body.Token);
+        console.log(Object.keys(req.body));
         if (req.body.Success) {
             if (req.body.Status === 'CONFIRMED') {
                 const order = await Order.findOne({ _id: req.body.OrderId });

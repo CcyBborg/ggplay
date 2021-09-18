@@ -31,7 +31,7 @@ function InitStep({
                     {coach.status}
                   </div>
                 </div>
-                <div className='d-flex align-items-center'>
+                <div className='d-flex align-items-start'>
                   <ul
                     className='
                     coach-rating
@@ -48,7 +48,7 @@ function InitStep({
                       <i className='fa fa-star' aria-hidden='true'></i>
                     </li>
                   </ul>
-                  <span className='text text-secondary ml-2'>{coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length} ({coach.reviews.length}&nbsp;отзывов)</span>
+                  <span className='text text-secondary ml-2'>{(coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length).toFixed(1)}<br />{coach.reviews.length}&nbsp;отзывов</span>
                 </div>
               </div>
               {tags && (

@@ -48,7 +48,7 @@ function CoachCard({
                     <i className='fa fa-star' aria-hidden='true'></i>
                   </li>
                 </ul>
-                <span className='text ml-2'>{rating}&nbsp;({reviewsLength}&nbsp;отзывов)</span>
+                <span className='text ml-2'>{rating.toFixed(1)}&nbsp;({reviewsLength}&nbsp;отзывов)</span>
               </div>
       )}
         <span className='text'>от&nbsp;{price}&nbsp;₽</span>
