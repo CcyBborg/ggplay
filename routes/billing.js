@@ -55,6 +55,8 @@ router.post('/notify', async (req, res) => {
                     order.status = 'failed';
                 }
 
+                await order.save();
+
                 res.send('ERROR');
             }
         }
