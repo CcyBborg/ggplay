@@ -7,6 +7,7 @@ import AddReview from './components/AddReview/AddReview';
 import ProfileButton from './components/ProfileButton/ProfileButton';
 import { fetchUserInfo } from './actions';
 import { postReview, logout } from './api';
+import Modal from '../Modal/Modal';
 
 function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
@@ -239,34 +240,22 @@ function Layout({ user, children, fetchUserInfo }) {
 
             {isNotification && (
                 notification.type === 'SOON' ? (
-                    <div className='modal-container'>
-                        <div className='modal' style={{
-                            width: '400px'
-                        }}>
-                            <header className='modal-header d-flex justify-content-center align-items-center'>
-                                <h4 className='m-0 h6 text-center'>Уведомление о тренировке</h4>
-                                <button className='btn-close' onClick={() => setIsNotification(false)}>
-                                    <i className='fas fa-times'></i>
-                                </button>
-                            </header>
-                            <div className='modal-body'>
-                                <p className='lead text-center mb-5 text-white'>
-                                    Сегодня в<strong>&nbsp;{new Date(notification.timestamp).toLocaleString('ru', {
-                                        hour: '2-digit',
-                                        minute: '2-digit'
-                                    })}&nbsp;</strong>у тебя "<strong>{notification.lesson.title}</strong>".
-                                </p>
-                                <div className='mb-4'>
-                                    <p className='mb-2'>Канал для твоей тренировки:</p>
-                                    <Copier text={notification.channel} />
-                                </div>
-                                <div>
-                                    <p className='mb-2'>Приглашение в наш Discord-сервер:</p>
-                                    <Copier text={notification.invite} />
-                                </div>
-                            </div>
+                    <Modal title='Уведомление о тренировке' size='xs' onClose={() => setIsNotification(false)}>
+                        <p className='lead text-center mb-5 text-white'>
+                            Сегодня в<strong>&nbsp;{new Date(notification.timestamp).toLocaleString('ru', {
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            })}&nbsp;</strong>у тебя "<strong>{notification.lesson.title}</strong>".
+                        </p>
+                        <div className='mb-4'>
+                            <p className='mb-2'>Канал для твоей тренировки:</p>
+                            <Copier text={notification.channel} />
                         </div>
-                    </div>
+                        <div>
+                            <p className='mb-2'>Приглашение в наш Discord-сервер:</p>
+                            <Copier text={notification.invite} />
+                        </div>
+                    </Modal>
                 ) : (
                     <AddReview
                         lesson={notification.lesson}

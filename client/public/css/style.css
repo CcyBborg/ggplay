@@ -2153,6 +2153,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
   z-index: 99999999px;
 }
 
+.modal-xs .modal-header {
+  width: 400px;
+}
+
 .modal-sm .modal-header {
   width: 500px;
 }
@@ -2546,6 +2550,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 .modal-sm {
   width: 500px;
+}
+
+.modal-xs {
+  width: 400px;
 }
 
 /* Calendar */

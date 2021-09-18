@@ -26,7 +26,7 @@ function Modal({
 
     return (
         <div className='modal-container' ref={containerRef} onClick={handleContainerClose}>
-            <div className={`modal position-absolute ${size === 'sm' ? 'modal-sm' : ''}`}>
+            <div className={`modal position-absolute ${size === 'sm' ? 'modal-sm' : (size === 'xs' ? 'modal-xs' : '')}`}>
                 <header className='modal-header d-flex justify-content-center align-items-center'>
                     {onBack && (
                         <button className='modal__btn-back' onClick={onBack}>
