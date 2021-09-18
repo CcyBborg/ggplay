@@ -27,11 +27,25 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
 
         order = await order.save();
 
+        const price = lessonSlot.lesson.price * 100;
+
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
             TerminalKey: process.env.TERMINAL_KEY,
-            Amount: lessonSlot.lesson.price * 100,
+            Amount: price,
             Description: lessonSlot.lesson.title,
-            OrderId: order._id
+            OrderId: order._id,
+            Receipt: {
+                Email: req.user.email || 'ggplay@ggplay.ru',
+                EmailCompany: 'ggplay@ggplay.ru',
+                Taxation: 'usn_income',
+                Items: [{
+                    name: lessonSlot.lesson.title,
+                    Quantity: 1,
+                    Amount: price,
+                    Price: price,
+                    
+                }]
+            }
         });
 
         if (response.data.Success) {

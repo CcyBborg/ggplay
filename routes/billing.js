@@ -5,22 +5,9 @@ const LessonSlot = require('../models/LessonSlot');
 const { createChannel } = require('../discord-client');
 const crypto = require('crypto');
 const router = express.Router();
-
-function sign(body) {
-    const data = Object.keys({ ...body, Password: process.env.TERMINAL_PASSWORD }).sort().filter(
-        key => key !== 'Token'
-    ).reduce(
-        (acc, cur) => acc + body[cur], '');
-
-    console.log(data);
-
-    return crypto.createHash('sha256').update(data).digest('hex');
-}
-
+ 
 router.post('/notify', async (req, res) => {
     try {
-        console.log(sign(req.body))
-        console.log(req.body.Token);
         if (req.body.Status === 'REJECTED') {
             const order = await Order.findOne({ _id: req.body.OrderId });
 
