@@ -77,7 +77,14 @@ function Coaching({
           <div className='banner p-3 pl-sm-5 pr-sm-5 pt-sm-4 pb-sm-4 mb-5 d-sm-flex justify-content-between align-items-center'>
             <div>
               <h1 className='h3 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
-              <p className='mt-2 mb-4 lead' style={{ maxWidth: '700px' }}>Лучшие проверенные тренеры, которые помогли более чем 1000 ученикам реализовать свои цели в&nbsp;играх.</p>
+              <div style={{ maxWidth: '700px' }}>
+                <p class='lead'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
+                <ul className='pl-4 font-weight-light'>
+                  <li>Запись всех уроков</li>
+                  <li>Опытные и проверенные тренеры</li>
+                  <li>Персональный подход к каждому ученику</li>
+                </ul>
+              </div>
             </div>
             <div>
               <img width='280' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
@@ -95,7 +102,7 @@ function Coaching({
             </div>
           ) : (
             <>
-              <h4 className='mt-4 mb-4'>Тренера по {selectedGame.title}</h4>
+              <h4 className='mt-4 mb-4'>Тренеры по {selectedGame.title}</h4>
               <div className='coach-list-block position-relative pt-1'>
                 <div className='trending-custom-tab'>
                   {selectedGame?.filters?.[0] && (
