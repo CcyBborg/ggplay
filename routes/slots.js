@@ -43,7 +43,7 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
                     Quantity: 1,
                     Amount: price,
                     Price: price,
-                    
+                    Tax: 'none'
                 }]
             }
         });
