@@ -10,7 +10,7 @@ function sign(body) {
     const data = Object.keys({ ...body, Password: process.env.TERMINAL_PASSWORD }).sort().filter(
             key => key !== 'Token'
         ).reduce(
-            (acc, cur) => acc + cur + body[cur], '');
+            (acc, cur) => acc + body[cur], '');
 
     return crypto.createHash('sha256').update(data).digest('hex');
 }
