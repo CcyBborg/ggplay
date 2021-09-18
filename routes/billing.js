@@ -3,12 +3,24 @@ const Order = require('../models/Order');
 const User = require('../models/User');
 const LessonSlot = require('../models/LessonSlot');
 const { createChannel } = require('../discord-client');
+const crypto = require('crypto');
 const router = express.Router();
+
+function sign(body) {
+    const res = [];
+
+    Object.keys({ ...body, Password: process.env.TERMINAL_PASSWORD }).sort().filter(
+            key => key !== 'Token'
+        ).reduce(
+            (acc, cur) => acc + cur + body[cur], '');
+
+    console.log(res.join(''));
+    console.log(crypto.createHash('sha256').update(res.join('')).digest('hex'));
+}
 
 router.post('/notify', async (req, res) => {
     try {
-        console.log(req.body.Token);
-        console.log(Object.keys(req.body));
+        sign(req.body)
         if (req.body.Success) {
             if (req.body.Status === 'CONFIRMED') {
                 const order = await Order.findOne({ _id: req.body.OrderId });
