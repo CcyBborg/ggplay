@@ -8,7 +8,7 @@ function ProfileButton({
     const [isPopover, setIsPopover] = useState(false);
 
     return (
-        <button className='btn btn-link position-relative' onClick={() => setIsPopover(!isPopover)}>
+        <button className='btn btn-link position-relative pl-1 pr-1' onClick={() => setIsPopover(!isPopover)}>
             <span className='font-weight-bold mr-2' style={{
                 fontSize: '16px',
                 textTransform: 'none'
