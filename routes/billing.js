@@ -12,6 +12,8 @@ function sign(body) {
         ).reduce(
             (acc, cur) => acc + body[cur], '');
 
+    console.log(data);
+
     return crypto.createHash('sha256').update(data).digest('hex');
 }
 
