@@ -7,15 +7,12 @@ const crypto = require('crypto');
 const router = express.Router();
 
 function sign(body) {
-    const res = [];
-
-    Object.keys({ ...body, Password: process.env.TERMINAL_PASSWORD }).sort().filter(
+    const data = Object.keys({ ...body, Password: process.env.TERMINAL_PASSWORD }).sort().filter(
             key => key !== 'Token'
         ).reduce(
             (acc, cur) => acc + cur + body[cur], '');
-
-    console.log(res.join(''));
-    console.log(crypto.createHash('sha256').update(res.join('')).digest('hex'));
+    console.log(data);
+    console.log(crypto.createHash('sha256').update(data).digest('hex'));
 }
 
 router.post('/notify', async (req, res) => {
