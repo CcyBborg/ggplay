@@ -1,0 +1,25 @@
+/* hide the original widget - that there were no two labels on the screen*/
+#jivo_chat_widget{
+	display: none;
+}
+
+/* the default style - for offline messages if no one is online */
+#jivo_custom_widget{
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 60px;
+	z-index: 300000;
+	cursor: pointer;
+	
+	height: 60px;
+	background-image: url(images/icon.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* if there are operators online - show other label*/
+#jivo_custom_widget.jivo_online{
+	background-image: url(images/icon.png);
+}
