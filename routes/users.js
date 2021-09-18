@@ -135,7 +135,7 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
             notification = slots?.find(({ timestamp, lesson, review }) => {
                 const slotTime = toUTC(new Date(timestamp));
 
-                return !review && (slotTime < now && now - slotTime > lesson.duration * 1000);
+                return !review && (now - slotTime > lesson.duration * 1000);
             });
 
             if (notification) {
@@ -193,7 +193,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
         const past = slots.filter(slot => {
             const slotTime = toUTC(new Date(slot.timestamp));
 
-            const isPast = slotTime - now < -20 * 1000;
+            const isPast = now - slotTime > 20 * 60 * 1000;
             if (!isPast) {
                 present.push(slot);
             }
