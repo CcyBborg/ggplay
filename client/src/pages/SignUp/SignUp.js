@@ -121,7 +121,7 @@ function SignUp({
                                 onSelectRank={setSelectedRank} />
                         </div>
                     )}
-                    {STEPS[step].id === SIGN_UP_STEP && (
+                    {(STEPS[step].id === SIGN_UP_STEP && !location.state?.isSocial) && (
                         <SignUpForm
                             error={error}
                             selectedGame={selectedGame}
