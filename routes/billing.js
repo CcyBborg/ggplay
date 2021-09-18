@@ -11,13 +11,14 @@ function sign(body) {
             key => key !== 'Token'
         ).reduce(
             (acc, cur) => acc + cur + body[cur], '');
-    console.log(data);
-    console.log(crypto.createHash('sha256').update(data).digest('hex'));
+
+    return crypto.createHash('sha256').update(data).digest('hex');
 }
 
 router.post('/notify', async (req, res) => {
     try {
-        sign(req.body)
+        console.log(sign(req.body))
+        console.log(req.body.Token);
         if (req.body.Success) {
             if (req.body.Status === 'CONFIRMED') {
                 const order = await Order.findOne({ _id: req.body.OrderId });
