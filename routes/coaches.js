@@ -26,11 +26,11 @@ router.get('/', async (req, res) => {
                 status: coach.status,
                 img: coach.img,
                 tags: coach.tags,
-                price: lessons[0]?.price,
+                price: lessons[lessons.length - 1]?.price,
                 rating: coach.reviews.reduce((acc, cur) => acc + Number(cur?.rating), 0) / coach.reviews.length,
                 reviewsLength: coach.reviews.length
             });
-        }));
+        }).sort((c1, c2) => c2.rating - c1.rating));
     } catch (err) {
         console.log(err);
         res.json({ message: err })
