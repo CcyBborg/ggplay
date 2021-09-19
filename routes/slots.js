@@ -53,6 +53,7 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
                 url: response.data.PaymentURL
             });
         } else {
+            console.log(response);
             throw new Error();
         }
     } catch (err) {
