@@ -106,7 +106,7 @@ function SignUp({
                         </div>
                     )}
                     {STEPS[step].id === SELECT_GAME_STEP && gameList && (
-                        <div className='poll-content p-md-4'>
+                        <div className='poll-content'>
                             <GameSelectList
                                 gameList={gameList}
                                 selectedGame={selectedGame}
@@ -114,7 +114,7 @@ function SignUp({
                         </div>
                     )}
                     {STEPS[step].id === SELECT_RANK_STEP && rankList && (
-                        <div className='poll-content p-md-4'>
+                        <div className='poll-content'>
                             <RankSelectList
                                 rankList={rankList}
                                 selectedRank={selectedRank}

@@ -11,7 +11,7 @@ function toUTC(date) {
         date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
 }
 
-const NOTIF_PERIOD = 20 * 60 * 1000; // One Hour
+const NOTIF_PERIOD = 20 * 60 * 1000; // 20 minutes
 
 // Local auth
 router.post('/', async (req, res) => {
@@ -86,7 +86,7 @@ router.get('/auth/discord/callback', passport.authenticate('discord', {
     if (req.session?.game) {
         req.user.profile.game = req.session.game;
         req.user.profile.rank = req.session.rank;
-    
+
         await req.user.save();
     }
 
@@ -137,7 +137,7 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
             notification = slots?.find(({ timestamp, lesson, review }) => {
                 const slotTime = toUTC(new Date(timestamp));
 
-                return !review && (now - slotTime > lesson.duration * 1000);
+                return !review && (now - slotTime > NOTIF_PERIOD);
             });
 
             if (notification) {
@@ -195,7 +195,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
         const past = slots.filter(slot => {
             const slotTime = toUTC(new Date(slot.timestamp));
 
-            const isPast = now - slotTime > 20 * 60 * 1000;
+            const isPast = now - slotTime > NOTIF_PERIOD;
             if (!isPast) {
                 present.push(slot);
             }

@@ -2,7 +2,7 @@ import { withRouter } from 'react-router';
 
 function SlotBooked({ history }) {
     return (
-        <div className='container mt-5'>
+        <div className='container mt-5 mb-5'>
             <div className='banner p-5'>
                 <div className='d-flex justify-content-center align-items-center flex-column text-center'>
                     <i style={{ fontSize: '60px' }} className='far fa-check-circle text-primary p-4'></i>

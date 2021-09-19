@@ -2090,7 +2090,8 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
 .poll-content {
   width: 600px;
-  height: 600px;
+  height: calc(100vh - 236px);
+  padding-bottom: 80px;
   overflow-y: auto;
   overflow-x: visible;
   -webkit-mask-image: linear-gradient(180deg,#141414 95%,transparent);
@@ -2784,10 +2785,6 @@ header .navbar ul li .sub-menu li:hover > a::before {
   .coach-info__img {
     width: 60px;
     height: 60px;
-  }
-  .banner ul {
-    padding: 0!important;
-    list-style-type: none!important;
   }
 }
 

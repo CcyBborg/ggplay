@@ -24,7 +24,9 @@ function LessonSelect({
                         </div>
                     </div>
                     <div className='d-flex flex-column align-items-end ml-2 ml-md-4'>
-                        <span className='coaching-select__time text text-secondary'>{lesson.duration}&nbsp;минут</span>
+                        {lesson.duration && (
+                            <span className='coaching-select__time text text-secondary'>{lesson.duration}&nbsp;минут</span>
+                        )}
                         <span className='coaching-select__price'>{lesson.price}&nbsp;₽</span>
                     </div>
                 </li>
