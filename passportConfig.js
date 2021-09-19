@@ -75,10 +75,13 @@ module.exports = passport => {
             }
 
             if (user) {
+                console.log('USER');
                 return done(null, user)
             }
 
             User.findOne({ email: profile.email }, (err, emailUser) => {
+                console.log('USER!!');
+                console.log(profile.id);
                 if (err) {
                     return done(err);
                 }
