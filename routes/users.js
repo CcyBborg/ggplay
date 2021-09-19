@@ -83,10 +83,12 @@ router.get('/auth/discord', persistGameRank, passport.authenticate('discord'));
 router.get('/auth/discord/callback', passport.authenticate('discord', {
     failureRedirect: '/sign-up'
 }), async (req, res) => {
-    req.user.profile.game = req.session.game;
-    req.user.profile.rank = req.session.rank;
-
-    await req.user.save();
+    if (req.session?.game) {
+        req.user.profile.game = req.session.game;
+        req.user.profile.rank = req.session.rank;
+    
+        await req.user.save();
+    }
 
     res.redirect('/coaching');
 });
