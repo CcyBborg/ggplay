@@ -39,7 +39,7 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
                 EmailCompany: 'ggplay@ggplay.ru',
                 Taxation: 'usn_income',
                 Items: [{
-                    name: lessonSlot.lesson.title,
+                    Name: lessonSlot.lesson.title,
                     Quantity: 1,
                     Amount: price,
                     Price: price,
