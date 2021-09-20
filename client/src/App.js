@@ -2,7 +2,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
+  withRouter
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
@@ -19,10 +20,13 @@ import SlotBooked from './pages/SlotBooked/SlotBooked';
 import TermsOfService from './pages/TermsOfService/TermsOfService';
 import { useEffect } from 'react';
 
-function App() {
+function App({ history }) {
   useEffect(() => {
     ReactGA.initialize('UA-207441127-2');
-    ReactGA.pageview(window.location.pathname + window.location.search);
+
+    return history.listen((location) => {
+      ReactGA.pageview(`${location.pathname}${location.search}`);
+    });
   }, []);
 
   return (
@@ -95,4 +99,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

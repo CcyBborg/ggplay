@@ -18,8 +18,7 @@ const LessonSchema = mongoose.Schema({
         required: true
     },
     duration: {
-        type: Number,
-        required: true
+        type: Number
     },
     maxParticipants: {
         type: Number,
