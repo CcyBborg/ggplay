@@ -166,7 +166,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                     </li>
                                     <li>
                                         <a target='_blank' href='https://discord.gg/NnUWEmJgfy'>
-                                            <i class='fab fa-discord'></i>
+                                            <i className='fab fa-discord'></i>
                                         </a>
                                     </li>
                                 </ul>

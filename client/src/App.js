@@ -1,5 +1,4 @@
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -31,7 +30,6 @@ function App({ history }) {
 
   return (
     <Provider store={store}>
-      <Router>
         <Switch>
           <Route path='/' exact>
             <Redirect to='/coaching' />
@@ -94,7 +92,6 @@ function App({ history }) {
           </Route>
         </Switch>
         <Route path='*/coach/:id' component={Coach} />
-      </Router>
     </Provider>
   );
 }

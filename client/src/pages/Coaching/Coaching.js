@@ -78,7 +78,7 @@ function Coaching({
             <div>
               <h1 className='h3 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
               <div style={{ maxWidth: '700px' }}>
-                <p class='lead'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
+                <p className='lead'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
                 <ul className='pl-4 font-weight-light'>
                   <li>Запись всех уроков</li>
                   <li>Опытные и проверенные тренеры</li>
