@@ -1,5 +1,6 @@
 import LessonSelect from '../LessonSelect/LessonSelect';
 import Spinner from '../../../../components/Spinner/Spinner';
+import ReviewCount from '../../../../components/ReviewCount/ReviewCount';
 
 function InitStep({
   isLoading,
@@ -48,7 +49,11 @@ function InitStep({
                       <i className='fa fa-star' aria-hidden='true'></i>
                     </li>
                   </ul>
-                  <span className='text text-secondary ml-2'>{(coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length).toFixed(1)}<br />{coach.reviews.length}&nbsp;отзывов</span>
+                  <span className='text text-secondary ml-2'>
+                    {(coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length).toFixed(1)}
+                    <br />
+                    <ReviewCount reviewsLength={coach.reviews.length} />
+                  </span>
                 </div>
               </div>
               {tags && (

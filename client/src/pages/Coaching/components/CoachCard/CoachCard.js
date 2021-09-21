@@ -1,4 +1,20 @@
 import { withRouter } from 'react-router-dom';
+import ReviewCount from '../../../../components/ReviewCount/ReviewCount';
+
+function reviewsEnumeration(num) {
+  const last = String(num % 10);
+
+  switch(last) {
+    case '1':
+      return 'отзыв';
+    case '2':
+    case '3':
+    case '4':
+      return 'отзыва';
+    default:
+      return 'отзывов';
+  }
+}
 
 function CoachCard({
   id,
@@ -48,7 +64,7 @@ function CoachCard({
                     <i className='fa fa-star' aria-hidden='true'></i>
                   </li>
                 </ul>
-                <span className='text ml-2'>{rating.toFixed(1)}&nbsp;({reviewsLength}&nbsp;отзывов)</span>
+                <span className='text ml-2'>{rating.toFixed(1)}&nbsp;(<ReviewCount reviewsLength={reviewsLength} />)</span>
               </div>
       )}
         <span className='text'>от&nbsp;{price}&nbsp;₽</span>
