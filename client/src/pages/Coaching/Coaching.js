@@ -78,7 +78,7 @@ function Coaching({
             <div>
               <h1 className='h2 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
               <div style={{ maxWidth: '700px' }}>
-                <p className='lead mb-3 mt-3 font-weight-normal'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
+                <p className='lead mb-3 mt-3'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
                 <ul className='pl-0 font-weight-light text-left'>
                   <li className='mb-2'>
                     <i className='fas fa-check mr-2 text-primary'></i>&nbsp;Запись всех уроков
@@ -92,7 +92,7 @@ function Coaching({
                 </ul>
               </div>
             </div>
-            <div>
+            <div class='ml-sm-5 mr-sm-5'>
               <img width='320' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
             </div>
             </div>
