@@ -30,7 +30,7 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
         const price = lessonSlot.lesson.price * 100;
 
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
-            TerminalKey: process.env.TERMINAL_KEY,
+            TerminalKey: process.env.NODE_ENV === 'production' ? process.env.TERMINAL_PROD_KEY : process.env.TERMINAL_DEV_KEY,
             Amount: price,
             Description: lessonSlot.lesson.title,
             OrderId: order._id,
@@ -87,7 +87,7 @@ router.post('/:slotId/review', ensureAuthenticated, async (req, res) => {
         await lessonSlot.save();
 
         const coach = await Coach.findOne({ '_id': lessonSlot.lesson.coach });
-        coach.reviews.push(review._id)
+        coach.reviews.push(review._id);
         await coach.save();
 
         res.send('Ok');
