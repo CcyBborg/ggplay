@@ -27,7 +27,6 @@ export default function reducer(state = initialState, action) {
                 coach: action.data
             };
         case BOOK_SLOT_SUCCESS:
-            console.log(action.data);
             return {
                 ...state,
                 paymentUrl: action.data.url
