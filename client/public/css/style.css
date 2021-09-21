@@ -2724,6 +2724,11 @@ header .navbar ul li .sub-menu li:hover > a::before {
     text-align: center;
   }
 
+  .banner ul {
+    list-style: none;
+    padding: 0!important;
+  }
+
   h3 {
     font-size: 22px!important;
   }
