@@ -63,7 +63,7 @@ function Layout({ user, children, fetchUserInfo }) {
                                     </button>
                                     <div className='collapse navbar-collapse'>
                                         <ul className='navbar-nav mr-auto'>
-                                            <li className='menu-item'>
+                                            <li>
                                                 <a>
                                                     Курсы <sup style={{
                                                         fontSize: '10px',

@@ -79,10 +79,10 @@ function Coaching({
               <h1 className='h3 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
               <div style={{ maxWidth: '700px' }}>
                 <p className='lead'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
-                <ul className='pl-4 font-weight-light'>
-                  <li>Запись всех уроков</li>
-                  <li>Опытные и проверенные тренеры</li>
-                  <li>Персональный подход к каждому ученику</li>
+                <ul className='pl-2 font-weight-light text-left'>
+                  <li><i className='fas fa-angle-double-right mr-2 text-primary'></i>&nbsp;Запись всех уроков</li>
+                  <li><i className='fas fa-angle-double-right mr-2 text-primary'></i>&nbsp;Опытные и проверенные тренеры</li>
+                  <li><i className='fas fa-angle-double-right mr-2 text-primary'></i>&nbsp;Персональный подход к каждому ученику</li>
                 </ul>
               </div>
             </div>
@@ -102,9 +102,11 @@ function Coaching({
             </div>
           ) : (
             <>
-              <h4 className='mt-4 mb-4'>Тренеры по {selectedGame.title}</h4>
-              <div className='coach-list-block position-relative pt-1'>
-                <div className='trending-custom-tab'>
+              <div className='row'>
+                <div className='col'>
+                  <h4 className='mt-4 mb-4'>Тренеры по {selectedGame.title}</h4>
+                </div>
+                <div className='col align-self-end'>
                   {selectedGame?.filters?.[0] && (
                     <div style={{
                       maxWidth: '600px',
@@ -124,6 +126,10 @@ function Coaching({
                         onChange={setSelectedTags} />
                     </div>
                   )}
+                </div>
+              </div>
+              <div className='coach-list-block position-relative pt-1'>
+                <div className='trending-custom-tab'>
                   <div className='pt-4'>
                     <div className='row'>
 

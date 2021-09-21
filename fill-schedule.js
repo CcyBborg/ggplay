@@ -7,7 +7,7 @@ mongoose.connect(
     process.env.DB_CONNECTION,
     { useUnifiedTopology: true },
     async () => {
-        const lesson = await Lesson.findOne({ _id: '614752f628b35a9f3460e779' });
+        const lesson = await Lesson.findOne({ _id: '614890268e2c4a7ad5a9ccb0' });
         const dates = [[
             '21', '22', '24', '26', '29', '30'
         ], [
@@ -15,12 +15,12 @@ mongoose.connect(
             '11', '29', '30', '31'
         ]];
         const month = ['09', '10'];
-        const time = '13:30';
+        const time = '20:30'; //13:30 18:30, 19:30, 14:30
 
-        for (let i = 0; i < dates.length; i++) {
-            for (let j = 0; j < dates[i].length; j++) {
-                const timestamp = `2021-${month[i]}-${dates[i][j]}T${time}:00.123Z`;
-            //     const slot = await LessonSlot.find({ timestamp, lesson: lesson._id });
+        for (let i = 0; i < 1; i++) {
+            for (let j = 0; j < 1; j++) {
+                const timestamp = `2021-09-21T10:35:00.123Z`;
+            //  const slot = await LessonSlot.find({ timestamp, lesson: lesson._id });
             //     for (const s of slot) {
             //         await s.remove();
             //     }

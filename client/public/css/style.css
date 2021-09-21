@@ -2695,6 +2695,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
   color: var(--iq-white)!important;
 }
 
+.banner ul {
+  list-style: none;
+}
+
 @media (max-width: 780px) {
   .slide-item {
     max-width: 310px!important;
@@ -2722,11 +2726,6 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
   .banner {
     text-align: center;
-  }
-
-  .banner ul {
-    list-style: none;
-    padding: 0!important;
   }
 
   h3 {
