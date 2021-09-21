@@ -7,15 +7,15 @@ mongoose.connect(
     process.env.DB_CONNECTION,
     { useUnifiedTopology: true },
     async () => {
-        const lesson = await Lesson.findOne({ _id: '61474fb44a5e52e14b2308c5' });
+        const lesson = await Lesson.findOne({ _id: '614752f628b35a9f3460e779' });
         const dates = [[
-            '21', '22', '23', '24', '26', '29', '30'
+            '21', '22', '24', '26', '29', '30'
         ], [
             '02', '03', '04', '07', '08', '09', '10',
             '11', '29', '30', '31'
         ]];
         const month = ['09', '10'];
-        const time = '15:30';
+        const time = '13:30';
 
         for (let i = 0; i < dates.length; i++) {
             for (let j = 0; j < dates[i].length; j++) {

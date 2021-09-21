@@ -47,7 +47,8 @@ router.get('/:coachId', async (req, res) => {
                 }
             })
             .populate('reviews')
-            .populate('game');
+            .populate('game')
+            .sort([['order', 'ascending']]);
 
         res.json({
             _id: coach._id,
