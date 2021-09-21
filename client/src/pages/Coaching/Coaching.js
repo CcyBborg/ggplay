@@ -111,10 +111,10 @@ function Coaching({
           ) : (
             <>
               <div className='row'>
-                <div className='col'>
+                <div className='col-sm col-12'>
                   <h4 className='mt-4 mb-4'>Тренеры по {selectedGame.title}</h4>
                 </div>
-                <div className='col align-self-end'>
+                <div className='col-sm col-12 align-self-end'>
                   {selectedGame?.filters?.[0] && (
                     <div style={{
                       maxWidth: '600px',
