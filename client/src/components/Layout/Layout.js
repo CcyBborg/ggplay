@@ -119,10 +119,7 @@ function Layout({ user, children, fetchUserInfo }) {
                     </div>
                 </div>
             </header>
-            <div style={{
-                minHeight: 'calc(100vh - 232px)',
-                paddingTop: '70px'
-            }}>
+            <div className='content'>
                 {children}
             </div>
             <footer id='contact' className='footer-one iq-bg-dark'>

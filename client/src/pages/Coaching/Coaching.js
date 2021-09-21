@@ -73,23 +73,31 @@ function Coaching({
   return (
     <>
       <section className='content'>
-        <div className='container pt-4 pb-5'>
-          <div className='banner p-3 pl-sm-5 pr-sm-5 pt-sm-4 pb-sm-4 mb-5 d-sm-flex justify-content-between align-items-center'>
+      <div className='banner pt-sm-5 pt-3 pb-sm-4 pb-3 mb-4'>
+        <div className='container d-sm-flex justify-content-between align-items-center'>
             <div>
-              <h1 className='h3 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
+              <h1 className='h2 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
               <div style={{ maxWidth: '700px' }}>
-                <p className='lead'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
-                <ul className='pl-2 font-weight-light text-left'>
-                  <li><i className='fas fa-angle-double-right mr-2 text-primary'></i>&nbsp;Запись всех уроков</li>
-                  <li><i className='fas fa-angle-double-right mr-2 text-primary'></i>&nbsp;Опытные и проверенные тренеры</li>
-                  <li><i className='fas fa-angle-double-right mr-2 text-primary'></i>&nbsp;Персональный подход к каждому ученику</li>
+                <p className='lead mb-3 mt-3 font-weight-normal'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
+                <ul className='pl-0 font-weight-light text-left'>
+                  <li className='mb-2'>
+                    <i className='fas fa-check mr-2 text-primary'></i>&nbsp;Запись всех уроков
+                  </li>
+                  <li className='mb-2'>
+                    <i className='fas fa-check mr-2 text-primary'></i>&nbsp;Опытные и проверенные тренеры
+                  </li>
+                  <li>
+                    <i className='fas fa-check mr-2 text-primary'></i>&nbsp;Персональный подход к каждому ученику
+                  </li>
                 </ul>
               </div>
             </div>
             <div>
-              <img width='280' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
+              <img width='320' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
+            </div>
             </div>
           </div>
+        <div className='container pt-4 pb-5'>
           <GameSelect
             selectedGame={selectedGameId}
             gameList={games.gameList}
