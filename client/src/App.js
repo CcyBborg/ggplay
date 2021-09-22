@@ -22,6 +22,7 @@ import { useEffect } from 'react';
 function App({ history }) {
   useEffect(() => {
     ReactGA.initialize('UA-207441127-2');
+    ReactGA.pageview(`${history.location.pathname}${history.location.search}`);
 
     return history.listen((location) => {
       ReactGA.pageview(`${location.pathname}${location.search}`);
