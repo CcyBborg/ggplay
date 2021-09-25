@@ -5,7 +5,6 @@ const AdminBroMongoose = require('@admin-bro/mongoose')
 const mongoose = require('mongoose');
 
 require('../models/Lesson')
-require('path-to-your/mongoose-model2')
 
 // const run = async () => {
 
