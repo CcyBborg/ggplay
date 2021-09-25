@@ -14,7 +14,7 @@ const adminBro = new AdminBro({
     resources: [Lesson, Coach, LessonSLot, Game, Rank, Review, User, Order],
     rootPath: '/admin',
     branding: {
-        logo:,
+        logo: '/public/images/small-logo.png',
         companyName: 'GGPlay'
     }
 })
