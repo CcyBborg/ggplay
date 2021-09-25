@@ -8,11 +8,9 @@ const Lesson = require('../models/Lesson');
 //Admin Bro
 AdminBro.registerAdapter(AdminBroMongoose)
 
-const AdminBroOptions = {
-  resources: [Lesson],
-}
+const adminBro = new AdminBro({
+    resources: [Lesson],
+    rootPath: '/admin'
+})
 
-const adminBro = new AdminBro(AdminBroOptions)
-const router = AdminBroExpress.buildRouter(adminBro)
-
-app.use(adminBro.options.rootPath, router)
+module.exports = AdminBroExpress.buildRouter(adminBro)
