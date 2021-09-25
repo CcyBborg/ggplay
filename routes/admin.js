@@ -5,9 +5,6 @@ const AdminBroMongoose = require('@admin-bro/mongoose')
 const mongoose = require('mongoose');
 
 const run = async () => {
-    console.log('\n\n\n\n\n\n\n\n');
-    console.log(process.env.DB_ADMIN_CONNECTION);
-    console.log('\n\n\n\n\n\n\n\n\n');
     const mongooseDb = await mongoose.connect(process.env.DB_ADMIN_CONNECTION, { useUnifiedTopology: true })
 
     // Passing resources by giving entire database
