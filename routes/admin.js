@@ -10,6 +10,16 @@ const adminBro = new AdminBro({
 
 const router = AdminBroExpress.buildRouter(adminBro);
 
+const run = async () => {
+    const mongooseDb = await mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true })
+
+    // Passing resources by giving entire database
+    const adminBro = new AdminBro({
+      databases: [mongooseDb],
+      //... other AdminBroOptions
+    })
+};
+
 const AdminBro = require('admin-bro');
 const AdminBroMongoose = require('@admin-bro/mongoose');
 
