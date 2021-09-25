@@ -39,11 +39,11 @@ app.use('/slots', slotsRoute);
 app.use('/billing', billingRoute);
 app.use('/admin', adminRoute);
 
-mongoose.connect(
-    process.env.DB_CONNECTION,
-    { useUnifiedTopology: true },
-    () => console.log('Connected to db')
-    );
+// mongoose.connect(
+//     process.env.DB_CONNECTION,
+//     { useUnifiedTopology: true },
+//     () => console.log('Connected to db')
+//     );
 
 // Serve static content if in production
 if (process.env.NODE_ENV === 'production') {
