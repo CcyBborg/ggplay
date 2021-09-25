@@ -4,24 +4,22 @@ const AdminBroMongoose = require('@admin-bro/mongoose')
 
 const mongoose = require('mongoose');
 
-const run = async () => {
-    const mongooseDb = await mongoose.connect(process.env.DB_ADMIN_CONNECTION, { useUnifiedTopology: true })
+require('../models/Lesson')
+require('path-to-your/mongoose-model2')
 
-    // Passing resources by giving entire database
-    const adminBro = new AdminBro({
-        databases: [mongooseDb],
-        rootPath: '/admin'
-    })
+// const run = async () => {
 
-    AdminBro.registerAdapter(AdminBroMongoose);
-};
+// };
 
-run();
+// run();
 
+// Passing resources by giving entire database
 const adminBro = new AdminBro({
-    databases: [],
+    databases: [mongoose],
     rootPath: '/admin'
 })
+
+AdminBro.registerAdapter(AdminBroMongoose);
 
 const router = AdminBroExpress.buildRouter(adminBro);
 
