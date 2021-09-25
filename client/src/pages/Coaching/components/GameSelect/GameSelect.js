@@ -30,7 +30,7 @@ function GameSelect({
       </button>
       <ul className='list-inline row p-0 mb-0'>
         <Swiper
-          slidesPerView={1}
+          slidesPerView={2}
           navigation={{
             nextEl: '.coach-game-select__next',
             prevEl: '.coach-game-select__prev'
@@ -44,7 +44,7 @@ function GameSelect({
               slidesPerView: 4,
             },
             1280: {
-              slidesPerView: 5,
+              slidesPerView: 8,
             }
           }}
           onSwiper={setSwiper}>

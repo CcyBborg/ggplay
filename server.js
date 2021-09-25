@@ -30,12 +30,14 @@ const usersRoute = require('./routes/users');
 const coachesRoute = require('./routes/coaches');
 const slotsRoute = require('./routes/slots');
 const billingRoute = require('./routes/billing');
+const adminRoute = require('./routes/admin');
 
 app.use('/games', gamesRoute);
 app.use('/users', usersRoute);
 app.use('/coaches', coachesRoute);
 app.use('/slots', slotsRoute);
 app.use('/billing', billingRoute);
+app.use('/admin', adminRoute);
 
 mongoose.connect(
     process.env.DB_CONNECTION,
