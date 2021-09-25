@@ -1,17 +1,18 @@
 const AdminBro = require('admin-bro')
+const AdminBroMongoose = require('@admin-bro/mongoose')
 const AdminBroExpress = require('@admin-bro/express')
-const AdminBroMongoose = require('admin-bro-mongoose')
 
-const mongoose = require('mongoose');
+const Lesson = require('../models/Lesson');
 
 
-const adminBro = new AdminBro({
-    databases: [mongoose],
-    rootPath: '/admin'
-});
+//Admin Bro
+AdminBro.registerAdapter(AdminBroMongoose)
 
-AdminBro.registerAdapter(AdminBroMongoose);
+const AdminBroOptions = {
+  resources: [Lesson],
+}
 
-const router = AdminBroExpress.buildRouter(adminBro);
+const adminBro = new AdminBro(AdminBroOptions)
+const router = AdminBroExpress.buildRouter(adminBro)
 
-module.exports = router;
+app.use(adminBro.options.rootPath, router)
