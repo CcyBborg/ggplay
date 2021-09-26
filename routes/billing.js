@@ -3,9 +3,8 @@ const Order = require('../models/Order');
 const User = require('../models/User');
 const LessonSlot = require('../models/LessonSlot');
 const { createChannel } = require('../discord-client');
-const crypto = require('crypto');
 const router = express.Router();
- 
+
 router.post('/notify', async (req, res) => {
     try {
         if (req.body.Status === 'REJECTED') {
