@@ -30,7 +30,7 @@ function GameSelect({
       </button>
       <ul className='list-inline row p-0 mb-0'>
         <Swiper
-          slidesPerView={2}
+          slidesPerView={1}
           navigation={{
             nextEl: '.coach-game-select__next',
             prevEl: '.coach-game-select__prev'
@@ -38,13 +38,13 @@ function GameSelect({
           activeSlideKey={selectedGame}
           breakpoints={{
             640: {
-              slidesPerView: 3,
+              slidesPerView: 2,
             },
             1000: {
               slidesPerView: 4,
             },
             1280: {
-              slidesPerView: 8,
+              slidesPerView: 5,
             }
           }}
           onSwiper={setSwiper}>

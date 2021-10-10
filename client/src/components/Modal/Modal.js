@@ -4,7 +4,6 @@ function Modal({
     title,
     children,
     size,
-    marginTop,
     onBack,
     onClose
 }) {
@@ -19,7 +18,7 @@ function Modal({
     const containerRef = useRef(null);
 
     const handleContainerClose = useCallback(event => {
-        if (containerRef.current === event.target) {
+        if (containerRef.current === event.target && onClose) {
             onClose();
         }
     }, [containerRef]);

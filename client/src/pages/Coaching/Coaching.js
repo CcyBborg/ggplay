@@ -73,31 +73,36 @@ function Coaching({
   return (
     <>
       <section className='content'>
-      <div className='banner pt-sm-5 pt-3 pb-sm-4 pb-3 mb-4'>
-        <div className='container d-sm-flex justify-content-between align-items-center'>
-            <div>
-              <h1 className='h2 text-white mb-3'>Обучение от&nbsp;топовых тренеров</h1>
-              <div style={{ maxWidth: '700px' }}>
-                <p className='lead mb-3 mt-3'>Онлайн-тренировки, разборы реплеев и&nbsp;командная игра с&nbsp;опытными&nbsp;тренерами.</p>
-                <ul className='pl-0 font-weight-light text-left'>
-                  <li className='mb-2'>
-                    <i className='fas fa-check mr-2 text-primary'></i>&nbsp;Запись всех уроков
-                  </li>
-                  <li className='mb-2'>
-                    <i className='fas fa-check mr-2 text-primary'></i>&nbsp;Опытные и проверенные тренеры
-                  </li>
-                  <li>
-                    <i className='fas fa-check mr-2 text-primary'></i>&nbsp;Персональный подход к каждому ученику
-                  </li>
-                </ul>
+        <div className='banner-bg pt-3 pb-5 mb-5'>
+          <div className='banner-container'>
+            <div className='d-flex justify-content-center flex-column-reverse flex-md-row'>
+              <div>
+                <h3 className='text-white mb-4 pt-5' style={{ fontSize: '35px' }}>Тренировки с&nbsp;профессионалами</h3>
+                <p className='lead text-white'>Онлайн-тренировки и&nbsp;разборы реплеев.<br />
+                  Командная игра с&nbsp;опытными тренерами.</p>
+                <button className='btn btn-hover mt-3 btn-banner btn-lg' onClick={() => history.push('/sign-up')}>Начать обучение</button>
+              </div>
+              <div>
+                <img width='340' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
               </div>
             </div>
-            <div class='ml-sm-5 mr-sm-5'>
-              <img width='320' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
-            </div>
-            </div>
+            <ul className='features-list pt-5'>
+              <li>
+                <h6>Проверенные тренеры</h6>
+                <p>Из ТОП 1% игроков</p>
+              </li>
+              <li>
+                <h6>Запись всех уроков</h6>
+                <p>Доступ к просмотру всегда</p>
+              </li>
+              <li>
+                <h6>Связь с тренерами 24/7</h6>
+                <p>Пообщайся прямо сейчас</p>
+              </li>
+            </ul>
           </div>
-        <div className='container pt-4 pb-5'>
+        </div>
+        <div className='container pb-5'>
           <GameSelect
             selectedGame={selectedGameId}
             gameList={games.gameList}
@@ -110,11 +115,11 @@ function Coaching({
             </div>
           ) : (
             <>
-              <div className='row'>
+              <div className='mt-4 mb-4 row align-items-center'>
                 <div className='col-sm col-12'>
-                  <h4 className='mt-4 mb-4'>Тренеры по {selectedGame.title}</h4>
+                  <h4 className='mb-3 m-md-0'>Тренеры по {selectedGame.title}</h4>
                 </div>
-                <div className='col-sm col-12 align-self-end'>
+                <div className='col-sm col-12'>
                   {selectedGame?.filters?.[0] && (
                     <div style={{
                       maxWidth: '600px',

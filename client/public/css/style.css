@@ -95,7 +95,7 @@ li.slide-item:hover .block-images {
 
 .img-box img {
   width: 310px;
-  height: 150px;
+  height: 160px;
   object-fit: cover;
   object-position: center;
 }
@@ -141,6 +141,8 @@ li.slide-item .block-images::before {
   position: absolute;
   pointer-events: none;
   content: "";
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -185,6 +187,8 @@ li.slide-item .block-images::after {
   bottom: 0;
   left: 0;
   right: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.90) 0%,
@@ -215,6 +219,7 @@ li.slide-item {
 }
 
 li.slide-item .block-images {
+  border-radius: 4px!important;
   position: relative;
   width: 100%;
   transition: all 0.45s ease 0s;
@@ -234,6 +239,7 @@ li.slide-item:hover {
 }
 
 li.slide-item:hover .block-images {
+  border-radius: 5px;
   border-left: 5px solid #e50914;
   transition: color border-color ease-in-out .8s!important;
   color: var(--iq-primary);
@@ -2037,22 +2043,27 @@ header .navbar ul li .sub-menu li:hover > a::before {
 }
 
 .coach-card {
-  background-color: rgba(41, 41, 41, 0.76);
-  border: 1px solid var(--iq-body-bg);
-  width: 280px;
+  width: 200px;
+  background-color: var(--iq-bg1);
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  border-radius: 4px;
 }
 
 .coach-card:hover {
-  background-color: rgba(35, 35, 35, 0.7);
   cursor: pointer;
   transition: all 0.4s ease 0s;
+  box-shadow: none;
 }
 
 .coach-card__img {
   position: relative;
-  width: 80px;
-  height: 80px;
-  border-radius: 5px;
+  width: 200px;
+  height: 210px;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: linear-gradient(transparent,#000);;
 }
 
 .coach-labels__list {
@@ -2655,7 +2666,7 @@ header .navbar ul li .sub-menu li:hover > a::before {
 /* Select */
 .react-select__control {
   color: var(--iq-body-text)!important;
-  border-radius: 0!important;
+  border-radius: 4px!important;
   border: none!important;
   background-color: rgba(41, 41, 41, 0.76)!important;
 }
@@ -2700,13 +2711,15 @@ header .navbar ul li .sub-menu li:hover > a::before {
   color: var(--iq-white)!important;
 }
 
-.banner ul {
-  list-style: none;
-}
-
 @media (max-width: 780px) {
   .slide-item {
     max-width: 310px!important;
+  }
+
+  .banner-container {
+    width: 100%!important;
+    padding: 15px;
+    text-align: center;
   }
 
   .react-calendar__tile {
@@ -2727,6 +2740,19 @@ header .navbar ul li .sub-menu li:hover > a::before {
 @media (max-width: 480px) {
   .coach-game-select__prev {
     left: -5px;
+  }
+
+  .features-list {
+    display: none!important;
+  }
+
+  .coach-card__img {
+    width: 100%;
+  }
+
+  .btn-banner {
+    display: block;
+    width: 100%;
   }
 
   .banner {
@@ -2751,6 +2777,8 @@ header .navbar ul li .sub-menu li:hover > a::before {
 
   .coach-card {
     width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .modal-container,
@@ -2839,6 +2867,10 @@ header .navbar ul li .sub-menu li:hover > a::before {
   z-index: 99999;
 }
 
+.btn {
+  border-radius: 4px!important;
+}
+
 .mobile-menu .menu-item .btn.btn-link {
   padding: 0;
 }
@@ -2891,13 +2923,45 @@ header .navbar ul li .sub-menu li:hover > a::before {
 }
 
 .slot-card__schedule {
-  border-right: 2px solid var(--iq-body-bg);
+  border-right: 1px solid var(--iq-body-bg);
 }
 
 .slot-card__coach-img {
   border-radius: 5px;
 }
 
-.banner {
+.banner-bg {
   background-color: var(--iq-bg1);
+}
+
+.banner-container {
+  width: 850px;
+  margin: 0 auto;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.features-list li {
+  width: 33%;
+  text-align: center;
+}
+
+.features-list li:not(:last-child) {
+  border-right: 1px solid var(--iq-black);
+}
+
+.features-list h6 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.features-list p {
+  font-size: 14px;
+  margin: 0;
 }

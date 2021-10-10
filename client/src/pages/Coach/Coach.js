@@ -33,12 +33,6 @@ function Coach({
   const [selectedLesson, setLesson] = useState(0);
   const [step, setStep] = useState(steps.INIT);
 
-  useEffect(() => {
-    if(step === steps.SCHEDULE && !user.info) {
-      history.push({ pathname: '/sign-in' });
-    }
-  }, [step, user.info]);
-
   if (paymentUrl) {
     window.open(paymentUrl, '_self');
   }
@@ -72,16 +66,23 @@ function Coach({
         </Modal>
       )}
       {step === steps.CONFIRM && (
-        <Modal title='Подтверджение тренировки' size='sm' onBack={() => setStep(steps.SCHEDULE)} onClose={history.goBack}>
-          <ConfirmStep
-            selectedSlot={selectedSlot}
-            coach={coach}
-            selectedLesson={selectedLesson}
-            onConfirm={() => {
-              paySlot(selectedSlot.source['_id']);
-            }}
-            onPrevStep={() => setStep(steps.SCHEDULE)} />
-        </Modal>
+        user.info ? (
+          <Modal title='Подтверджение тренировки' size='sm' onBack={() => setStep(steps.SCHEDULE)} onClose={history.goBack}>
+            <ConfirmStep
+              selectedSlot={selectedSlot}
+              coach={coach}
+              selectedLesson={selectedLesson}
+              onConfirm={() => {
+                paySlot(selectedSlot.source['_id']);
+              }}
+              onPrevStep={() => setStep(steps.SCHEDULE)} />
+          </Modal>
+        ) : (
+          <Modal size='xs' title='Присоединяйся к GGPlay'>
+            <a href='/sign-in' className='btn btn-secondary btn-block'>Вход</a>
+            <a href='/sign-up' className='btn btn-hover btn-block'>Регистрация</a>
+          </Modal>
+        )
       )}
     </>
   );
