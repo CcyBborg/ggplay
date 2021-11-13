@@ -8,6 +8,10 @@ import { fetchGames, fetchCoaches } from './actions';
 import GameSelect from './components/GameSelect/GameSelect';
 import Spinner from '../../components/Spinner/Spinner';
 import CoachCard from './components/CoachCard/CoachCard';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import rocketIcon from './images/rocket.svg';
+import foregroundImage from './images/coaching-foreground.png';
+import styles from './coaching.module.css';
 
 function Coaching({
   games,
@@ -72,36 +76,34 @@ function Coaching({
 
   return (
     <>
-      <section className='content'>
-        <div className='banner-bg pt-3 pb-5 mb-5'>
-          <div className='banner-container'>
-            <div className='d-flex justify-content-center flex-column-reverse flex-md-row'>
-              <div>
-                <h3 className='text-white mb-4 pt-5' style={{ fontSize: '35px' }}>Тренировки с&nbsp;профессионалами</h3>
-                <p className='lead text-white'>Онлайн-тренировки и&nbsp;разборы реплеев.<br />
-                  Командная игра с&nbsp;опытными тренерами.</p>
-                <button className='btn btn-hover mt-3 btn-banner btn-lg' onClick={() => history.push('/sign-up')}>Начать обучение</button>
+      <div className={styles.banner}>
+        <Container>
+          <Row>
+            <Col md='5' className={styles.bannerContent}>
+              <h1 className={styles.bannerHeader}>Тренировки&nbsp;с<br />профессионалами</h1>
+              <div className='d-flex'>
+                <Image className={styles.bannerRocket} src={rocketIcon} width='19' height='42' alt='GGPlay | Тренировки' />
+                <p className={styles.bannerParagraph}>
+                  Начни свой путь в&nbsp;киберспорт с&nbsp;лучшими индивидуальными и&nbsp;групповыми тренировками
+                </p>
               </div>
-              <div>
-                <img width='340' src='/images/coaching.png' alt='Тренировки у лучших киберспортсменов | GGPlay' />
-              </div>
-            </div>
-            <ul className='features-list pt-5'>
-              <li>
-                <h6>Проверенные тренеры</h6>
-                <p>Из ТОП 1% игроков</p>
-              </li>
-              <li>
-                <h6>Запись всех уроков</h6>
-                <p>Доступ к просмотру всегда</p>
-              </li>
-              <li>
-                <h6>Связь с тренерами 24/7</h6>
-                <p>Пообщайся прямо сейчас</p>
-              </li>
-            </ul>
-          </div>
-        </div>
+              <ul className={styles.bannerList}>
+                <li>Онлайн занятия</li>
+                <li>Связь с тренерами 24/7</li>
+                <li>Запись всех тренировок</li>
+              </ul>
+              <Button variant='primary' size='lg'>Начать обучение</Button>
+              <p className={styles.bannerSubscript}>Не понравилась тренировка? Напиши нам и мы вернем деньги.</p>
+            </Col>
+            <Col md='7' className='position-relative'>
+              <Image
+                src={foregroundImage}
+                className={styles.foregroundImage}
+                alt='GGPlay | Начни свой путь в киберспорт с лучшими индивидуальными и групповыми тренировками' />
+            </Col>
+          </Row>
+        </Container>
+        {/* <section className='content'>
         <div className='container pb-5'>
           <GameSelect
             selectedGame={selectedGameId}
@@ -171,7 +173,20 @@ function Coaching({
             </>
           )}
         </div>
-      </section>
+      </section> */}
+      </div>
+      <Container>
+        <GameSelect gameList={games.gameList} />
+      </Container>
+      <div className={styles.cta}>
+        <Container className='d-flex flex-column align-items-center'>
+          <h2 className='h1'>Уже готов</h2>
+          <h3>Освоить новый уровень игры</h3>
+          <Button className={styles.ctaButton} variant='primary' size='lg'>
+            Начать обучение
+          </Button>
+        </Container>
+      </div>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import { Container, Navbar, Nav, Row, Col } from 'react-bootstrap';
 import Copier from '../Copier/Copier';
 import Spinner from '../Spinner/Spinner';
 import AddReview from './components/AddReview/AddReview';
@@ -8,6 +9,9 @@ import ProfileButton from './components/ProfileButton/ProfileButton';
 import { fetchUserInfo } from './actions';
 import { postReview, logout } from './api';
 import Modal from '../Modal/Modal';
+import vkIcon from './images/vk.svg'
+import instagramIcon from './images/instagram.svg'
+import discordIcon from './images/discord.svg'
 
 function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
@@ -24,7 +28,6 @@ function Layout({ user, children, fetchUserInfo }) {
         }
     }, [notification]);
 
-    const [isMobileMenu, setIsMobileMenu] = useState(false);
     const [isNotification, setIsNotification] = useState(false);
 
     if (user.isLoading) {
@@ -46,7 +49,30 @@ function Layout({ user, children, fetchUserInfo }) {
 
     return (
         <>
-            <header id='main-header'>
+            <Navbar bg='dark' variant='dark' sticky='top' expand='lg'>
+                <Container>
+                    <Navbar.Brand href="/">
+                        <img
+                            src='/images/logo.png'
+                            width='100'
+                            className='d-inline-block align-top'
+                            alt='GGPlay'
+                        />
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id='responsive-navbar-nav'>
+                        <Nav className='me-auto'>
+                            <Nav.Link href='/courses'>Мастер-классы</Nav.Link>
+                            <Nav.Link href='/coaching'>Тренировки</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href='/sign-up'>Регистрация</Nav.Link>
+                            <Nav.Link href='/sign-in'>Вход</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+            {/* <header id='main-header'>
                 <div className='main-header'>
                     <div className='container'>
                         <div className='row'>
@@ -118,122 +144,36 @@ function Layout({ user, children, fetchUserInfo }) {
                         </div>
                     </div>
                 </div>
-            </header>
-            <div className='content'>
+            </header> */}
+            {/* <div className='content'>
                 {children}
-            </div>
-            <footer id='contact' className='footer-one iq-bg-dark'>
-                <div className='footer-top'>
-                    <div className='container'>
-                        <div className='row footer-standard'>
-                            <div className='col-lg-10'>
-                                <div className='widget text-left'>
-                                    <div className='menu-footer-link-1-container'>
-                                        <ul id='menu-footer-link-1' className='menu p-0'>
-                                            <li>
-                                                <a href='/terms-of-service'>Пользовательское соглашение</a>
-                                            </li>
-                                            <li>
-                                                <a href='/confidential-policy'>Политика конфиденциальности</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className='widget text-left'>
-                                    <div className='textwidget'>
-                                        <p><small>© 2021 GGPLAY. Все права защищены. Любое использование фото, аудио, видео и графических материалов, в том числе частичное, без письменного разрешения правообладателя запрещено.
-                                        </small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-lg-2 col-md-6 mt-4 mt-lg-0'>
-                                <h6 className='footer-link-title'>
-                                    Мы&nbsp;в&nbsp;соцсетях&nbsp;:
-                                </h6>
-                                <ul className='info-share'>
-                                    <li>
-                                        <a target='_blank' href='https://vk.com/ggplay_official'>
-                                            <i className='fab fa-vk'></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target='_blank' href='https://www.instagram.com/ggplay.ru/'>
-                                            <i className='fab fa-instagram'></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a target='_blank' href='https://discord.gg/NnUWEmJgfy'>
-                                            <i className='fab fa-discord'></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div> */}
+            <main>
+                {children}
+            </main>
+            <footer className='footer'>
+                <Container>
+                    <Row className='mb-5'>
+                        <Col lg='10' className='d-flex'>
+                            <Nav.Link className='pl-0' href='/terms-of-service'>Пользовательское соглашение</Nav.Link>
+                            <Nav.Link href='/confidential-policy'>Политика конфиденциальности</Nav.Link>
+                        </Col>
+                        <Col lg='2' className='d-flex justify-content-between'>
+                            <a target='_blank' href='https://vk.com/ggplay_official'>
+                                <img src={vkIcon} width='32' height='32' />
+                            </a>
+                            <a target='_blank' href='https://www.instagram.com/ggplay.ru/'>
+                                <img src={instagramIcon} width='32' height='32' />
+                            </a>
+                            <a target='_blank' href='https://discord.gg/NnUWEmJgfy'>
+                                <img src={discordIcon} width='32' height='32' />
+                            </a>
+                        </Col>
+                    </Row>
+                    <p><small>© 2021 GGPLAY. Все права защищены. Любое использование фото, аудио, видео и графических материалов, в том числе частичное, без письменного разрешения правообладателя запрещено.
+                    </small></p>
+                </Container>
             </footer>
-
-            {isMobileMenu && (
-                <div className='mobile-menu'>
-                    <div className='mobile-header text-center'>
-                        <img className='mobile-header__logo' src='/images/small-logo.png' alt='GGPlay' />
-                        <button className='btn btn-link close-mobile-menu' type='button' onClick={() => setIsMobileMenu(false)}>
-                            <i className='fas fa-times'></i>
-                        </button>
-                    </div>
-                    <nav>
-                        <ul className='d-flex align-items-center flex-column list-inline m-0'>
-                            <li className='menu-item'>
-                                <a className='btn btn-link'>
-                                    Курсы <sup style={{
-                                        fontSize: '10px',
-                                        color: 'var(--iq-primary)',
-                                        position: 'relative',
-                                        top: '-10px'
-                                    }}>Скоро</sup>
-                                </a>
-                            </li>
-                            <li className='menu-item'>
-                                <a href='/coaching' className='btn btn-link'>Тренировки</a>
-                            </li>
-                        </ul>
-                        {user.info ? (
-                            <>
-                                <ul className='d-flex flex-column align-items-center justify-content-center list-inline m-0'>
-                                    <li className='menu-item'>
-                                        <a href='/dashboard' className='btn btn-link'>
-                                            Мои тренировки
-                                        </a>
-                                    </li>
-                                    <li className='menu-item'>
-                                        <ProfileButton
-                                            nickname={user.info.nickname}
-                                            logo={user.info.profile.game?.logo}
-                                            onLogout={() => {
-                                                logout().then(() => {
-                                                    window.open('https://ggplay.ru/coaching', '_self');
-                                                });
-                                            }} />
-                                    </li>
-                                </ul>
-                            </>
-                        ) : (
-                            <ul className='d-flex align-items-center flex-column list-inline m-0'>
-                                <li className='menu-item'>
-                                    <a href='/sign-up' className='btn btn-link'>
-                                        Регистрация
-                                    </a>
-                                </li>
-                                <li className='menu-item'>
-                                    <a href='/sign-in' className='btn btn-link'>
-                                        Вход
-                                    </a>
-                                </li>
-                            </ul>
-                        )}
-                    </nav>
-                </div>
-            )}
 
             {isNotification && (
                 notification.type === 'SOON' ? (
