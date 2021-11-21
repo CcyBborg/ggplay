@@ -1,6 +1,8 @@
+import styles from './spinner.module.css';
+
 function Spinner() {
     return (
-        <div className='lds-spinner'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class={styles['lds-dual-ring']}></div>
     );
 }
 

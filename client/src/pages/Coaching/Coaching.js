@@ -119,7 +119,9 @@ function Coaching({
                   alt={`${selectedGame.title} | GGPlay`}
                   className={styles.selectedGameBanner} />
               </div>
-              {coaches.isLoading ? (<p>isLoading</p>) : (
+              {coaches.isLoading ? (
+                <Spinner />
+              ) : (
                 <Row className={styles.coachList}>
                   {coachList.map(coach => (
                     <Col md='4'>
