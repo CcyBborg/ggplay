@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import StarRatings from 'react-star-ratings';
-import Modal from '../../../Modal/Modal';
+import { Modal } from 'react-bootstrap';
 
 function AddReview({
     lesson,

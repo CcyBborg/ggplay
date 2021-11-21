@@ -37,6 +37,9 @@ app.use('/coaches', coachesRoute);
 app.use('/slots', slotsRoute);
 app.use('/billing', billingRoute);
 
+process.on('unhandledRejection', error => console.error('Promise rejection:', error));
+
+
 mongoose.connect(
     process.env.DB_CONNECTION,
     { useUnifiedTopology: true },

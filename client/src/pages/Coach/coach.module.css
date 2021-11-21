@@ -1,0 +1,13 @@
+.selectedDate {
+    color: #767698;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+
+.selectedTime {
+    color: #EBEBEB;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0;
+}

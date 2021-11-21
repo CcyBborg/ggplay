@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
   withRouter
 } from 'react-router-dom';
-import Select from 'react-select'
 import { fetchGames, fetchCoaches } from './actions';
 import GameSelect from './components/GameSelect/GameSelect';
 import Spinner from '../../components/Spinner/Spinner';
@@ -12,6 +11,7 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import rocketIcon from './images/rocket.svg';
 import foregroundImage from './images/coaching-foreground.png';
 import styles from './coaching.module.css';
+import ArrowIcon from '../../components/icons/Arrow/Arrow';
 
 function Coaching({
   games,
@@ -23,6 +23,7 @@ function Coaching({
   fetchCoaches
 }) {
   const [selectedGameId, setSelectedGame] = useState(null);
+  console.log(selectedGameId);
   let selectedGame = null;
 
   let coachList = null;
@@ -41,9 +42,6 @@ function Coaching({
         setSelectedGame(query.get('game'));
       } else if (user.info) {
         setSelectedGame(user.info.profile.game['_id']);
-      } else {
-        history.push({ search: `game=${games.gameList[0]['_id']}` })
-        setSelectedGame(games.gameList[0]['_id']);
       }
     }
   }, [games.gameList]);
@@ -103,80 +101,46 @@ function Coaching({
             </Col>
           </Row>
         </Container>
-        {/* <section className='content'>
-        <div className='container pb-5'>
-          <GameSelect
-            selectedGame={selectedGameId}
-            gameList={games.gameList}
-            onSelect={setSelectedGame}
-            openOnFocus={true}
-            autofocus={true} />
-          {coaches.isLoading ? (
-            <div className='d-flex align-items-center justify-content-center' style={{ height: '400px' }}>
-              <Spinner />
-            </div>
-          ) : (
-            <>
-              <div className='mt-4 mb-4 row align-items-center'>
-                <div className='col-sm col-12'>
-                  <h4 className='mb-3 m-md-0'>Тренеры по {selectedGame.title}</h4>
-                </div>
-                <div className='col-sm col-12'>
-                  {selectedGame?.filters?.[0] && (
-                    <div style={{
-                      maxWidth: '600px',
-                      width: '100%'
-                    }}>
-                      <Select
-                        className='react-select-container'
-                        classNamePrefix='react-select'
-                        isMulti
-                        openMenuOnFocus={true}
-                        placeholder={selectedGame.filters[0].name}
-                        options={selectedGame.filters[0].tags.map(f => ({
-                          value: f.key,
-                          label: f.label
-                        }))}
-                        noOptionsMessage={() => 'Нет вариантов'}
-                        onChange={setSelectedTags} />
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className='coach-list-block position-relative pt-1'>
-                <div className='trending-custom-tab'>
-                  <div className='pt-4'>
-                    <div className='row'>
-
-                      {coachList?.length ? coachList.map(coach => (
-                        <div className='col-xs-12 col-md-auto mb-4' key={coach['_id']}>
-                          <CoachCard
-                            id={coach['_id']}
-                            title={coach.title}
-                            price={coach.price}
-                            rating={coach.rating}
-                            status={coach.status}
-                            reviewsLength={coach.reviewsLength}
-                            img={coach.img} />
-                        </div>
-                      )) : (
-                        <div className='banner p-4'>
-                          <p className='lead p-3'>Таких тренеров пока нет</p>
-                          <p className='text text-primary'>Но мы уже их ищем</p>
-                        </div>
-                      )}
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-      </section> */}
       </div>
-      <Container>
-        <GameSelect gameList={games.gameList} />
+      <Container className='mt-3'>
+        {selectedGameId ? (
+          <>
+            <div className='d-flex mb-3'>
+              <h4>Выбери игру</h4>
+              <Image src={selectedGame.logo} width='32' height='32' className='mx-3' />
+              <ArrowIcon variant='down' />
+            </div>
+            <div className='d-flex'>
+              <div>
+                <Image
+                  src={selectedGame.banner}
+                  width='296'
+                  height='500'
+                  alt={`${selectedGame.title} | GGPlay`}
+                  className={styles.selectedGameBanner} />
+              </div>
+              {coaches.isLoading ? (<p>isLoading</p>) : (
+                <Row className={styles.coachList}>
+                  {coachList.map(coach => (
+                    <Col md='4'>
+                      <CoachCard
+                        id={coach['_id']}
+                        title={coach.title}
+                        price={coach.price}
+                        rating={coach.rating}
+                        status={coach.status}
+                        reviewsLength={coach.reviewsLength}
+                        img={coach.img} />
+                    </Col>
+                  ))}
+                </Row>
+              )
+              }
+            </div>
+          </>
+        ) : (
+          <GameSelect gameList={games.gameList} onSelect={setSelectedGame} />
+        )}
       </Container>
       <div className={styles.cta}>
         <Container className='d-flex flex-column align-items-center'>

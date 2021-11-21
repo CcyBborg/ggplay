@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Image, Button } from 'react-bootstrap';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import keyboardIcon from '../../images/keyboard.png';
+import arrowRightIcon from './images/arrow-right.svg';
+import arrowLeftIcon from './images/arrow-left.svg';
+import styles from './calendar-select.module.css';
 
 function checkTime(i) {
   if (i < 10) {
@@ -21,7 +26,10 @@ function compareTime(a, b) {
 
 function CalendarStep({
   slots,
-  onNextStep
+  lessonTitle,
+  selectedSlot,
+  onNextStep,
+  onChangeLesson
 }) {
   const formattedSlots = slots.map(s => {
     const date = new Date(s.timestamp);
@@ -51,6 +59,22 @@ function CalendarStep({
 
   return (
     <>
+      <div className={styles.lessonType}>
+        <div className='d-flex'>
+          <div>
+            <Image className={styles.lessonIcon} src={keyboardIcon} width='28px' />
+          </div>
+          <div>
+            <h4 className={styles.lessonTypeTitle}>Тип тренировки</h4>
+            <p className={styles.lessonTitle}>{lessonTitle}</p>
+          </div>
+        </div>
+        <Button variant='link' className={styles.changeLesson} onClick={onChangeLesson}>
+          Изменить
+        </Button>
+      </div>
+      <div className={styles.divider} />
+      <div className='mt-5'>
       <Calendar
         className='calendar'
         locale='ru'
@@ -71,28 +95,31 @@ function CalendarStep({
         )}
         onClickDay={date => setSelectedDate(date)}
         nextLabel={(
-          <i className='fas fa-chevron-right'></i>
+          <Image src={arrowRightIcon} width='32' height='32' />
         )}
         prevLabel={(
-          <i className='fas fa-chevron-left'></i>
+          <Image src={arrowLeftIcon} width='32' height='32' />
         )} />
-      {timeSlots && (
-        <div className='mt-3 mb-3'>
-          <h5 className='mb-2'>Выберите время</h5>
-          <p>Доступное время на <span className='font-weight-bold text-white'>{selectedDate.toLocaleString('ru', {
+        </div>
+      {timeSlots && !selectedSlot && (
+        <>
+        <div className={styles.divider} />
+        <div className='mt-5'>
+          <p className={styles.timeText}>Время доступное на <span className='text-white text-bold'>{selectedDate.toLocaleString('ru', {
             month: 'long',
             day: 'numeric'
           })}</span></p>
-          <ul className='list-unstyled d-flex'>
+          <div className='list-unstyled d-flex'>
             {timeSlots.sort(compareTime).map(slot => (
-              <li ket={slot._id} className='mr-1'>
-                <button className='btn-secondary' onClick={() => onNextStep(slot)}>
+              <li key={slot._id}>
+                <Button variant='secondary' size='sm' onClick={() => onNextStep(slot)}>
                   {checkTime(slot.hours)}:{checkTime(slot.minutes)}
-                </button>
+                </Button>
               </li>
             ))}
-          </ul>
+          </div>
         </div>
+        </>
       )}
     </>
   );

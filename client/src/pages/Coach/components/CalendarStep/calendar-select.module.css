@@ -1,0 +1,45 @@
+.lessonType {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.lessonTypeTitle {
+    color: #767698;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: none;
+}
+
+.divider {
+    height: 3px;
+    background-color: #050713;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 20px 0;
+}
+
+.timeText {
+    color: #767698;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.lessonTitle {
+    color: #EBEBEB;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.lessonIcon {
+    margin-right: 10px;
+    margin-top: -6px;
+}
+
+.changeLesson {
+    padding: 0!important;
+    color: #767698!important;
+}

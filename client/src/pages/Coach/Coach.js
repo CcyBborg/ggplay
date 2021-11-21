@@ -2,16 +2,10 @@ import { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCoach, paySlot } from './actions';
+import { Modal, Button } from 'react-bootstrap';
 import CalendarStep from './components/CalendarStep/CalendarStep';
-import ConfirmStep from './components/ConfirmStep/ConfirmStep';
 import InitStep from './components/InitStep/InitStep';
-import Modal from '../../components/Modal/Modal';
-
-const steps = {
-  INIT: 'INIT',
-  SCHEDULE: 'SCHEDULE',
-  CONFIRM: 'CONFIRM'
-};
+import styles from './coach.module.css';
 
 function Coach({
   coach,
@@ -31,7 +25,9 @@ function Coach({
   const [selectedSlot, setSelectedSlot] = useState(null);
 
   const [selectedLesson, setLesson] = useState(0);
-  const [step, setStep] = useState(steps.INIT);
+  const [dateStep, setDateStep] = useState(false);
+
+  const selectedDate = selectedSlot && new Date(selectedSlot.source.timestamp);
 
   if (paymentUrl) {
     window.open(paymentUrl, '_self');
@@ -45,44 +41,47 @@ function Coach({
 
   return (
     <>
-      {step === steps.INIT && (
-        <Modal title='Профиль тренера' onClose={history.goBack}>
-          <InitStep
-            coach={coach}
-            isLoading={isLoading}
-            selectedLesson={selectedLesson}
-            onSelectLesson={setLesson}
-            onNextStep={() => setStep(steps.SCHEDULE)} />
-        </Modal>
-      )}
-      {step === steps.SCHEDULE && (
-        <Modal title='Выбери дату тренировки' size='sm' onBack={() => setStep(steps.INIT)} onClose={history.goBack}>
-          <CalendarStep
-            slots={coach.lessons[selectedLesson].slots?.filter(slot => !slot.user && new Date(slot.timestamp) - new Date() > 15)}
-            onNextStep={slot => {
-              setSelectedSlot(slot);
-              setStep(steps.CONFIRM);
-            }} />
-        </Modal>
-      )}
-      {step === steps.CONFIRM && (
-        user.info ? (
-          <Modal title='Подтверджение тренировки' size='sm' onBack={() => setStep(steps.SCHEDULE)} onClose={history.goBack}>
-            <ConfirmStep
-              selectedSlot={selectedSlot}
+      {!dateStep ? (
+        <Modal size='lg' show={true} onHide={history.goBack}>
+          <Modal.Header closeButton>
+            <Modal.Title>Профиль тренера</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <InitStep
               coach={coach}
+              isLoading={isLoading}
               selectedLesson={selectedLesson}
-              onConfirm={() => {
-                paySlot(selectedSlot.source['_id']);
+              onSelectLesson={setLesson}
+              onNextStep={() => setDateStep(true)} />
+          </Modal.Body>
+        </Modal>
+      ) : (
+        <Modal size='md' show={true} onHide={() => setDateStep(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Выбери дату тренировки</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <CalendarStep
+              slots={coach.lessons[selectedLesson].slots?.filter(slot => !slot.user && new Date(slot.timestamp) - new Date() > 15)}
+              lessonTitle={coach.lessons[selectedLesson].title}
+              selectedSlot={selectedSlot}
+              onNextStep={slot => {
+                setSelectedSlot(slot);
               }}
-              onPrevStep={() => setStep(steps.SCHEDULE)} />
-          </Modal>
-        ) : (
-          <Modal size='xs' title='Присоединяйся к GGPlay'>
-            <a href='/sign-in' className='btn btn-secondary btn-block'>Вход</a>
-            <a href='/sign-up' className='btn btn-hover btn-block'>Регистрация</a>
-          </Modal>
-        )
+              onChangeLesson={() => setDateStep(false)} />
+          </Modal.Body>
+          {selectedSlot && (
+            <Modal.Footer className='d-flex justify-content-between'>
+              <div>
+                <p className={styles.selectedDate}>Четверг, 11 ноября 2021</p>
+                <p className={styles.selectedTime}>12:30</p>
+              </div>
+              <Button variant='primary' onClick={() => paySlot(selectedSlot.source['_id'])}>
+                Подтвердить запись
+              </Button>
+            </Modal.Footer>
+          )}
+        </Modal>
       )}
     </>
   );

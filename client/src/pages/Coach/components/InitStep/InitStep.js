@@ -1,6 +1,10 @@
-import LessonSelect from '../LessonSelect/LessonSelect';
+import { Image, Button, Badge, ListGroup } from 'react-bootstrap';
+import StartRatings from 'react-star-ratings';
 import Spinner from '../../../../components/Spinner/Spinner';
-import ReviewCount from '../../../../components/ReviewCount/ReviewCount';
+import styles from './coach-info.module.css';
+import keyboardImage from '../../images/keyboard.png';
+import lessonItemIcon from './images/lesson-item.svg';
+import selectedLessonItemIcon from './images/selected-lesson-item.svg';
 
 function InitStep({
   isLoading,
@@ -10,6 +14,7 @@ function InitStep({
   onNextStep
 }) {
   const tags = coach?.game.filters[0]?.tags.filter(t => coach.tags.includes(t.key));
+  const rating = coach && coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length;
 
   return (
     <>
@@ -19,95 +24,124 @@ function InitStep({
         </div>
       ) : (
         <>
-          <div className='coach-info pb-3 d-flex'>
-            <img
-              className='coach-info__img'
-              src={coach.img}
-              alt={`Тренер ${coach.title} | GGPlay`} />
-            <div className='ml-3 flex-fill'>
-              <div className='d-flex justify-content-between align-items-start'>
-                <div>
-                  <h5>{coach.title}</h5>
-                  <div className='pt-1 text text-secondary font-weight-bold'>
-                    {coach.status}
-                  </div>
-                </div>
-                <div className='d-flex align-items-start'>
-                  <ul
-                    className='
-                    coach-rating
-                    p-0
-                    m-0
-                    list-inline
-                    text-primary
-                    d-flex
-                    align-items-center
-                    justify-content-left
-                  '
-                  >
-                    <li>
-                      <i className='fa fa-star' aria-hidden='true'></i>
-                    </li>
+          <div className={styles.header}>
+            <div>
+              <Image
+                src={coach.img}
+                className={styles.avatar}
+                alt={`Тренер ${coach.title} | GGPlay`}
+                width='122'
+                height='122' />
+            </div>
+            <div className={`flex-fill d-flex jusitify-content-between ${styles.info}`}>
+              <div>
+                <h3 className={styles.title}>{coach.title}</h3>
+                <div className={styles.attribute}>Ранг</div>
+                <p className='mb-0'>{coach.status}</p>
+                {tags && (
+                  <ul className={styles.tags}>
+                    {tags.map(t => (
+                      <li key={t.key} className={styles.tag}>
+                        <Badge bg='secondary'>{t.label}</Badge>
+                      </li>
+                    ))}
                   </ul>
-                  <span className='text text-secondary ml-2'>
-                    {(coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length).toFixed(1)}
-                    <br />
-                    <ReviewCount reviewsLength={coach.reviews.length} />
-                  </span>
-                </div>
+                )}
               </div>
-              {tags && (
-                <ul className='coach-labels__list d-flex mt-1 flex-wrap'>
-                  {tags.map(t => (
-                    <li key={t.key} className='mr-1'>
-                      <span
-                        className='badge border border-secondary text-secondary'
-                      >{t.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <div className={styles.meta}>
+                <div className={styles.attribute}>Рейтинг</div>
+                <div className='d-flex align-items-start'>
+                  <StartRatings
+                    starRatedColor='#E50A48'
+                    starEmptyColor='#767698'
+                    starDimension='20px'
+                    starSpacing='2px'
+                    rating={rating}
+                    numberOfStars={5}
+                    name='rating' />
+                  <span className={styles.ratingCount}>{rating.toFixed(1)}</span>
+                </div>
+                <div className={styles.attrSep}>36 проведённых тренировок</div>
+              </div>
             </div>
           </div>
-          <div className='coach-booking pt-3 pb-3'>
-            <p className='text tex-secondary text-center'>Выберите вид тренировки</p>
-            <LessonSelect
-              list={coach.lessons}
-              selectedLesson={selectedLesson}
-              onSelect={onSelectLesson} />
-            <button className='btn btn-hover btn-lg btn-schedule-coach mt-3' onClick={onNextStep}>
-              <i className='far fa-calendar-alt mr-4'></i> Запланировать урок
-            </button>
+          <div className={styles.divider} />
+          <div className='mt-5'>
+            <div className='d-flex align-items-center mb-3'>
+              <Image className={styles.chooseLessonIcon} src={keyboardImage} width='28px' />
+              <p className={styles.chooseLessonTitle}>Выбери вид тренировки</p>
+            </div>
+            <ListGroup as='ul' className={styles.lessons}>
+              {coach.lessons.map((lesson, i) => (
+                <ListGroup.Item as='li'
+                  key={lesson._id}
+                  className={`${styles.lesson} ${i === selectedLesson ? styles.selectedLesson : ''}`}
+                  onClick={() => onSelectLesson(i)}>
+                  <div className='me-auto d-flex'>
+                    <Image className={styles.lessonIcon} src={i === selectedLesson ? selectedLessonItemIcon : lessonItemIcon} width='28' height='28' />
+                    <div>
+                      <h5 className={styles.lessonTitle}>{lesson.title}</h5>
+                      <p className={styles.lessonDescription}>{lesson.description}</p>
+                    </div>
+                  </div>
+                  <div className='d-flex flex-column align-items-end'>
+                    <span className={styles.lessonPrice}>{lesson.price}&nbsp;₽</span>
+                    {lesson.duration && (
+                      <span className={styles.lessonDuration}>{lesson.duration}&nbsp;минут</span>
+                    )}
+                  </div>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+            <div className='d-grid'>
+              <Button variant='primary' size='lg' block onClick={onNextStep}>
+                Запланировать урок
+              </Button>
+            </div>
           </div>
-          <div className='pt-3 mb-4'>
-            <h6 className='mb-3'>О себе:</h6>
-            <p style={{ whiteSpace: 'pre-wrap' }}>{coach.about}</p>
+          <div className={styles.divider} />
+          <div className='mt-5'>
+            <h6>О себе:</h6>
+            <p className={styles.about}>{coach.about}</p>
           </div>
-          <div className='coach-reviews mt-3'>
+          <div className={styles.divider} />
+          <div className={styles.reviewsBlock}>
             <h6>Отзывы:</h6>
             {coach.reviews?.length ? (
-              <ul className='reviews'>
+              <ul>
                 {coach.reviews.map(r => (
-                  <li key={r['_id']} className='review-item pt-3'>
-                    <ul
-                      className='
-                                    coach-rating
-                                    p-0
-                                    m-0
-                                    list-inline
-                                    text-primary
-                                    d-flex
-                                    align-items-center
-                                    justify-content-left
-                                  '
-                    >
-                      {[...Array(r.rating)].map(i => (
-                        <li key={i}>
-                          <i className='fa fa-star' aria-hidden='true'></i>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className='mt-2'>{r.comment}</p>
+                  <li key={r['_id']} className={styles.comment}>
+                    <div className='d-flex'>
+                      <div>
+                        <Image
+                          className={styles.commentImg}
+                          src='/images/small-logo.png'
+                          width='45'
+                          height='45' />
+                      </div>
+                      <div>
+                        <span className={styles.commentAuthor}>demonslayer3000</span>
+                        <div className='d-flex'>
+                          <StartRatings
+                            starRatedColor='#E50A48'
+                            starEmptyColor='#767698'
+                            starDimension='20px'
+                            starSpacing='2px'
+                            rating={r.rating}
+                            numberOfStars={5}
+                            name='rating' />
+                          <span className={styles.commentDate}>
+                            {new Date(r.timestamp).toLocaleString('ru', {
+                              hour: '2-digit',
+                              minute: '2-digit',
+                              month: 'long',
+                              day: 'numeric',
+                            })}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className={styles.commentContent}>{r.comment}</p>
                   </li>
                 ))}
               </ul>

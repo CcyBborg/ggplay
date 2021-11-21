@@ -13,6 +13,10 @@ const GameSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    banner: {
+        type: String,
+        required: true
+    },
     logo: {
         type: String,
         required: true

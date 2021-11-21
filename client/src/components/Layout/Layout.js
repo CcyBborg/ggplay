@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { Container, Navbar, Nav, Row, Col } from 'react-bootstrap';
+import { Container, Navbar, Nav, Row, Col, Modal } from 'react-bootstrap';
 import Copier from '../Copier/Copier';
 import Spinner from '../Spinner/Spinner';
 import AddReview from './components/AddReview/AddReview';
 import ProfileButton from './components/ProfileButton/ProfileButton';
 import { fetchUserInfo } from './actions';
 import { postReview, logout } from './api';
-import Modal from '../Modal/Modal';
 import vkIcon from './images/vk.svg'
 import instagramIcon from './images/instagram.svg'
 import discordIcon from './images/discord.svg'

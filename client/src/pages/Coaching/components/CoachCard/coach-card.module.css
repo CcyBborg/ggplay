@@ -1,0 +1,43 @@
+.root:hover {
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #1D1F38;
+}
+
+.avatar {
+    border-top-left-radius: 5px;
+}
+
+.info {
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.about {
+    background-color: #101221;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-top: 3px;
+    padding: 7.5px 15px;
+    height: 142px;
+}
+
+.attribute {
+    color: #767698;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.ratingCount {
+    font-size: 14px;
+    line-height: 20px;
+    color: #767698;
+    margin-left: 5px;
+}
