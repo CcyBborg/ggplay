@@ -29,7 +29,8 @@ function CalendarStep({
   lessonTitle,
   selectedSlot,
   onNextStep,
-  onChangeLesson
+  onChangeLesson,
+  onSetSelectedDate
 }) {
   const formattedSlots = slots.map(s => {
     const date = new Date(s.timestamp);
@@ -93,7 +94,10 @@ function CalendarStep({
             )
           )
         )}
-        onClickDay={date => setSelectedDate(date)}
+        onClickDay={date => {
+          onSetSelectedDate();
+          setSelectedDate(date);
+        }}
         nextLabel={(
           <Image src={arrowRightIcon} width='32' height='32' />
         )}

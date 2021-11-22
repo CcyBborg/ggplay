@@ -68,7 +68,11 @@ function Coach({
               onNextStep={slot => {
                 setSelectedSlot(slot);
               }}
-              onChangeLesson={() => setDateStep(false)} />
+              onSetSelectedDate={() => setSelectedSlot(null)}
+              onChangeLesson={() => {
+                setSelectedSlot(null);
+                setDateStep(false);
+              }} />
           </Modal.Body>
           {selectedSlot && (
             <Modal.Footer className='d-flex justify-content-between'>
