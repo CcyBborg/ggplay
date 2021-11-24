@@ -16,6 +16,7 @@ import Layout from './components/Layout/Layout';
 import Coach from './pages/Coach/Coach';
 import Dashboard from './pages/Dashboard/Dashboard';
 import SlotBooked from './pages/SlotBooked/SlotBooked';
+import Course from './pages/Course/Course';
 import TermsOfService from './pages/TermsOfService/TermsOfService';
 import { useEffect } from 'react';
 
@@ -57,6 +58,14 @@ function App({ history }) {
                 <title>Тренировки | GGPlay</title>
               </Helmet>
               <Coaching />
+            </Layout>
+          </Route>
+          <Route path='/course'>
+            <Layout>
+              <Helmet>
+                <title>Мастер-класс Dota2 | GGPlay</title>
+              </Helmet>
+              <Course />
             </Layout>
           </Route>
           <Route path='/dashboard'>

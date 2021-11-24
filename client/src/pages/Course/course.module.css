@@ -1,0 +1,95 @@
+.banner {
+    height: 750px;
+    padding: 66px 0 192px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #101221 34.93%, rgba(16, 18, 33, 0.9) 41.5%, rgba(16, 18, 33, 0.6) 52.62%, rgba(16, 18, 33, 0) 65.48%, rgba(16, 18, 33, 0) 100%);
+}
+
+.mainTitle {
+    color: #101221;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 60px;
+    text-shadow: -1px -1px 0 #EBEBEB, 1px -1px 0 #EBEBEB, -1px 1px 0 #EBEBEB, 1px 1px 0 #EBEBEB;
+    margin-bottom: 45px;
+}
+
+.banner .trailerBtn {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    text-transform: uppercase;
+    position: absolute;
+    right: 15%;
+    bottom: 30%;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: .4s ease-out;
+    border: none;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.bannerInfo {
+    max-width: 500px;
+}
+
+.banner .trailerBtn:hover {
+    background: rgba(0, 0, 0, 0.4)!important;
+}
+
+.trailerIcon {
+    margin-bottom: 10px;
+}
+
+.ctaMeta {
+    color: #767698;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 20px;
+}
+
+.feature {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #EBEBEB;
+}
+
+.mainTitleBold {
+    text-shadow: none;
+    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about {
+    font-size: 20px;
+    line-height: 24px;
+    color: #EBEBEB;
+    margin: 40px 0;
+}
+
+.video {
+    position: absolute;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    min-width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+.finalCta {
+    background: linear-gradient(90deg, #D31820 2.5%, #D01871 97.5%);
+    padding: 40px;
+    border-radius: 5px;
+}

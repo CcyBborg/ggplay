@@ -11,6 +11,20 @@
     cursor: pointer;
   }
 
+  .btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: content-box;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: absolute;
+    right: -28px;
+    top: 0;
+  }
+
   .btn {
     font-weight: 500;
     font-size: 14px;
