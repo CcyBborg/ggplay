@@ -15,7 +15,7 @@ function GameSelect({
               <Image src={game.img} />
               <div className={styles.overlay}>
                 <div className='mb-3'>
-                <Image width='80' height='80' src={game.logo} alt={`GGPlay | ${game.title}`} />
+                  <Image width='80' height='80' src={game.logo} alt={`GGPlay | ${game.title}`} />
                 </div>
                 <h4>{game.title}</h4>
               </div>

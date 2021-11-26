@@ -28,6 +28,7 @@
     bottom: 15px;
     left: 15px;
     right: 15px;
+    min-width: 100px;
     opacity: 0;
     transition: .5s ease;
     background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);

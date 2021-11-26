@@ -1,0 +1,20 @@
+.faqList {
+
+}
+
+.faqItem {
+    background-color: #101221!important;
+    border-radius: 5px!important;
+    padding: 25px;
+    margin-bottom: 20px!important;
+}
+
+.faqItemHeader > * {
+    background: #101221!important;
+    color: #EBEBEB!important;
+    font-weight: 500!important;
+    font-size: 20px!important;
+    line-height: 29px!important;
+    padding: 0!important;
+    margin: 0!important;
+}
