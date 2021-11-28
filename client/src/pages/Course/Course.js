@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Vimeo from '@u-wave/react-vimeo';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import Comments from './components/Comments/Comments';
 import FAQSection from './components/FAQSection/FAQSection';
@@ -14,6 +15,7 @@ import styles from './course.module.css';
 
 function Course() {
     const [isTrailer, setIsTrailer] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     return (
         <>
@@ -88,7 +90,11 @@ function Course() {
                     <div className='d-flex justify-content-between'>
                         <div>
                             <div className={styles.playerComments}>
-                                <div className={styles.placeholder}>
+                                <Vimeo
+                                    video="649737967"
+                                    autoplay
+                                    responsive />
+                                <div className={`${styles.placeholder} ${isPlaying ? styles.placeholderDisabled : ''}`} onClick={() => setIsPlaying(true)}>
                                     <Image className={styles.previewImage} src='/images/player-holder.jpg' />
                                     <div className={styles.previewAbout}>
                                         <div>
@@ -172,7 +178,7 @@ function Course() {
                                         Полный доступ
                                     </Button>
                                     <p className={styles.ctaFeaturesTitle}>Включает в себя:</p>
-                                    <ul className={styles.ctaFeatures}>
+                                    <ul className='mb-0'>
                                         <li className={styles.ctaFeature}>
                                             <div>
                                                 <Image src={videoIcon} height='24' width='24' />
@@ -183,19 +189,17 @@ function Course() {
                                             <div>
                                                 <Image src={videoIcon} height='24' width='24' />
                                             </div>
-                                            <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
+                                            <span className={styles.ctaFeatureText}>
+                                                Бесплатная тренировка по Dota&nbsp;2
+                                            </span>
                                         </li>
                                         <li className={styles.ctaFeature}>
                                             <div>
                                                 <Image src={videoIcon} height='24' width='24' />
                                             </div>
-                                            <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
-                                        </li>
-                                        <li className={styles.ctaFeature}>
-                                            <div>
-                                                <Image src={videoIcon} height='24' width='24' />
-                                            </div>
-                                            <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
+                                            <span className={styles.ctaFeatureText}>
+                                                Доступ в закрытое коммьюнити
+                                            </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -219,28 +223,28 @@ function Course() {
                                         1
                                     </div>
                                     <h4 className={styles.featuresItemTitle}>Микро</h4>
-                                    <p className={styles.featuresItemP}>Самые важные тонкости механики, эффективное использование каждой секунды которая ведёт к&nbsp;победе.</p>
+                                    <p className={styles.featuresItemP}>Самые важные тонкости механики, эффективное использование каждой секунды, которая ведёт к&nbsp;победе.</p>
                                 </Col>
                                 <Col md='6' as='li' className={styles.featuresItem}>
                                     <div className={styles.featuresNum}>
                                         2
                                     </div>
                                     <h4 className={styles.featuresItemTitle}>Макро</h4>
-                                    <p className={styles.featuresItemP}>Полное понимание каждого участка на&nbsp;карте! Которые исключит спонтанные и&nbsp;бесполезные замесы, удерживающие вас на&nbsp;одном рейтинге.</p>
+                                    <p className={styles.featuresItemP}>Полное понимание каждого участка на&nbsp;карте, которое исключит спонтанные и&nbsp;бесполезные замесы, удерживающие вас на&nbsp;одном рейтинге.</p>
                                 </Col>
                                 <Col md='6' as='li' className={styles.featuresItem}>
                                     <div className={styles.featuresNum}>
                                         3
                                     </div>
                                     <h4 className={styles.featuresItemTitle}>Психология</h4>
-                                    <p className={styles.featuresItemP}>Редкий случай, когда это рассказывается не&nbsp;сухо, а&nbsp;мысли прошли через самого игрока и&nbsp;рассказаны простым языком.</p>
+                                    <p className={styles.featuresItemP}>Редкий случай, когда это рассказывается не&nbsp;сухо, а&nbsp;мысли прошли через самого игрока, и&nbsp;рассказаны простым языком.</p>
                                 </Col>
                                 <Col md='6' as='li' className={styles.featuresItem}>
                                     <div className={styles.featuresNum}>
                                         4
                                     </div>
                                     <h4 className={styles.featuresItemTitle}>Новый взгляд</h4>
-                                    <p className={styles.featuresItemP}>Никто не&nbsp;верит, что несколько часов способы на&nbsp;корню поменять виденье игры. Парадокс&nbsp;&mdash; вы&nbsp;сами этого захотите, ведь это и&nbsp;снимет наручники вашего рейтинга.</p>
+                                    <p className={styles.featuresItemP}>Никто не&nbsp;верит, что несколько часов способны на&nbsp;корню поменять виденье игры. Парадокс&nbsp;&mdash; вы&nbsp;сами этого захотите, ведь это и&nbsp;снимет наручники вашего рейтинга.</p>
                                 </Col>
                             </Row>
                         </div>
@@ -253,7 +257,7 @@ function Course() {
             <section>
                 <Container>
                     <div className={styles.finalCta}>
-                        <p className={styles.finalCtaText}>Открой полный доступ к курсу сейчас и получи <b>тренировку по Dota2 бесплатно</b></p>
+                        <p className={styles.finalCtaText}>Открой полный доступ к курсу и получи<br /><b>бесплатную тренировку по Dota&nbsp;2</b></p>
                         <Button
                             variant='primary'
                             size='lg'
