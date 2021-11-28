@@ -1,0 +1,28 @@
+.commentsList {
+    padding: 20px;
+    list-style: none;
+    background-color: #101221;
+    border-radius: 5px;
+}
+
+.commentsList > * {
+    margin-bottom: 20px;
+} 
+
+.commentAvatar {
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.commentContent {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #EBEBEB;
+    margin-top: 10px;
+}
+
+.sendCommentBtn {
+    border: none!important;
+    background-color: #25284B!important;
+}

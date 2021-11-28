@@ -4,11 +4,11 @@ import styles from './faq-section.module.css';
 function FAQSection() {
     return (
         <>
-            <h5>Общие</h5>
-            <Accordion className={styles.faqList}>
+            <h5 className={styles.title}>Общие</h5>
+            <Accordion>
                 <Accordion.Item className={styles.faqItem} eventKey='0'>
                     <Accordion.Header className={styles.faqItemHeader}>Как долго мне будет доступен курс после покупки?</Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body className={styles.faqItemBody}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -20,7 +20,7 @@ function FAQSection() {
                 </Accordion.Item>
                 <Accordion.Item className={styles.faqItem} eventKey='1'>
                     <Accordion.Header className={styles.faqItemHeader}>Какие возможности мне будут доступны после покупки?</Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body className={styles.faqItemBody}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -32,7 +32,7 @@ function FAQSection() {
                 </Accordion.Item>
                 <Accordion.Item className={styles.faqItem} eventKey='2'>
                     <Accordion.Header className={styles.faqItemHeader}>Кому нужен этот курс?</Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body className={styles.faqItemBody}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -44,7 +44,7 @@ function FAQSection() {
                 </Accordion.Item>
                 <Accordion.Item className={styles.faqItem} eventKey='3'>
                     <Accordion.Header className={styles.faqItemHeader}>Что-то ещё по поводу покупки курса?</Accordion.Header>
-                    <Accordion.Body>
+                    <Accordion.Body className={styles.faqItemBody}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea

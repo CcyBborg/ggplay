@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Container, Row, Col, Button, Image, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import Comments from './components/Comments/Comments';
 import FAQSection from './components/FAQSection/FAQSection';
 import Trailer from './components/Trailer/Trailer';
 import startIcon from './images/start.svg';
@@ -24,9 +25,9 @@ function Course() {
                     <Row>
                         <Col md='5'>
                             <h1 className={styles.mainTitle}>
-                                Роман<br />
-                                <span className={styles.mainTitleBold}>Ramzes666</span> <br />
-                                Куштаров
+                                Артур<br />
+                                <span className={styles.mainTitleBold}>illusive</span> <br />
+                                Осипов
                             </h1>
                             <div className={styles.bannerInfo}>
                                 <Row>
@@ -54,7 +55,7 @@ function Course() {
                                     </Col>
                                 </Row>
                                 <p className={styles.about}>
-                                    Идейные соображения высшего порядка, а также укрепление и развитие структуры играет важную роль в формировании существенных финансовых и административных условий.
+                                    &laquo;Цена Времени&raquo;&nbsp;&mdash; это настоящая выжимка знаний. Сформирована огромным опытом работы с&nbsp;учениками, и&nbsp;универсальным подходом к&nbsp;разному рейтингу. Сильнейшие уроки взяты за&nbsp;основу каждого ролика.
                                 </p>
                             </div>
                             <div>
@@ -86,21 +87,24 @@ function Course() {
                 <Container>
                     <div className='d-flex justify-content-between'>
                         <div>
-                            <div className={styles.placeholder}>
-                                <Image className={styles.previewImage} src='/images/player-holder.jpg' />
-                                <div className={styles.previewAbout}>
-                                    <div>
-                                        <span className={styles.previewLabel}>
-                                            урок 2/23
-                                        </span>
-                                        <h3 className={styles.previewTitle}>
-                                            Длинное&nbsp;название второго&nbsp;урока
-                                        </h3>
-                                    </div>
-                                    <div className={styles.previewIcon}>
-                                        <Image src={playIcon} width='63' height='90' />
+                            <div className={styles.playerComments}>
+                                <div className={styles.placeholder}>
+                                    <Image className={styles.previewImage} src='/images/player-holder.jpg' />
+                                    <div className={styles.previewAbout}>
+                                        <div>
+                                            <span className={styles.previewLabel}>
+                                                урок 2/23
+                                            </span>
+                                            <h3 className={styles.previewTitle}>
+                                                Длинное&nbsp;название второго&nbsp;урока
+                                            </h3>
+                                        </div>
+                                        <div className={styles.previewIcon}>
+                                            <Image src={playIcon} width='63' height='90' />
+                                        </div>
                                     </div>
                                 </div>
+                                <Comments />
                             </div>
                         </div>
                         <div>
@@ -170,6 +174,24 @@ function Course() {
                                             </div>
                                             <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
                                         </li>
+                                        <li className={styles.ctaFeature}>
+                                            <div>
+                                                <Image src={videoIcon} height='24' width='24' />
+                                            </div>
+                                            <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
+                                        </li>
+                                        <li className={styles.ctaFeature}>
+                                            <div>
+                                                <Image src={videoIcon} height='24' width='24' />
+                                            </div>
+                                            <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
+                                        </li>
+                                        <li className={styles.ctaFeature}>
+                                            <div>
+                                                <Image src={videoIcon} height='24' width='24' />
+                                            </div>
+                                            <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -191,29 +213,29 @@ function Course() {
                                     <div className={styles.featuresNum}>
                                         1
                                     </div>
-                                    <h4 className={styles.featuresItemTitle}>Название заголовка</h4>
-                                    <p className={styles.featuresItemP}>Перспективное планирование играет определяющее значение для стандартных подходов.</p>
+                                    <h4 className={styles.featuresItemTitle}>Микро</h4>
+                                    <p className={styles.featuresItemP}>Самые важные тонкости механики, эффективное использование каждой секунды которая ведёт к&nbsp;победе.</p>
                                 </Col>
                                 <Col md='6' as='li' className={styles.featuresItem}>
                                     <div className={styles.featuresNum}>
                                         2
                                     </div>
-                                    <h4 className={styles.featuresItemTitle}>Название заголовка</h4>
-                                    <p className={styles.featuresItemP}>Перспективное планирование играет определяющее значение для стандартных подходов.</p>
+                                    <h4 className={styles.featuresItemTitle}>Макро</h4>
+                                    <p className={styles.featuresItemP}>Полное понимание каждого участка на&nbsp;карте! Которые исключит спонтанные и&nbsp;бесполезные замесы, удерживающие вас на&nbsp;одном рейтинге.</p>
                                 </Col>
                                 <Col md='6' as='li' className={styles.featuresItem}>
                                     <div className={styles.featuresNum}>
                                         3
                                     </div>
-                                    <h4 className={styles.featuresItemTitle}>Название заголовка</h4>
-                                    <p className={styles.featuresItemP}>Перспективное планирование играет определяющее значение для стандартных подходов.</p>
+                                    <h4 className={styles.featuresItemTitle}>Психология</h4>
+                                    <p className={styles.featuresItemP}>Редкий случай, когда это рассказывается не&nbsp;сухо, а&nbsp;мысли прошли через самого игрока и&nbsp;рассказаны простым языком.</p>
                                 </Col>
                                 <Col md='6' as='li' className={styles.featuresItem}>
                                     <div className={styles.featuresNum}>
                                         4
                                     </div>
-                                    <h4 className={styles.featuresItemTitle}>Название заголовка</h4>
-                                    <p className={styles.featuresItemP}>Перспективное планирование играет определяющее значение для стандартных подходов.</p>
+                                    <h4 className={styles.featuresItemTitle}>Новый взгляд</h4>
+                                    <p className={styles.featuresItemP}>Никто не&nbsp;верит, что несколько часов способы на&nbsp;корню поменять виденье игры. Парадокс&nbsp;&mdash; вы&nbsp;сами этого захотите, ведь это и&nbsp;снимет наручники вашего рейтинга.</p>
                                 </Col>
                             </Row>
                         </div>

@@ -1,3 +1,7 @@
+.root {
+    margin-bottom: 10px;
+}
+
 .root:hover {
     cursor: pointer;
 }

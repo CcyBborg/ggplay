@@ -90,10 +90,15 @@
   }
 
   .placeholder {
-      width: 908px;
       height: 510px;
       position: relative;
   }
+
+  .playerComments {
+      display: inline-block;
+      width: 908px;
+  }
+
   .previewImage {
       width: 100%;
       height: 100%;
@@ -248,7 +253,10 @@ text-transform: none!important;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(90deg, #D31820 2.5%, #D01871 97.5%);
+    background-image: url('./images/cta.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 40px;
     border-radius: 5px;
 }

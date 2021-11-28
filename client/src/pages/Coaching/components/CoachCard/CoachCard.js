@@ -49,7 +49,7 @@ function CoachCard({
                 starEmptyColor='#767698'
                 starDimension='20px'
                 starSpacing='2px'
-                rating={rating}
+                rating={rating || 0}
                 numberOfStars={5}
                 name='rating' />
               <span className={styles.ratingCount}>({reviewsLength})</span>

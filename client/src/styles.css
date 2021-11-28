@@ -228,6 +228,29 @@
     background: transparent url('./images/cross.svg') center/32px auto no-repeat;
   }
 
+  .accordion-button::after {
+    background-image: url('./images/chevron.svg');
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .form-control {
+    background: #25284B;
+    border-radius: 5px;
+    border: none;
+    color: rgba(118, 118, 152, 0.5);
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 29px;
+    padding: 10px 20px;
+  }
+
+  .form-control:focus {
+    background-color: #101221;
+    color: #EBEBEB;
+  }
+
   .star-ratings {
     white-space: nowrap;
   }
