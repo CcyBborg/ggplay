@@ -61,7 +61,7 @@ function Layout({ user, children, fetchUserInfo }) {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id='responsive-navbar-nav'>
                         <Nav className='me-auto'>
-                            <Nav.Link href='/courses'>Мастер-классы</Nav.Link>
+                            <Nav.Link href='/course'>Мастер-классы</Nav.Link>
                             <Nav.Link href='/coaching'>Тренировки</Nav.Link>
                         </Nav>
                         <Nav>
@@ -71,82 +71,6 @@ function Layout({ user, children, fetchUserInfo }) {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            {/* <header id='main-header'>
-                <div className='main-header'>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='col-sm-12'>
-                                <nav className='navbar navbar-expand-lg navbar-light p-0'>
-                                    <a className='navbar-brand' href='/'>
-                                        <img className='logo' src='/images/logo.png' alt='GGPlay' />
-                                    </a>
-                                    <button
-                                        className='navbar-toggler btn btn-link mt-2 mb-2 pr-0'
-                                        type='button'
-                                        onClick={() => setIsMobileMenu(true)}>
-                                        <i className='fas fa-bars'></i>
-                                    </button>
-                                    <div className='collapse navbar-collapse'>
-                                        <ul className='navbar-nav mr-auto'>
-                                            <li>
-                                                <a>
-                                                    Курсы <sup style={{
-                                                        fontSize: '10px',
-                                                        color: 'var(--iq-primary)',
-                                                        position: 'relative',
-                                                        top: '-10px'
-                                                    }}>Скоро</sup>
-                                                </a>
-                                            </li>
-                                            <li className='menu-item'>
-                                                <a href='/coaching'>Тренировки</a>
-                                            </li>
-                                        </ul>
-
-                                        {user.info ? (
-                                            <>
-                                                <ul className='d-flex align-items-center list-inline m-0'>
-                                                    <li className='menu-item'>
-                                                        <a href='/dashboard' className='btn btn-link'>
-                                                            Мои тренировки
-                                                        </a>
-                                                    </li>
-                                                    <li className='menu-item'>
-                                                        <ProfileButton
-                                                            nickname={user.info.nickname}
-                                                            logo={user.info.profile.game?.logo}
-                                                            onLogout={() => {
-                                                                logout().then(() => {
-                                                                    window.open('https://ggplay.ru/coaching', '_self');
-                                                                });
-                                                            }} />
-                                                    </li>
-                                                </ul>
-                                            </>
-                                        ) : (
-                                            <ul className='d-flex align-items-center list-inline m-0'>
-                                                <li className='menu-item'>
-                                                    <a href='/sign-up' className='btn btn-link'>
-                                                        Регистрация
-                                                    </a>
-                                                </li>
-                                                <li className='menu-item'>
-                                                    <a href='/sign-in' className='btn btn-link'>
-                                                        Вход
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        )}
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header> */}
-            {/* <div className='content'>
-                {children}
-            </div> */}
             <main>
                 {children}
             </main>
