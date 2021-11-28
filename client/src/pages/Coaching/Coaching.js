@@ -90,7 +90,7 @@ function Coaching({
                 <li>Связь с тренерами 24/7</li>
                 <li>Запись всех тренировок</li>
               </ul>
-              <Button variant='primary' size='lg'>Начать обучение</Button>
+              <Button variant='primary' size='lg' href='#coachList'>Начать обучение</Button>
               <p className={styles.bannerSubscript}>Не понравилась тренировка? Напиши нам и мы вернем деньги.</p>
             </Col>
             <Col md='7' className='position-relative'>
@@ -102,7 +102,7 @@ function Coaching({
           </Row>
         </Container>
       </div>
-      <Container className='mt-3'>
+      <Container id='coachList' className='mt-3'>
         {selectedGameId ? (
           <>
             <div className='d-flex mb-3'>
@@ -148,7 +148,10 @@ function Coaching({
         <Container className='d-flex flex-column align-items-center'>
           <h2 className='h1'>Уже готов</h2>
           <h3>Освоить новый уровень игры</h3>
-          <Button className={styles.ctaButton} variant='primary' size='lg'>
+          <Button className={styles.ctaButton} variant='primary' size='lg' onClick={e => {
+            e.preventDefault();
+            alert('Флоу регистрации');
+          }}>
             Начать обучение
           </Button>
         </Container>

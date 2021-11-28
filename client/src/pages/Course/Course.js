@@ -165,7 +165,12 @@ function Course() {
                             </div>
                             <div className={styles.syllabusCta}>
                                 <div className='d-grid'>
-                                    <Button variant='primary' size='lg'>Полный доступ</Button>
+                                    <Button
+                                        variant='primary'
+                                        size='lg'
+                                        onClick={() => alert('Тут будет флоу покупки')}>
+                                        Полный доступ
+                                    </Button>
                                     <p className={styles.ctaFeaturesTitle}>Включает в себя:</p>
                                     <ul className={styles.ctaFeatures}>
                                         <li className={styles.ctaFeature}>
@@ -249,7 +254,13 @@ function Course() {
                 <Container>
                     <div className={styles.finalCta}>
                         <p className={styles.finalCtaText}>Открой полный доступ к курсу сейчас и получи <b>тренировку по Dota2 бесплатно</b></p>
-                        <Button variant='primary' size='lg' className={styles.finalCtaBtn}>Полный доступ</Button>
+                        <Button
+                            variant='primary'
+                            size='lg'
+                            className={styles.finalCtaBtn}
+                            onClick={() => alert('Тут будет флоу покупки')}>
+                            Полный доступ
+                        </Button>
                     </div>
                 </Container>
             </section>

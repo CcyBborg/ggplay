@@ -65,8 +65,14 @@ function Layout({ user, children, fetchUserInfo }) {
                             <Nav.Link href='/coaching'>Тренировки</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link href='/sign-up'>Регистрация</Nav.Link>
-                            <Nav.Link href='/sign-in'>Вход</Nav.Link>
+                            <Nav.Link onClick={e => {
+                                e.preventDefault();
+                                alert('Флоу регистрации');
+                            }} href='/sign-up'>Регистрация</Nav.Link>
+                            <Nav.Link onClick={e => {
+                                e.preventDefault();
+                                alert('Флоу регистрации');
+                            }} href='/sign-in'>Вход</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -34,7 +34,7 @@ function InitStep({
                 height='122' />
             </div>
             <div className='flex-fill d-flex jusitify-content-between'>
-              <div>
+              <div className='flex-fill'>
                 <h3 className={styles.title}>{coach.title}</h3>
                 <div className={styles.attribute}>Ранг</div>
                 <p className='mb-0'>{coach.status}</p>

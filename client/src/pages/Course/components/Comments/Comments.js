@@ -27,7 +27,7 @@ function Comments() {
                         <div>
                             <Image src={avatarImage} className={styles.commentAvatar} height='45' width='45' />
                         </div>
-                        <div>
+                        <div className={styles.commentMeta}>
                             toTheMoon<br />7.11.2021
                         </div>
                     </div>
@@ -38,7 +38,7 @@ function Comments() {
                         <div>
                             <Image src='/images/small-logo.png' className={styles.commentAvatar} height='45' width='45' />
                         </div>
-                        <div>
+                        <div className={styles.commentMeta}>
                             Гость<br />7.11.2021
                         </div>
                     </div>
@@ -49,7 +49,7 @@ function Comments() {
                         <div>
                             <Image src={avatarImage} className={styles.commentAvatar} height='45' width='45' />
                         </div>
-                        <div>
+                        <div className={styles.commentMeta}>
                             SiphonHIV<br />7.11.2021
                         </div>
                     </div>
