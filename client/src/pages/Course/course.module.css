@@ -284,6 +284,13 @@ text-transform: none!important;
     margin-top: 10px;
 }
 
+.lesson:hover,
+.lesson.selectedLesson {
+    cursor: pointer;
+    border: 2px solid #E60B74;
+    box-shadow: 0px 4px 30px 0px #35385E;
+}
+
 .lesson::after {
     content: '';
     position: absolute;

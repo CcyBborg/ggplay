@@ -1,8 +1,14 @@
+.input {
+    border-bottom-right-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+}
+
 .commentsList {
     padding: 20px;
     list-style: none;
     background-color: #101221;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .commentsList > * {
@@ -25,6 +31,7 @@
 .sendCommentBtn {
     border: none!important;
     background-color: #25284B!important;
+    border-bottom-right-radius: 0!important;
 }
 
 .commentMeta {

@@ -11,11 +11,12 @@ import styles from './comments.module.css';
 function Comments() {
     return (
         <div className='mt-3'>
-            <InputGroup className='mb-3'>
+            <InputGroup>
                 <FormControl
                     placeholder='Написать комментарий...'
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
+                    className={styles.input}
                 />
                 <Button variant="outline-secondary" className={styles.sendCommentBtn}>
                     <Image src={sendIcon} width='22' height='22' />

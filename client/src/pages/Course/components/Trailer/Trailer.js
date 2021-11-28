@@ -17,8 +17,8 @@ function Trailer({ onHide }) {
                         <Image />
                     </div>
                     <div>
-                        <h4>Роман “RAMZES666” Куштаров</h4>
-                        <p className='mb-0'>Очень краткое описание, кто это или что за курс</p>
+                        <h4>Артур “illusive” Осипов</h4>
+                        <p className='mb-0'>Расскажет как раскрыть свой потенциал в&nbsp;Dota2.</p>
                     </div>
                 </div>
                 <div>

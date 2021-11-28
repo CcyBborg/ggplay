@@ -119,7 +119,7 @@ function Course() {
                                     </div>
                                 </div>
                                 <ol className={styles.lessonList}>
-                                    <li className={styles.lesson}>
+                                    <li className={`${styles.lesson} ${styles.selectedLesson}`}>
                                         <Image className={styles.lessonImage} src='/images/lesson1.png' />
                                         <div className={styles.lessonAbout}>
                                             <span className={styles.lessonTime}>08:13</span>
