@@ -91,7 +91,7 @@ function Course() {
                         <div>
                             <div className={styles.playerComments}>
                                 <Vimeo
-                                    video="649737967"
+                                    video="650931371"
                                     autoplay
                                     responsive />
                                 <div className={`${styles.placeholder} ${isPlaying ? styles.placeholderDisabled : ''}`} onClick={() => setIsPlaying(true)}>
