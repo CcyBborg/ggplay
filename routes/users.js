@@ -76,6 +76,14 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     failureRedirect: '/sign-up'
 }));
 
+// Yandex oauth
+router.get('/auth/yandex', persistGame, passport.authenticate('yandex'));
+
+router.get('/auth/yandex/callback', passport.authenticate('yandex', {
+    successRedirect: '/coaching',
+    failureRedirect: '/sign-up'
+}));
+
 // Discord oauth
 router.get('/auth/discord', persistGame, passport.authenticate('discord'));
 

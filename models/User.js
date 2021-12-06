@@ -11,6 +11,12 @@ var UserSchema = new Schema({
         unique: true,
         sparse: true
     },
+    yandex: {
+        type: String,
+        index: true,
+        unique: true,
+        sparse: true
+    },
     vkontakte: {
         type: String,
         index: true,

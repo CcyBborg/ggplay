@@ -25,7 +25,8 @@
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4",
     "passport-local": "^1.0.0",
-    "passport-vkontakte": "^0.5.0"
+    "passport-vkontakte": "^0.5.0",
+    "passport-yandex": "0.0.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

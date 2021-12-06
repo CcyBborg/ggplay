@@ -59,6 +59,52 @@ module.exports = passport => {
         });
     }));
 
+    // Yandex strategy
+    const YandexStrategy = require('passport-yandex').Strategy;
+
+    passport.use(new YandexStrategy({
+        clientID: 'bef439254be341c695797d9f8fe78a6c',
+        clientSecret: '508cc5aeff3444e4a19ba0da304e47fd',
+        callbackURL: '/users/auth/yandex/callback'
+    },
+        function (accessToken, refreshToken, profile, done) {
+            User.findOne({ yandex: profile.id }, function (err, user) {
+                if (err) {
+                    return done(err);
+                }
+
+                if (user) {
+                    return done(null, user)
+                }
+
+                User.findOne({ email: profile.emails[0].value }, (err, emailUser) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    if (emailUser) {
+                        return done(null, false);
+                    }
+
+                    const newUser = new User({
+                        nickname: profile.username,
+                        yandex: profile.id,
+                        email: profile.emails[0].value,
+                        profile: {
+                            game: req.session?.game
+                        }
+                    });
+                    newUser.save(function (err) {
+                        if (err) {
+                            return done(err);
+                        }
+                        return done(null, newUser);
+                    });
+                });
+            });
+        }
+    ));
+
     // Discord Strategy
     const DiscordStrategy = require('passport-discord').Strategy;
 
