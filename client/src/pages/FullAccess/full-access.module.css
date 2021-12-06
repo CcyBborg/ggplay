@@ -1,0 +1,66 @@
+.root {
+    padding: 60px;
+    width: 560px!important;
+    background:
+        radial-gradient(39.87% 39.87% at 25.29% 101.56%, rgba(229, 9, 19, 0.3) 0%, rgba(230, 11, 116, 0) 98.54%),
+        linear-gradient(207.66deg, rgba(13, 14, 26, 0) 8.06%, #101221 49.27%),
+        60% -50px / auto 580px no-repeat url(./images/bg.png),
+        linear-gradient(0deg, #101221, #101221);
+
+}
+
+.dialog {
+    max-width: 560px!important;
+}
+
+.close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+}
+
+.featureTitle {
+    margin-bottom: 0;
+}
+
+.featureP {
+    font-size: 14px;
+    line-height: 20px;
+    color: #767698;
+}
+
+.featureAbout {
+    padding-left: 16px;
+}
+
+.legal {
+    font-size: 12px;
+    text-align: center;
+    line-height: 17px;
+    color: #767698;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.legalLink {
+    text-decoration: none;
+    color: #b1b0b6;
+}
+
+.price {
+    margin-right: 15px;
+    text-shadow: none;
+    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 58px;
+    vertical-align: text-top;
+}
+
+.priceLabel {
+    font-size: 14px;
+    line-height: 20px;
+    color: #EBEBEB;
+}

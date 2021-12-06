@@ -1,0 +1,20 @@
+.profileBtn {
+    padding: 5px 15px!important;
+    background-color: #101221;
+    border-radius: 5px!important;
+    vertical-align: middle;
+}
+
+.profileBtn span {
+    color: #EBEBEB!important;
+    font-size: 16px!important;
+    line-height: 23px!important;
+    font-weight: normal!important;
+    vertical-align: middle!important;
+    display: inline-block;
+}
+
+.avatar {
+    border-radius: 5px;
+    margin-left: 20px;
+}

@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import AuthScreen from '../../components/AuthScreen/AuthScreen';
+import { Form, Row, Col, Container, Image, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { signInUser } from './actions';
+import vkIcon from './images/vk.svg';
+import googleIcon from './images/google.svg'
+import yandexIcon from './images/yandex.svg';
+import discordIcon from './images/discord.svg';
+import styles from './sign-in.module.css';
 
 function SignIn({
     history,
@@ -18,94 +25,102 @@ function SignIn({
     }
 
     return (
-        <div className='poll'>
-            <div className='container'>
-                <nav className='d-flex justify-content-between align-items-center pt-4 pb-4'>
-                    <a className='navbar-brand' href='/'>
-                        <img className='img-fluid logo' width='100' src='./images/logo.png' alt='GGPlay' />
-                    </a>
-                    <a href='/sign-up'>Регистрация</a>
-                </nav>
-                <div className='d-flex justify-content-center justify-content-center align-items-center'>
-                    <div className='sign-in-page'>
-                        <div className='sign-user_card mt-5'>
-                            <div className='sign-in-page-data'>
-                                <div className='sign-in-from w-100 m-auto'>
-                                    <h3 className='mb-3 text-center'>Вход</h3>
-                                    <p className='text-center mb-4'>Войдите с помощью социальных сетей</p>
-                                    <div className='d-flex justify-content-between'>
-                                        <button className='btn btn-hover btn-vk' onClick={() => {
+        <AuthScreen>
+            <Row>
+                <Col md='6'>
+                    <div className={styles.form}>
+                        <h2 className={styles.title}>С возвращением!</h2>
+                        <p className={styles.loginLabel}>
+                            Новый пользователь?
+                            <a href='/sign-up' className={styles.loginLink}>Зарегистрироваться</a>
+                        </p>
+                        <Form onSubmit={e => {
+                            e.preventDefault();
+                            signInUser({
+                                email,
+                                password
+                            });
+                        }}>
+                            <div className='d-flex flex-column'>
+                                <Form.Control
+                                    type="email"
+                                    placeholder="Электронная почта"
+                                    className={styles.input}
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)} />
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Пароль"
+                                    className={styles.input}
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)} />
+                                <div className='d-flex justify-content-between'>
+                                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                        <Form.Check type="checkbox" label="Запомнить меня" checked />
+                                    </Form.Group>
+                                    <a href='#' className={styles.forgotPassword}>Забыли пароль?</a>
+                                </div>
+                                <Button variant="primary" type="submit" className={styles.submit} size='lg' disabled={!(email && password)}>
+                                    Войти
+                                </Button>
+                                {typeof error === 'string' && (
+                                    <div className={styles.formError}>
+                                        {error}
+                                    </div>
+                                )}
+                            </div>
+                        </Form>
+                        <div className={styles.loginWithLabel}>
+                            или с помощью
+                        </div>
+                        <ul className={styles.socials}>
+                            <li>
+                                <Button
+                                    className={styles.socialsButton}
+                                    variant='secondary'
+                                    onClick={
+                                        () => {
                                             if (process?.env?.NODE_ENV === 'development') {
                                                 window.open('http://localhost:5000/users/auth/vkontakte', '_self');
                                             } else {
                                                 window.open('/users/auth/vkontakte', '_self');
                                             }
-                                        }}>
-                                            <i className='fab fa-vk'></i>
-                                        </button>
-                                        <button className='btn btn-hover btn-discord' onClick={() => {
+                                        }
+                                    }>
+                                    <Image src={vkIcon} width='28' height='28' />
+                                </Button>
+                            </li>
+                            <li>
+                                <Button className={styles.socialsButton} variant='secondary'>
+                                    <Image src={googleIcon} width='28' height='28' />
+                                </Button>
+                            </li>
+                            <li>
+                                <Button className={styles.socialsButton} variant='secondary'>
+                                    <Image src={yandexIcon} width='28' height='28' />
+                                </Button>
+                            </li>
+                            <li>
+                                <Button
+                                    className={styles.socialsButton}
+                                    variant='secondary'
+                                    onClick={
+                                        () => {
                                             if (process?.env?.NODE_ENV === 'development') {
                                                 window.open('http://localhost:5000/users/auth/discord', '_self');
                                             } else {
                                                 window.open('/users/auth/discord', '_self');
                                             }
-                                        }}>
-                                            <i className='fab fa-discord'></i>
-                                        </button>
-                                    </div>
-                                    <p className='text-center mt-4'>или вашей почты</p>
-                                    <form className='mt-4' action='index.html'>
-                                        <div className='form-group'>
-                                            <input
-                                                type='email'
-                                                onChange={e => setEmail(e.target.value)}
-                                                value={email}
-                                                className='form-control mb-0'
-                                                id='exampleInputEmail1'
-                                                placeholder='Электронная почта'
-                                                autocomplete='off'
-                                                required />
-                                        </div>
-                                        <div className='form-group'>
-                                            <input
-                                                type='password'
-                                                onChange={e => setPassword(e.target.value)}
-                                                value={password}
-                                                className='form-control mb-0'
-                                                id='exampleInputPassword2'
-                                                placeholder='Пароль'
-                                                required />
-                                        </div>
-                                        {typeof error === 'string' && (
-                                            <div className='text text-primary mb-3'>
-                                                {error}
-                                            </div>
-                                        )}
-                                        <div className='sign-info'>
-                                            <button
-                                                type='submit'
-                                                className='btn btn-hover btn-block'
-                                                onClick={e => {
-                                                    e.preventDefault();
-                                                    signInUser({
-                                                        email,
-                                                        password
-                                                    });
-                                                }}>Войти</button>
-                                        </div>
-                                    </form>
-                                    <div className='mt-3'>
-                                        <div className='d-flex justify-content-center links'>
-                                            <a href='reset-password.html' className='f-link'>Забыли пароль?</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        }
+                                    }>
+                                    <Image src={discordIcon} width='28' height='28' />
+                                </Button>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </div>
+                </Col>
+            </Row>
+        </AuthScreen>
     );
 }
 

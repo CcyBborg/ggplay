@@ -45,8 +45,7 @@ module.exports = passport => {
                     nickname: profile.displayName,
                     vkontakte: profile.id,
                     profile: {
-                        game: req?.session.game,
-                        rank: req?.session.rank
+                        game: req?.session.game
                     }
                 });
 
@@ -75,13 +74,10 @@ module.exports = passport => {
             }
 
             if (user) {
-                console.log('USER');
                 return done(null, user)
             }
 
             User.findOne({ email: profile.email }, (err, emailUser) => {
-                console.log('USER!!');
-                console.log(profile.id);
                 if (err) {
                     return done(err);
                 }
@@ -95,8 +91,7 @@ module.exports = passport => {
                     discord: profile.id,
                     email: profile.email,
                     profile: {
-                        game: req.session?.game,
-                        rank: req.session?.rank
+                        game: req.session?.game
                     }
                 });
                 newUser.save(function (err) {
@@ -117,7 +112,6 @@ module.exports = passport => {
     passport.deserializeUser((id, cb) => {
         User.findOne({ _id: id })
             .populate('profile.game')
-            .populate('profile.rank')
             .exec((err, user) => {
                 cb(err, user);
             });

@@ -9,11 +9,17 @@ import playIcon from './images/play.svg';
 import lessonsIcon from './images/lessons.svg';
 import studentsIcon from './images/students.svg';
 import progressIcon from './images/progress.svg';
-import videoIcon from './images/video.svg';
+import coachingIcon from './images/coaching.svg';
+import communityIcon from './images/community.svg';
+import cupIcon from './images/cup.svg';
+import lessonIcon from './images/lesson.svg';
 import featuresForegroundImage from './images/features-foreground.png';
 import styles from './course.module.css';
+import { withRouter } from 'react-router';
 
-function Course() {
+function Course({
+    history
+}) {
     const [isTrailer, setIsTrailer] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -92,7 +98,7 @@ function Course() {
                             <div className={styles.playerComments}>
                                 <Vimeo
                                     video="650931371"
-                                    autoplay
+                                    autoplay={false}
                                     responsive />
                                 <div className={`${styles.placeholder} ${isPlaying ? styles.placeholderDisabled : ''}`} onClick={() => setIsPlaying(true)}>
                                     <Image className={styles.previewImage} src='/images/player-holder.jpg' />
@@ -174,20 +180,20 @@ function Course() {
                                     <Button
                                         variant='primary'
                                         size='lg'
-                                        onClick={() => alert('Тут будет флоу покупки')}>
+                                        onClick={() => history.push({ pathname: '/course/full-access' })}>
                                         Полный доступ
                                     </Button>
                                     <p className={styles.ctaFeaturesTitle}>Включает в себя:</p>
                                     <ul className='mb-0'>
                                         <li className={styles.ctaFeature}>
                                             <div>
-                                                <Image src={videoIcon} height='24' width='24' />
+                                                <Image src={lessonIcon} height='24' width='24' />
                                             </div>
                                             <span className={styles.ctaFeatureText}>Доступ ко всем урокам курса</span>
                                         </li>
                                         <li className={styles.ctaFeature}>
                                             <div>
-                                                <Image src={videoIcon} height='24' width='24' />
+                                                <Image src={coachingIcon} height='24' width='24' />
                                             </div>
                                             <span className={styles.ctaFeatureText}>
                                                 Бесплатная тренировка по Dota&nbsp;2
@@ -195,10 +201,18 @@ function Course() {
                                         </li>
                                         <li className={styles.ctaFeature}>
                                             <div>
-                                                <Image src={videoIcon} height='24' width='24' />
+                                                <Image src={cupIcon} height='24' width='24' />
                                             </div>
                                             <span className={styles.ctaFeatureText}>
-                                                Доступ в закрытое коммьюнити
+                                                Участие в ежемесячных турнирах
+                                            </span>
+                                        </li>
+                                        <li className={styles.ctaFeature}>
+                                            <div>
+                                                <Image src={communityIcon} height='24' width='24' />
+                                            </div>
+                                            <span className={styles.ctaFeatureText}>
+                                                Доступ в сообщество GG play
                                             </span>
                                         </li>
                                     </ul>
@@ -262,7 +276,7 @@ function Course() {
                             variant='primary'
                             size='lg'
                             className={styles.finalCtaBtn}
-                            onClick={() => alert('Тут будет флоу покупки')}>
+                            onClick={() => history.push({ pathname: '/course/full-access' })}>
                             Полный доступ
                         </Button>
                     </div>
@@ -283,4 +297,4 @@ function Course() {
     );
 }
 
-export default Course;
+export default withRouter(Course);

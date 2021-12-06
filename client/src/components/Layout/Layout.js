@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { Container, Navbar, Nav, Row, Col, Modal } from 'react-bootstrap';
+import { Container, Navbar, Nav, Row, Col, Modal, Image } from 'react-bootstrap';
 import Copier from '../Copier/Copier';
 import Spinner from '../Spinner/Spinner';
 import AddReview from './components/AddReview/AddReview';
-import ProfileButton from './components/ProfileButton/ProfileButton';
 import { fetchUserInfo } from './actions';
-import { postReview, logout } from './api';
+import { postReview } from './api';
 import vkIcon from './images/vk.svg'
 import instagramIcon from './images/instagram.svg'
 import discordIcon from './images/discord.svg'
+import styles from './layout.module.css';
 
 function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
@@ -65,14 +65,17 @@ function Layout({ user, children, fetchUserInfo }) {
                             <Nav.Link href='/coaching'>Тренировки</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link onClick={e => {
-                                e.preventDefault();
-                                alert('Флоу регистрации');
-                            }} href='/sign-up'>Регистрация</Nav.Link>
-                            <Nav.Link onClick={e => {
-                                e.preventDefault();
-                                alert('Флоу регистрации');
-                            }} href='/sign-in'>Вход</Nav.Link>
+                            {user.info ? (
+                                <Nav.Link href='/dashboard' className={styles.profileBtn}>
+                                    <span>{user.info.nickname}</span>
+                                    <Image src={user.info.profile.avatar} className={styles.avatar} width='36' height='36' />
+                                </Nav.Link>
+                            ) : (
+                                <>
+                                    <Nav.Link href='/sign-up'>Регистрация</Nav.Link>
+                                    <Nav.Link href='/sign-in'>Вход</Nav.Link>
+                                </>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

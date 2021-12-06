@@ -1,0 +1,79 @@
+.form {
+    background-color: #101221;
+    border-radius: 5px;
+    padding: 30px;
+    max-width: 480px;
+    box-shadow: 0px 0px 30px rgba(53, 56, 94, 0.3);
+}
+
+.title {
+    text-align: center;
+    text-transform: none;
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.input {
+    margin-bottom: 15px;
+}
+
+.submit {
+    margin-top: 5px;
+}
+
+.loginLabel {
+    color: #767698;
+    font-size: 20px;
+    line-height: 29px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.loginLink {
+    text-shadow: none;
+    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0 8px;
+}
+
+.loginWithLabel {
+    margin: 15px 0;
+    color: #767698;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+}
+
+.socials {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.socials li {
+    flex: 1;
+}
+
+.socials li:not(:last-child) {
+    margin-right: 15px;
+}
+
+.socialsButton {
+    width: 100%;
+}
+
+.forgotPassword {
+    color: #EBEBEB;
+    font-size: 16px;
+    line-height: 23px;
+    text-decoration: none;
+}
+
+.formError {
+    color: #E60B74;
+    text-align: center;
+    margin: 15px 0;
+}

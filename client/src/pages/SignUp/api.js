@@ -4,23 +4,17 @@ export function fetchGames() {
     return axios.get('/games');
 }
 
-export function fetchRanks(gameId) {
-    return axios.get(`/games/${gameId}/ranks`);
-}
-
 export function createUser({
     nickname,
     email,
     password,
-    game,
-    rank
+    game
 }) {
     return axios.post('/users', {
         nickname,
         email,
         password,
-        game,
-        rank
+        game
     });
 }
 
@@ -35,12 +29,10 @@ export function signInUser({
 }
 
 export function editUser({
-    game,
-    rank
+    game
 }) {
     return axios.post('/users/edit', {
-        game,
-        rank
+        game
     });
 }
 

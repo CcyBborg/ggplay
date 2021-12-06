@@ -81,12 +81,24 @@
   }
 
   .btn-secondary {
+    color: #EBEBEB;
+    border-color: #25284B;
+    background-color: #1D1F38;
+  }
+
+  .btn-secondary:hover {
+    color: #fff;
+    background-color: #1D1F38;
+    border-color: #ca0a3f;
+  }
+
+  .btn-outline-secondary {
     color: #ca0a3f;
     border-color: #ca0a3f;
     background-color: transparent;
   }
 
-  .btn-secondary:hover {
+  .btn-outline-secondary:hover {
     color: #fff;
     background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
     border-color: #ca0a3f;
@@ -204,7 +216,7 @@
     border-bottom: none;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 9999;
   }
 
   .modal-footer {
@@ -236,10 +248,10 @@
   }
 
   .form-control {
-    background: #25284B;
+    background: #1D1F38;
     border-radius: 5px;
-    border: none;
-    color: rgba(118, 118, 152, 0.5);
+    border: 1px solid #25284B;
+    color: rgba(118, 118, 152, 0.6);
     font-weight: normal;
     font-size: 20px;
     line-height: 29px;
@@ -335,6 +347,42 @@
   .react-calendar__navigation__label:hover {
     cursor: default!important;
     background-color: transparent!important;
+  }
+
+  .form-check-label {
+    color: #767698;
+    font-size: 16px;
+    line-height: 23px;
+    margin-top: 3px;
+  }
+
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    border-color: #E60B74!important;
+  }
+
+  .form-check-input:checked {
+    background:
+      url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e"),
+      linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%)!important;
+    border-radius: 5px;
+  }
+
+  .progress {
+    background-color: #25284B;
+    height: 3px;
+  }
+
+  .progress-bar {
+    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
+  }
+
+  .carousel-caption {
+    text-align: left;
+    left: 34px;
+    top: 54px;
+    max-width: 460px;
   }
 
   @media (min-width: 992px) {

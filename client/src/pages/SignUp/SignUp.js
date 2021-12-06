@@ -1,172 +1,72 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import GameSelectList from './components/GameSelectList/GameSelectList';
-import RankSelectList from './components/RankSelectList/RankSelectList';
-import SignUpForm from './components/SignUpForm/SignUpForm';
+import AuthScreen from '../../components/AuthScreen/AuthScreen';
 import Spinner from '../../components/Spinner/Spinner';
-import { fetchGames } from './actions';
-import { editUser } from './api';
-import { STEPS, SELECT_GAME_STEP, SELECT_RANK_STEP, SIGN_UP_STEP } from './constants/steps';
-import { fetchRanks, createUser } from './actions';
+import GameSelect from '../../components/GameSelect/GameSelect';
+import { fetchGames, createUser } from './actions';
+import styles from './sign-up.module.css';
+import SignUpForm from './components/SignUpForm/SignUpForm';
+import { withRouter } from 'react-router';
 
 function SignUp({
+    gameList,
     isLoading,
     isUserSignedIn,
-    error,
     history,
     fetchGames,
-    fetchRanks,
-    gameList,
-    rankList,
-    createUser,
-    location
+    createUser
 }) {
     const [selectedGame, setSelectedGame] = useState(null);
-    const [selectedRank, setSelectedRank] = useState(null);
-    const [step, setStep] = useState(0);
 
     useEffect(() => {
-        if (STEPS[step].id === SELECT_GAME_STEP) {
+        if (!selectedGame) {
             fetchGames();
         }
-    }, [step, fetchGames]);
-
-    useEffect(() => {
-        if (STEPS[step].id === SELECT_RANK_STEP) {
-            fetchRanks(selectedGame);
-        }
-    }, [step, selectedGame, fetchRanks]);
-
-    useEffect(() => {
-        if (STEPS[step].id === SELECT_RANK_STEP && !isLoading && rankList && rankList.length === 0) {
-            setStep(step + 1);
-        }
-    }, [step, rankList, isLoading]);
-
-    useEffect(() => {
-        if (STEPS[step].id === SIGN_UP_STEP && location.state?.isSocial) {
-            editUser({ game: selectedGame, rank: selectedRank }).then(() => {
-                window.open('/coaching', '_self');
-            });
-        }
-    }, [editUser, selectedGame, selectedRank, step, location.state?.isSocial]);
+    }, [selectedGame, fetchGames]);
 
     if (isUserSignedIn) {
         history.push({ pathname: '/coaching' });
     }
 
-    if (isLoading) {
-        return (
-            <div className='d-flex align-items-center justify-content-center' style={{ height: '100vh' }}>
-                <Spinner />
-            </div>
-        );
-    }
-
     return (
-        <div className={`poll ${step === 2 ? 'poll-sign-up' : ''}`}>
-            <div className='container position-relative'>
-                <nav className='d-flex justify-content-between align-items-center pt-3 pb-3 pt-md-4 pb-md-4'>
-                    {step > 0 ? (
-                        <button className='sign-up-btn' onClick={() => {
-                            if (STEPS[step].id === SELECT_RANK_STEP) {
-                                setSelectedRank(null);
-                            }
-
-                            if (STEPS[step].id !== SELECT_GAME_STEP) {
-                                setStep(step - 1);
-                            }
-
-                            if (STEPS[step].id === SIGN_UP_STEP && rankList.length === 0) {
-                                setStep(step - 2);
-                            }
-                        }}>
-                            <i className='fas fa-arrow-left'></i>
-                        </button>
+        <AuthScreen>
+            {!selectedGame ? (
+                <div className={styles.gameSelect}>
+                    <h2 className={styles.gameSelectTitle}>Выбери одну игру</h2>
+                    <p className={styles.gameSelectLabel}>Свой выбор всегда можно будет поменять в&nbsp;профиле</p>
+                    {isLoading ? (
+                        <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>
+                            <Spinner />
+                        </div>
                     ) : (
-                        <div style={{ width: '25px' }} />
-                    )}
-                    <div className='m-auto'>
-                        <img src='/images/logo.png' width='100' />
-                    </div>
-                    <button
-                        className='sign-up-btn'
-                        onClick={() => {
-                            history.push({ pathname: '/coaching' });
-                        }}>
-                        <i className='fas fa-times'></i>
-                    </button>
-                </nav>
-                <div className={`d-flex ${STEPS[step].id === SIGN_UP_STEP ? 'justify-content-center' : 'justify-content-between'} flex-column flex-md-row align-items-center`}>
-                    {STEPS[step].id !== SIGN_UP_STEP && (
-                        <div className='poll-info'>
-                            <h1 className='pb-2 pb-md-4'>{STEPS[step].title}</h1>
-                            <p className='lead pb-3 pb-md-0 mb-0'>{STEPS[step].description}</p>
-                        </div>
-                    )}
-                    {STEPS[step].id === SELECT_GAME_STEP && gameList && (
-                        <div className='poll-content'>
-                            <GameSelectList
-                                gameList={gameList}
-                                selectedGame={selectedGame}
-                                onSelectGame={setSelectedGame} />
-                        </div>
-                    )}
-                    {STEPS[step].id === SELECT_RANK_STEP && rankList && (
-                        <div className='poll-content'>
-                            <RankSelectList
-                                rankList={rankList}
-                                selectedRank={selectedRank}
-                                onSelectRank={setSelectedRank} />
-                        </div>
-                    )}
-                    {(STEPS[step].id === SIGN_UP_STEP && !location.state?.isSocial) && (
-                        <SignUpForm
-                            error={error}
-                            selectedGame={selectedGame}
-                            selectedRank={selectedRank}
-                            onCreateUser={params =>
-                                createUser({
-                                    ...params,
-                                    game: selectedGame,
-                                    rank: selectedRank
-                                })
-                            } />
+                        <GameSelect gameList={gameList} onSelect={setSelectedGame} />
                     )}
                 </div>
-            </div>
-            {STEPS[step].id !== SIGN_UP_STEP && (
-                <footer className='poll-footer d-flex justify-content-center align-items-center p-4 p-md-5'>
-                    <button
-                        type='submit'
-                        disabled={isLoading || (!selectedGame && STEPS[step].id === SELECT_GAME_STEP) || (!selectedRank && STEPS[step].id === SELECT_RANK_STEP)}
-                        className='btn btn-lg btn-hover'
-                        onClick={() => setStep(step + 1)}>
-                        {STEPS[step].id === SELECT_RANK_STEP && location.state?.isSocial ? (
-                            <>
-                                Закончить регистрацию
-                            </>
-                        ) : (
-                            <>
-                                Следующий шаг <i className='fas fa-chevron-right'></i>
-                            </>
-                        )}
-                    </button>
-                </footer>
+            ) : (
+                <div className={styles.form}>
+                    <h2 className={styles.title}>Создать учётную запись</h2>
+                    <p className={styles.loginLabel}>
+                        Уже есть учётная запись?
+                        <a href='/sign-in' className={styles.loginLink}>Войти</a>
+                    </p>
+                    <SignUpForm onSubmit={params =>
+                        createUser({
+                            ...params,
+                            game: selectedGame
+                        })
+                    } />
+                    <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='#' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='#' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
+                </div>
             )}
-        </div>
+        </AuthScreen>
     );
 }
 
 export default connect(({ signUp }) => ({
-    isLoading: signUp.isLoading,
-    error: signUp.error,
-    isUserSignedIn: signUp.isUserSignedIn,
     gameList: signUp.gameList,
-    rankList: signUp.rankList
+    isLoading: signUp.isLoading,
+    isUserSignedIn: signUp.isUserSignedIn
 }), {
     fetchGames,
-    fetchRanks,
     createUser
 })(withRouter(SignUp));

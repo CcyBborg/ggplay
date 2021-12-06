@@ -4,7 +4,7 @@ import {
   withRouter
 } from 'react-router-dom';
 import { fetchGames, fetchCoaches } from './actions';
-import GameSelect from './components/GameSelect/GameSelect';
+import GameSelect from '../../components/GameSelect/GameSelect';
 import Spinner from '../../components/Spinner/Spinner';
 import CoachCard from './components/CoachCard/CoachCard';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
@@ -141,7 +141,10 @@ function Coaching({
             </div>
           </>
         ) : (
-          <GameSelect gameList={games.gameList} onSelect={setSelectedGame} />
+          <>
+            <h4>Выбери игру</h4>
+            <GameSelect gameList={games.gameList} onSelect={setSelectedGame} />
+          </>
         )}
       </Container>
       <div className={styles.cta}>

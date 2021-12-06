@@ -1,5 +1,5 @@
 const express = require('express');
-const { ensureAuthenticated, persistGameRank } = require('../middleware');
+const { ensureAuthenticated, persistGame } = require('../middleware');
 const passport = require('passport');
 const User = require('../models/User');
 const LessonSlot = require('../models/LessonSlot');
@@ -27,8 +27,7 @@ router.post('/', async (req, res) => {
                 email: req.body.email,
                 password: req.body.password,
                 profile: {
-                    game: req.body.game,
-                    rank: req.body.rank
+                    game: req.body.game
                 }
             });
 
@@ -70,7 +69,7 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 // Vkontakte oauth
-router.get('/auth/vkontakte', persistGameRank, passport.authenticate('vkontakte'));
+router.get('/auth/vkontakte', persistGame, passport.authenticate('vkontakte'));
 
 router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     successRedirect: '/coaching',
@@ -78,14 +77,13 @@ router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
 }));
 
 // Discord oauth
-router.get('/auth/discord', persistGameRank, passport.authenticate('discord'));
+router.get('/auth/discord', persistGame, passport.authenticate('discord'));
 
 router.get('/auth/discord/callback', passport.authenticate('discord', {
     failureRedirect: '/sign-up'
 }), async (req, res) => {
     if (req.session?.game) {
         req.user.profile.game = req.session.game;
-        req.user.profile.rank = req.session.rank;
 
         await req.user.save();
     }
@@ -217,8 +215,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
 
 router.post('/edit', ensureAuthenticated, async (req, res) => {
     req.user.profile = {
-        game: req.body.game,
-        rank: req.body.rank
+        game: req.body.game
     };
 
     await req.user.save();

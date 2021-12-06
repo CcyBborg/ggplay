@@ -1,0 +1,92 @@
+.bg1 {
+    height: 340px;
+    border-radius: 5px;
+    background:
+        right bottom/ 384px 314px no-repeat url(./images/fg1.png),
+        center/cover no-repeat url(./images/bg1.png);
+}
+
+.bg2 {
+    height: 340px;
+    border-radius: 5px;
+    background:
+        right bottom/ 384px 314px no-repeat url(./images/fg2.png),
+        center/cover no-repeat url(./images/bg2.png);
+}
+
+.captionTitle {
+    font-size: 32px;
+    line-height: 46px;
+}
+
+.captionAbout1 {
+    color: #767698;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.captionAbout2 {
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.button1 {
+    color: #EBEBEB!important;
+    border-color: #E60B74!important;
+    background-color: transparent!important;
+}
+
+.button2 {
+    color: #FFFFFF!important;
+    border-color: #FFFFFF!important;
+    background-color: transparent!important;
+}
+
+.settingButtons {
+    margin-top: 23px;
+}
+
+.settingButton {
+    padding: 10px 15px!important;
+    border: 1px solid #1D1F38!important;
+    background: none!important;
+    margin: 0 10px;
+}
+
+.settingButton:hover {
+    border-color: #E60B74!important;
+}
+
+.profile {
+    background-color: #101221;
+    border-radius: 5px;
+    padding: 54px;
+    text-align: center;
+    height: 100%;
+}
+
+.profileAvatar {
+    box-shadow: 0px 4px 30px 0px #35385E;
+    border-radius: 5px;
+    margin-bottom: 24px;
+}
+
+.profileNickname {
+    color: #EBEBEB;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.courseCard {
+    background-color: #101221;
+}
+
+.courseCardFooter {
+    background-color: #121526;
+    padding: 15px;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+

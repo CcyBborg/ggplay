@@ -35,9 +35,10 @@ var UserSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Games'
         },
-        rank: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ranks'
+        avatar: {
+            type: String,
+            default: '/images/small-logo.png',
+            required: true
         }
     },
     slots: [{

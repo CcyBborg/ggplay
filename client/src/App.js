@@ -15,6 +15,7 @@ import ConfidentialPolicy from './pages/ConfidentialPolicy/ConfidentialPolicy';
 import Layout from './components/Layout/Layout';
 import Coach from './pages/Coach/Coach';
 import Dashboard from './pages/Dashboard/Dashboard';
+import FullAccess from './pages/FullAccess/FullAccess';
 import SlotBooked from './pages/SlotBooked/SlotBooked';
 import Course from './pages/Course/Course';
 import TermsOfService from './pages/TermsOfService/TermsOfService';
@@ -102,6 +103,7 @@ function App({ history }) {
           </Route>
         </Switch>
         <Route path='*/coach/:id' component={Coach} />
+        <Route path='*/full-access' component={FullAccess} />
     </Provider>
   );
 }
