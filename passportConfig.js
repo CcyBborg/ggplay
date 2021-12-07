@@ -67,7 +67,7 @@ module.exports = passport => {
         clientSecret: '508cc5aeff3444e4a19ba0da304e47fd',
         callbackURL: '/users/auth/yandex/callback'
     },
-        function (accessToken, refreshToken, profile, done) {
+        function (req, accessToken, refreshToken, profile, done) {
             User.findOne({ yandex: profile.id }, function (err, user) {
                 if (err) {
                     return done(err);
