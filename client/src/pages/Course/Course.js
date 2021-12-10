@@ -22,6 +22,7 @@ function Course({
 }) {
     const [isTrailer, setIsTrailer] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [player, setPlayer] = useState(null);
 
     return (
         <>
@@ -63,7 +64,7 @@ function Course({
                                     </Col>
                                 </Row>
                                 <p className={styles.about}>
-                                    &laquo;Цена Времени&raquo;&nbsp;&mdash; это настоящая выжимка знаний. Сформирована огромным опытом работы с&nbsp;учениками, и&nbsp;универсальным подходом к&nbsp;разному рейтингу. Сильнейшие уроки взяты за&nbsp;основу каждого ролика.
+                                    &laquo;Цена Времени&raquo;&nbsp;&mdash; это настоящая выжимка знаний от гейм-аналитика Team&nbsp;Empire.<br /><br />Сформирована огромным опытом работы с&nbsp;учениками, и&nbsp;универсальным подходом к&nbsp;разному рейтингу. Сильнейшие уроки взяты за&nbsp;основу каждого ролика.<br />
                                 </p>
                             </div>
                             <div>
@@ -97,10 +98,14 @@ function Course({
                         <div>
                             <div className={styles.playerComments}>
                                 <Vimeo
-                                    video="650931371"
+                                    video='655366929'
                                     autoplay={false}
+                                    onReady={setPlayer}
                                     responsive />
-                                <div className={`${styles.placeholder} ${isPlaying ? styles.placeholderDisabled : ''}`} onClick={() => setIsPlaying(true)}>
+                                <div className={`${styles.placeholder} ${isPlaying ? styles.placeholderDisabled : ''}`} onClick={() => {
+                                    setIsPlaying(true);
+                                    player.play();
+                                }}>
                                     <Image className={styles.previewImage} src='/images/player-holder.jpg' />
                                     <div className={styles.previewAbout}>
                                         <div>

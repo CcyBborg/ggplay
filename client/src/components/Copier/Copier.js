@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Image } from 'react-bootstrap';
+import copyIcon from './images/copy.svg';
+import styles from './copier.module.css';
 
 function Copier({ text }) {
     const [isCopied, setIsCopied] = useState(false);
@@ -8,10 +11,10 @@ function Copier({ text }) {
         <>
             <CopyToClipboard text={text}
                 onCopy={() => setIsCopied(true)}>
-                <div className='copier d-flex justify-content-between align-items-center'>
+                <div className={styles.copier}>
                     <span className='text'>{text}</span>
                     <button className='btn btn-link p-0' type='button'>
-                        <i className='fas fa-clone'></i>
+                        <Image src={copyIcon} />
                     </button>
                 </div>
             </CopyToClipboard>

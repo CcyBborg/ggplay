@@ -1,0 +1,9 @@
+.copier {
+    background: #1D1F38;
+    border-radius: 5px;
+    padding: 6.5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #767698;
+}

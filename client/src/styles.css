@@ -185,8 +185,12 @@
   }
 
   .bg-secondary {
-    background-color: #1D1F38!important;
+    background-color: #25284B!important;
     color: #767698;
+  }
+
+  .bg-primary {
+    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%)!important;
   }
 
   p {

@@ -150,7 +150,7 @@ function Coaching({
       <div className={styles.cta}>
         <Container className='d-flex flex-column align-items-center'>
           <h2 className='h1'>Уже готов</h2>
-          <h3>Освоить новый уровень игры</h3>
+          <h3>Освоить новый уровень игры?</h3>
           <Button className={styles.ctaButton} variant='primary' size='lg' onClick={e => {
             e.preventDefault();
             alert('Флоу регистрации');

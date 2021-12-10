@@ -1,0 +1,75 @@
+.dateCaption {
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #E50B74;
+    border-radius: 5px;
+    background-color: #101221;
+    padding: 20px;
+}
+
+.date {
+    text-shadow: none;
+    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dateDay {
+    font-size: 45px;
+    line-height: 36px;
+}
+
+.dateMonth {
+    font-size: 14px;
+line-height: 36px;
+}
+
+.time {
+    margin-top: 20px;
+    color: #EBEBEB;
+}
+
+.aboutCaption {
+    background-color: #1D1F38;
+    padding: 15px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.title {
+    font-size: 16px;
+    line-height: 18px;
+    color: #EBEBEB;
+    text-transform: none;
+    font-weight: normal;
+}
+
+.coach,
+.rating {
+    color: #767698;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rating {
+    font-weight: bold;
+}
+
+.coachAvatar {
+    border-radius: 5px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.starIcon {
+    margin-right: 5px;
+}
+
+.slotCaption {
+    background-color: #101221;
+    padding: 15px;
+    margin-top: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}

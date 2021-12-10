@@ -46,18 +46,6 @@ function FAQSection() {
                         Если мастер-класс не оправдал ожидания, то можно оформить возврат. Для оформления возврата средств необходимо написать на нашу почту: <a href=''>ggplay@ggplay.ru</a>.
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item className={styles.faqItem} eventKey='2'>
-                    <Accordion.Header className={styles.faqItemHeader}>Кому нужен этот курс?</Accordion.Header>
-                    <Accordion.Body className={styles.faqItemBody}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                        est laborum.
-                    </Accordion.Body>
-                </Accordion.Item>
             </Accordion>
         </>
     );

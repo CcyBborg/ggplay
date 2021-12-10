@@ -25,6 +25,13 @@
     line-height: 23px;
 }
 
+.contact {
+    color: #767698;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
 .captionAbout2 {
     color: #FFFFFF;
     font-size: 16px;
@@ -77,16 +84,3 @@
     font-size: 20px;
     line-height: 20px;
 }
-
-.courseCard {
-    background-color: #101221;
-}
-
-.courseCardFooter {
-    background-color: #121526;
-    padding: 15px;
-    padding-top: 8px;
-    display: flex;
-    justify-content: space-between;
-}
-
