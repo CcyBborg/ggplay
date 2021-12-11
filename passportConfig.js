@@ -133,6 +133,7 @@ module.exports = passport => {
                         return done(null, false);
                     }
 
+                    console.log('\n\n\n\n\n\n')
                     console.log(req.session?.game);
 
                     const newUser = new User({
