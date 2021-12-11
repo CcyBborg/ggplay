@@ -55,7 +55,11 @@ function SignUp({
                     )}
                 </div>
             ) : (
-                !isSocial && (
+                isSocial ? (
+                    <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>
+                        <Spinner />
+                    </div>
+                ) : (
                     <div className={styles.form}>
                         <h2 className={styles.title}>Создать учётную запись</h2>
                         <p className={styles.loginLabel}>
