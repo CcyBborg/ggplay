@@ -1,0 +1,17 @@
+.root {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.root li {
+    flex: 1;
+}
+
+.root li:not(:last-child) {
+    margin-right: 15px;
+}
+
+.button {
+    width: 100%;
+}

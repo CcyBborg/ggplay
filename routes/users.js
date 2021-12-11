@@ -84,6 +84,14 @@ router.get('/auth/yandex/callback', passport.authenticate('yandex', {
     failureRedirect: '/sign-up'
 }));
 
+// Google oauth
+router.get('/auth/google', persistGame, passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback', passport.authenticate('google', {
+    successRedirect: '/coaching',
+    failureRedirect: '/sign-up'
+}));
+
 // Discord oauth
 router.get('/auth/discord', persistGame, passport.authenticate('discord'));
 

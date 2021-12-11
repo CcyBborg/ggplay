@@ -29,21 +29,3 @@
     line-height: 23px;
     text-align: center;
 }
-
-.socials {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-}
-
-.socials li {
-    flex: 1;
-}
-
-.socials li:not(:last-child) {
-    margin-right: 15px;
-}
-
-.socialsButton {
-    width: 100%;
-}

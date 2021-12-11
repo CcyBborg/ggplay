@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import { Form, Button, Image } from 'react-bootstrap';
-import vkIcon from './images/vk.svg';
-import googleIcon from './images/google.svg'
-import yandexIcon from './images/yandex.svg';
-import discordIcon from './images/discord.svg';
+import { Form, Button } from 'react-bootstrap';
 import styles from './sign-up-form.module.css';
 
 function SignUpForm({ onSubmit }) {
@@ -46,50 +42,6 @@ function SignUpForm({ onSubmit }) {
             <div className={styles.loginWithLabel}>
                 или с помощью
             </div>
-            <ul className={styles.socials}>
-                <li>
-                    <Button className={styles.socialsButton} variant='secondary'>
-                        <Image src={vkIcon} width='28' height='28' />
-                    </Button>
-                </li>
-                <li>
-                    <Button
-                        className={styles.socialsButton}
-                        variant='secondary'
-                        onClick={
-                            () => {
-                                if (process?.env?.NODE_ENV === 'development') {
-                                    window.open('http://localhost:5000/users/auth/google', '_self');
-                                } else {
-                                    window.open('/users/auth/google', '_self');
-                                }
-                            }
-                        }>
-                        <Image src={googleIcon} width='28' height='28' />
-                    </Button>
-                </li>
-                <li>
-                    <Button
-                        className={styles.socialsButton}
-                        variant='secondary'
-                        onClick={
-                            () => {
-                                if (process?.env?.NODE_ENV === 'development') {
-                                    window.open('http://localhost:5000/users/auth/yandex', '_self');
-                                } else {
-                                    window.open('/users/auth/yandex', '_self');
-                                }
-                            }
-                        }>
-                        <Image src={yandexIcon} width='28' height='28' />
-                    </Button>
-                </li>
-                <li>
-                    <Button className={styles.socialsButton} variant='secondary'>
-                        <Image src={discordIcon} width='28' height='28' />
-                    </Button>
-                </li>
-            </ul>
         </>
     );
 }

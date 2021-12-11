@@ -113,11 +113,44 @@ module.exports = passport => {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: '/users/auth/google/callback'
-      },
-      function(accessToken, refreshToken, profile, cb) {
-        console.log('\n\n\n\n\n\n\n\n');
-        console.log(profile);
-      }
+    },
+        function (req, accessToken, refreshToken, profile, done) {
+            User.findOne({ google: profile.id }, function (err, user) {
+                if (err) {
+                    return done(err);
+                }
+
+                if (user) {
+                    return done(null, user)
+                }
+
+                User.findOne({ email: profile.emails[0].value }, (err, emailUser) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    if (emailUser) {
+                        return done(null, false);
+                    }
+
+                    const newUser = new User({
+                        nickname: profile.displayName,
+                        google: profile.id,
+                        email: profile.emails[0].value,
+                        profile: {
+                            game: req.session?.game
+                        }
+                    });
+
+                    newUser.save(function (err) {
+                        if (err) {
+                            return done(err);
+                        }
+                        return done(null, newUser);
+                    });
+                });
+            });
+        }
     ));
 
     // Discord Strategy

@@ -7,6 +7,7 @@ import { fetchGames, createUser } from './actions';
 import styles from './sign-up.module.css';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import { withRouter } from 'react-router';
+import Oauth from '../../components/Oauth/Oauth';
 
 function SignUp({
     gameList,
@@ -55,6 +56,7 @@ function SignUp({
                             game: selectedGame
                         })
                     } />
+                    <Oauth />
                     <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='/terms-of-service' target='_blank' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='/confidential-policy' target='_blank' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
                 </div>
             )}
