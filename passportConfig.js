@@ -43,7 +43,8 @@ module.exports = passport => {
             } else {
                 const newUser = new User({
                     nickname: profile.displayName,
-                    vkontakte: profile.id
+                    vkontakte: profile.id,
+                    profile: {}
                 });
 
                 newUser.save(function (err) {
@@ -86,7 +87,8 @@ module.exports = passport => {
                     const newUser = new User({
                         nickname: profile.username,
                         yandex: profile.id,
-                        email: profile.emails[0].value
+                        email: profile.emails[0].value,
+                        profile: {}
                     });
 
                     newUser.save(function (err) {
@@ -131,6 +133,7 @@ module.exports = passport => {
                         nickname: profile.displayName,
                         google: profile.id,
                         email: profile.emails[0].value,
+                        profile: {}
                     });
 
                     newUser.save(function (err) {
@@ -174,7 +177,8 @@ module.exports = passport => {
                 const newUser = new User({
                     nickname: profile.username,
                     discord: profile.id,
-                    email: profile.email
+                    email: profile.email,
+                    profile: {}
                 });
                 newUser.save(function (err) {
                     if (err) {
