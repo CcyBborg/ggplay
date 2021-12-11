@@ -77,9 +77,6 @@ module.exports = passport => {
                     return done(null, user)
                 }
 
-                console.log('\n\n\n\n\n\n');
-                console.log(profile);
-
                 User.findOne({ email: profile.emails[0].value }, (err, emailUser) => {
                     if (err) {
                         return done(err);
@@ -97,8 +94,7 @@ module.exports = passport => {
                             game: req.session?.game
                         }
                     });
-                    console.log('\n\n\n\n\n\n');
-                    console.log(newUser);
+
                     newUser.save(function (err) {
                         if (err) {
                             return done(err);
