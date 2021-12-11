@@ -38,7 +38,7 @@ function SignUp({
                 window.open('/coaching', '_self');
             });
         }
-    }, [editUser, selectedGame, step, isSocial]);
+    }, [editUser, selectedGame, isSocial]);
 
     return (
         <AuthScreen>
