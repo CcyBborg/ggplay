@@ -231,7 +231,16 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
     }
 });
 
-router.post('/edit', ensureAuthenticated, );
+router.post('/edit', ensureAuthenticated, async (req, res) => {
+    req.user.profile = {
+        ...req.user.profile,
+        game: req.body.game
+    };
+
+    await req.user.save();
+
+    res.redirect('/coaching');
+});
 
 router.get('/logout', (req, res) => {
     req.logOut();
