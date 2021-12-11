@@ -56,7 +56,7 @@ function SignUp({
                             game: selectedGame
                         })
                     } />
-                    <Oauth />
+                    <Oauth selectedGame={selectedGame} />
                     <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='/terms-of-service' target='_blank' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='/confidential-policy' target='_blank' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
                 </div>
             )}
