@@ -133,6 +133,8 @@ module.exports = passport => {
                         return done(null, false);
                     }
 
+                    console.log(req.session?.game);
+
                     const newUser = new User({
                         nickname: profile.displayName,
                         google: profile.id,

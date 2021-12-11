@@ -104,6 +104,7 @@ router.get('/auth/google', persistGame, passport.authenticate('google', { scope:
 router.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: '/sign-up'
 }), async (req, res) => {
+    console.log(req.session?.game);
     if (req.session?.game) {
         req.user.profile.game = req.session.game;
 
