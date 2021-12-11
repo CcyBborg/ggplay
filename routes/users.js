@@ -13,6 +13,16 @@ function toUTC(date) {
 
 const NOTIF_PERIOD = 20 * 60 * 1000; // 20 minutes
 
+const processGameSession = async (req, res) => {
+    req.user.profile = {
+        game: req.body.game
+    };
+
+    await req.user.save();
+
+    res.redirect('/coaching');
+};
+
 // Local auth
 router.post('/', async (req, res) => {
     try {
@@ -73,62 +83,28 @@ router.get('/auth/vkontakte', persistGame, passport.authenticate('vkontakte'));
 
 router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
     failureRedirect: '/sign-up'
-}), async (req, res) => {
-    if (req.session?.game) {
-        req.user.profile.game = req.session.game;
-
-        await req.user.save();
-    }
-
-    res.redirect('/coaching');
-});
+}), processGameSession);
 
 // Yandex oauth
 router.get('/auth/yandex', persistGame, passport.authenticate('yandex'));
 
 router.get('/auth/yandex/callback', passport.authenticate('yandex', {
     failureRedirect: '/sign-up'
-}), async (req, res) => {
-    if (req.session?.game) {
-        req.user.profile.game = req.session.game;
-
-        await req.user.save();
-    }
-
-    res.redirect('/coaching');
-});
+}), processGameSession);
 
 // Google oauth
 router.get('/auth/google', persistGame, passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: '/sign-up'
-}), async (req, res) => {
-    console.log('\n\n\n\n\n\n')
-    console.log(req.session?.game);
-    if (req.session?.game) {
-        req.user.profile.game = req.session.game;
-
-        await req.user.save();
-    }
-
-    res.redirect('/coaching');
-});
+}), processGameSession);
 
 // Discord oauth
 router.get('/auth/discord', persistGame, passport.authenticate('discord'));
 
 router.get('/auth/discord/callback', passport.authenticate('discord', {
     failureRedirect: '/sign-up'
-}), async (req, res) => {
-    if (req.session?.game) {
-        req.user.profile.game = req.session.game;
-
-        await req.user.save();
-    }
-
-    res.redirect('/coaching');
-});
+}), processGameSession);
 
 // Authorized user's info
 router.get('/info', ensureAuthenticated, async (req, res) => {
@@ -252,15 +228,7 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
     }
 });
 
-router.post('/edit', ensureAuthenticated, async (req, res) => {
-    req.user.profile = {
-        game: req.body.game
-    };
-
-    await req.user.save();
-
-    res.redirect('/coaching');
-});
+router.post('/edit', ensureAuthenticated, );
 
 router.get('/logout', (req, res) => {
     req.logOut();

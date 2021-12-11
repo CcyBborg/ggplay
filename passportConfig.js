@@ -33,7 +33,7 @@ module.exports = passport => {
         clientID: process.env.VKONTAKTE_APP_ID,
         clientSecret: process.env.VKONTAKTE_APP_SECRET,
         callbackURL: '/users/auth/vkontakte/callback',
-    }, (req, accessToken, refreshToken, params, profile, done) => {
+    }, (accessToken, refreshToken, params, profile, done) => {
         User.findOne({ vkontakte: profile.id }, function (err, user) {
             if (err) {
                 return done(err);
@@ -43,10 +43,7 @@ module.exports = passport => {
             } else {
                 const newUser = new User({
                     nickname: profile.displayName,
-                    vkontakte: profile.id,
-                    profile: {
-                        game: req?.session.game
-                    }
+                    vkontakte: profile.id
                 });
 
                 newUser.save(function (err) {
@@ -67,7 +64,7 @@ module.exports = passport => {
         clientSecret: process.env.YANDEX_CLIENT_SECRET,
         callbackURL: '/users/auth/yandex/callback'
     },
-        function (req, accessToken, refreshToken, profile, done) {
+        function (accessToken, refreshToken, profile, done) {
             User.findOne({ yandex: profile.id }, function (err, user) {
                 if (err) {
                     return done(err);
@@ -89,10 +86,7 @@ module.exports = passport => {
                     const newUser = new User({
                         nickname: profile.username,
                         yandex: profile.id,
-                        email: profile.emails[0].value,
-                        profile: {
-                            game: req.session?.game
-                        }
+                        email: profile.emails[0].value
                     });
 
                     newUser.save(function (err) {
@@ -114,7 +108,7 @@ module.exports = passport => {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: 'https://ggplay.ru/users/auth/google/callback'
     },
-        function (req, accessToken, refreshToken, profile, done) {
+        function (accessToken, refreshToken, profile, done) {
             User.findOne({ google: profile.id }, function (err, user) {
                 if (err) {
                     return done(err);
@@ -133,17 +127,10 @@ module.exports = passport => {
                         return done(null, false);
                     }
 
-                    console.log('\n\n\n\n\n\n')
-                    console.log('jkbjkhbjhkb');
-                    console.log(req.session?.game);
-
                     const newUser = new User({
                         nickname: profile.displayName,
                         google: profile.id,
                         email: profile.emails[0].value,
-                        profile: {
-                            game: req.session?.game
-                        }
                     });
 
                     newUser.save(function (err) {
@@ -165,7 +152,7 @@ module.exports = passport => {
         clientSecret: process.env.DISCORD_CLIENT_SECRET,
         scope: ['identify', 'email'],
         callbackURL: '/users/auth/discord/callback'
-    }, (req, accessToken, refreshToken, profile, done) => {
+    }, (accessToken, refreshToken, profile, done) => {
         User.findOne({ discord: profile.id }, function (err, user) {
             if (err) {
                 return done(err);
@@ -187,10 +174,7 @@ module.exports = passport => {
                 const newUser = new User({
                     nickname: profile.username,
                     discord: profile.id,
-                    email: profile.email,
-                    profile: {
-                        game: req.session?.game
-                    }
+                    email: profile.email
                 });
                 newUser.save(function (err) {
                     if (err) {
