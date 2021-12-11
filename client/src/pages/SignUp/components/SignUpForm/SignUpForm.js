@@ -53,7 +53,18 @@ function SignUpForm({ onSubmit }) {
                     </Button>
                 </li>
                 <li>
-                    <Button className={styles.socialsButton} variant='secondary'>
+                    <Button
+                        className={styles.socialsButton}
+                        variant='secondary'
+                        onClick={
+                            () => {
+                                if (process?.env?.NODE_ENV === 'development') {
+                                    window.open('http://localhost:5000/users/auth/google', '_self');
+                                } else {
+                                    window.open('/users/auth/google', '_self');
+                                }
+                            }
+                        }>
                         <Image src={googleIcon} width='28' height='28' />
                     </Button>
                 </li>
