@@ -44,7 +44,9 @@ module.exports = passport => {
                 const newUser = new User({
                     nickname: profile.displayName,
                     vkontakte: profile.id,
-                    profile: {}
+                    profile: {
+                        avatar: profile?.photos[0]?.value || '/images/small-logo.png'
+                    }
                 });
 
                 newUser.save(function (err) {
@@ -88,7 +90,9 @@ module.exports = passport => {
                         nickname: profile.username,
                         yandex: profile.id,
                         email: profile.emails[0].value,
-                        profile: {}
+                        profile: {
+                            avatar: profile?.photos[0]?.value || '/images/small-logo.png'
+                        }
                     });
 
                     newUser.save(function (err) {
@@ -133,7 +137,9 @@ module.exports = passport => {
                         nickname: profile.displayName,
                         google: profile.id,
                         email: profile.emails[0].value,
-                        profile: {}
+                        profile: {
+                            avatar: profile?.photos[0]?.value || '/images/small-logo.png'
+                        }
                     });
 
                     newUser.save(function (err) {
@@ -178,7 +184,9 @@ module.exports = passport => {
                     nickname: profile.username,
                     discord: profile.id,
                     email: profile.email,
-                    profile: {}
+                    profile: {
+                        avatar: profile?.photos[0]?.value || '/images/small-logo.png'
+                    }
                 });
                 newUser.save(function (err) {
                     if (err) {
