@@ -35,8 +35,7 @@ function App({ history }) {
     <Provider store={store}>
         <Switch>
           <Route path='/' exact>
-            {/* <Redirect to='/coaching' /> */}
-            <h1>KFJnekjfnjk</h1>
+            <Redirect to='/coaching' />
           </Route>
           <Route path='/sign-up'>
             <>

@@ -63,8 +63,8 @@ module.exports = passport => {
     const YandexStrategy = require('passport-yandex').Strategy;
 
     passport.use(new YandexStrategy({
-        clientID: 'bef439254be341c695797d9f8fe78a6c',
-        clientSecret: '508cc5aeff3444e4a19ba0da304e47fd',
+        clientID: process.env.YANDEX_CLIENT_ID,
+        clientSecret: process.env.YANDEX_CLIENT_SECRET,
         callbackURL: '/users/auth/yandex/callback'
     },
         function (req, accessToken, refreshToken, profile, done) {
@@ -104,6 +104,20 @@ module.exports = passport => {
                 });
             });
         }
+    ));
+
+    // Google strategy
+    const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+    passport.use(new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: '/users/auth/google/callback'
+      },
+      function(accessToken, refreshToken, profile, cb) {
+        console.log('\n\n\n\n\n\n\n\n');
+        console.log(profile);
+      }
     ));
 
     // Discord Strategy
