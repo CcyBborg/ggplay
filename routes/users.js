@@ -72,25 +72,46 @@ router.post('/sign-in', (req, res, next) => {
 router.get('/auth/vkontakte', persistGame, passport.authenticate('vkontakte'));
 
 router.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', {
-    successRedirect: '/coaching',
     failureRedirect: '/sign-up'
-}));
+}), async (req, res) => {
+    if (req.session?.game) {
+        req.user.profile.game = req.session.game;
+
+        await req.user.save();
+    }
+
+    res.redirect('/coaching');
+});
 
 // Yandex oauth
 router.get('/auth/yandex', persistGame, passport.authenticate('yandex'));
 
 router.get('/auth/yandex/callback', passport.authenticate('yandex', {
-    successRedirect: '/coaching',
     failureRedirect: '/sign-up'
-}));
+}), async (req, res) => {
+    if (req.session?.game) {
+        req.user.profile.game = req.session.game;
+
+        await req.user.save();
+    }
+
+    res.redirect('/coaching');
+});
 
 // Google oauth
 router.get('/auth/google', persistGame, passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/auth/google/callback', passport.authenticate('google', {
-    successRedirect: '/coaching',
     failureRedirect: '/sign-up'
-}));
+}), async (req, res) => {
+    if (req.session?.game) {
+        req.user.profile.game = req.session.game;
+
+        await req.user.save();
+    }
+
+    res.redirect('/coaching');
+});
 
 // Discord oauth
 router.get('/auth/discord', persistGame, passport.authenticate('discord'));
