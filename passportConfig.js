@@ -185,7 +185,7 @@ module.exports = passport => {
                     discord: profile.id,
                     email: profile.email,
                     profile: {
-                        avatar: profile.photos?.[0].value || '/images/small-logo.png'
+                        avatar: profile?.avatar || '/images/small-logo.png'
                     }
                 });
                 newUser.save(function (err) {
