@@ -28,9 +28,7 @@ export function signInUser({
     });
 }
 
-export function editUser({
-    game
-}) {
+export function editUser(game) {
     return axios.post('/users/edit', {
         game
     });

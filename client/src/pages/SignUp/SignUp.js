@@ -7,6 +7,7 @@ import { fetchGames, createUser } from './actions';
 import styles from './sign-up.module.css';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import { withRouter } from 'react-router';
+import { editUser } from './api';
 import Oauth from '../../components/Oauth/Oauth';
 
 function SignUp({
@@ -15,7 +16,8 @@ function SignUp({
     isUserSignedIn,
     history,
     fetchGames,
-    createUser
+    createUser,
+    location
 }) {
     const [selectedGame, setSelectedGame] = useState(null);
 
@@ -28,6 +30,15 @@ function SignUp({
     if (isUserSignedIn) {
         history.push({ pathname: '/coaching' });
     }
+
+    const isSocial = location.state?.isSocial;
+    useEffect(() => {
+        if (selectedGame && isSocial) {
+            editUser(selectedGame).then(() => {
+                window.open('/coaching', '_self');
+            });
+        }
+    }, [editUser, selectedGame, step, isSocial]);
 
     return (
         <AuthScreen>
@@ -44,21 +55,23 @@ function SignUp({
                     )}
                 </div>
             ) : (
-                <div className={styles.form}>
-                    <h2 className={styles.title}>Создать учётную запись</h2>
-                    <p className={styles.loginLabel}>
-                        Уже есть учётная запись?
-                        <a href='/sign-in' className={styles.loginLink}>Войти</a>
-                    </p>
-                    <SignUpForm onSubmit={params =>
-                        createUser({
-                            ...params,
-                            game: selectedGame
-                        })
-                    } />
-                    <Oauth selectedGame={selectedGame} />
-                    <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='/terms-of-service' target='_blank' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='/confidential-policy' target='_blank' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
-                </div>
+                !isSocial && (
+                    <div className={styles.form}>
+                        <h2 className={styles.title}>Создать учётную запись</h2>
+                        <p className={styles.loginLabel}>
+                            Уже есть учётная запись?
+                            <a href='/sign-in' className={styles.loginLink}>Войти</a>
+                        </p>
+                        <SignUpForm onSubmit={params =>
+                            createUser({
+                                ...params,
+                                game: selectedGame
+                            })
+                        } />
+                        <Oauth selectedGame={selectedGame} />
+                        <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='/terms-of-service' target='_blank' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='/confidential-policy' target='_blank' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
+                    </div>
+                )
             )}
         </AuthScreen>
     );
