@@ -15,6 +15,7 @@ const NOTIF_PERIOD = 20 * 60 * 1000; // 20 minutes
 
 const processGameSession = async (req, res) => {
     req.user.profile = {
+        ...req.user.profile,
         game: req.body.game
     };
 
