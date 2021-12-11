@@ -19,7 +19,7 @@ function SignUp({
     createUser,
     location
 }) {
-    const [selectedGame, setSelectedGame] = useState(null);
+    const [selectedGame, setSelectedGame] = useState(location.state?.selectedGame);
 
     useEffect(() => {
         if (!selectedGame) {

@@ -25,7 +25,7 @@ function FullAccess({
                     </div>
                 </Col>
             </Row>
-            
+
             <ul>
                 <li className='d-flex'>
                     <div>
@@ -65,7 +65,12 @@ function FullAccess({
                 </li>
             </ul>
 
-            <Button variant='primary' size='lg'>
+            <Button variant='primary' size='lg' onClick={() =>
+                history.push({
+                    pathname: '/sign-up',
+                    state: { selectedGame: '6110f38fa9258e24cce20f65' }
+                })
+            }>
                 Продолжить
             </Button>
             <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='#' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='#' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
