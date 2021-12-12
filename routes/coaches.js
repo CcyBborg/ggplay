@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
                 status: coach.status,
                 img: coach.img,
                 tags: coach.tags,
+                about: coach.about.slice(0, 100) + '...',
                 price: lessons[lessons.length - 1]?.price,
                 rating: coach.reviews.reduce((acc, cur) => acc + Number(cur?.rating), 0) / coach.reviews.length,
                 reviewsLength: coach.reviews.length

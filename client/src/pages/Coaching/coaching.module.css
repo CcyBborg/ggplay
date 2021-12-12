@@ -96,4 +96,16 @@
 
   .coachList {
     flex: 1;
+    margin-left: 5px!important;
+  }
+
+  .coachList > * {
+    padding: 0 5px!important;
+  }
+
+  .selectGame {
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
   }

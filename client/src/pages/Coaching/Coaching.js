@@ -23,12 +23,7 @@ function Coaching({
   fetchCoaches
 }) {
   const [selectedGameId, setSelectedGame] = useState(null);
-  console.log(selectedGameId);
   let selectedGame = null;
-
-  let coachList = null;
-
-  const [selectedTags, setSelectedTags] = useState(null);
 
   const query = new URLSearchParams(window.location.search);
 
@@ -66,12 +61,6 @@ function Coaching({
     selectedGame = games.gameList.find(g => g['_id'] === selectedGameId);
   }
 
-  if (!coaches.isLoading) {
-    coachList = selectedTags ? (
-      coaches.coachList?.filter(c => selectedTags.every(t => c.tags.includes(t.value)))
-    ) : (coaches.coachList);
-  }
-
   return (
     <>
       <div className={styles.banner}>
@@ -105,7 +94,7 @@ function Coaching({
       <Container id='coachList' className='mt-3'>
         {selectedGameId ? (
           <>
-            <div className='d-flex mb-3'>
+            <div className={styles.selectGame} onClick={() => setSelectedGame(null)}>
               <h4>Выбери игру</h4>
               <Image src={selectedGame.logo} width='32' height='32' className='mx-3' />
               <ArrowIcon variant='down' />
@@ -123,7 +112,7 @@ function Coaching({
                 <Spinner />
               ) : (
                 <Row className={styles.coachList}>
-                  {coachList.map(coach => (
+                  {coaches.coachList.slice(0, 6).map(coach => (
                     <Col md='4'>
                       <CoachCard
                         id={coach['_id']}
@@ -132,6 +121,7 @@ function Coaching({
                         rating={coach.rating}
                         status={coach.status}
                         reviewsLength={coach.reviewsLength}
+                        about={coach.about}
                         img={coach.img} />
                     </Col>
                   ))}

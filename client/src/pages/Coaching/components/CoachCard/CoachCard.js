@@ -12,6 +12,7 @@ function CoachCard({
   history,
   reviewsLength,
   rating,
+  about,
   img
 }) {
   return (
@@ -35,13 +36,13 @@ function CoachCard({
           </div>
         </div>
       </div>
-      <div className={styles.about}>
+      <div className={styles.description}>
         <Row>
-          <Col sm='5'>
+          <Col sm='6'>
             <div className={styles.attribute}>Ранг</div>
             <p className='mb-1'>{status}</p>
           </Col>
-          <Col sm='7'>
+          <Col sm='6'>
             <div className={styles.attribute}>Рейтинг</div>
             <div className='d-flex align-items-center'>
               <StartRatings
@@ -57,7 +58,7 @@ function CoachCard({
           </Col>
         </Row>
         <div className={styles.attribute}>О себе</div>
-        <p className='text-justify'>Профессиональный психолог. Обучаю игроков любого уровня. Работаю с 2014 года, с 2016 года тренирую професио...</p>
+        <p>{about}</p>
       </div>
     </article>
   );
