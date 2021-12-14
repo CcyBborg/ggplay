@@ -408,13 +408,3 @@
     }
   }
 
-  .navbar-collapse.show {
-    background-color: #050713;
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 15px;
-  }
-

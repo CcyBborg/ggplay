@@ -36,4 +36,9 @@
         flex-direction: column;
         margin-bottom: 30px;
     }
+
+    .messenger {
+        left: 15px;
+        right: 15px;
+    }
 }

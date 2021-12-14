@@ -117,8 +117,8 @@
       text-align: center;
     }
 
-    .bannerList li::before {
-      content: none;
+    .bannerList {
+      display: none;
     }
 
     .bannerRow {
@@ -131,5 +131,18 @@
 
     .bannerRocket {
       display: none;
+    }
+
+    .bannerSubscript {
+      margin: 0 auto;
+      margin-top: 15px;
+    }
+
+    .selectedGame {
+      display: none;
+    }
+
+    .coachList {
+      margin: 0!important;
     }
   }

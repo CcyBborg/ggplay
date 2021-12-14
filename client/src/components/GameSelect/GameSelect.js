@@ -9,7 +9,7 @@ function GameSelect({
     <>
       <Row>
         {gameList.map(game => (
-          <Col md='3' className='p-0' onClick={() => onSelect(game._id)}>
+          <Col xs='6' md='3' className='p-0' onClick={() => onSelect(game._id)}>
             <div className={styles.gameCard}>
               <Image src={game.img} />
               <div className={styles.overlay}>

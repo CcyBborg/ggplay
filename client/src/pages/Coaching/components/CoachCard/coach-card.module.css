@@ -45,3 +45,9 @@
     color: #767698;
     margin-left: 5px;
 }
+
+@media (max-width: 992px) {
+    .description {
+        height: 180px;
+    }
+}

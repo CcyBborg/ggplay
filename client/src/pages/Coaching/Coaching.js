@@ -100,7 +100,7 @@ function Coaching({
               <ArrowIcon variant='down' />
             </div>
             <div className='d-flex'>
-              <div>
+              <div className={styles.selectedGame}>
                 <Image
                   src={selectedGame.banner}
                   width='296'

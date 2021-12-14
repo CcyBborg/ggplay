@@ -38,3 +38,10 @@
       width: 80px;
       height: 80px;
   }
+
+  @media (max-width: 992px) {
+    .gameCard {
+        padding: 10px;
+        position: relative;
+    }
+  }
