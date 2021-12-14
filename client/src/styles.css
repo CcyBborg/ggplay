@@ -389,6 +389,15 @@
     max-width: 460px;
   }
 
+  @media (max-width: 992px) {
+    h1,
+    .h1 {
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
   @media (min-width: 992px) {
     .modal-lg, .modal-xl {
       max-width: 670px;
@@ -397,5 +406,15 @@
     .modal-md {
       max-width: 462px;
     }
+  }
+
+  .navbar-collapse.show {
+    background-color: #050713;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
   }
 

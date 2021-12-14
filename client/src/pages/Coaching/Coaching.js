@@ -65,7 +65,7 @@ function Coaching({
     <>
       <div className={styles.banner}>
         <Container>
-          <Row>
+          <Row className={styles.bannerRow}>
             <Col md='5' className={styles.bannerContent}>
               <h1 className={styles.bannerHeader}>Тренировки&nbsp;с<br />профессионалами</h1>
               <div className='d-flex'>

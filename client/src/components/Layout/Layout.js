@@ -11,6 +11,7 @@ import vkIcon from './images/vk.svg'
 import instagramIcon from './images/instagram.svg'
 import discordIcon from './images/discord.svg'
 import styles from './layout.module.css';
+import Messenger from '../Messenger/Messenger';
 
 function Layout({ user, children, fetchUserInfo }) {
     useEffect(() => {
@@ -86,9 +87,9 @@ function Layout({ user, children, fetchUserInfo }) {
             <footer className='footer'>
                 <Container>
                     <Row className='mb-5'>
-                        <Col lg='10' className='d-flex'>
+                        <Col lg='10' className={styles.footerLinks}>
                             <Nav.Link className='pl-0' href='/terms-of-service'>Пользовательское соглашение</Nav.Link>
-                            <Nav.Link href='/confidential-policy'>Политика конфиденциальности</Nav.Link>
+                            <Nav.Link className='pl-0' href='/confidential-policy'>Политика конфиденциальности</Nav.Link>
                         </Col>
                         <Col lg='2' className='d-flex justify-content-between'>
                             <a target='_blank' href='https://vk.com/ggplay_official'>
@@ -106,6 +107,9 @@ function Layout({ user, children, fetchUserInfo }) {
                     </small></p>
                 </Container>
             </footer>
+            <div className={styles.messenger}>
+                <Messenger />
+            </div>
 
             {isNotification && (
                 notification.type === 'SOON' ? (

@@ -18,3 +18,22 @@
     border-radius: 5px;
     margin-left: 20px;
 }
+
+.messenger {
+    position: fixed;
+    bottom: 0;
+    right: 80px;
+    z-index: 999;
+    width: 350px;
+}
+
+.footerLinks {
+    display: flex;
+}
+
+@media (max-width: 992px) {
+    .footerLinks {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+}
