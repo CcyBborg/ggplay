@@ -113,7 +113,7 @@
 
   @media (max-width: 992px) {
     .banner {
-      padding: 15px 0 60px;
+      padding: 15px 0 40px;
       text-align: center;
     }
 
@@ -144,5 +144,9 @@
 
     .coachList {
       margin: 0!important;
+    }
+
+    .cta {
+      margin-top: 40px;
     }
   }

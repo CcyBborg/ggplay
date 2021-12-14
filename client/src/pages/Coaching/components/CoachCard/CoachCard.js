@@ -38,11 +38,11 @@ function CoachCard({
       </div>
       <div className={styles.description}>
         <Row>
-          <Col sm='6'>
+          <Col xs='6'>
             <div className={styles.attribute}>Ранг</div>
             <p className='mb-1'>{status}</p>
           </Col>
-          <Col sm='6'>
+          <Col xs='6'>
             <div className={styles.attribute}>Рейтинг</div>
             <div className='d-flex align-items-center'>
               <StartRatings
