@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Vimeo from '@u-wave/react-vimeo';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import Player from './components/Player/Player';
 import Comments from './components/Comments/Comments';
 import FAQSection from './components/FAQSection/FAQSection';
 import Trailer from './components/Trailer/Trailer';
@@ -14,6 +14,7 @@ import communityIcon from './images/community.svg';
 import cupIcon from './images/cup.svg';
 import lessonIcon from './images/lesson.svg';
 import featuresForegroundImage from './images/features-foreground.png';
+import LESSONS from './lessons';
 import styles from './course.module.css';
 import { withRouter } from 'react-router';
 
@@ -21,8 +22,7 @@ function Course({
     history
 }) {
     const [isTrailer, setIsTrailer] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [player, setPlayer] = useState(null);
+    const [selectedLesson, setSelectedLesson] = useState(0);
 
     return (
         <>
@@ -97,30 +97,11 @@ function Course({
                     <div className='d-flex justify-content-between'>
                         <div>
                             <div className={styles.playerComments}>
-                                <Vimeo
-                                    video='655366929'
-                                    autoplay={false}
-                                    onReady={setPlayer}
-                                    responsive />
-                                <div className={`${styles.placeholder} ${isPlaying ? styles.placeholderDisabled : ''}`} onClick={() => {
-                                    setIsPlaying(true);
-                                    player.play();
-                                }}>
-                                    <Image className={styles.previewImage} src='/images/player-holder.jpg' />
-                                    <div className={styles.previewAbout}>
-                                        <div>
-                                            <span className={styles.previewLabel}>
-                                                урок 2/23
-                                            </span>
-                                            <h3 className={styles.previewTitle}>
-                                                Длинное&nbsp;название второго&nbsp;урока
-                                            </h3>
-                                        </div>
-                                        <div className={styles.previewIcon}>
-                                            <Image src={playIcon} width='63' height='90' />
-                                        </div>
-                                    </div>
-                                </div>
+                                <Player
+                                    num={selectedLesson + 1}
+                                    total={LESSONS.length}
+                                    video={LESSONS[selectedLesson].vimeoId}
+                                    title={LESSONS[selectedLesson].title} />
                                 <Comments />
                             </div>
                         </div>
@@ -136,48 +117,18 @@ function Course({
                                     </div>
                                 </div>
                                 <ol className={styles.lessonList}>
-                                    <li className={`${styles.lesson} ${styles.selectedLesson}`}>
-                                        <Image className={styles.lessonImage} src='/images/lesson1.png' />
-                                        <div className={styles.lessonAbout}>
-                                            <span className={styles.lessonTime}>08:13</span>
-                                            <h4 className={styles.lessonTitle}>1.&nbsp;Длинное&nbsp;название первого&nbsp;урока</h4>
-                                        </div>
-                                    </li>
-                                    <li className={styles.lesson}>
-                                        <Image className={styles.lessonImage} src='/images/lesson1.png' />
-                                        <div className={styles.lessonAbout}>
-                                            <span className={styles.lessonTime}>08:13</span>
-                                            <h4 className={styles.lessonTitle}>1.&nbsp;Длинное&nbsp;название первого&nbsp;урока</h4>
-                                        </div>
-                                    </li>
-                                    <li className={styles.lesson}>
-                                        <Image className={styles.lessonImage} src='/images/lesson2.png' />
-                                        <div className={styles.lessonAbout}>
-                                            <span className={styles.lessonTime}>08:13</span>
-                                            <h4 className={styles.lessonTitle}>1.&nbsp;Длинное&nbsp;название первого&nbsp;урока</h4>
-                                        </div>
-                                    </li>
-                                    <li className={styles.lesson}>
-                                        <Image className={styles.lessonImage} src='/images/lesson2.png' />
-                                        <div className={styles.lessonAbout}>
-                                            <span className={styles.lessonTime}>08:13</span>
-                                            <h4 className={styles.lessonTitle}>1.&nbsp;Длинное&nbsp;название первого&nbsp;урока</h4>
-                                        </div>
-                                    </li>
-                                    <li className={styles.lesson}>
-                                        <Image className={styles.lessonImage} src='/images/lesson2.png' />
-                                        <div className={styles.lessonAbout}>
-                                            <span className={styles.lessonTime}>08:13</span>
-                                            <h4 className={styles.lessonTitle}>1.&nbsp;Длинное&nbsp;название первого&nbsp;урока</h4>
-                                        </div>
-                                    </li>
-                                    <li className={styles.lesson}>
-                                        <Image className={styles.lessonImage} src='/images/lesson2.png' />
-                                        <div className={styles.lessonAbout}>
-                                            <span className={styles.lessonTime}>08:13</span>
-                                            <h4 className={styles.lessonTitle}>1.&nbsp;Длинное&nbsp;название первого&nbsp;урока</h4>
-                                        </div>
-                                    </li>
+                                    {LESSONS.map((l, i) => (
+                                        <li
+                                            key={i}
+                                            className={`${styles.lesson} ${i === selectedLesson ? styles.selectedLesson : ''}`}
+                                            onClick={() => setSelectedLesson(i)}>
+                                            <Image className={styles.lessonImage} src={l.previewImage} />
+                                            <div className={styles.lessonAbout}>
+                                                <span className={styles.lessonTime}>08:13</span>
+                                                <h4 className={styles.lessonTitle}>{l.title}</h4>
+                                            </div>
+                                        </li>
+                                    ))}
                                 </ol>
                             </div>
                             <div className={styles.syllabusCta}>

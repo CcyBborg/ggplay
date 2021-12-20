@@ -1,0 +1,53 @@
+.placeholder {
+    height: 512px;
+    opacity: 1;
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.placeholderDisabled {
+    transition: .7s ease-in-out;
+    opacity: 0;
+    z-index: -1;
+}
+
+.previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.previewAbout {
+  display: flex;
+  position: absolute;
+  top: 50%; right: 50%;
+  text-align: right;
+  transform: translate(50%,-50%);
+}
+
+.previewTitle {
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 58px;
+  min-width: 420px;
+}
+
+.previewLabel {
+  font-size: 24px;
+  line-height: 35px;
+  text-shadow: none;
+  background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.previewIcon {
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

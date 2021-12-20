@@ -19,14 +19,6 @@
     margin-left: 20px;
 }
 
-.messenger {
-    position: fixed;
-    bottom: 0;
-    right: 80px;
-    z-index: 999;
-    width: 350px;
-}
-
 .footerLinks {
     display: flex;
 }

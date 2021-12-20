@@ -33,11 +33,11 @@ function InitStep({
                 width='122'
                 height='122' />
             </div>
-            <div className='flex-fill d-flex jusitify-content-between'>
+            <div className='flex-fill d-flex jusitify-content-between flex-column flex-md-row'>
               <div className='flex-fill'>
                 <h3 className={styles.title}>{coach.title}</h3>
                 <div className={styles.attribute}>Ранг</div>
-                <p className='mb-0'>{coach.status}</p>
+                <p className='mb-2'>{coach.status}</p>
                 {tags && (
                   <ul className={styles.tags}>
                     {tags.map(t => (
