@@ -1,0 +1,13 @@
+.btnIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: content-box;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: absolute;
+    right: -28px;
+    top: 0px;
+  }

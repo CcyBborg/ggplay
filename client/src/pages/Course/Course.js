@@ -4,7 +4,6 @@ import Player from './components/Player/Player';
 import Comments from './components/Comments/Comments';
 import FAQSection from './components/FAQSection/FAQSection';
 import Trailer from './components/Trailer/Trailer';
-import startIcon from './images/start.svg';
 import playIcon from './images/play.svg';
 import lessonsIcon from './images/lessons.svg';
 import studentsIcon from './images/students.svg';
@@ -17,6 +16,7 @@ import featuresForegroundImage from './images/features-foreground.png';
 import LESSONS from './lessons';
 import styles from './course.module.css';
 import { withRouter } from 'react-router';
+import ScrollButton from '../../components/ScrollButton/ScrollButton';
 
 function Course({
     history
@@ -68,12 +68,7 @@ function Course({
                                 </p>
                             </div>
                             <div>
-                                <Button variant='primary' size='lg' href='#player' className='position-relative'>
-                                    Начать обучение
-                                    <span className='btn-icon'>
-                                        <Image src={startIcon} height='21' width='25' />
-                                    </span>
-                                </Button>
+                                <ScrollButton text='Начать обучение' href='#player' />
                                 <p className={styles.ctaMeta}>
                                     Начни обучение абсолютно бесплатно
                                 </p>
@@ -101,7 +96,8 @@ function Course({
                                     num={selectedLesson + 1}
                                     total={LESSONS.length}
                                     video={LESSONS[selectedLesson].vimeoId}
-                                    title={LESSONS[selectedLesson].title} />
+                                    title={LESSONS[selectedLesson].title}
+                                    previewImage={LESSONS[selectedLesson].previewImage} />
                                 <Comments />
                             </div>
                         </div>

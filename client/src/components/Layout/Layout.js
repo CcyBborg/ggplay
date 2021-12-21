@@ -64,6 +64,7 @@ function Layout({ user, children, fetchUserInfo }) {
                         <Nav className='me-auto'>
                             <Nav.Link href='/course'>Мастер-классы</Nav.Link>
                             <Nav.Link href='/coaching'>Тренировки</Nav.Link>
+                            <Nav.Link href='/tournament'>Турниры</Nav.Link>
                         </Nav>
                         <Nav>
                             {user.info ? (

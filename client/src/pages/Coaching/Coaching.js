@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  withRouter
-} from 'react-router-dom';
 import { fetchGames, fetchCoaches } from './actions';
 import GameSelect from '../../components/GameSelect/GameSelect';
 import Spinner from '../../components/Spinner/Spinner';
+import ScrollButton from '../../components/ScrollButton/ScrollButton';
 import CoachCard from './components/CoachCard/CoachCard';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image, Pagination } from 'react-bootstrap';
 import rocketIcon from './images/rocket.svg';
 import foregroundImage from './images/coaching-foreground.png';
 import styles from './coaching.module.css';
@@ -17,13 +15,13 @@ function Coaching({
   games,
   coaches,
   user,
-  match,
-  history,
   fetchGames,
   fetchCoaches
 }) {
   const [selectedGameId, setSelectedGame] = useState(null);
   let selectedGame = null;
+
+  const [pagination, setPagination] = useState(0);
 
   const query = new URLSearchParams(window.location.search);
 
@@ -79,7 +77,7 @@ function Coaching({
                 <li>Связь с тренерами 24/7</li>
                 <li>Запись всех тренировок</li>
               </ul>
-              <Button variant='primary' size='lg' href='#coachList'>Начать обучение</Button>
+              <ScrollButton text='Начать обучение' href='#coachList' />
               <p className={styles.bannerSubscript}>Не понравилась тренировка? Напиши нам и мы вернем деньги.</p>
             </Col>
             <Col md='7' className='position-relative'>
@@ -94,10 +92,23 @@ function Coaching({
       <Container id='coachList' className='mt-3'>
         {selectedGameId ? (
           <>
-            <div className={styles.selectGame} onClick={() => setSelectedGame(null)}>
-              <h4>Выбери игру</h4>
-              <Image src={selectedGame.logo} width='32' height='32' className='mx-3' />
-              <ArrowIcon variant='down' />
+            <div className='d-flex justify-content-between align-items-center'>
+              <div className={styles.selectGame} onClick={() => setSelectedGame(null)}>
+                <h4>Выбери игру</h4>
+                <Image src={selectedGame.logo} width='32' height='32' className='mx-3' />
+                <ArrowIcon variant='down' />
+              </div>
+              <div>
+                {coaches.coachList?.length > 6 && (
+                  <Pagination>
+                    {[...Array(Math.ceil(coaches.coachList.length / 6)).keys()].map(n => (
+                      <Pagination.Item key={n} active={n === pagination} onClick={() => setPagination(n)}>
+                        {n + 1}
+                      </Pagination.Item>
+                    ))}
+                  </Pagination>
+                )}
+              </div>
             </div>
             <div className='d-flex'>
               <div className={styles.selectedGame}>
@@ -112,7 +123,7 @@ function Coaching({
                 <Spinner />
               ) : (
                 <Row className={styles.coachList}>
-                  {coaches.coachList.slice(0, 6).map(coach => (
+                  {coaches.coachList.slice(pagination * 6, (pagination + 1) * 6).map(coach => (
                     <Col md='4'>
                       <CoachCard
                         id={coach['_id']}
@@ -160,4 +171,4 @@ export default connect(({ coaching, user }) => ({
 }), {
   fetchGames,
   fetchCoaches
-})(withRouter(Coaching));
+})(Coaching);

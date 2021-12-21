@@ -8,6 +8,16 @@
     cursor: pointer;
 }
 
+.placeholder::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background: linear-gradient(0deg, rgba(5, 7, 19, 0.9) -0.16%, rgba(5, 7, 19, 0.2) 100%);
+}
+
 .placeholderDisabled {
     transition: .7s ease-in-out;
     opacity: 0;
@@ -26,6 +36,7 @@
   top: 50%; right: 50%;
   text-align: right;
   transform: translate(50%,-50%);
+  z-index: 1;
 }
 
 .previewTitle {

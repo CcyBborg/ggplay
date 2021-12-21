@@ -21,6 +21,7 @@ import Course from './pages/Course/Course';
 import TermsOfService from './pages/TermsOfService/TermsOfService';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import { useEffect } from 'react';
+import Tournament from './pages/Tournament/Tournament';
 
 function App({ history }) {
   useEffect(() => {
@@ -76,6 +77,14 @@ function App({ history }) {
               <title>Мастер-класс Dota2 | GGPlay</title>
             </Helmet>
             <Course />
+          </Layout>
+        </Route>
+        <Route path='/tournament'>
+          <Layout>
+            <Helmet>
+              <title>Турниры по киберспорту | GGPlay</title>
+            </Helmet>
+            <Tournament />
           </Layout>
         </Route>
         <Route path='/dashboard'>

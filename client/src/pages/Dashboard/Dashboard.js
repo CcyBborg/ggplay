@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Container, Row, Col, Carousel, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import logoutIcon from './images/logout.svg';
 import editIcon from './images/edit.svg';
 import styles from './dashboard.module.css';
@@ -7,6 +7,7 @@ import CourseCard from './components/CourseCard/CourseCard';
 import WorkoutCard from './components/WorkoutCard/WorkoutCard';
 import CoursePlaceholder from './components/CoursePlaceholder/CoursePlaceholder';
 import WorkoutPlaceholder from './components/WorkoutPlaceholder/WorkoutPlaceholder';
+import PromoCarousel from '../../components/PromoCarousel/PromoCarousel';
 
 function Dashboard({
     user
@@ -30,34 +31,7 @@ function Dashboard({
                     </div>
                 </Col>
                 <Col md='9'>
-                    <Carousel controls={false}>
-                        <Carousel.Item>
-                            <div className={styles.bg1} />
-                            <Carousel.Caption>
-                                <h3 className={styles.captionTitle}>Мастер-класс:<br />Цена времени в&nbsp;Dota2</h3>
-                                <p className={styles.captionAbout1}>&laquo;Цена Времени&raquo;&nbsp;&mdash; это настоящая выжимка знаний. Сформирована огромным опытом работы с&nbsp;учениками, и&nbsp;универсальным подходом к&nbsp;разному рейтингу.</p>
-                                <Button
-                                    href='/course'
-                                    variant='outline-primary'
-                                    className={styles.button1}>
-                                    Узнать больше
-                                </Button>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <div className={styles.bg2} />
-                            <Carousel.Caption>
-                                <h3 className={styles.captionTitle}>Тренировки с&nbsp;профессионалами</h3>
-                                <p className={styles.captionAbout2}>Начни свой путь в&nbsp;киберпорт с&nbsp;лучшими групповыми и&nbsp;индивидуальными тренировками</p>
-                                <Button
-                                    href='/coaching'
-                                    variant='outline-primary'
-                                    className={styles.button2}>
-                                    Узнать больше
-                                </Button>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    </Carousel>
+                    <PromoCarousel />
                 </Col>
             </Row>
             <section className='mt-5'>

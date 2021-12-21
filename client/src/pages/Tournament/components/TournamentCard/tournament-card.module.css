@@ -1,0 +1,36 @@
+.root {
+    background-color: #101221;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 0 10px;
+}
+
+.about {
+    padding: 20px 30px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #1D1F38;
+    box-shadow: 0px -4px 10px 0px #05071333;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.participants {
+    font-size: 20px;
+    line-height: 29px;
+    color: #EBEBEB;
+    margin-left: 15px;
+    margin-top: 5px;
+}

@@ -52,7 +52,13 @@ function Coach({
               isLoading={isLoading}
               selectedLesson={selectedLesson}
               onSelectLesson={setLesson}
-              onNextStep={() => setDateStep(true)} />
+              onNextStep={() => {
+                if (user.info) {
+                  setDateStep(true);
+                } else {
+                  window.open('/sign-in', '_self');
+                } 
+              }} />
           </Modal.Body>
         </Modal>
       ) : (

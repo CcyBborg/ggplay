@@ -1,0 +1,51 @@
+.bg1 {
+    height: 340px;
+    border-radius: 5px;
+    background:
+        right bottom/ 384px 314px no-repeat url(./images/fg1.png),
+        center/cover no-repeat url(./images/bg1.png);
+}
+
+.bg2 {
+    height: 340px;
+    border-radius: 5px;
+    background:
+        right bottom/ 384px 314px no-repeat url(./images/fg2.png),
+        center/cover no-repeat url(./images/bg2.png);
+}
+
+.captionTitle {
+    font-size: 32px;
+    line-height: 46px;
+}
+
+.captionAbout1 {
+    color: #767698;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.contact {
+    color: #767698;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+.captionAbout2 {
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.button1 {
+    color: #EBEBEB!important;
+    border-color: #E60B74!important;
+    background-color: transparent!important;
+}
+
+.button2 {
+    color: #FFFFFF!important;
+    border-color: #FFFFFF!important;
+    background-color: transparent!important;
+}

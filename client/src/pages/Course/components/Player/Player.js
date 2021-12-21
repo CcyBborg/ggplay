@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Image } from 'react-bootstrap';
 import Vimeo from '@u-wave/react-vimeo';
 import playIcon from './images/play.svg';
@@ -8,10 +8,13 @@ function Player({
     num,
     total,
     title,
-    video
+    video,
+    previewImage
 }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [player, setPlayer] = useState(null);
+
+    useEffect(() => setIsPlaying(false), [video]);
 
     return (
         <>
@@ -24,7 +27,7 @@ function Player({
                 setIsPlaying(true);
                 player.play();
             }}>
-                <Image className={styles.previewImage} src='/images/player-holder.jpg' />
+                <Image className={styles.previewImage} src={previewImage} />
                 <div className={styles.previewAbout}>
                     <div>
                         <span className={styles.previewLabel}>

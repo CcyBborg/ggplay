@@ -11,20 +11,6 @@
     cursor: pointer;
   }
 
-  .btn-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 1);
-    box-sizing: content-box;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    position: absolute;
-    right: -28px;
-    top: 0px;
-  }
-
   ::-webkit-scrollbar-track
 {
 	border-radius: 10px;
@@ -387,6 +373,25 @@
     left: 34px;
     top: 54px;
     max-width: 460px;
+  }
+
+  .page-link {
+    color: #EBEBEB;
+    font-weight: 500;
+    font-size: 21px;
+    background-color: transparent;
+    border: none;
+  }
+
+  .page-link:hover {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  .page-item.active .page-link {
+    background-color: transparent;
+    border-bottom: 2px solid #EBEBEB;
+    border-radius: 0;
   }
 
   @media (max-width: 992px) {
