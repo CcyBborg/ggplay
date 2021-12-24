@@ -27,9 +27,13 @@ function Course({
     return (
         <>
             <section className={styles.banner}>
-                <video className={styles.video} autoPlay muted loop>
-                    <source src="/images/videos/artur_background.mp4" type="video/mp4" />
-                </video>
+                {window.innerWidth >1000 ? (
+                    <video className={styles.video} autoPlay muted loop>
+                        <source src="/images/videos/artur_background.mp4" type="video/mp4" />
+                    </video>
+                ) : (
+                    <Image src='/images/course/preview-mobile.jpg' className={styles.previewMobile} />
+                )}
                 <Container className='position-relative'>
                     <Row>
                         <Col md='5'>
@@ -64,7 +68,7 @@ function Course({
                                     </Col>
                                 </Row>
                                 <p className={styles.about}>
-                                    &laquo;Цена Времени&raquo;&nbsp;&mdash; это настоящая выжимка знаний от гейм-аналитика Team&nbsp;Empire.<br /><br />Сформирована огромным опытом работы с&nbsp;учениками, и&nbsp;универсальным подходом к&nbsp;разному рейтингу. Сильнейшие уроки взяты за&nbsp;основу каждого ролика.<br />
+                                    &laquo;Цена Времени&raquo;&nbsp;&mdash; это настоящая выжимка знаний от гейм-аналитика Team&nbsp;Empire.<br /><br />Сформирована огромным опытом работы с&nbsp;учениками, и&nbsp;универсальным подходом к&nbsp;разному рейтингу.<br />
                                 </p>
                             </div>
                             <div>
@@ -88,7 +92,7 @@ function Course({
                 </Container>
             </section>
             <section id='player'>
-                <Container>
+                {/* <Container>
                     <div className='d-flex justify-content-between'>
                         <div>
                             <div className={styles.playerComments}>
@@ -172,9 +176,9 @@ function Course({
                             </div>
                         </div>
                     </div>
-                </Container>
+                </Container> */}
             </section>
-            <section className={styles.features}>
+            {/* <section className={styles.features}>
                 <h2 className={styles.featuresTitle}>
                     <Container>
                         <span className={styles.featuresHighlight}>Что</span>&nbsp;ты узнаешь из мастер-класса?
@@ -219,7 +223,7 @@ function Course({
                         </div>
                     </div>
                 </Container>
-            </section>
+            </section> */}
             <section>
                 <Container>
                     <div className={styles.finalCta}>

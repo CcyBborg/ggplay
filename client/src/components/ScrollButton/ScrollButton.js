@@ -4,7 +4,7 @@ import styles from './scroll-button.module.css';
 
 function ScrollButton({ text, href }) {
     return (
-        <Button variant='primary' size='lg' href={href} className='position-relative'>
+        <Button variant='primary' size='lg' href={href} className={`${styles.root} position-relative`}>
             {text}
             <span className={styles.btnIcon}>
                 <Image src={startIcon} height='21' width='25' />
