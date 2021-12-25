@@ -2,6 +2,9 @@
     width: 900px!important;
     height: 630px!important;
     background-image: url(./images/trailer-bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .dialog {
@@ -44,4 +47,20 @@
 
 .root .playButton:hover {
     background: rgba(0, 0, 0, 0.4)!important;
+}
+
+@media (max-width: 992px) {
+    .root {
+        width: 100%!important;
+        height: 100vh!important;
+    }
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ctaBtn {
+        width: 100%;
+        margin-top: 15px;
+    }
 }

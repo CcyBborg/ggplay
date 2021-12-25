@@ -14,15 +14,12 @@ function Trailer({ onHide }) {
             <div className={styles.footer}>
                 <div className='d-flex align-items-center'>
                     <div>
-                        <Image />
-                    </div>
-                    <div>
                         <h4>Артур “illusive” Осипов</h4>
                         <p className='mb-0'>Расскажет как раскрыть свой потенциал в&nbsp;Dota2.</p>
                     </div>
                 </div>
                 <div>
-                    <Button variant='primary' size='lg' href='#player' onClick={() => {
+                    <Button className={styles.ctaBtn} variant='primary' size='lg' href='#player' onClick={() => {
                         onHide();
                     }}>
                         Начать обучение

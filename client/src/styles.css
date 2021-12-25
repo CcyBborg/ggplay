@@ -408,6 +408,7 @@
 
     .modal-dialog {
       margin: 0;
+      max-width: none!important;
     }
 
     .modal-body {
