@@ -94,14 +94,14 @@
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    height: auto;
+    height: 50%;
     z-index: -1;
   }
-  .previewMobile img {
+  .previewMobileImage {
       object-fit: cover;
+      object-position: 30% center;
       width: 100%;
-      height: auto;
+      height: 100%;
   }
 
   .playerComments {
@@ -368,7 +368,7 @@ margin-left: 20px;
 
     .banner {
         background: linear-gradient(
-            0deg, #050713 75.7%, rgba(5, 7, 19, 0) 100%);
+            0deg, #050713 55.7%, rgba(5, 7, 19, 0) 100%);
         padding-top: 120px;
         height: 840px;
         margin-bottom: 40px;
@@ -405,6 +405,7 @@ margin-left: 20px;
         padding: 60px 0;
         height: 320px;
         font-size: 36px;
+        text-align: center;
     }
     .featuresForeground {
         display: none;

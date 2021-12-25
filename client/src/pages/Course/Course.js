@@ -32,7 +32,9 @@ function Course({
                         <source src="/images/videos/artur_background.mp4" type="video/mp4" />
                     </video>
                 ) : (
-                    <Image src='/images/course/preview-mobile.jpg' className={styles.previewMobile} />
+                    <div className={styles.previewMobile}>
+                        <Image src='/images/course/preview-mobile.jpg' className={styles.previewMobileImage} />
+                    </div>
                 )}
                 <Container className='position-relative'>
                     <Row>
@@ -227,7 +229,7 @@ function Course({
             <section>
                 <Container>
                     <div className={styles.finalCta}>
-                        <p className={styles.finalCtaText}>Открой полный доступ к курсу и получи<br /><b>бесплатную тренировку по Dota&nbsp;2</b></p>
+                        <p className={styles.finalCtaText}>Открой полный доступ и получи<br /><b>бесплатную тренировку по Dota&nbsp;2</b></p>
                         <Button
                             variant='primary'
                             size='lg'
