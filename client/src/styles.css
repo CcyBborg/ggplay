@@ -402,6 +402,10 @@
       line-height: 36px;
     }
 
+    .modal {
+      padding: 0!important;
+    }
+
     .modal-dialog {
       margin: 0;
     }

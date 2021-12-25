@@ -64,3 +64,11 @@
     line-height: 20px;
     color: #EBEBEB;
 }
+
+@media (max-width: 992px) {
+    .root {
+        width: auto!important;
+        min-height: 100vh;
+        padding: 40px;
+    }
+}

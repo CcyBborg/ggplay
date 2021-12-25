@@ -149,4 +149,8 @@
     .cta {
       margin-top: 40px;
     }
+
+    .ctaButton {
+      width: 100%;
+    }
   }

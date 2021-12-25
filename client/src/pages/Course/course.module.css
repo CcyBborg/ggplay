@@ -338,7 +338,7 @@ margin-left: 20px;
     opacity: .8!important;
 }
 
-@media (max-width: 992px) { 
+@media (max-width: 992px) {
     .mainTitle {
         text-align: center;
         font-size: 26px;
@@ -347,7 +347,7 @@ margin-left: 20px;
         line-height: 36px;
         color: #EBEBEB;
         text-shadow: none;
-        padding-top: 86px;
+        padding-top: 90px;
     }
 
     .banner .trailerBtn {
@@ -368,7 +368,7 @@ margin-left: 20px;
 
     .banner {
         background: linear-gradient(
-            0deg, #050713 65.7%, rgba(5, 7, 19, 0) 100%);
+            0deg, #050713 75.7%, rgba(5, 7, 19, 0) 100%);
         padding-top: 120px;
         height: 840px;
         margin-bottom: 40px;
@@ -388,11 +388,25 @@ margin-left: 20px;
         background-color: #e60b5d;
     }
 
+    .finalCtaBtn {
+        width: 100%;
+    }
+
     .feature {
         margin-top: 10px!important;
     }
 
     .ctaMeta {
         text-align: center;
+    }
+
+    .featuresTitle {
+        background-size: cover;
+        padding: 60px 0;
+        height: 320px;
+        font-size: 36px;
+    }
+    .featuresForeground {
+        display: none;
     }
 }

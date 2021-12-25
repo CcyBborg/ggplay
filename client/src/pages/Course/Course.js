@@ -178,14 +178,14 @@ function Course({
                     </div>
                 </Container> */}
             </section>
-            {/* <section className={styles.features}>
+            <section className={styles.features}>
                 <h2 className={styles.featuresTitle}>
                     <Container>
                         <span className={styles.featuresHighlight}>Что</span>&nbsp;ты узнаешь из мастер-класса?
                     </Container>
                 </h2>
                 <Container>
-                    <div className='d-flex justify-content-between'>
+                    <div className='d-flex flex-column flex-md-row justify-content-between'>
                         <div>
                             <Row as='ol' className={styles.featuresList}>
                                 <Col md='6' as='li' className={styles.featuresItem}>
@@ -223,7 +223,7 @@ function Course({
                         </div>
                     </div>
                 </Container>
-            </section> */}
+            </section>
             <section>
                 <Container>
                     <div className={styles.finalCta}>
