@@ -62,3 +62,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.locked {
+  background-image: url(./images/full.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 512px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

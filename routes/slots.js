@@ -22,7 +22,8 @@ router.post('/book', ensureAuthenticated, async (req, res) => {
         let order = new Order({
             slot: lessonSlot._id,
             user: req.user._id,
-            status: 'placed'
+            status: 'placed',
+            type: 'lesson'
         });
 
         order = await order.save();

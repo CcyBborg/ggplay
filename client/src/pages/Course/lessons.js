@@ -13,12 +13,15 @@ export default [
         vimeoId: '656567622',
         title: '3. Ценность башен',
         previewImage: '/images/course/3.png',
-        locked: true
+        isLocked: true,
+        lockedVimeoId: '649970678'
     },
     {
         vimeoId: '658689013',
         title: '4. Где и почему стоит играть?',
-        previewImage: '/images/course/4.png'
+        previewImage: '/images/course/4.png',
+        isLocked: true,
+        lockedVimeoId: '649970678'
     },
     {
         vimeoId: '658707021',

@@ -1,5 +1,5 @@
 import { Image, Button, Modal, CloseButton } from 'react-bootstrap';
-import playIcon from '../../images/play.svg';
+import playIcon from './images/play.svg';
 import styles from './trailer.module.css';
 
 function Trailer({ onHide }) {

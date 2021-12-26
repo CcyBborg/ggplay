@@ -18,17 +18,22 @@ router.post('/notify', async (req, res) => {
                 if (req.body.Status === 'CONFIRMED') {
                     const order = await Order.findOne({ _id: req.body.OrderId });
                     const user = await User.findOne({ _id: order.user });
-                    const slot = await LessonSlot.findOne({ _id: order.slot }).populate('lesson');
 
-                    user.slots.push(slot._id)
-                    slot.user = user._id;
+                    if (order.type === 'lesson') {
+                        user.course = true;
+                    } else if (order.type === 'course') {
+                        const slot = await LessonSlot.findOne({ _id: order.slot }).populate('lesson');
 
-                    slot.channel = `${user.nickname}-${String(slot._id).slice(0, 4)}`;
-                    slot.invite = await createChannel(slot.channel, slot.lesson.maxParticipants);
+                        user.slots.push(slot._id)
+                        slot.user = user._id;
 
-                    await slot.save();
+                        slot.channel = `${user.nickname}-${String(slot._id).slice(0, 4)}`;
+                        slot.invite = await createChannel(slot.channel, slot.lesson.maxParticipants);
+
+                        await slot.save();
+                    }
+
                     await user.save();
-
                     order.status = 'confirmed';
                     await order.save();
                 }

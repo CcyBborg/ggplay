@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { Image, Row, Modal, CloseButton, Button, Col } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import coachingIcon from './images/coaching.svg';
@@ -7,6 +8,7 @@ import lessonIcon from './images/lessons.svg';
 import styles from './full-access.module.css';
 
 function FullAccess({
+    user,
     history
 }) {
     return (
@@ -65,11 +67,16 @@ function FullAccess({
                 </li>
             </ul>
 
-            <Button variant='primary' size='lg' onClick={() =>
-                history.push({
-                    pathname: '/sign-up',
-                    state: { selectedGame: '6110f38fa9258e24cce20f65' }
-                })
+            <Button variant='primary' size='lg' onClick={() => {
+                if (user.info && !user.info.course) {
+                    alert('Payment Flor');
+                } else {
+                    history.push({
+                        pathname: '/sign-up',
+                        state: { selectedGame: '6110f38fa9258e24cce20f65' }
+                    })
+                }
+            }
             }>
                 Продолжить
             </Button>
@@ -78,4 +85,8 @@ function FullAccess({
     );
 }
 
-export default withRouter(FullAccess);
+export default connect(({ user }) => ({
+    user
+}), {
+})(withRouter(FullAccess));
+

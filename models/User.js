@@ -35,6 +35,10 @@ var UserSchema = new Schema({
         unique: true,
         sparse: true
     },
+    course: {
+        type: Boolean,
+        default: false
+    },
     password: { type: String },
     profile: {
         game: {
