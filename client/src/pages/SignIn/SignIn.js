@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import AuthScreen from '../../components/AuthScreen/AuthScreen';
 import Oauth from '../../components/Oauth/Oauth';
@@ -17,9 +17,17 @@ function SignIn({
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
 
-    if (isUserSignedIn) {
-        history.push({ pathname: '/coaching' });
-    }
+    useEffect(() => {
+        if (isUserSignedIn) {
+            const redirect = localStorage.getItem('auth-redirect');
+            if (redirect) {
+                localStorage.removeItem('auth-redirect');
+                history.push({ pathname: redirect });
+            } else {
+                history.push({ pathname: '/coaching' })
+            }
+        }
+    }, [localStorage, isUserSignedIn]);
 
     return (
         <AuthScreen>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Image, Row, Modal, CloseButton, Button, Col } from 'react-bootstrap';
 import { orderCourse } from './actions';
 import { withRouter } from 'react-router';
@@ -15,14 +15,17 @@ function FullAccess({
     courseOrder,
     onOrderCourse
 }) {
-    if (courseOrder.paymentUrl) {
-        window.open(courseOrder.paymentUrl, '_self');
-    }
+    useEffect(() => {
+        if (courseOrder.paymentUrl) {
+            window.open(courseOrder.paymentUrl, '_self');
+        }
+    }, [courseOrder.paymentUrl]);
 
     const handleFullAccessClick = useCallback(() => {
         if (user.info && !user.info.course) {
             onOrderCourse();
         } else {
+            localStorage.setItem('auth-redirect', '/course/full-access');
             history.push({
                 pathname: '/sign-up',
                 state: { selectedGame: '6110f38fa9258e24cce20f65' }
@@ -30,9 +33,15 @@ function FullAccess({
         }
     }, [user.info?.course, history.push]);
 
+    const handleClickBack = useCallback(() => {
+        history.push({
+            pathname: '/course'
+        })
+    }, [history]);
+
     return (
-        <Modal show={true} dialogClassName={styles.dialog} contentClassName={styles.root} onHide={history.goBack}>
-            <CloseButton variant='white' className={styles.close} onClick={history.goBack} />
+        <Modal show={true} dialogClassName={styles.dialog} contentClassName={styles.root} onHide={handleClickBack}>
+            <CloseButton variant='white' className={styles.close} onClick={handleClickBack} />
             <Row className='mb-4'>
                 <Col md='8'>
                     <h3>Начни&nbsp;свой&nbsp;путь в&nbsp;киберспорт</h3>

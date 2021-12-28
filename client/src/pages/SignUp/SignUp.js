@@ -27,9 +27,17 @@ function SignUp({
         }
     }, [selectedGame, fetchGames]);
 
-    if (isUserSignedIn) {
-        history.push({ pathname: '/coaching' });
-    }
+    useEffect(() => {
+        if (isUserSignedIn) {
+            const redirect = localStorage.getItem('auth-redirect');
+            if (redirect) {
+                localStorage.removeItem('auth-redirect');
+                history.push({ pathname: redirect });
+            } else {
+                history.push({ pathname: '/coaching' })
+            }
+        }
+    }, [localStorage, isUserSignedIn]);
 
     const isSocial = location.state?.isSocial;
     useEffect(() => {
