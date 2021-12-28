@@ -171,7 +171,8 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
             nickname: req.user.nickname,
             email: req.user.email,
             profile: req.user.profile,
-            notification
+            notification,
+            course: req.user.course
         });
     } catch (err) {
         console.log(err);

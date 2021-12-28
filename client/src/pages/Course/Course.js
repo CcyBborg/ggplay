@@ -18,7 +18,7 @@ import { withRouter } from 'react-router';
 
 function Course({
     history,
-    user
+    user,
 }) {
     const [selectedLesson, setSelectedLesson] = useState(0);
     const isFullAccessed = useMemo(() => Boolean(user.info?.course), [user.info?.course]);

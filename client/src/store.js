@@ -5,6 +5,7 @@ import signIn from './pages/SignIn/reducer';
 import coaching from './pages/Coaching/reducer';
 import coach from './pages/Coach/reducer';
 import slots from './pages/Dashboard/reducer';
+import courseOrder from './pages/FullAccess/reducer';
 import user from './components/Layout/reducer';
 
 export default createStore(combineReducers({
@@ -13,5 +14,6 @@ export default createStore(combineReducers({
     user,
     coaching,
     coach,
-    slots
+    slots,
+    courseOrder
 }), applyMiddleware(thunk));

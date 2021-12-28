@@ -19,9 +19,9 @@ router.post('/notify', async (req, res) => {
                     const order = await Order.findOne({ _id: req.body.OrderId });
                     const user = await User.findOne({ _id: order.user });
 
-                    if (order.type === 'lesson') {
+                    if (order.type === 'course') {
                         user.course = true;
-                    } else if (order.type === 'course') {
+                    } else if (order.type === 'lesson') {
                         const slot = await LessonSlot.findOne({ _id: order.slot }).populate('lesson');
 
                         user.slots.push(slot._id)

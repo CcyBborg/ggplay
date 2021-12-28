@@ -23,7 +23,7 @@ router.post('/order', ensureAuthenticated, async (req, res) => {
         const price = 2600 * 100;
 
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
-            TerminalKey: process.env.NODE_ENV === 'production' ? process.env.TERMINAL_PROD_KEY : process.env.TERMINAL_DEV_KEY,
+            TerminalKey: process.env.NODE_ENV !== 'production' ? process.env.TERMINAL_PROD_KEY : process.env.TERMINAL_DEV_KEY,
             Amount: price,
             Description: 'Мастер-класс Dota 2: "Цена времени"',
             OrderId: order._id,

@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+import { useCallback } from 'react';
 import { Image, Row, Modal, CloseButton, Button, Col } from 'react-bootstrap';
+import { orderCourse } from './actions';
 import { withRouter } from 'react-router';
 import coachingIcon from './images/coaching.svg';
 import communityIcon from './images/community.svg';
@@ -9,8 +11,25 @@ import styles from './full-access.module.css';
 
 function FullAccess({
     user,
-    history
+    history,
+    courseOrder,
+    onOrderCourse
 }) {
+    if (courseOrder.paymentUrl) {
+        window.open(courseOrder.paymentUrl, '_self');
+    }
+
+    const handleFullAccessClick = useCallback(() => {
+        if (user.info && !user.info.course) {
+            onOrderCourse();
+        } else {
+            history.push({
+                pathname: '/sign-up',
+                state: { selectedGame: '6110f38fa9258e24cce20f65' }
+            })
+        }
+    }, [user.info?.course, history.push]);
+
     return (
         <Modal show={true} dialogClassName={styles.dialog} contentClassName={styles.root} onHide={history.goBack}>
             <CloseButton variant='white' className={styles.close} onClick={history.goBack} />
@@ -67,17 +86,11 @@ function FullAccess({
                 </li>
             </ul>
 
-            <Button variant='primary' size='lg' onClick={() => {
-                if (user.info && !user.info.course) {
-                    alert('Payment Flor');
-                } else {
-                    history.push({
-                        pathname: '/sign-up',
-                        state: { selectedGame: '6110f38fa9258e24cce20f65' }
-                    })
-                }
-            }
-            }>
+            <Button
+                variant='primary'
+                size='lg'
+                disabled={courseOrder.isLoading}
+                onClick={handleFullAccessClick}>
                 Продолжить
             </Button>
             <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='#' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='#' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
@@ -85,8 +98,10 @@ function FullAccess({
     );
 }
 
-export default connect(({ user }) => ({
-    user
+export default connect(({ user, courseOrder }) => ({
+    user,
+    courseOrder
 }), {
+    onOrderCourse: orderCourse
 })(withRouter(FullAccess));
 
