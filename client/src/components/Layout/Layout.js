@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 import { Container, Navbar, Nav, Row, Col, Modal, Image } from 'react-bootstrap';
 import Copier from '../Copier/Copier';
 import Spinner from '../Spinner/Spinner';
@@ -13,12 +13,22 @@ import discordIcon from './images/discord.svg'
 import styles from './layout.module.css';
 import Messenger from '../Messenger/Messenger';
 
-function Layout({ user, children, fetchUserInfo }) {
+function Layout({ user, children, fetchUserInfo, history }) {
     useEffect(() => {
         if (!user.info) {
             fetchUserInfo();
         }
     }, [fetchUserInfo]);
+
+    useEffect(() => {
+        if (user.info) {
+            const redirect = localStorage.getItem('auth-redirect');
+            if (redirect) {
+                localStorage.removeItem('auth-redirect');
+                history.push({ pathname: redirect });
+            }
+        }
+    }, [user.info]);
 
     const notification = user.info?.notification;
 
@@ -151,4 +161,4 @@ export default connect(({ user }) => ({
     user
 }), {
     fetchUserInfo
-})(Layout);
+})(withRouter(Layout));

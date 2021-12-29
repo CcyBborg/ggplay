@@ -29,15 +29,9 @@ function SignUp({
 
     useEffect(() => {
         if (isUserSignedIn) {
-            const redirect = localStorage.getItem('auth-redirect');
-            if (redirect) {
-                localStorage.removeItem('auth-redirect');
-                history.push({ pathname: redirect });
-            } else {
-                history.push({ pathname: '/coaching' })
-            }
+            history.push({ pathname: '/coaching' })
         }
-    }, [localStorage, isUserSignedIn]);
+    }, [isUserSignedIn]);
 
     const isSocial = location.state?.isSocial;
     useEffect(() => {
