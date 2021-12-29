@@ -37,7 +37,7 @@ function Player({
         <>
             {isLockScreen ? (
                 <div className={styles.locked}>
-                    <h3 className='mb-4'>Весь урок доступен при полном доступе</h3>
+                    <h3 className='mb-4'>Полный доступ при покупке мастер-класса</h3>
                     <Button
                         variant='primary'
                         size='lg'
