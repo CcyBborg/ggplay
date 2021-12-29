@@ -55,7 +55,6 @@ function FullAccess({
                     </div>
                 </Col>
             </Row>
-
             <ul>
                 <li className='d-flex'>
                     <div>
@@ -63,7 +62,7 @@ function FullAccess({
                     </div>
                     <div className={styles.featureAbout}>
                         <h5 className={styles.featureTitle}>Доступ ко всем урокам курса</h5>
-                        <p className={styles.featureP}>Эта модель организационной деятельности способствует реализации систем массового участия.</p>
+                        <p className={styles.featureP}>Вы&nbsp;получите доступ ко&nbsp;всему платному контенту мастеркласса</p>
                     </div>
                 </li>
                 <li className='d-flex'>
@@ -72,7 +71,7 @@ function FullAccess({
                     </div>
                     <div className={styles.featureAbout}>
                         <h5 className={styles.featureTitle}>Бесплатная тренировка по Dota&nbsp;2</h5>
-                        <p className={styles.featureP}>Эта модель организационной деятельности способствует реализации систем массового участия.</p>
+                        <p className={styles.featureP}>Получите бесплатную тренировку с&nbsp;любым из&nbsp;наших тренеров по&nbsp;DOTA&nbsp;2</p>
                     </div>
                 </li>
                 <li className='d-flex'>
@@ -81,7 +80,7 @@ function FullAccess({
                     </div>
                     <div className={styles.featureAbout}>
                         <h5 className={styles.featureTitle}>Участие в ежемесячных турнирах</h5>
-                        <p className={styles.featureP}>Эта модель организационной деятельности способствует реализации систем массового участия.</p>
+                        <p className={styles.featureP}>Возможность участия в&nbsp;турнире с&nbsp;призовым фондом, а&nbsp;также просмотр лучших игроков турнира скаутами команд</p>
                     </div>
                 </li>
                 <li className='d-flex'>
@@ -90,7 +89,7 @@ function FullAccess({
                     </div>
                     <div className={styles.featureAbout}>
                         <h5 className={styles.featureTitle}>Доступ в сообщество GG play</h5>
-                        <p className={styles.featureP}>Эта модель организационной деятельности способствует реализации систем массового участия.</p>
+                        <p className={styles.featureP}>Доступ в&nbsp;Discord канал с&nbsp;возможностью общения с&nbsp;тренерами платформы и&nbsp;ведущими курсов</p>
                     </div>
                 </li>
             </ul>
