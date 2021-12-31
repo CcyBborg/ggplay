@@ -19,7 +19,7 @@ function Dashboard({
                     <div className={styles.profile}>
                         <Image className={styles.profileAvatar} src={user.info.profile.avatar} width='92' height='92' />
                         <div className={styles.profileNickname}>{user.info.nickname}</div>
-                        <div className={styles.contact}>Sano2000@gmail.com</div>
+                        <div className={styles.contact}>{user.info.email}</div>
                         <div className={styles.settingButtons}>
                             <Button className={styles.settingButton}>
                                 <Image src={editIcon} width='16' />
