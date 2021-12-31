@@ -55,7 +55,11 @@ function Dashboard({
                 <h3 className='mb-3'>Мои мастер-классы</h3>
                 <Row>
                     <Col md='3'>
-                        <CourseCard />
+                        {user.info.course ? (
+                            <CourseCard />
+                        ) : (
+                            <CoursePlaceholder variant='3' />
+                        )}
                     </Col>
                     <Col md='3'>
                         <CoursePlaceholder variant='1' />
