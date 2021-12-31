@@ -15,9 +15,7 @@ function Course({
     return (
         <>
             {!isFullAccessed && (
-                <LazyLoad height={800} once >
-                    <Banner />
-                </LazyLoad>
+                <Banner />
             )}
             <LazyLoad height={800} once >
                 <PlayerSection history={history} isFullAccessed={isFullAccessed} />
