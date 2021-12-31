@@ -21,7 +21,7 @@ function Course({
                 <PlayerSection history={history} isFullAccessed={isFullAccessed} />
             </LazyLoad>
             {!isFullAccessed && (
-                <LazyLoad height={2800} offset={1600} >
+                <LazyLoad height={1860} offset={1860} >
                     <InfoSection history={history} />
                 </LazyLoad>
             )}
