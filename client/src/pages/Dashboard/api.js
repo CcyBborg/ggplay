@@ -5,3 +5,9 @@ export function fetchSlots() {
         withCredentials: true
     });
 }
+
+export function logout() {
+    return axios.get('/users/logout', {
+        withCredentials: true
+    });
+}

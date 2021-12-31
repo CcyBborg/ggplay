@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import logoutIcon from './images/logout.svg';
@@ -8,10 +9,21 @@ import WorkoutCard from './components/WorkoutCard/WorkoutCard';
 import CoursePlaceholder from './components/CoursePlaceholder/CoursePlaceholder';
 import WorkoutPlaceholder from './components/WorkoutPlaceholder/WorkoutPlaceholder';
 import PromoCarousel from '../../components/PromoCarousel/PromoCarousel';
+import { logout } from './actions';
 
 function Dashboard({
-    user
+    user,
+    isLoggedOut,
+    onLogout
 }) {
+    const [isSettings, setIsSettings] = useState(false);
+
+    useEffect(() => {
+        if (isLoggedOut) {
+            window.open('/course', '_self');
+        }
+    }, [isLoggedOut])
+
     return (
         <Container className='mt-4'>
             <Row>
@@ -21,17 +33,18 @@ function Dashboard({
                         <div className={styles.profileNickname}>{user.info.nickname}</div>
                         <div className={styles.contact}>{user.info.email}</div>
                         <div className={styles.settingButtons}>
-                            <Button className={styles.settingButton}>
+                            <Button className={styles.settingButton} onClick={() => setIsSettings(true)}>
                                 <Image src={editIcon} width='16' />
                             </Button>
-                            <Button className={styles.settingButton}>
+                            <Button className={styles.settingButton} onClick={onLogout}>
                                 <Image src={logoutIcon} width='16' />
                             </Button>
                         </div>
                     </div>
                 </Col>
                 <Col md='9'>
-                    <PromoCarousel />
+                    <PromoCarousel
+                        isCourse={!user.info.course} />
                 </Col>
             </Row>
             <section className='mt-5'>
@@ -76,8 +89,10 @@ function Dashboard({
     );
 }
 
-export default connect(({ user }) => ({
-    user
+export default connect(({ user, dashboard }) => ({
+    user,
+    isLoggedOut: dashboard.isLoggedOut
 }), {
+    onLogout: logout
 })(Dashboard);
 
