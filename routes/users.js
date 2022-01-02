@@ -120,78 +120,6 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
                 populate: {
                     path: 'coach',
                 }
-            });;
-
-        slots.sort((slotA, slotB) => {
-            const slotATime = toUTC(new Date(slotA.timestamp));
-            const slotBTime = toUTC(new Date(slotB.timestamp));
-
-            if (slotATime > slotBTime) {
-                return -1;
-            } else if (slotATime < slotBTime) {
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-
-        const now = toUTC(new Date());
-        let notification = slots?.find(
-            ({ timestamp }) => Math.abs(toUTC(new Date(timestamp)) - now) < NOTIF_PERIOD
-        );
-
-        if (notification) {
-            notification = {
-                _id: notification._id,
-                type: 'SOON',
-                lesson: notification.lesson,
-                timestamp: notification.timestamp,
-                invite: notification.invite,
-                channel: notification.channel
-            };
-        } else {
-            notification = slots?.find(({ timestamp, lesson, review }) => {
-                const slotTime = toUTC(new Date(timestamp));
-
-                return !review && (now - slotTime > NOTIF_PERIOD);
-            });
-
-            if (notification) {
-                notification = {
-                    _id: notification._id,
-                    type: 'REVIEW',
-                    lesson: notification.lesson,
-                    timestamp: notification.timestamp
-                };
-            }
-        }
-
-        res.json({
-            id: req.user.id,
-            nickname: req.user.nickname,
-            email: req.user.email,
-            profile: req.user.profile,
-            notification,
-            course: req.user.course
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: 'Произошла ошибка. Попробуйте позже.'
-        });
-    }
-});
-
-router.get('/slots', ensureAuthenticated, async (req, res) => {
-    try {
-        const slots = await LessonSlot.find({ user: req.user._id })
-            .populate('lesson')
-            .populate('review')
-            .populate({
-                path: 'lesson',
-                populate: {
-                    path: 'coach',
-                }
             });
 
         slots.sort((slotA, slotB) => {
@@ -221,8 +149,15 @@ router.get('/slots', ensureAuthenticated, async (req, res) => {
         });
 
         res.json({
-            past,
-            present
+            id: req.user.id,
+            nickname: req.user.nickname,
+            email: req.user.email,
+            profile: req.user.profile,
+            course: req.user.course,
+            slots: {
+                present,
+                past
+            }
         });
     } catch (err) {
         console.log(err);

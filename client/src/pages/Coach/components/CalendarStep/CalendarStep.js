@@ -76,53 +76,57 @@ function CalendarStep({
       </div>
       <div className={styles.divider} />
       <div className='mt-5'>
-      <Calendar
-        className='calendar'
-        locale='ru'
-        maxDetail='month'
-        defaultView='month'
-        showNeighboringMonth={false}
-        prev2Label={null}
-        next2Label={null}
-        minDate={new Date()}
-        tileDisabled={({ date }) => (
-          !formattedSlots.find(
-            t => (
-              t.year === date.getFullYear() &&
-              t.month === date.getMonth() &&
-              t.date === date.getDate()
+        <Calendar
+          className='calendar'
+          locale='ru'
+          maxDetail='month'
+          defaultView='month'
+          showNeighboringMonth={false}
+          prev2Label={null}
+          next2Label={null}
+          minDate={new Date()}
+          tileDisabled={({ date }) => (
+            !formattedSlots.find(
+              t => (
+                t.year === date.getFullYear() &&
+                t.month === date.getMonth() &&
+                t.date === date.getDate()
+              )
             )
-          )
-        )}
-        onClickDay={date => {
-          onSetSelectedDate();
-          setSelectedDate(date);
-        }}
-        nextLabel={(
-          <Image src={arrowRightIcon} width='32' height='32' />
-        )}
-        prevLabel={(
-          <Image src={arrowLeftIcon} width='32' height='32' />
-        )} />
-        </div>
+          )}
+          onClickDay={date => {
+            onSetSelectedDate();
+            setSelectedDate(date);
+          }}
+          nextLabel={(
+            <Image src={arrowRightIcon} width='32' height='32' />
+          )}
+          prevLabel={(
+            <Image src={arrowLeftIcon} width='32' height='32' />
+          )} />
+      </div>
       {timeSlots && !selectedSlot && (
         <>
-        <div className={styles.divider} />
-        <div className='mt-5'>
-          <p className={styles.timeText}>Время доступное на <span className='text-white text-bold'>{selectedDate.toLocaleString('ru', {
-            month: 'long',
-            day: 'numeric'
-          })}</span></p>
-          <div className='list-unstyled d-flex'>
-            {timeSlots.sort(compareTime).map(slot => (
-              <li key={slot._id}>
-                <Button variant='secondary' size='sm' onClick={() => onNextStep(slot)}>
-                  {checkTime(slot.hours)}:{checkTime(slot.minutes)}
-                </Button>
-              </li>
-            ))}
+          <div className={styles.divider} />
+          <div className='mt-5'>
+            <p className={styles.timeText}>Время доступное на&nbsp;
+              <span className='text-white text-bold'>
+                {selectedDate.toLocaleString('ru', {
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </span>
+            </p>
+            <div className='list-unstyled d-flex'>
+              {timeSlots.sort(compareTime).map(slot => (
+                <li key={slot._id}>
+                  <Button variant='secondary' className={styles.timeSelect} size='sm' onClick={() => onNextStep(slot)}>
+                    {checkTime(slot.hours)}:{checkTime(slot.minutes)}
+                  </Button>
+                </li>
+              ))}
+            </div>
           </div>
-        </div>
         </>
       )}
     </>

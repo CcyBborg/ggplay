@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image, Tab, Nav } from 'react-bootstrap';
 import logoutIcon from './images/logout.svg';
 import editIcon from './images/edit.svg';
 import styles from './dashboard.module.css';
@@ -48,22 +48,58 @@ function Dashboard({
                 </Col>
             </Row>
             <section className='mt-5'>
-                <h3 className='mb-3'>Мои тренировки</h3>
-                <Row>
-                    <Col md='3'>
-                        <WorkoutCard />
-                    </Col>
-                    <Col md='3'>
-                        <WorkoutCard />
-                    </Col>
-                    <Col md='3'>
-                        <WorkoutPlaceholder variant='1' />
-                    </Col>
-                    <Col md='3'>
-                        <WorkoutPlaceholder variant='2' />
-                    </Col>
-                </Row>
-            </section>
+                <Tab.Container defaultActiveKey='present'>
+                    <div className='d-flex justify-content-between align-items-center mb-3'>
+                        <h3>Мои тренировки</h3>
+                        <Nav variant='pills'>
+                            <Nav.Item>
+                                <Nav.Link eventKey='present'>Предстоящие</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey='past'>Прошедшие</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                    </div>
+                    <Tab.Content>
+                        <Tab.Pane eventKey='present'>
+                            <Row>
+                                {user.info.slots.present.map(slot => (
+                                    <Col md='3' key={slot._id}>
+                                        <WorkoutCard
+                                            title={slot.lesson.title}
+                                            timestamp={slot.timestamp}
+                                            channel={slot.channel}
+                                            invite={slot.invite}
+                                            coach={slot.lesson.coach} />
+                                    </Col>
+                                ))}
+                                <Col md='3'>
+                                    <WorkoutPlaceholder variant='1' />
+                                </Col>
+                                <Col md='3'>
+                                    <WorkoutPlaceholder variant='2' />
+                                </Col>
+                            </Row>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey='past'>
+                            <Row>
+                                <Col md='3'>
+                                    <WorkoutPlaceholder variant='1' />
+                                </Col>
+                                <Col md='3'>
+                                    <WorkoutPlaceholder variant='2' />
+                                </Col>
+                                <Col md='3'>
+                                    <WorkoutPlaceholder variant='1' />
+                                </Col>
+                                <Col md='3'>
+                                    <WorkoutPlaceholder variant='2' />
+                                </Col>
+                            </Row>
+                        </Tab.Pane>
+                    </Tab.Content>
+                </Tab.Container>
+            </section >
             <section className='mt-5'>
                 <h3 className='mb-3'>Мои мастер-классы</h3>
                 <Row>
@@ -85,7 +121,7 @@ function Dashboard({
                     </Col>
                 </Row>
             </section>
-        </Container>
+        </Container >
     );
 }
 

@@ -1,5 +1,4 @@
 import {
-    LOGOUT_USER_REQUEST,
     LOGOUT_USER_SUCCESS
 } from './action-types';
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCoach, paySlot } from './actions';
@@ -27,7 +27,7 @@ function Coach({
   const [selectedLesson, setLesson] = useState(0);
   const [dateStep, setDateStep] = useState(false);
 
-  const selectedDate = selectedSlot && new Date(selectedSlot.source.timestamp);
+  const selectedDate = useMemo(() => new Date(selectedSlot?.source.timestamp), [selectedSlot]);
 
   if (paymentUrl) {
     window.open(paymentUrl, '_self');
@@ -81,13 +81,25 @@ function Coach({
               }} />
           </Modal.Body>
           {selectedSlot && (
-            <Modal.Footer className='d-flex justify-content-between'>
+            <Modal.Footer className='d-flex justify-content-between flex-row'>
               <div>
-                <p className={styles.selectedDate}>Четверг, 11 ноября 2021</p>
-                <p className={styles.selectedTime}>12:30</p>
+                <p className={styles.selectedDate}>
+                {selectedDate.toLocaleString('ru', {
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric'
+                })}</p>
+                <p className={styles.selectedTime}>
+                {selectedDate.toLocaleString('ru', {
+                  hour12: false,
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })}
+                </p>
               </div>
               <Button variant='primary' onClick={() => paySlot(selectedSlot.source['_id'])}>
-                Подтвердить запись
+                Подтвердить
               </Button>
             </Modal.Footer>
           )}

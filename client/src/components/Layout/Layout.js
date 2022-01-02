@@ -65,7 +65,7 @@ function Layout({ user, children, fetchUserInfo, history }) {
                         <img
                             src='/images/logo.png'
                             width='100'
-                            className='d-inline-block align-top'
+                            className='d-inline-block align-bottom'
                             alt='GGPlay'
                         />
                     </Navbar.Brand>
