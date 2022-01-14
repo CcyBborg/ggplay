@@ -31,9 +31,9 @@ function CoachCard({
             <h5 className={styles.title}>{title}</h5>
             <Badge bg='success'>Online</Badge>
           </div>
-          <div>
+          {/* <div>
             <Image src={messageIcon} alt='Message icon' width='20' height='20' />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.description}>

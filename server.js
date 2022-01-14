@@ -31,6 +31,7 @@ const coachesRoute = require('./routes/coaches');
 const slotsRoute = require('./routes/slots');
 const coursesRoute = require('./routes/courses');
 const billingRoute = require('./routes/billing');
+const commentsRoute = require('./routes/comments');
 
 app.use('/games', gamesRoute);
 app.use('/users', usersRoute);
@@ -38,6 +39,7 @@ app.use('/coaches', coachesRoute);
 app.use('/slots', slotsRoute);
 app.use('/courses', coursesRoute);
 app.use('/billing', billingRoute);
+app.use('/comments', commentsRoute);
 
 process.on('unhandledRejection', error => console.error('Promise rejection:', error));
 

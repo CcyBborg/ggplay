@@ -13,7 +13,10 @@ import styles from './player-section.module.css';
 
 function PlayerSection({
     isFullAccessed,
-    history
+    user,
+    history,
+    comments,
+    fetchComments
 }) {
     const [selectedLesson, setSelectedLesson] = useState(0);
     const isDesktop = useMemo(() => window.innerWidth > 1000, window.innerWidth);
@@ -31,7 +34,13 @@ function PlayerSection({
                                     lesson={LESSONS[selectedLesson]}
                                     isFullAccessed={isFullAccessed}
                                     history={history} />
-                                <Comments />
+                                <Comments
+                                    user={user}
+                                    history={history}
+                                    lessonId={LESSONS[selectedLesson].id}
+                                    isLoading={comments.isLoading}
+                                    comments={comments.comments}
+                                    fetchComments={fetchComments} />
                             </div>
                         </div>
                     )}
@@ -40,10 +49,10 @@ function PlayerSection({
                             <div className={styles.syllabusHeader}>
                                 <h5 className={styles.syllabusTitle}>План курса</h5>
                                 <div className={styles.progress}>
-                                    <span>Прогресс<br /> 10%</span>
+                                    {/* <span>Прогресс<br /> 10%</span>
                                     <div>
                                         <Image src={progressIcon} width='15' height='32' />
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <LessonList

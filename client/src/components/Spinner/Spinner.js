@@ -2,7 +2,7 @@ import styles from './spinner.module.css';
 
 function Spinner() {
     return (
-        <div class={styles['lds-dual-ring']}></div>
+        <div className={styles['lds-dual-ring']}></div>
     );
 }
 

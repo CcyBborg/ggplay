@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
-import ReactGA from 'react-ga';
 import store from './store';
 import Layout from './components/Layout/Layout';
 import { useEffect } from 'react';
@@ -25,16 +24,7 @@ export const ConfidentialPolicy = React.lazy(() => import('./pages/ConfidentialP
 export const FullAccess = React.lazy(() => import('./pages/FullAccess/FullAccess'));
 export const SlotBooked = React.lazy(() => import('./pages/SlotBooked/SlotBooked'));
 
-function App({ history }) {
-  useEffect(() => {
-    ReactGA.initialize('UA-207441127-2');
-    ReactGA.pageview(`${history.location.pathname}${history.location.search}`);
-
-    return history.listen((location) => {
-      ReactGA.pageview(`${location.pathname}${location.search}`);
-    });
-  }, []);
-
+function App() {
   return (
     <Provider store={store}>
       <Switch>
@@ -163,4 +153,4 @@ function App({ history }) {
   );
 }
 
-export default withRouter(App);
+export default App;

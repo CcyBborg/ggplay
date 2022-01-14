@@ -3,12 +3,15 @@
     border-bottom-left-radius: 0!important;
 }
 
-.commentsList {
-    padding: 20px;
-    list-style: none;
+.comments {
     background-color: #101221;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    padding: 20px;
+}
+
+.commentsList {
+    list-style: none;
 }
 
 .commentsList > * {

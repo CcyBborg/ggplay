@@ -1,14 +1,17 @@
 import { useMemo } from 'react';
+import { withRouter } from 'react-router';
 import LazyLoad from 'react-lazyload';
 import { connect } from 'react-redux';
 import Banner from './components/Banner/Banner';
 import PlayerSection from './components/PlayerSection/PlayerSection';
 import InfoSection from './components/InfoSection/InfoSection';
-import { withRouter } from 'react-router';
+import { fetchComments } from './actions';
 
 function Course({
     history,
     user,
+    comments,
+    fetchComments
 }) {
     const isFullAccessed = useMemo(() => Boolean(user.info?.course), [user.info?.course]);
 
@@ -18,7 +21,12 @@ function Course({
                 <Banner />
             )}
             <LazyLoad height={800} once >
-                <PlayerSection history={history} isFullAccessed={isFullAccessed} />
+                <PlayerSection
+                    user={user}
+                    history={history}
+                    isFullAccessed={isFullAccessed}
+                    comments={comments}
+                    fetchComments={fetchComments} />
             </LazyLoad>
             {!isFullAccessed && (
                 <LazyLoad height={1860} offset={500} once >
@@ -29,7 +37,9 @@ function Course({
     );
 }
 
-export default connect(({ user }) => ({
-    user
+export default connect(({ user, comments }) => ({
+    user,
+    comments
 }), {
+    fetchComments
 })(withRouter(Course));

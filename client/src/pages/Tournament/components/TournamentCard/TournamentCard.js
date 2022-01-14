@@ -8,7 +8,8 @@ function TournamentCard({
     subtitle,
     about,
     registeredUsers,
-    totalUsers
+    totalUsers,
+    onJoin
 }) {
     return (
         <article className={styles.root}>
@@ -29,7 +30,13 @@ function TournamentCard({
                     <Image src={icon} width='32' height='32' />
                     <span className={styles.participants}>{registeredUsers}/{totalUsers} участников</span>
                 </div>
-                <Button variant='primary' size='xs' className='text-capitalize'>Присоединиться</Button>
+                <Button
+                    variant='primary'
+                    size='xs'
+                    className='text-capitalize'
+                    onClick={onJoin}>
+                    Присоединиться
+                </Button>
             </div>
         </article>
     );
