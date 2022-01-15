@@ -412,6 +412,51 @@
   border-radius: 5px;
 }
 
+.form-label {
+  color: #EBEBEB;
+  font-size: 20px;
+line-height: 29px;
+margin-bottom: 10px;
+}
+
+.form-select {
+  background-color: #1D1F38;
+  border-radius: 5px;
+  border: 1px solid #25284B;
+  color: #767698;
+  line-height: 29px;
+  padding: 10px 55px 10px 24px;
+  background-image: url('./images/select.svg');
+  background-size: 32px;
+}
+
+.form-select:hover {
+  cursor: pointer;
+}
+
+.form-check:hover, .form-check:hover * {
+  cursor: pointer;
+}
+
+.select-tabs .form-check {
+  background-color: #1D1F38;
+  padding: 10px 20px;
+  color: #767698;
+  border: 1px solid #25284B;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.select-tabs .form-check .form-check-input {
+  margin-left: 0;
+  background-color: #1D1F38;
+  border: 1px solid #767698!important;
+  margin-right: 10px;
+}
+
   @media (max-width: 992px) {
     h1,
     .h1 {

@@ -1,36 +1,44 @@
 export default [
     {
         id: '61dbeaef4710975fcd864e4f',
-        vimeoId: '655366929',
+        vimeoId: '664294206',
         title: '1. Лёгкая линия',
-        previewImage: '/images/course/1.png',
+        previewImage: '/images/course/1.jpg',
     },
     {
         id: '61dbeb2d4710975fcd864e50',
-        vimeoId: '655635584',
+        vimeoId: '665557608',
         title: '2. Мид линия',
-        previewImage: '/images/course/2.png'
+        previewImage: '/images/course/2.jpg'
     },
     {
         id: '61dbeb334710975fcd864e51',
-        vimeoId: '656567622',
+        vimeoId: '665585622',
         title: '3. Ценность башен',
-        previewImage: '/images/course/3.png',
+        previewImage: '/images/course/3.jpg',
         isLocked: true,
-        lockedVimeoId: '649970678'
+        lockedVimeoId: '665565555'
     },
     {
         id: '61dbeb384710975fcd864e52',
-        vimeoId: '658689013',
-        title: '4. Где и почему стоит играть?',
-        previewImage: '/images/course/4.png',
+        vimeoId: '665587537',
+        title: '4. Где и почему стоит играть? (1)',
+        previewImage: '/images/course/4.jpg',
         isLocked: true,
-        lockedVimeoId: '649970678'
+        lockedVimeoId: '665566116'
     },
     {
         id: '61dbeb3c4710975fcd864e53',
-        vimeoId: '658707021',
-        title: '5. Где и почему стоит играть?',
-        previewImage: '/images/course/5.png'
-    }
+        vimeoId: '665562890',
+        title: '5. Где и почему стоит играть? (2)',
+        previewImage: '/images/course/5.jpg'
+    },
+    {
+        id: '61e14c1eef7fc79e4972008a',
+        vimeoId: '665559270',
+        title: '6. Макро Реплей',
+        previewImage: '/images/course/6.jpg',
+        isLocked: true,
+        lockedVimeoId: '665566686'
+    },
 ];

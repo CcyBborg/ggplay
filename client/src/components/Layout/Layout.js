@@ -11,7 +11,6 @@ import vkIcon from './images/vk.svg'
 import instagramIcon from './images/instagram.svg'
 import discordIcon from './images/discord.svg'
 import styles from './layout.module.css';
-import Messenger from '../Messenger/Messenger';
 
 function Layout({ user, children, fetchUserInfo, history }) {
     useEffect(() => {
@@ -118,9 +117,6 @@ function Layout({ user, children, fetchUserInfo, history }) {
                     </small></p>
                 </Container>
             </footer>
-            <div className={styles.messenger}>
-                <Messenger />
-            </div>
 
             {isNotification && (
                 notification.type === 'SOON' ? (
