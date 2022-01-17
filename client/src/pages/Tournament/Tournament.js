@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Image, Modal, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 import PromoCarousel from '../../components/PromoCarousel/PromoCarousel';
 import ScrollButton from '../../components/ScrollButton/ScrollButton';
 import TournamentCard from './components/TournamentCard/TournamentCard';
@@ -8,9 +8,13 @@ import courseIcon from './images/course.svg';
 import dotaImage from './images/dota.jpg';
 import csgoImage from './images/csgo.jpg';
 import styles from './tournament.module.css';
+import DotaRegister from './components/DotaRegister/DotaRegister';
+import CSRegister from './components/CSRegister/CSRegister';
 
 function Tournament() {
-    const [isModal, setIsModal] = useState(false);
+    const [isDota, setIsDota] = useState(false);
+    const [isCS, setIsCS] = useState(false);
+
     return (
         <>
             <div className={styles.banner}>
@@ -83,7 +87,7 @@ function Tournament() {
                     totalUsers={200}
                     image={dotaImage}
                     icon='/images/games/logos/dota.svg'
-                    onJoin={() => setIsModal(true)} />
+                    onJoin={() => setIsDota(true)} />
                 <TournamentCard
                     title='Турнир CS:GO 2021'
                     subtitle='16 ДЕК — НАЧАЛО В 18:00'
@@ -91,91 +95,14 @@ function Tournament() {
                     totalUsers={50}
                     image={csgoImage}
                     icon='/images/games/logos/csgo.svg'
-                    onJoin={() => setIsModal(true)} />
+                    onJoin={() => setIsCS(true)} />
             </Container>
-            <Modal size='md' show={isModal} onHide={() => setIsModal(false)}>
-                <Modal.Header closeButton>
-                    <div>
-                        <h4 className={styles.modalTitle}>Турнир Dota2 2021</h4>
-                        <span className={styles.modalSub}>16 ДЕК — НАЧАЛО В 18:00</span>
-                    </div>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <p className={styles.legend}>Для участия в&nbsp;турнире заполните регистрационную форму</p>
-                        <Form.Control
-                            type='text'
-                            placeholder='Логин'
-                            className={styles.input} />
-                        <Form.Control
-                            type='email'
-                            placeholder='Электронная почта'
-                            className={styles.input} />
-                        <Form.Control
-                            type='url'
-                            placeholder='Ссылка на аккаунт в Steam'
-                            className={styles.input} />
-                        <Form.Control
-                            type='url'
-                            placeholder='Ссылка на аккаунт в социальной сети'
-                            className='mb-4' />
-                        <div className={styles.divider} />
-                        <Form.Group className='mt-5'>
-                            <Form.Label>Теущий ранг</Form.Label>
-                            <Form.Select aria-label='Ранг'>
-                                <option>Выберите ранг</option>
-                                <option value='1'>One</option>
-                                <option value='2'>Two</option>
-                                <option value='3'>Three</option>
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group className='mt-3'>
-                            <Form.Label>Выберите 3&nbsp;предпочтительные роли в&nbsp;игре</Form.Label>
-                            <div className='select-tabs'>
-                                <Form.Check
-                                    inline
-                                    label='Керри'
-                                    name='check-1'
-                                    type='checkbox'
-                                    id='check-1'
-                                />
-                                <Form.Check
-                                    inline
-                                    label='Мид'
-                                    name='check-2'
-                                    type='checkbox'
-                                    id='check-2'
-                                />
-                                <Form.Check
-                                    inline
-                                    label='Хардлейн'
-                                    type='checkbox'
-                                    id='check-3'
-                                />
-                                <Form.Check
-                                    inline
-                                    label='Частичная поддержка'
-                                    type='checkbox'
-                                    id='check-4'
-                                />
-                                <Form.Check
-                                    inline
-                                    label='Полная поддержка'
-                                    type='checkbox'
-                                    id='check-5'
-                                />
-                            </div>
-                        </Form.Group>
-                        <Button
-                            className='mt-3'
-                            size='lg'
-                            variant='primary'
-                            type='submit'>
-                            Записаться на турнир
-                        </Button>
-                    </Form>
-                </Modal.Body>
-            </Modal>
+            <DotaRegister
+                isShow={isDota}
+                onHide={() => setIsDota(false)} />
+            <CSRegister
+                isShow={isCS}
+                onHide={() => setIsCS(false)} />
         </>
     );
 }

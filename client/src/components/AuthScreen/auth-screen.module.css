@@ -3,5 +3,5 @@
     height: 100vh;
     background:
         linear-gradient(0deg, rgba(5, 7, 20, 0.5), rgba(5, 7, 20, 0.5)),
-        center / cover no-repeat url(./images/bg.png);
+        center / cover no-repeat url(./images/bg.jpg);
 }
