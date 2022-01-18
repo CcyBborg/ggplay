@@ -7,7 +7,7 @@ function PromoCarousel({ isCourse = true }) {
             {isCourse && (
                 <Carousel.Item>
                     <div className={styles.bg1} />
-                    <Carousel.Caption>
+                    <Carousel.Caption className={styles.caption}>
                         <h3 className={styles.captionTitle}>Мастер-класс:<br />Цена времени в&nbsp;Dota2</h3>
                         <p className={styles.captionAbout1}>&laquo;Цена Времени&raquo;&nbsp;&mdash; это настоящая выжимка знаний. Сформирована огромным опытом работы с&nbsp;учениками, и&nbsp;универсальным подходом к&nbsp;разному рейтингу.</p>
                         <Button

@@ -82,3 +82,30 @@
     color: #EBEBEB;
     margin-left: 15px;
 }
+
+@media (max-width: 992px) {
+    .root {
+        margin: 20px 0;
+    }
+    .footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+    .about {
+        padding: 15px;
+    }
+    .meta {
+        padding: 15px;
+    }
+    .metaIcon {
+        width: 26px;
+        height: 26px;
+    }
+    .attrcontent {
+        font-size: 16px;
+    }
+
+    .footerBtn {
+        margin-bottom: 15px;
+    }
+}

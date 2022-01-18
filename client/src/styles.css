@@ -3,6 +3,15 @@
     font-family: 'Jost', sans-serif;
   }
 
+  a {
+    color: #E50913;
+    transition: .3s ease-in color;
+  }
+
+  a:hover {
+    color: #E50B74;
+  }
+
   .bg-dark {
     background-color: #050713!important;
   }

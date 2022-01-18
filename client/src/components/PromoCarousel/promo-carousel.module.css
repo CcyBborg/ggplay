@@ -3,7 +3,7 @@
     border-radius: 5px;
     background:
         right bottom/ 384px 314px no-repeat url(./images/fg1.png),
-        center/cover no-repeat url(./images/bg1.png);
+        center/cover no-repeat url(./images/bg1.jpg);
 }
 
 .bg2 {
@@ -11,7 +11,7 @@
     border-radius: 5px;
     background:
         right bottom/ 384px 314px no-repeat url(./images/fg2.png),
-        center/cover no-repeat url(./images/bg2.png);
+        center/cover no-repeat url(./images/bg2.jpg);
 }
 
 .captionTitle {
@@ -48,4 +48,20 @@
     color: #FFFFFF!important;
     border-color: #FFFFFF!important;
     background-color: transparent!important;
+}
+
+@media (max-width: 992px) {
+    .caption {
+        top: 145px;
+    }
+    .captionTitle {
+        font-size: 22px;
+        line-height: 28px;
+    }
+    .button1 {
+        width: 100%;
+    }
+    .captionAbout1 {
+        display: none;
+    }
 }

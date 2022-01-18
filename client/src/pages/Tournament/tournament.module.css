@@ -122,3 +122,72 @@
     font-size: 16px;
     line-height: 23px;
 }
+
+.unavailable {
+    margin-top: 140px;
+    width: 554px;
+}
+
+.unavailableImage {
+    position: absolute;
+    top: -70px;
+    right: -36px;
+}
+
+.unavailableContent {
+    max-width: 304px;
+}
+
+.unavailableTitle {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 30px;
+    text-transform: none;
+    margin-bottom: 10px;
+}
+
+.unavailableP {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+    .title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    .banner {
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .banner * {
+        z-index: 1;
+    }
+
+    .banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .prizeSection {
+        padding-top: 80px;
+        padding-bottom: 20px;
+    }
+
+    .prizeHeader {
+        padding: 5px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .terms {
+        margin-top: 15px;
+    }
+}

@@ -38,3 +38,8 @@ text-transform: none;
     background-color: #050714;
     left: 0;
 }
+
+.submit {
+    width: 100%;
+    margin-top: 15px;
+}

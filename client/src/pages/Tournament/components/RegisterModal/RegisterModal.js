@@ -44,7 +44,8 @@ function RegisterModal({
                         className='mt-3'
                         size='lg'
                         variant='primary'
-                        type='submit'>
+                        type='submit'
+                        className={styles.submit}>
                         Записаться на турнир
                     </Button>
                 </Form>

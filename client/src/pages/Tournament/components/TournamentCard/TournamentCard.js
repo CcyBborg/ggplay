@@ -27,15 +27,23 @@ function TournamentCard({
                     <Col>
                         <span className={styles.attrtitle}>Формат участия</span>
                         <div className='d-flex align-items-center'>
-                            <Image src={groupIcon} width='32' height='32' />
+                            <Image
+                                className={styles.metaIcon}
+                                src={groupIcon}
+                                width='32'
+                                height='32' />
                             <span className={styles.attrcontent}>Командный</span>
                         </div>
                     </Col>
                     <Col>
                         <span className={styles.attrtitle}>Призовой фонд</span>
                         <div className='d-flex align-items-center'>
-                            <Image src={cupIcon} width='32' height='32' />
-                            <span className={styles.attrcontent}>100 000 RUB</span>
+                            <Image
+                                className={styles.metaIcon}
+                                src={cupIcon}
+                                width='32'
+                                height='32' />
+                            <span className={styles.attrcontent}>100&nbsp;000&nbsp;₽</span>
                         </div>
                     </Col>
                 </Row>
@@ -48,7 +56,7 @@ function TournamentCard({
                 <Button
                     variant='primary'
                     size='xs'
-                    className='text-capitalize'
+                    className={styles.footerBtn}
                     onClick={onJoin}>
                     Присоединиться
                 </Button>
