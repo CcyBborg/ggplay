@@ -21,7 +21,7 @@ function TournamentCard({
                 <h4 className={styles.title}>{title}</h4>
                 <span className={styles.subtitle}>{subtitle}</span>
                 <p className={styles.p}>
-                    Турнир на&nbsp;выбывания. Длительность турнира 3&nbsp;недели. Возможно участия как команды, так и&nbsp;по&nbsp;одиночке с&nbsp;случайными союзниками.
+                    Турнир на&nbsp;выбывание. Длительность турнира&nbsp;&mdash; 3&nbsp;недели. Возможно участие как командой, так и&nbsp;поодиночке со&nbsp;случайными союзниками.
                 </p>
             </div>
             <div className={styles.meta}>
