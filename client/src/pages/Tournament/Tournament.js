@@ -32,6 +32,8 @@ function Tournament({
         }
     }, [user.info, user.info?.slots, user.info?.course]);
 
+    console.log(user.info?.tournaments.includes('dota'));
+
     return (
         <>
             <div className={styles.banner}>
@@ -104,7 +106,8 @@ function Tournament({
                     totalUsers={200}
                     image={dotaImage}
                     icon='/images/games/logos/dota.svg'
-                    onJoin={() => handleRegisterClick(setIsDota)} />
+                    onJoin={() => handleRegisterClick(setIsDota)}
+                    isRegistered={user.info?.tournaments.includes('dota')} />
                 <TournamentCard
                     title='Турнир CS:GO 2021'
                     subtitle='16 ДЕК — НАЧАЛО В 18:00'
@@ -112,14 +115,15 @@ function Tournament({
                     totalUsers={50}
                     image={csgoImage}
                     icon='/images/games/logos/csgo.svg'
-                    onJoin={() => handleRegisterClick(setIsCS)} />
+                    onJoin={() => handleRegisterClick(setIsCS)}
+                    isRegistered={user.info?.tournaments.includes('cs')} />
             </Container>
             <Modal size='md' show={isUnavailable} contentClassName={styles.unavailable} onHide={() => setIsUnavailable(false)}>
                 <Modal.Body>
                     <div className={styles.unavailableContent}>
                         <h4 className={styles.unavailableTitle}>Запись на турнир недоступна</h4>
                         <p className={styles.unavailableP}>Получите возможность поучаствовать в&nbsp;турнире, купив наш <a href='/course'>курс</a> или любую из&nbsp;<a href='/coaching'>тренировок</a>.</p>
-                        <Button variant='primary'>Хорошо</Button>
+                        <Button variant='primary' onClick={() => setIsUnavailable(false)}>Хорошо</Button>
                     </div>
                 </Modal.Body>
                 <Image

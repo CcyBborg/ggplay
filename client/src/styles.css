@@ -39,9 +39,9 @@
 	background-color: #1D1F38;
 }
 
-  .ctaFeaturesTitle {
-
-  }
+.mr-2 {
+  margin-right: 15px;
+}
 
   .btn {
     font-weight: 500;
@@ -76,15 +76,15 @@
   }
 
   .btn-secondary {
-    color: #EBEBEB;
-    border-color: #25284B;
-    background-color: #1D1F38;
+    color: #EBEBEB!important;
+    border-color: #25284B!important;
+    background-color: #1D1F38!important;
   }
 
   .btn-secondary:hover {
-    color: #fff;
-    background-color: #1D1F38;
-    border-color: #ca0a3f;
+    color: #fff!important;
+    background-color: #1D1F38!important;
+    border-color: #ca0a3f!important;
   }
 
   .btn-outline-secondary {

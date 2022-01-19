@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import styles from './register-modal.module.css';
 
@@ -7,8 +8,13 @@ function RegisterModal({
     children,
     isShow,
     onHide,
-    onSubmit 
+    onSubmit
 }) {
+    const [nickname, setNickname] = useState('');
+    const [email, setEmail] = useState('');
+    const [steam, setSteam] = useState('');
+    const [social, setSocial] = useState('');
+
     return (
         <Modal size='md' show={isShow} onHide={onHide}>
             <Modal.Header closeButton>
@@ -18,24 +24,44 @@ function RegisterModal({
                 </div>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={() => onSubmit({})}>
+                <Form onSubmit={e => {
+                    e.preventDefault();
+                    onSubmit({
+                        nickname,
+                        email,
+                        steam,
+                        social
+                    });
+                }}>
                     <p className={styles.legend}>Для участия в&nbsp;турнире заполните регистрационную форму</p>
                     <Form.Control
                         type='text'
-                        placeholder='Логин'
-                        className={styles.input} />
+                        placeholder='Никнейм в игре'
+                        className={styles.input}
+                        value={nickname}
+                        onChange={e => setNickname(e.target.value)}
+                        required />
                     <Form.Control
                         type='email'
                         placeholder='Электронная почта'
-                        className={styles.input} />
+                        className={styles.input}
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        required />
                     <Form.Control
-                        type='url'
+                        type='text'
                         placeholder='Ссылка на аккаунт в Steam'
-                        className={styles.input} />
+                        className={styles.input}
+                        value={steam}
+                        onChange={e => setSteam(e.target.value)}
+                        required />
                     <Form.Control
-                        type='url'
+                        type='text'
                         placeholder='Ссылка на аккаунт в социальной сети'
-                        className='mb-4' />
+                        className='mb-4'
+                        value={social}
+                        onChange={e => setSocial(e.target.value)}
+                        required />
                     <div className={styles.divider} />
                     <div className='mt-5'>
                         {children}

@@ -157,7 +157,8 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
             slots: {
                 present,
                 past
-            }
+            },
+            tournaments: req.user.tournaments
         });
     } catch (err) {
         console.log(err);

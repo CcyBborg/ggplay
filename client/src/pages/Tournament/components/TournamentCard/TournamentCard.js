@@ -1,6 +1,7 @@
 import { Row, Col, Button, Image } from 'react-bootstrap';
 import groupIcon from './images/group.svg';
 import cupIcon from './images/cup.svg';
+import checkIcon from './images/check.svg';
 import styles from './tournament-card.module.css';
 
 function TournamentCard({
@@ -10,6 +11,7 @@ function TournamentCard({
     subtitle,
     registeredUsers,
     totalUsers,
+    isRegistered,
     onJoin
 }) {
     return (
@@ -53,13 +55,24 @@ function TournamentCard({
                     <Image src={icon} width='32' height='32' />
                     <span className={styles.participants}>{registeredUsers}/{totalUsers} участников</span>
                 </div>
-                <Button
-                    variant='primary'
-                    size='xs'
-                    className={styles.footerBtn}
-                    onClick={onJoin}>
-                    Присоединиться
-                </Button>
+                {isRegistered ? (
+                    <Button variant='secondary' size='xs' disabled>
+                        <Image
+                            src={checkIcon}
+                            className='mr-2'
+                            width='20'
+                            height='20' />
+                        Участвую
+                    </Button>
+                ) : (
+                    <Button
+                        variant='primary'
+                        size='xs'
+                        className={styles.footerBtn}
+                        onClick={onJoin}>
+                        Присоединиться
+                    </Button>
+                )}
             </div>
         </article>
     );
