@@ -46,12 +46,12 @@ function Tournament({
                                 За&nbsp;финалом турнира следят скауты профессиональных команд.<br />
                                 Более подробную информацию о&nbsp;регламенте, правилах и&nbsp;сетке турнира ищи в&nbsp;нашем сообществе GGPLAY в&nbsp;ВКонтакте
                             </p>
-                            <ScrollButton text='Узнать больше' href='#' />
+                            <ScrollButton text='Узнать больше' href='#prize' />
                         </Col>
                     </Row>
                 </Container>
             </div>
-            <div className={styles.prizeSection}>
+            <div className={styles.prizeSection} id='prize'>
                 <Container>
                     <div className={styles.prizeTotal}>
                         <div className={styles.prizeHeader}>Общий призовой фонд</div>
