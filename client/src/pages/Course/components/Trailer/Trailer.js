@@ -7,7 +7,7 @@ function Trailer({ onHide }) {
         <Modal show={true} dialogClassName={styles.dialog} contentClassName={styles.root} onHide={onHide}>
             <CloseButton variant='white' className='p-3' onClick={() => onHide()} />
             <Button
-                variant='secondary'
+                variant='outline-secondary'
                 className={styles.playButton}>
                 <Image src={playIcon} width='42' height='60' />
             </Button>

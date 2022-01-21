@@ -69,7 +69,7 @@ function Banner() {
                         </Col>
                     </Row>
                     <Button
-                        variant='secondary'
+                        variant='outline-secondary'
                         size='lg'
                         className={styles.trailerBtn}
                         onClick={() => setIsTrailer(true)}>
