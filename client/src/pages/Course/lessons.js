@@ -1,7 +1,7 @@
 export default [
     {
         id: '61dbeaef4710975fcd864e4f',
-        vimeoId: '664294206',
+        vimeoId: '668682222',
         title: '1. Лёгкая линия',
         previewImage: '/images/course/1.jpg',
     },
