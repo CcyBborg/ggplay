@@ -73,3 +73,20 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 992px) {
+  .placeholder {
+    height: 260px;
+  }
+
+  .previewTitle {
+    min-width: none;
+    max-width: 100%;
+    font-size: 32px;
+  }
+
+
+  .previewAbout {
+    flex-direction: column;
+  }
+}

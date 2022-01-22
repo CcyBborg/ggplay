@@ -35,7 +35,7 @@ export default [
     },
     {
         id: '61e14c1eef7fc79e4972008a',
-        vimeoId: '665559270',
+        vimeoId: '668910220',
         title: '6. Макро Реплей',
         previewImage: '/images/course/6.jpg',
         isLocked: true,

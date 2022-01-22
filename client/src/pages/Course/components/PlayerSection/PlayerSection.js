@@ -19,31 +19,28 @@ function PlayerSection({
     fetchComments
 }) {
     const [selectedLesson, setSelectedLesson] = useState(0);
-    const isDesktop = useMemo(() => window.innerWidth > 1000, window.innerWidth);
 
     return (
         <section className='mt-5' id='player'>
             <Container>
-                <div className='d-flex justify-content-between'>
-                    {isDesktop && (
-                        <div>
-                            <div className={styles.playerComments}>
-                                <Player
-                                    num={selectedLesson + 1}
-                                    total={LESSONS.length}
-                                    lesson={LESSONS[selectedLesson]}
-                                    isFullAccessed={isFullAccessed}
-                                    history={history} />
-                                <Comments
-                                    user={user}
-                                    history={history}
-                                    lessonId={LESSONS[selectedLesson].id}
-                                    isLoading={comments.isLoading}
-                                    comments={comments.comments}
-                                    fetchComments={fetchComments} />
-                            </div>
+                <div className={styles.grid}>
+                    <div>
+                        <div className={styles.playerComments}>
+                            <Player
+                                num={selectedLesson + 1}
+                                total={LESSONS.length}
+                                lesson={LESSONS[selectedLesson]}
+                                isFullAccessed={isFullAccessed}
+                                history={history} />
+                            <Comments
+                                user={user}
+                                history={history}
+                                lessonId={LESSONS[selectedLesson].id}
+                                isLoading={comments.isLoading}
+                                comments={comments.comments}
+                                fetchComments={fetchComments} />
                         </div>
-                    )}
+                    </div>
                     <div>
                         <div className={styles.syllabus}>
                             <div className={styles.syllabusHeader}>

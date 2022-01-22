@@ -67,3 +67,20 @@ margin-left: 20px;
   color: #767698;
   margin: 0;
 }
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 992px) {
+    .playerComments {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .grid {
+        justify-content: space-between;
+        flex-direction: column-reverse;
+    }
+}
