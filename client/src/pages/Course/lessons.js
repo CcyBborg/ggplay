@@ -7,7 +7,7 @@ export default [
     },
     {
         id: '61dbeb2d4710975fcd864e50',
-        vimeoId: '665557608',
+        vimeoId: '668735430',
         title: '2. Мид линия',
         previewImage: '/images/course/2.jpg'
     },
@@ -17,7 +17,7 @@ export default [
         title: '3. Ценность башен',
         previewImage: '/images/course/3.jpg',
         isLocked: true,
-        lockedVimeoId: '665565555'
+        lockedVimeoId: '668774338'
     },
     {
         id: '61dbeb384710975fcd864e52',
@@ -25,11 +25,11 @@ export default [
         title: '4. Где и почему стоит играть? (1)',
         previewImage: '/images/course/4.jpg',
         isLocked: true,
-        lockedVimeoId: '665566116'
+        lockedVimeoId: '668780350'
     },
     {
         id: '61dbeb3c4710975fcd864e53',
-        vimeoId: '665562890',
+        vimeoId: '668806960',
         title: '5. Где и почему стоит играть? (2)',
         previewImage: '/images/course/5.jpg'
     },
