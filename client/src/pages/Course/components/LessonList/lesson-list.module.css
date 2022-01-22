@@ -83,7 +83,7 @@
 @media (max-width: 992px) {
     .root {
         padding: 15px;
-        height: 180px;
+        height: 170px;
         overflow-x: scroll;
         overflow-y: visible;
         display: flex;

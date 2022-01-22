@@ -23,9 +23,13 @@ function LessonList({
                         key={i}
                         className={rootClassName}
                         onClick={() => onSelectLesson(i)}>
-                        <LazyLoad height={176}>
-                            <Image className={styles.lessonImage} src={l.previewImage} />
-                        </LazyLoad>
+                            {i === 0 ? (
+                                <Image className={styles.lessonImage} src={l.previewImage} height={176} />
+                            ) : (
+                                <LazyLoad height={176}>
+                                    <Image className={styles.lessonImage} src={l.previewImage} height={176} />
+                                </LazyLoad>
+                            )}
                         <div className={styles.lessonAbout}>
                             <span className={styles.lessonTime}>08:13</span>
                             <h4 className={styles.lessonTitle}>{l.title}</h4>
