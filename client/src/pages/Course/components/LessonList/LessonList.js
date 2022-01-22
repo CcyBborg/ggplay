@@ -1,4 +1,5 @@
 import { Image } from 'react-bootstrap';
+import LazyLoad from 'react-lazyload';
 import cx from 'classnames';
 import lockIcon from './images/lock.svg';
 import styles from './lesson-list.module.css';
