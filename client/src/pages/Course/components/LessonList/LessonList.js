@@ -1,5 +1,4 @@
 import { Image } from 'react-bootstrap';
-import LazyLoad from 'react-lazyload';
 import cx from 'classnames';
 import lockIcon from './images/lock.svg';
 import styles from './lesson-list.module.css';
@@ -23,13 +22,7 @@ function LessonList({
                         key={i}
                         className={rootClassName}
                         onClick={() => onSelectLesson(i)}>
-                            {i === 0 ? (
-                                <Image className={styles.lessonImage} src={l.previewImage} />
-                            ) : (
-                                <LazyLoad>
-                                    <Image className={styles.lessonImage} src={l.previewImage} />
-                                </LazyLoad>
-                            )}
+                            <Image className={styles.lessonImage} src={l.previewImage} />
                         <div className={styles.lessonAbout}>
                             <span className={styles.lessonTime}>08:13</span>
                             <h4 className={styles.lessonTitle}>{l.title}</h4>
