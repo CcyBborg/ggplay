@@ -24,10 +24,10 @@ function LessonList({
                         className={rootClassName}
                         onClick={() => onSelectLesson(i)}>
                             {i === 0 ? (
-                                <Image className={styles.lessonImage} src={l.previewImage} height={176} />
+                                <Image className={styles.lessonImage} src={l.previewImage} />
                             ) : (
                                 <LazyLoad>
-                                    <Image className={styles.lessonImage} src={l.previewImage} height={176} />
+                                    <Image className={styles.lessonImage} src={l.previewImage} />
                                 </LazyLoad>
                             )}
                         <div className={styles.lessonAbout}>
