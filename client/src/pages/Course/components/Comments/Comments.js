@@ -41,7 +41,7 @@ function Comments({
     }, [user.info, history]);
 
     return (
-        <div className='mt-3'>
+        <div className={styles.root}>
             <InputGroup>
                 <FormControl
                     placeholder='Написать комментарий...'

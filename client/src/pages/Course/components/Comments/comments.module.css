@@ -1,3 +1,7 @@
+.root {
+    margin-top: 15px;
+}
+
 .input {
     border-bottom-right-radius: 0!important;
     border-bottom-left-radius: 0!important;
@@ -39,4 +43,10 @@
 
 .commentMeta {
     color: #767698;
+}
+
+@media (max-width: 992px) {
+    .root {
+        display: none;
+    }
 }

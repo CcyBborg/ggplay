@@ -41,4 +41,12 @@ export default [
         isLocked: true,
         lockedVimeoId: '665566686'
     },
+    {
+        id: '61e14c1eef7fc79e4972008a',
+        vimeoId: '668914650',
+        title: '7. Тоноксти механик',
+        previewImage: '/images/course/7.jpg',
+        isLocked: true,
+        lockedVimeoId: '668914650'
+    },
 ];

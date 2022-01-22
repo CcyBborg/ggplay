@@ -82,9 +82,8 @@
 
 @media (max-width: 992px) {
     .root {
-        list-style: none;
-        padding: 26px 16px;
-        height: 206px;
+        padding: 15px;
+        height: 180px;
         overflow-x: scroll;
         overflow-y: visible;
         display: flex;
