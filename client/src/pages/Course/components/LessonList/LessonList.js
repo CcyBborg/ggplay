@@ -26,7 +26,7 @@ function LessonList({
                             {i === 0 ? (
                                 <Image className={styles.lessonImage} src={l.previewImage} height={176} />
                             ) : (
-                                <LazyLoad height={176}>
+                                <LazyLoad>
                                     <Image className={styles.lessonImage} src={l.previewImage} height={176} />
                                 </LazyLoad>
                             )}
