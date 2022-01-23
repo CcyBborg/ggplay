@@ -7,11 +7,10 @@ import {
     InputGroup,
     FormControl,
     Button,
-    Image
+    Image,
+    Spinner
 } from 'react-bootstrap';
-import Spinner from '../../../../components/Spinner/Spinner';
 import sendIcon from './images/send.svg';
-import avatarImage from './images/avatar.jpg';
 import styles from './comments.module.css';
 
 function Comments({
@@ -19,8 +18,10 @@ function Comments({
     history,
     lessonId,
     isLoading,
+    isAddingComment,
     comments,
-    fetchComments
+    fetchComments,
+    addComment
 }) {
     const [comment, setComment] = useState('');
 
@@ -28,33 +29,56 @@ function Comments({
         fetchComments(lessonId);
     }, [lessonId]);
 
-    const handleChangeComment = useCallback(({ target }) => {
-        if (user.info) {
-            setComment(target.value);
-        } else {
-            localStorage.setItem('auth-redirect', '/course');
-            history.push({
-                pathname: '/sign-up',
-                state: { selectedGame: '6110f38fa9258e24cce20f65' }
-            })
-        }
-    }, [user.info, history]);
+    const handleUnsignedClick = useCallback(() => {
+        localStorage.setItem('auth-redirect', '/course');
+        history.push({
+            pathname: '/sign-up',
+            state: { selectedGame: '6110f38fa9258e24cce20f65' }
+        })
+    }, [history]);
+
+    const handleAddComment = useCallback(() => {
+        setComment('');
+        addComment({
+            lessonId,
+            comment
+        });
+    }, [lessonId, comment]);
 
     return (
         <div className={styles.root}>
-            <InputGroup>
-                <FormControl
-                    placeholder='Написать комментарий...'
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                    className={styles.input}
-                    value={comment}
-                    onChange={handleChangeComment}
-                />
-                <Button variant="outline-secondary" className={styles.sendCommentBtn}>
-                    <Image src={sendIcon} width='22' height='22' />
-                </Button>
-            </InputGroup>
+            {user.info ? (
+                <InputGroup>
+                    <FormControl
+                        placeholder='Написать комментарий...'
+                        aria-label='Комментарий к уроку'
+                        className={styles.input}
+                        value={comment}
+                        onChange={({ target }) => setComment(target.value)}
+                    />
+                    <Button
+                        variant='outline-secondary'
+                        className={styles.sendCommentBtn}
+                        onClick={handleAddComment}>
+                        {isAddingComment ? (
+                            <Spinner
+                                as='span'
+                                animation='border'
+                                size='sm'
+                                role='status'
+                                aria-hidden='true'
+                            />
+                        ) : (
+                            <Image src={sendIcon} width='22' height='22' />
+                        )}
+                    </Button>
+                </InputGroup>
+            ) : (
+                <p className={styles.unsigned}>
+                    <a href='/sign-in' onClick={handleUnsignedClick}>Войдите</a> или
+                    <a href='/sign-up' onClick={handleUnsignedClick}>Зарегистрируйтесь</a>, чтобы оставить комментарий.
+                </p>
+            )}
             <div className={styles.comments}>
                 {isLoading ? (
                     <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>

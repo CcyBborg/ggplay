@@ -69,7 +69,7 @@ router.post('/:slotId/review', ensureAuthenticated, async (req, res) => {
     try {
         const lessonSlot = await LessonSlot.findOne({
             '_id': req.params.slotId,
-            'user': req.user.id
+            'user': req.user._id
         }).populate('lesson');
 
         if (!lessonSlot) {

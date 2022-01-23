@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import Banner from './components/Banner/Banner';
 import PlayerSection from './components/PlayerSection/PlayerSection';
 import InfoSection from './components/InfoSection/InfoSection';
-import { fetchComments } from './actions';
+import { fetchComments, addComment } from './actions';
 
 function Course({
     history,
     user,
     comments,
-    fetchComments
+    fetchComments,
+    addComment
 }) {
     const isFullAccessed = useMemo(() => Boolean(user.info?.course), [user.info?.course]);
 
@@ -26,7 +27,8 @@ function Course({
                     history={history}
                     isFullAccessed={isFullAccessed}
                     comments={comments}
-                    fetchComments={fetchComments} />
+                    fetchComments={fetchComments}
+                    addComment={addComment} />
             </LazyLoad>
             {!isFullAccessed && (
                 <LazyLoad height={1860} offset={500} once >
@@ -41,5 +43,6 @@ export default connect(({ user, comments }) => ({
     user,
     comments
 }), {
-    fetchComments
+    fetchComments,
+    addComment
 })(withRouter(Course));

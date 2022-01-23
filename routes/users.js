@@ -149,7 +149,7 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
         });
 
         res.json({
-            id: req.user.id,
+            id: req.user._id,
             nickname: req.user.nickname,
             email: req.user.email,
             profile: req.user.profile,

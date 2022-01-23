@@ -39,10 +39,10 @@ export default [
         title: '6. Макро Реплей',
         previewImage: '/images/course/6.jpg',
         isLocked: true,
-        lockedVimeoId: '665566686'
+        lockedVimeoId: '668910220'
     },
     {
-        id: '61e14c1eef7fc79e4972008a',
+        id: '61ed020685e84ef0fd21d4bf',
         vimeoId: '668914650',
         title: '7. Тоноксти механик',
         previewImage: '/images/course/7.jpg',

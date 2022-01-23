@@ -1,13 +1,16 @@
 import {
     FETCH_COMMENTS_REQUEST,
     FETCH_COMMENTS_SUCCESS,
-    FETCH_COMMENTS_FAILURE
+    FETCH_COMMENTS_FAILURE,
+    ADD_COMMENT_REQUEST,
+    ADD_COMMENT_SUCCESS
 } from './action-types';
 
 const initialState = {
     isLoading: false,
     isFalse: false,
-    comments: null
+    comments: null,
+    isAddingComment: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -29,6 +32,20 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 isLoading: false,
                 isError: true
+            };
+        case ADD_COMMENT_REQUEST:
+            return {
+                ...state,
+                isAddingComment: true,
+            };
+        case ADD_COMMENT_SUCCESS:
+            return {
+                ...state,
+                isAddingComment: false,
+                comments: [
+                    action.data,
+                    ...state.comments
+                ]
             };
         default:
             return state;

@@ -10,7 +10,7 @@ router.get('/:lessonId', async (req, res) => {
     try {
         const comments = await Comment.find({
             'lesson': req.params.lessonId
-        }).populate('user').sort('createdAt');
+        }).populate('user').sort({ createdAt: -1 });
 
         res.json(comments);
     } catch (err) {
@@ -23,12 +23,12 @@ router.get('/:lessonId', async (req, res) => {
 
 router.post('/:lessonId', ensureAuthenticated, async (req, res) => {
     try {
-        const courseLesson = CourseLesson.findOne({ _id: req.body.lesson });
+        const courseLesson = await CourseLesson.findOne({ _id: req.params.lessonId });
 
         let comment = new Comment({
-            user: req.user.id,
+            user: req.user._id,
             comment: req.body.comment,
-            courseLesson: courseLesson._id,
+            lesson: courseLesson._id,
             createdAt: new Date()
         });
         comment = await comment.save();
@@ -36,7 +36,11 @@ router.post('/:lessonId', ensureAuthenticated, async (req, res) => {
         courseLesson.comments.push(comment._id);
         await courseLesson.save();
 
-        res.send('Ok');
+        comment = await Comment.findOne({
+            _id: comment._id
+        }).populate('user');
+
+        res.json(comment);
     } catch (err) {
         console.log(err);
         res.status(500).json({

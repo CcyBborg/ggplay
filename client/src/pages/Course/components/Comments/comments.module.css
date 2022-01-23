@@ -7,6 +7,15 @@
     border-bottom-left-radius: 0!important;
 }
 
+.unsigned {
+    padding: 20px;
+    background-color: #101221;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0;
+    text-align: center;
+}
+
 .comments {
     background-color: #101221;
     border-bottom-left-radius: 5px;

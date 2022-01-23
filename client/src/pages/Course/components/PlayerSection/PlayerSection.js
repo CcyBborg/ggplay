@@ -16,7 +16,8 @@ function PlayerSection({
     user,
     history,
     comments,
-    fetchComments
+    fetchComments,
+    addComment
 }) {
     const [selectedLesson, setSelectedLesson] = useState(0);
 
@@ -37,8 +38,10 @@ function PlayerSection({
                                 history={history}
                                 lessonId={LESSONS[selectedLesson].id}
                                 isLoading={comments.isLoading}
+                                isAddingComment={comments.isAddingComment}
                                 comments={comments.comments}
-                                fetchComments={fetchComments} />
+                                fetchComments={fetchComments}
+                                addComment={addComment} />
                         </div>
                     </div>
                     <div>
