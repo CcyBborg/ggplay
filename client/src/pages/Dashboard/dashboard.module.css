@@ -29,11 +29,24 @@
 .profileAvatar {
     box-shadow: 0px 4px 30px 0px #35385E;
     border-radius: 5px;
-    margin-bottom: 24px;
 }
 
 .profileNickname {
     color: #EBEBEB;
     font-size: 20px;
     line-height: 20px;
+}
+
+.changeAvatar {
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+}
+
+.avatarContainer {
+    position: relative;
+    height: 92px;
+    width: 92px;
+    margin: 0 auto;
+    margin-bottom: 30px;
 }

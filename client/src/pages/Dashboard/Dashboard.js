@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Button, Image, Tab, Nav } from 'react-bootstrap';
 import logoutIcon from './images/logout.svg';
 import editIcon from './images/edit.svg';
+import photoIcon from './images/photo.svg';
 import styles from './dashboard.module.css';
 import CourseCard from './components/CourseCard/CourseCard';
 import WorkoutCard from './components/WorkoutCard/WorkoutCard';
@@ -18,18 +20,48 @@ function Dashboard({
 }) {
     const [isSettings, setIsSettings] = useState(false);
 
+    const avatarUpload = useRef(null);
+
     useEffect(() => {
         if (isLoggedOut) {
             window.open('/course', '_self');
         }
     }, [isLoggedOut])
 
+    const handleUploadImage = useCallback(({ target }) => {
+        const bodyFormData = new FormData();
+        bodyFormData.append('key', 'd297a4d24afee784bdf29ed32cd722b4');
+        bodyFormData.append('image', target.files[0]);
+        axios.post('https://api.imgbb.com/1/upload', bodyFormData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        }).then((res) => {
+            axios.post('/users/edit', {
+                avatar: res.data.data.display_url
+            }).then(() => window.location.reload());
+        });
+    }, []);
+
     return (
         <Container className='mt-4'>
             <Row>
                 <Col md='3'>
                     <div className={styles.profile}>
-                        <Image className={styles.profileAvatar} src={user.info.profile.avatar} width='92' height='92' />
+                        <div className={styles.avatarContainer}>
+                            <input
+                                type='file'
+                                id='avatar'
+                                ref={avatarUpload}
+                                style={{ display: 'none' }}
+                                onChange={handleUploadImage} />
+                            <Image className={styles.profileAvatar} src={user.info.profile.avatar} width='92' height='92' />
+                            <Button
+                                variant='primary'
+                                size='sm'
+                                className={styles.changeAvatar}
+                                onClick={() => avatarUpload.current.click()}>
+                                <Image src={photoIcon} width={12} height={12} />
+                            </Button>
+                        </div>
                         <div className={styles.profileNickname}>{user.info.nickname}</div>
                         <div className={styles.contact}>{user.info.email}</div>
                         <div className={styles.settingButtons}>

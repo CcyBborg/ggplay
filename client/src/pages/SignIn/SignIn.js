@@ -21,7 +21,7 @@ function SignIn({
         if (isUserSignedIn) {
             history.push({ pathname: '/coaching' })
         }
-    }, [isUserSignedIn]);
+    }, [isUserSignedIn, history]);
 
     return (
         <AuthScreen>

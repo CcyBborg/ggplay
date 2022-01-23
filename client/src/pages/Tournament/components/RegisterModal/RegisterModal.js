@@ -67,11 +67,10 @@ function RegisterModal({
                         {children}
                     </div>
                     <Button
-                        className='mt-3'
+                        className={styles.submit}
                         size='lg'
                         variant='primary'
-                        type='submit'
-                        className={styles.submit}>
+                        type='submit'>
                         Записаться на турнир
                     </Button>
                 </Form>

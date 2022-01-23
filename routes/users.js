@@ -169,14 +169,17 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
 });
 
 router.post('/edit', ensureAuthenticated, async (req, res) => {
-    req.user.profile = {
-        ...req.user.profile,
-        game: req.body.game
-    };
+    if (req.body.avatar) {
+        req.user.profile.avatar = req.body.avatar;
+    }
+
+    if (req.body.game) {
+        req.user.profile.game = req.body.game;
+    }
 
     await req.user.save();
 
-    res.redirect('/coaching');
+    res.send('Ok');
 });
 
 router.get('/logout', (req, res) => {

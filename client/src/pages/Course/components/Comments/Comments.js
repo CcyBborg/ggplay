@@ -31,11 +31,7 @@ function Comments({
 
     const handleUnsignedClick = useCallback(() => {
         localStorage.setItem('auth-redirect', '/course');
-        history.push({
-            pathname: '/sign-up',
-            state: { selectedGame: '6110f38fa9258e24cce20f65' }
-        })
-    }, [history]);
+    }, [localStorage]);
 
     const handleAddComment = useCallback(() => {
         setComment('');
