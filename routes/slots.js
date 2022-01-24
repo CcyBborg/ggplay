@@ -91,7 +91,7 @@ router.post('/:slotId/review', ensureAuthenticated, async (req, res) => {
         coach.reviews.push(review._id);
         await coach.save();
 
-        res.send('Ok');
+        res.json(review);
     } catch (err) {
         console.log(err);
         res.status(500).json({

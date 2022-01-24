@@ -31,7 +31,7 @@ function SignUp({
         if (isUserSignedIn) {
             history.push({ pathname: '/coaching' })
         }
-    }, [isUserSignedIn]);
+    }, [isUserSignedIn, history]);
 
     const isSocial = location.state?.isSocial;
     useEffect(() => {
@@ -40,7 +40,7 @@ function SignUp({
                 window.open('/coaching', '_self');
             });
         }
-    }, [editUser, selectedGame, isSocial]);
+    }, [selectedGame, isSocial]);
 
     return (
         <AuthScreen>

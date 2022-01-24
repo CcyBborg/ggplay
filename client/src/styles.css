@@ -50,6 +50,10 @@
     padding: 10px 15px;
   }
 
+  label {
+    color: #EBEBEB;
+  }
+
   .btn-primary {
     background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
     border-radius: 5px;
@@ -194,9 +198,19 @@
     height: 22px!important;
   }
 
+  .rating-review .star-container,
+  .rating-review .star-ratings {
+    height: 30px!important;
+  }
+
   .star-container {
     width: 22px!important;
     margin-top: -14px;
+  }
+
+  .rating-review .star-container {
+    width: 40px!important;
+    margin-top: 0;
   }
 
   .modal-content {

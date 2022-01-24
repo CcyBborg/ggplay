@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Button, Image, Tab, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image, Tab, Nav, Badge } from 'react-bootstrap';
 import logoutIcon from './images/logout.svg';
 import editIcon from './images/edit.svg';
 import photoIcon from './images/photo.svg';
@@ -85,10 +85,16 @@ function Dashboard({
                         <h3>Мои тренировки</h3>
                         <Nav variant='pills'>
                             <Nav.Item>
-                                <Nav.Link eventKey='present'>Предстоящие</Nav.Link>
+                                <Nav.Link eventKey='present'>
+                                    Предстоящие&nbsp;&nbsp;
+                                    <Badge bg='secondary'>{user.info.slots.present.length}</Badge>
+                                </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey='past'>Прошедшие</Nav.Link>
+                                <Nav.Link eventKey='past'>
+                                    Прошедшие&nbsp;&nbsp;
+                                    <Badge bg='secondary'>{user.info.slots.past.length}</Badge>
+                                </Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </div>
@@ -115,12 +121,19 @@ function Dashboard({
                         </Tab.Pane>
                         <Tab.Pane eventKey='past'>
                             <Row>
-                                <Col md='3'>
-                                    <WorkoutPlaceholder variant='1' />
-                                </Col>
-                                <Col md='3'>
-                                    <WorkoutPlaceholder variant='2' />
-                                </Col>
+                                {user.info.slots.past.map(slot => (
+                                    <Col md='3' key={slot._id}>
+                                        <WorkoutCard
+                                            slotId={slot._id}
+                                            title={slot.lesson.title}
+                                            timestamp={slot.timestamp}
+                                            channel={slot.channel}
+                                            invite={slot.invite}
+                                            coach={slot.lesson.coach}
+                                            review={slot.review}
+                                            past />
+                                    </Col>
+                                ))}
                                 <Col md='3'>
                                     <WorkoutPlaceholder variant='1' />
                                 </Col>

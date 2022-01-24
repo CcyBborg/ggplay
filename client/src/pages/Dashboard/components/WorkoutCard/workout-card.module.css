@@ -7,11 +7,22 @@
     padding: 20px;
 }
 
+.pastDate.dateCaption {
+    border-width: 0;
+}
+
 .date {
     text-shadow: none;
     background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.pastDate .date {
+    background: none;
+    color: #767698;
+    -webkit-text-fill-color: unset;
+    -webkit-background-clip: unset;
 }
 
 .dateDay {
@@ -27,6 +38,10 @@ line-height: 36px;
 .time {
     margin-top: 20px;
     color: #EBEBEB;
+}
+
+.pastDate .time {
+    color: #767698;
 }
 
 .aboutCaption {
@@ -50,6 +65,10 @@ line-height: 36px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.coach {
+    justify-content: start;
 }
 
 .rating {

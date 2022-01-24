@@ -41,11 +41,12 @@ function Coaching({
 
   useEffect(() => {
     if (selectedGameId) {
+      setPagination(0);
       fetchCoaches({
         game: selectedGameId
       });
     }
-  }, [selectedGameId, fetchCoaches]);
+  }, [selectedGameId]);
 
   if (games.isLoading) {
     return (

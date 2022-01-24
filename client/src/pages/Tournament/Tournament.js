@@ -30,7 +30,7 @@ function Tournament({
         } else {
             window.open('/sign-in', '_self');
         }
-    }, [user.info, user.info?.slots, user.info?.course]);
+    }, [user.info]);
 
     console.log(user.info?.tournaments.includes('dota'));
 

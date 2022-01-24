@@ -1,23 +1,31 @@
+import classNames from 'classnames';
+import { useMemo } from 'react';
 import { Badge, Image } from 'react-bootstrap';
 import Copier from '../../../../components/Copier/Copier';
-import starIcon from './images/star.svg';
+import ReviewForm from '../ReviewForm/ReviewForm';
 import styles from './workout-card.module.css';
 
 const MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 
 function WorkoutCard({
+    slotId,
     title,
     timestamp,
     invite,
     channel,
-    coach
+    coach,
+    past,
+    review
 }) {
-    const date = new Date(timestamp);
+    const date = useMemo(() => new Date(timestamp), [timestamp]);
+    const dateCaption = classNames(styles.dateCaption, {
+        [styles.pastDate]: past
+    })
 
     return (
         <div>
             <div className='d-flex'>
-                <div className={styles.dateCaption}>
+                <div className={dateCaption}>
                     <div className={styles.date}>
                         <span className={styles.dateDay}>{date.getDate()}</span>
                         <br />
@@ -33,29 +41,34 @@ function WorkoutCard({
                 </div>
                 <div className={styles.aboutCaption}>
                     <h4 className={styles.title}>{title}</h4>
-                    <Badge bg='secondary'>Dota2</Badge>&nbsp;
-                    <Badge bg='primary'>через 2 дня</Badge>
-                    <div className='d-flex justify-content-between align-items-center mt-4'>
+                    <Badge bg='secondary'>{coach.game.title}</Badge>
+                    <div className='mt-4'>
                         <div className={styles.coach}>
-                            <Image src={coach.img} className={styles.coachAvatar} width='32' height='32' />
+                            <Image
+                                src={coach.img}
+                                className={styles.coachAvatar}
+                                width='32'
+                                height='32' />
                             <span>{coach.title}</span>
-                        </div>
-                        <div className={styles.rating}>
-                            <Image src={starIcon} className={styles.starIcon} width='20' height='20' />
-                            <span>4.0</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div className={styles.slotCaption}>
-                <div className='mb-3'>
-                    <p className='mb-2'>Канал для твоей тренировки:</p>
-                    <Copier text={channel} />
-                </div>
-                <div>
-                    <p className='mb-2'>Приглашение в наш Discord-сервер:</p>
-                    <Copier text={invite} />
-                </div>
+                {past ? (
+                    <ReviewForm slotId={slotId} review={review} />
+                ) : (
+                    <>
+                        <div className='mb-3'>
+                            <p className='mb-2'>Канал для твоей тренировки:</p>
+                            <Copier text={channel} />
+                        </div>
+                        <div>
+                            <p className='mb-2'>Приглашение в наш Discord-сервер:</p>
+                            <Copier text={invite} />
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );

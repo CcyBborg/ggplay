@@ -48,6 +48,12 @@ router.get('/:coachId', async (req, res) => {
                 }
             })
             .populate('reviews')
+            .populate({
+                path: 'reviews',
+                populate: {
+                    path: 'slots',
+                }
+            })
             .populate('game')
             .sort([['order', 'ascending']]);
 
@@ -60,7 +66,8 @@ router.get('/:coachId', async (req, res) => {
             game: coach.game,
             about: coach.about,
             reviews: coach.reviews,
-            lessons: coach.lessons
+            lessons: coach.lessons,
+            rating: coach.reviews.reduce((acc, cur) => acc + Number(cur?.rating), 0) / coach.reviews.length
         });
     } catch (err) {
         res.json({ message: err });

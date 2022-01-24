@@ -5,6 +5,7 @@ import styles from './coach-info.module.css';
 import keyboardImage from '../../images/keyboard.png';
 import lessonItemIcon from './images/lesson-item.svg';
 import selectedLessonItemIcon from './images/selected-lesson-item.svg';
+import { useMemo } from 'react';
 
 function InitStep({
   isLoading,
@@ -13,8 +14,11 @@ function InitStep({
   onSelectLesson,
   onNextStep
 }) {
-  const tags = coach?.game.filters[0]?.tags.filter(t => coach.tags.includes(t.key));
-  const rating = coach && coach.reviews.reduce((acc, cur) => acc + cur.rating, 0) / coach.reviews.length;
+  const tags = useMemo(() => {
+    if (coach) {
+      return coach.game.filters[0]?.tags.filter(t => coach.tags.includes(t.key));
+    }
+  }, [coach]);
 
   return (
     <>
@@ -56,12 +60,12 @@ function InitStep({
                     starEmptyColor='#767698'
                     starDimension='20px'
                     starSpacing='2px'
-                    rating={rating || 0}
+                    rating={coach.rating || 0}
                     numberOfStars={5}
                     name='rating' />
-                  <span className={styles.ratingCount}>{rating.toFixed(1)}</span>
+                  <span className={styles.ratingCount}>{coach.rating?.toFixed(1)}</span>
                 </div>
-                <div className={styles.attrSep}>36 проведённых тренировок</div>
+                <div className={styles.attrSep}>{coach.reviews?.length} отзыва</div>
               </div>
             </div>
           </div>
@@ -120,8 +124,8 @@ function InitStep({
                           height='45' />
                       </div>
                       <div>
-                        <span className={styles.commentAuthor}>demonslayer3000</span>
-                        <div className='d-flex'>
+                      <span className={styles.commentAuthor}>demonslayer3000</span>
+                        <div>
                           <StartRatings
                             starRatedColor='#E50A48'
                             starEmptyColor='#767698'
@@ -130,14 +134,6 @@ function InitStep({
                             rating={r.rating}
                             numberOfStars={5}
                             name='rating' />
-                          <span className={styles.commentDate}>
-                            {new Date(r.timestamp).toLocaleString('ru', {
-                              hour: '2-digit',
-                              minute: '2-digit',
-                              month: 'long',
-                              day: 'numeric',
-                            })}
-                          </span>
                         </div>
                       </div>
                     </div>
