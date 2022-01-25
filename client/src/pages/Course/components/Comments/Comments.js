@@ -71,7 +71,7 @@ function Comments({
                 </InputGroup>
             ) : (
                 <p className={styles.unsigned}>
-                    <a href='/sign-in' onClick={handleUnsignedClick}>Войдите</a> или
+                    <a href='/sign-in' onClick={handleUnsignedClick}>Войдите</a> или&nbsp;
                     <a href='/sign-up' onClick={handleUnsignedClick}>Зарегистрируйтесь</a>, чтобы оставить комментарий.
                 </p>
             )}
