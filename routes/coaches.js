@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Coach = require('../models/Coach');
+const User = require('../models/User');
 require('../models/Lesson');
 
 const router = express.Router();
@@ -51,13 +52,13 @@ router.get('/:coachId', async (req, res) => {
             .populate({
                 path: 'reviews',
                 populate: {
-                    path: 'slots',
+                    path: 'slot',
                 }
             })
             .populate('game')
             .sort([['order', 'ascending']]);
 
-        res.json({
+        const response = {
             _id: coach._id,
             title: coach.title,
             status: coach.status,
@@ -68,10 +69,26 @@ router.get('/:coachId', async (req, res) => {
             reviews: coach.reviews,
             lessons: coach.lessons,
             rating: coach.reviews.reduce((acc, cur) => acc + Number(cur?.rating), 0) / coach.reviews.length
-        });
+        };
+
+        for (let i = 0; i < response.reviews.length; i++) {
+            const review = response.reviews[i];
+            const user = await User.findOne({ _id:review.slot.user });
+
+            response.reviews[i] = {
+                rating: review.rating,
+                comment: review.comment,
+                user: {
+                    profile: user.profile,
+                    nickname: user.nickname
+                }
+            };
+        }
+        
+        return res.json(response);
     } catch (err) {
         res.json({ message: err });
     }
-})
+});
 
 module.exports = router;

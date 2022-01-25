@@ -75,7 +75,7 @@ function Coaching({
               </div>
               <ul className={styles.bannerList}>
                 <li>Онлайн занятия</li>
-                <li>Связь с тренерами 24/7</li>
+                <li>Тщательный отбор тренеров</li>
                 <li>Запись всех тренировок</li>
               </ul>
               <ScrollButton text='Начать обучение' href='#coachList' />

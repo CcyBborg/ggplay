@@ -119,12 +119,12 @@ function InitStep({
                       <div>
                         <Image
                           className={styles.commentImg}
-                          src='/images/small-logo.png'
+                          src={r.user.profile.avatar}
                           width='45'
                           height='45' />
                       </div>
                       <div>
-                      <span className={styles.commentAuthor}>demonslayer3000</span>
+                      <span className={styles.commentAuthor}>{r.user.nickname}</span>
                         <div>
                           <StartRatings
                             starRatedColor='#E50A48'

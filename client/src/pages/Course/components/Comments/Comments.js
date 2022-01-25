@@ -83,13 +83,18 @@ function Comments({
                 ) : (
                     <ul className={styles.commentsList}>
                         {comments?.map(c => (
-                            <li>
+                            <li key={c._id}>
                                 <div className='d-flex align-items-center'>
                                     <div>
                                         <Image src={c.user.profile.avatar} className={styles.commentAvatar} height='45' width='45' />
                                     </div>
                                     <div className={styles.commentMeta}>
-                                        {c.user.nickname}<br />7.11.2021
+                                        {c.user.nickname}<br />
+                                        {new Date(c.createdAt).toLocaleString('ru', {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric'
+                                        })}
                                     </div>
                                 </div>
                                 <p className={styles.commentContent}>

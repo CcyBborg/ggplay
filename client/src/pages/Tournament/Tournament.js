@@ -44,7 +44,8 @@ function Tournament({
                             <p className={styles.intro}>
                                 Прими участие в&nbsp;ежемесячном турнире по&nbsp;CS или Dota 2&nbsp;с призовым фондом.<br />
                                 За&nbsp;финалом турнира следят скауты профессиональных команд.<br />
-                                Более подробную информацию о&nbsp;регламенте, правилах и&nbsp;сетке турнира ищи в&nbsp;нашем сообществе GGPLAY в&nbsp;ВКонтакте
+                                Более подробную информацию о&nbsp;регламенте, правилах и&nbsp;сетке турнира ищи в&nbsp;нашем&nbsp;
+                                <a href='https://vk.com/ggplay_official' target='_blank'>сообществе GGPLAY в&nbsp;ВКонтакте</a>
                             </p>
                             <ScrollButton text='Узнать больше' href='#prize' />
                         </Col>
@@ -73,31 +74,6 @@ function Tournament({
                     </Row>
                 </Container>
             </div>
-            <Container className='mt-5'>
-                <Row>
-                    <Col md='9'>
-                        <PromoCarousel />
-                    </Col>
-                    <Col md='3'>
-                        <div className={styles.terms}>
-                            <h4 className={styles.termsTitle}>Условия участия</h4>
-                            <p className={styles.termsP}>
-                                Получи возможность участвовать в&nbsp;ежемесячных турнирах при покупке:
-                                <ul className='mt-2'>
-                                    <li>
-                                        <Image src={courseIcon} width='24' height='24' />
-                                        <span className={styles.term}>Мастер-класса</span>
-                                    </li>
-                                    <li>
-                                        <Image src={workoutIcon} width='24' height='24' />
-                                        <span className={styles.term}>Любой тренировки</span>
-                                    </li>
-                                </ul>
-                            </p>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
             <Container className='d-md-flex justify-content-center mt-5'>
                 <TournamentCard
                     title='Турнир Dota2 2021'
