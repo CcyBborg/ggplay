@@ -2,13 +2,11 @@ import { withRouter } from 'react-router-dom';
 import { Badge, Row, Col, Image } from 'react-bootstrap';
 import StartRatings from 'react-star-ratings';
 import styles from './coach-card.module.css';
-import messageIcon from './images/message.svg';
 
 function CoachCard({
   id,
   title,
   status,
-  price,
   history,
   reviewsLength,
   rating,
@@ -21,9 +19,9 @@ function CoachCard({
         <div>
           <Image
             src={img}
+            width={100}
+            height={100}
             className={styles.avatar}
-            width='100'
-            height='100'
             alt={`Тренер ${title} | GGPlay`} />
         </div>
         <div className={styles.info}>
@@ -31,9 +29,6 @@ function CoachCard({
             <h5 className={styles.title}>{title}</h5>
             <Badge bg='success'>Online</Badge>
           </div>
-          {/* <div>
-            <Image src={messageIcon} alt='Message icon' width='20' height='20' />
-          </div> */}
         </div>
       </div>
       <div className={styles.description}>

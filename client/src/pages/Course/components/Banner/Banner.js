@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import axios from 'axios';
+import { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import playIcon from './images/play.svg';
 import lessonsIcon from './images/lessons.svg';
@@ -10,6 +11,14 @@ import styles from './banner.module.css';
 function Banner() {
     const [isTrailer, setIsTrailer] = useState(false);
     const isDesktop = useMemo(() => window.innerWidth > 1000, window.innerWidth);
+
+    const [students, setStudents] = useState(0);
+
+    useEffect(() => {
+        if (!students) {
+            axios.get('/courses/count').then(res => setStudents(res.data.count));
+        }
+    }, []);
 
     return (
         <>
@@ -39,7 +48,7 @@ function Banner() {
                                                 <Image src={studentsIcon} height='32' width='32' />
                                             </Col>
                                             <Col className={styles.feature} xs='9'>
-                                                <span>1.768</span><br />
+                                                <span>{students + 419}</span><br />
                                                 <span>учеников</span>
                                             </Col>
                                         </Row>

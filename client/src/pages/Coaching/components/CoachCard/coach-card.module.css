@@ -14,6 +14,8 @@
 }
 
 .avatar {
+    object-fit: cover;
+    object-position: center;
     border-top-left-radius: 5px;
 }
 

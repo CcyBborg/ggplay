@@ -1,11 +1,8 @@
 import { useCallback, useState } from 'react';
 import { Container, Row, Col, Image, Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import PromoCarousel from '../../components/PromoCarousel/PromoCarousel';
 import ScrollButton from '../../components/ScrollButton/ScrollButton';
 import TournamentCard from './components/TournamentCard/TournamentCard';
-import workoutIcon from './images/workout.svg';
-import courseIcon from './images/course.svg';
 import dotaImage from './images/dota.jpg';
 import csgoImage from './images/csgo.jpg';
 import unavailableImage from './images/unavailable.png';
@@ -45,7 +42,7 @@ function Tournament({
                                 Прими участие в&nbsp;ежемесячном турнире по&nbsp;CS или Dota 2&nbsp;с призовым фондом.<br />
                                 За&nbsp;финалом турнира следят скауты профессиональных команд.<br />
                                 Более подробную информацию о&nbsp;регламенте, правилах и&nbsp;сетке турнира ищи в&nbsp;нашем&nbsp;
-                                <a href='https://vk.com/ggplay_official' target='_blank'>сообществе GGPLAY в&nbsp;ВКонтакте</a>
+                                <a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer'>сообществе GGPLAY в&nbsp;ВКонтакте</a>
                             </p>
                             <ScrollButton text='Узнать больше' href='#prize' />
                         </Col>

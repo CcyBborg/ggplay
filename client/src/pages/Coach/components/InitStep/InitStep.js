@@ -34,8 +34,8 @@ function InitStep({
                 src={coach.img}
                 className={styles.avatar}
                 alt={`Тренер ${coach.title} | GGPlay`}
-                width='122'
-                height='122' />
+                width={122}
+                height={122} />
             </div>
             <div className='flex-fill d-flex jusitify-content-between flex-column flex-md-row'>
               <div className='flex-fill'>
