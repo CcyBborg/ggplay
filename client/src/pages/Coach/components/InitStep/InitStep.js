@@ -1,6 +1,5 @@
-import { Image, Button, Badge, ListGroup } from 'react-bootstrap';
+import { Image, Button, Badge, ListGroup, Spinner } from 'react-bootstrap';
 import StartRatings from 'react-star-ratings';
-import Spinner from '../../../../components/Spinner/Spinner';
 import styles from './coach-info.module.css';
 import keyboardImage from '../../images/keyboard.png';
 import lessonItemIcon from './images/lesson-item.svg';
@@ -24,7 +23,10 @@ function InitStep({
     <>
       {isLoading ? (
         <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>
-          <Spinner />
+          <Spinner
+            variant='light'
+            animation='border'
+          />
         </div>
       ) : (
         <>
@@ -98,7 +100,7 @@ function InitStep({
               ))}
             </ListGroup>
             <div className='d-grid'>
-              <Button variant='primary' size='lg' block onClick={onNextStep}>
+              <Button variant='primary' size='lg' onClick={onNextStep}>
                 Запланировать урок
               </Button>
             </div>
@@ -124,7 +126,7 @@ function InitStep({
                           height='45' />
                       </div>
                       <div>
-                      <span className={styles.commentAuthor}>{r.user.nickname}</span>
+                        <span className={styles.commentAuthor}>{r.user.nickname}</span>
                         <div>
                           <StartRatings
                             starRatedColor='#E50A48'

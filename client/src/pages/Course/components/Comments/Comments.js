@@ -58,11 +58,8 @@ function Comments({
                         onClick={handleAddComment}>
                         {isAddingComment ? (
                             <Spinner
-                                as='span'
+                                variant='light'
                                 animation='border'
-                                size='sm'
-                                role='status'
-                                aria-hidden='true'
                             />
                         ) : (
                             <Image src={sendIcon} width='22' height='22' />
@@ -78,7 +75,10 @@ function Comments({
             <div className={styles.comments}>
                 {isLoading ? (
                     <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>
-                        <Spinner />
+                        <Spinner
+                            variant='light'
+                            animation='border'
+                        />
                     </div>
                 ) : (
                     <ul className={styles.commentsList}>

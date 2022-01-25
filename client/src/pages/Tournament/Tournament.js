@@ -29,8 +29,6 @@ function Tournament({
         }
     }, [user.info]);
 
-    console.log(user.info?.tournaments.includes('dota'));
-
     return (
         <>
             <div className={styles.banner}>
@@ -42,7 +40,7 @@ function Tournament({
                                 Прими участие в&nbsp;ежемесячном турнире по&nbsp;CS или Dota 2&nbsp;с призовым фондом.<br />
                                 За&nbsp;финалом турнира следят скауты профессиональных команд.<br />
                                 Более подробную информацию о&nbsp;регламенте, правилах и&nbsp;сетке турнира ищи в&nbsp;нашем&nbsp;
-                                <a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer'>сообществе GGPLAY в&nbsp;ВКонтакте</a>
+                                <a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer'>сообществе GGPLAY в&nbsp;ВКонтакте</a>.
                             </p>
                             <ScrollButton text='Узнать больше' href='#prize' />
                         </Col>
@@ -76,7 +74,7 @@ function Tournament({
                     title='Турнир Dota2 2021'
                     subtitle='22 ДЕК — НАЧАЛО В 18:00'
                     registeredUsers={128}
-                    totalUsers={200}
+                    totalUsers={320}
                     image={dotaImage}
                     icon='/images/games/logos/dota.svg'
                     onJoin={() => handleRegisterClick(setIsDota)}
@@ -85,7 +83,7 @@ function Tournament({
                     title='Турнир CS:GO 2021'
                     subtitle='16 ДЕК — НАЧАЛО В 18:00'
                     registeredUsers={48}
-                    totalUsers={50}
+                    totalUsers={320}
                     image={csgoImage}
                     icon='/images/games/logos/csgo.svg'
                     onJoin={() => handleRegisterClick(setIsCS)}

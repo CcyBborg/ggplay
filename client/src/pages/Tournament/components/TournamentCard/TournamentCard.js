@@ -22,8 +22,9 @@ function TournamentCard({
                 <span className={styles.subtitle}>{subtitle}</span>
                 <p className={styles.p}>
                     Турнир на&nbsp;выбывание. Длительность турнира&nbsp;&mdash; 3&nbsp;недели. Возможно участие как командой, так и&nbsp;поодиночке со&nbsp;случайными союзниками.
-                    <br />
-                    Стоимость участия&nbsp;&mdash;&nbsp;499&nbsp;₽
+                </p>
+                <p className='mt-3'>
+                    <strong>Стоимость участия&nbsp;&mdash;&nbsp;599&nbsp;₽</strong>
                 </p>
             </div>
             <div className={styles.meta}>

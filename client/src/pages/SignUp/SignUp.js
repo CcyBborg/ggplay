@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Spinner } from 'react-bootstrap';
 import AuthScreen from '../../components/AuthScreen/AuthScreen';
-import Spinner from '../../components/Spinner/Spinner';
 import GameSelect from '../../components/GameSelect/GameSelect';
 import { fetchGames, createUser } from './actions';
 import styles from './sign-up.module.css';
@@ -50,7 +50,10 @@ function SignUp({
                     <p className={styles.gameSelectLabel}>Свой выбор всегда можно будет поменять в&nbsp;профиле</p>
                     {isLoading ? (
                         <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>
-                            <Spinner />
+                            <Spinner
+                                variant='light'
+                                animation='border'
+                            />
                         </div>
                     ) : (
                         <GameSelect gameList={gameList} onSelect={setSelectedGame} />
@@ -59,7 +62,10 @@ function SignUp({
             ) : (
                 isSocial ? (
                     <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>
-                        <Spinner />
+                        <Spinner
+                            variant='light'
+                            animation='border'
+                        />
                     </div>
                 ) : (
                     <div className={styles.form}>

@@ -1,9 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Container, Button, Image } from 'react-bootstrap';
 import Player from '../Player/Player';
 import Comments from '../Comments/Comments';
 import LessonList from '../LessonList/LessonList';
-import progressIcon from './images/progress.svg';
 import coachingIcon from './images/coaching.svg';
 import communityIcon from './images/community.svg';
 import cupIcon from './images/cup.svg';

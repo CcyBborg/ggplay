@@ -32,10 +32,6 @@
 }
 
 .loginLink {
-    text-shadow: none;
-    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     padding: 0 8px;
 }
 

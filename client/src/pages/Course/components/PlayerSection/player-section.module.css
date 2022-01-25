@@ -55,19 +55,6 @@ line-height: 24px;
 margin-left: 20px;
 }
 
-.progress {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 96px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: right;
-  color: #767698;
-  margin: 0;
-}
-
 .grid {
     display: flex;
     justify-content: space-between;

@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router';
-import { Container, Navbar, Nav, Row, Col, Modal, Image } from 'react-bootstrap';
+import { Container, Navbar, Nav, Row, Col, Modal, Image, Spinner } from 'react-bootstrap';
 import Copier from '../Copier/Copier';
-import Spinner from '../Spinner/Spinner';
 import AddReview from './components/AddReview/AddReview';
 import { fetchUserInfo } from './actions';
 import { postReview } from './api';
@@ -42,7 +41,10 @@ function Layout({ user, children, fetchUserInfo, history }) {
     if (user.isLoading) {
         return (
             <div className='d-flex align-items-center justify-content-center' style={{ height: '100vh' }}>
-                <Spinner />
+                <Spinner
+                    variant='light'
+                    animation='border'
+                />
             </div>
         );
     }

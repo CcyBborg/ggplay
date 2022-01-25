@@ -5,7 +5,8 @@
 
   a {
     color: #e50a4f;
-    transition: .3s ease-in color;
+    transition: .4s color;
+    text-decoration: none;
   }
 
   a:hover {

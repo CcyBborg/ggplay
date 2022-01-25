@@ -2,14 +2,12 @@ import React from 'react';
 import {
   Switch,
   Route,
-  Redirect,
-  withRouter
+  Redirect
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 import store from './store';
 import Layout from './components/Layout/Layout';
-import { useEffect } from 'react';
 
 export const Tournament = React.lazy(() => import('./pages/Tournament/Tournament'));
 export const Course = React.lazy(() => import('./pages/Course/Course'));

@@ -117,7 +117,7 @@ function CalendarStep({
                 })}
               </span>
             </p>
-            <div className='list-unstyled d-flex'>
+            <div className='list-unstyled d-flex flex-wrap'>
               {timeSlots.sort(compareTime).map(slot => (
                 <li key={slot._id}>
                   <Button variant='secondary' className={styles.timeSelect} size='sm' onClick={() => onNextStep(slot)}>

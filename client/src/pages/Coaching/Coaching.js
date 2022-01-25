@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchGames, fetchCoaches } from './actions';
 import GameSelect from '../../components/GameSelect/GameSelect';
-import Spinner from '../../components/Spinner/Spinner';
 import ScrollButton from '../../components/ScrollButton/ScrollButton';
 import CoachCard from './components/CoachCard/CoachCard';
-import { Container, Row, Col, Button, Image, Pagination } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image, Pagination, Spinner } from 'react-bootstrap';
 import rocketIcon from './images/rocket.svg';
 import foregroundImage from './images/coaching-foreground.png';
 import styles from './coaching.module.css';
 import ArrowIcon from '../../components/icons/Arrow/Arrow';
+import LazyLoad from 'react-lazyload';
 
 function Coaching({
   games,
@@ -51,7 +51,10 @@ function Coaching({
   if (games.isLoading) {
     return (
       <div className='d-flex align-items-center justify-content-center' style={{ height: '100vh' }}>
-        <Spinner />
+                        <Spinner
+                    variant='light'
+                    animation='border'
+                />
       </div>
     );
   }
@@ -75,7 +78,7 @@ function Coaching({
               </div>
               <ul className={styles.bannerList}>
                 <li>Онлайн занятия</li>
-                <li>Тщательный отбор тренеров</li>
+                <li>Строгий отбор тренеров</li>
                 <li>Запись всех тренировок</li>
               </ul>
               <ScrollButton text='Начать обучение' href='#coachList' />
@@ -90,74 +93,78 @@ function Coaching({
           </Row>
         </Container>
       </div>
-      <Container id='coachList' className='mt-3'>
-        {selectedGameId ? (
-          <>
-            <div className='d-flex justify-content-between align-items-center'>
-              <div className={styles.selectGame} onClick={() => setSelectedGame(null)}>
-                <h4>Выбери игру</h4>
-                <Image src={selectedGame.logo} width='32' height='32' className='mx-3' />
-                <ArrowIcon variant='down' />
+      <LazyLoad once>
+        <Container id='coachList' className='mt-3'>
+          {selectedGameId ? (
+            <>
+              <div className='d-flex justify-content-between align-items-center'>
+                <div className={styles.selectGame} onClick={() => setSelectedGame(null)}>
+                  <h4>Выбери игру</h4>
+                  <Image src={selectedGame.logo} width='32' height='32' className='mx-3' />
+                  <ArrowIcon variant='down' />
+                </div>
+                <div>
+                  {coaches.coachList?.length > 6 && (
+                    <Pagination>
+                      {[...Array(Math.ceil(coaches.coachList.length / 6)).keys()].map(n => (
+                        <Pagination.Item key={n} active={n === pagination} onClick={() => setPagination(n)}>
+                          {n + 1}
+                        </Pagination.Item>
+                      ))}
+                    </Pagination>
+                  )}
+                </div>
               </div>
-              <div>
-                {coaches.coachList?.length > 6 && (
-                  <Pagination>
-                    {[...Array(Math.ceil(coaches.coachList.length / 6)).keys()].map(n => (
-                      <Pagination.Item key={n} active={n === pagination} onClick={() => setPagination(n)}>
-                        {n + 1}
-                      </Pagination.Item>
+              <div className='d-flex'>
+                <div className={styles.selectedGame}>
+                  <Image
+                    src={selectedGame.banner}
+                    width='296'
+                    height='500'
+                    alt={`${selectedGame.title} | GGPlay`}
+                    className={styles.selectedGameBanner} />
+                </div>
+                {coaches.isLoading ? (
+                  <Spinner />
+                ) : (
+                  <Row className={styles.coachList}>
+                    {coaches.coachList.slice(pagination * 6, (pagination + 1) * 6).map(coach => (
+                      <Col md='4' key={coach._id}>
+                        <CoachCard
+                          id={coach._id}
+                          title={coach.title}
+                          price={coach.price}
+                          rating={coach.rating}
+                          status={coach.status}
+                          reviewsLength={coach.reviewsLength}
+                          about={coach.about}
+                          img={coach.img} />
+                      </Col>
                     ))}
-                  </Pagination>
-                )}
+                  </Row>
+                )
+                }
               </div>
-            </div>
-            <div className='d-flex'>
-              <div className={styles.selectedGame}>
-                <Image
-                  src={selectedGame.banner}
-                  width='296'
-                  height='500'
-                  alt={`${selectedGame.title} | GGPlay`}
-                  className={styles.selectedGameBanner} />
-              </div>
-              {coaches.isLoading ? (
-                <Spinner />
-              ) : (
-                <Row className={styles.coachList}>
-                  {coaches.coachList.slice(pagination * 6, (pagination + 1) * 6).map(coach => (
-                    <Col md='4'>
-                      <CoachCard
-                        id={coach['_id']}
-                        title={coach.title}
-                        price={coach.price}
-                        rating={coach.rating}
-                        status={coach.status}
-                        reviewsLength={coach.reviewsLength}
-                        about={coach.about}
-                        img={coach.img} />
-                    </Col>
-                  ))}
-                </Row>
-              )
-              }
-            </div>
-          </>
-        ) : (
-          <>
-            <h4>Выбери игру</h4>
-            <GameSelect gameList={games.gameList} onSelect={setSelectedGame} />
-          </>
-        )}
-      </Container>
-      <div className={styles.cta}>
-        <Container className='d-flex flex-column align-items-center'>
-          <h2 className='h1'>Уже готов</h2>
-          <h3>Освоить новый уровень игры?</h3>
-          <Button className={styles.ctaButton} variant='primary' size='lg' href='/sign-up'>
-            Начать обучение
-          </Button>
+            </>
+          ) : (
+            <>
+              <h4>Выбери игру</h4>
+              <GameSelect gameList={games.gameList} onSelect={setSelectedGame} />
+            </>
+          )}
         </Container>
-      </div>
+      </LazyLoad>
+      <LazyLoad once>
+        <div className={styles.cta}>
+          <Container className='d-flex flex-column align-items-center'>
+            <h2 className='h1'>Уже готов</h2>
+            <h3>Освоить новый уровень игры?</h3>
+            <Button className={styles.ctaButton} variant='primary' size='lg' href='/sign-up'>
+              Начать обучение
+            </Button>
+          </Container>
+        </div>
+      </LazyLoad>
     </>
   );
 }
