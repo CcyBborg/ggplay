@@ -20,7 +20,7 @@ export const SignIn = React.lazy(() => import('./pages/SignIn/SignIn'));
 export const Coaching = React.lazy(() => import('./pages/Coaching/Coaching'));
 export const ConfidentialPolicy = React.lazy(() => import('./pages/ConfidentialPolicy/ConfidentialPolicy'));
 export const FullAccess = React.lazy(() => import('./pages/FullAccess/FullAccess'));
-export const SlotBooked = React.lazy(() => import('./pages/SlotBooked/SlotBooked'));
+export const CheckoutRouter = React.lazy(() => import('./pages/CheckoutRouter/CheckoutRouter'));
 
 function App() {
   return (
@@ -128,7 +128,7 @@ function App() {
               <Helmet>
                 <title>Поздравляем с записью! | GGPlay</title>
               </Helmet>
-              <SlotBooked {...props} />
+              <CheckoutRouter {...props} />
             </Layout>
           </React.Suspense>
         )

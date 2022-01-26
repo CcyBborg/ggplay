@@ -15,7 +15,6 @@ import styles from './comments.module.css';
 
 function Comments({
     user,
-    history,
     lessonId,
     isLoading,
     isAddingComment,

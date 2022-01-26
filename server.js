@@ -33,6 +33,7 @@ const coursesRoute = require('./routes/courses');
 const billingRoute = require('./routes/billing');
 const commentsRoute = require('./routes/comments');
 const tournamentsRoute = require('./routes/tournaments');
+const ordersRoute = require('./routes/orders');
 
 app.use('/games', gamesRoute);
 app.use('/users', usersRoute);
@@ -42,15 +43,16 @@ app.use('/courses', coursesRoute);
 app.use('/billing', billingRoute);
 app.use('/comments', commentsRoute);
 app.use('/tournaments', tournamentsRoute);
+app.use('/orders', ordersRoute);
 
 process.on('unhandledRejection', error => console.error('Promise rejection:', error));
 
-
+// Database setup
 mongoose.connect(
     process.env.DB_CONNECTION,
     { useUnifiedTopology: true },
     () => console.log('Connected to db')
-    );
+);
 
 // Serve static content if in production
 if (process.env.NODE_ENV === 'production') {
@@ -62,6 +64,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
+// Start server
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`))
