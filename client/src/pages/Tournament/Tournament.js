@@ -1,11 +1,10 @@
 import { useCallback, useState } from 'react';
-import { Container, Row, Col, Image, Modal, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ScrollButton from '../../components/ScrollButton/ScrollButton';
 import TournamentCard from './components/TournamentCard/TournamentCard';
 import dotaImage from './images/dota.jpg';
 import csgoImage from './images/csgo.jpg';
-import unavailableImage from './images/unavailable.png';
 import styles from './tournament.module.css';
 import DotaRegister from './components/DotaRegister/DotaRegister';
 import CSRegister from './components/CSRegister/CSRegister';
@@ -15,16 +14,13 @@ function Tournament({
 }) {
     const [isDota, setIsDota] = useState(false);
     const [isCS, setIsCS] = useState(false);
-    const [isUnavailable, setIsUnavailable] = useState(false);
 
     const handleRegisterClick = useCallback(open => {
         if (user.info) {
-            if (user.info.course || user.info.slots.present.length || user.info.slots.past.length) {
-                open(true);
-            } else {
-                setIsUnavailable(true)
-            }
+            open(true);
         } else {
+            localStorage.setItem('auth-redirect', '/tournament');
+
             window.open('/sign-in', '_self');
         }
     }, [user.info]);
@@ -89,20 +85,6 @@ function Tournament({
                     onJoin={() => handleRegisterClick(setIsCS)}
                     isRegistered={user.info?.tournaments.includes('cs')} />
             </Container>
-            <Modal size='md' show={isUnavailable} contentClassName={styles.unavailable} onHide={() => setIsUnavailable(false)}>
-                <Modal.Body>
-                    <div className={styles.unavailableContent}>
-                        <h4 className={styles.unavailableTitle}>Запись на турнир недоступна</h4>
-                        <p className={styles.unavailableP}>Получите возможность поучаствовать в&nbsp;турнире, купив наш <a href='/course'>курс</a> или любую из&nbsp;<a href='/coaching'>тренировок</a>.</p>
-                        <Button variant='primary' onClick={() => setIsUnavailable(false)}>Хорошо</Button>
-                    </div>
-                </Modal.Body>
-                <Image
-                    className={styles.unavailableImage}
-                    src={unavailableImage}
-                    width={248}
-                    height={258} />
-            </Modal>
             <DotaRegister
                 isShow={isDota}
                 onHide={() => setIsDota(false)} />

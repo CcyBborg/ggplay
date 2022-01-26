@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Container, Button, Image } from 'react-bootstrap';
+import LazyLoad from 'react-lazyload';
 import Player from '../Player/Player';
 import Comments from '../Comments/Comments';
 import LessonList from '../LessonList/LessonList';
@@ -32,33 +33,31 @@ function PlayerSection({
                                 lesson={LESSONS[selectedLesson]}
                                 isFullAccessed={isFullAccessed}
                                 history={history} />
-                            <Comments
-                                user={user}
-                                history={history}
-                                lessonId={LESSONS[selectedLesson].id}
-                                isLoading={comments.isLoading}
-                                isAddingComment={comments.isAddingComment}
-                                comments={comments.comments}
-                                fetchComments={fetchComments}
-                                addComment={addComment} />
+                            <LazyLoad once>
+                                <Comments
+                                    user={user}
+                                    history={history}
+                                    lessonId={LESSONS[selectedLesson].id}
+                                    isLoading={comments.isLoading}
+                                    isAddingComment={comments.isAddingComment}
+                                    comments={comments.comments}
+                                    fetchComments={fetchComments}
+                                    addComment={addComment} />
+                            </LazyLoad>
                         </div>
                     </div>
                     <div>
                         <div className={styles.syllabus}>
                             <div className={styles.syllabusHeader}>
                                 <h5 className={styles.syllabusTitle}>План курса</h5>
-                                <div className={styles.progress}>
-                                    {/* <span>Прогресс<br /> 10%</span>
-                                    <div>
-                                        <Image src={progressIcon} width='15' height='32' />
-                                    </div> */}
-                                </div>
                             </div>
-                            <LessonList
-                                selectedLesson={selectedLesson}
-                                lessons={LESSONS}
-                                isFullAccessed={isFullAccessed}
-                                onSelectLesson={setSelectedLesson} />
+                            <LazyLoad offset={100}>
+                                <LessonList
+                                    selectedLesson={selectedLesson}
+                                    lessons={LESSONS}
+                                    isFullAccessed={isFullAccessed}
+                                    onSelectLesson={setSelectedLesson} />
+                            </LazyLoad>
                         </div>
                         {!isFullAccessed && (
                             <div className={styles.syllabusCta}>

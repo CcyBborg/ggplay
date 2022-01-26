@@ -31,7 +31,7 @@ function SignIn({
                         <h2 className={styles.title}>С возвращением!</h2>
                         <p className={styles.loginLabel}>
                             Новый пользователь?
-                            <a href='/sign-up'>Зарегистрироваться</a>
+                            <a href='/sign-up' className={styles.loginLink}>Зарегистрироваться</a>
                         </p>
                         <Form onSubmit={e => {
                             e.preventDefault();

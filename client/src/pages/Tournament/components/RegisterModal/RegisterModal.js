@@ -71,7 +71,7 @@ function RegisterModal({
                         size='lg'
                         variant='primary'
                         type='submit'>
-                        Записаться на турнир
+                        Оплатить 599&nbsp;₽
                     </Button>
                 </Form>
             </Modal.Body>

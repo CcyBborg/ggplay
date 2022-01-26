@@ -5,6 +5,7 @@ import keyboardImage from '../../images/keyboard.png';
 import lessonItemIcon from './images/lesson-item.svg';
 import selectedLessonItemIcon from './images/selected-lesson-item.svg';
 import { useMemo } from 'react';
+import Reviews from '../Review/Reviews';
 
 function InitStep({
   isLoading,
@@ -113,39 +114,7 @@ function InitStep({
           <div className={styles.divider} />
           <div className={styles.reviewsBlock}>
             <h6>Отзывы:</h6>
-            {coach.reviews?.length ? (
-              <ul>
-                {coach.reviews.map(r => (
-                  <li key={r['_id']} className={styles.comment}>
-                    <div className='d-flex'>
-                      <div>
-                        <Image
-                          className={styles.commentImg}
-                          src={r.user.profile.avatar}
-                          width='45'
-                          height='45' />
-                      </div>
-                      <div>
-                        <span className={styles.commentAuthor}>{r.user.nickname}</span>
-                        <div>
-                          <StartRatings
-                            starRatedColor='#E50A48'
-                            starEmptyColor='#767698'
-                            starDimension='20px'
-                            starSpacing='2px'
-                            rating={r.rating}
-                            numberOfStars={5}
-                            name='rating' />
-                        </div>
-                      </div>
-                    </div>
-                    <p className={styles.commentContent}>{r.comment}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>Пока нет отзывов. Запишись на тренировку и будь первым!</p>
-            )}
+            <Reviews reviews={coach.reviews} />
           </div>
         </>
       )}

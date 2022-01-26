@@ -1,22 +1,20 @@
-import { withRouter } from 'react-router';
+import { Spinner } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
-function SlotBooked({ history }) {
+function SlotBooked() {
+    const location = useLocation();
+
+    
+    alert(new URLSearchParams(location.search).get('OrderId'));
+
     return (
-        <div className='container mt-5 mb-5'>
-            <div className='banner p-5'>
-                <div className='d-flex justify-content-center align-items-center flex-column text-center'>
-                    <i style={{ fontSize: '60px' }} className='far fa-check-circle text-primary p-4'></i>
-                    <h3>Поздравляем с&nbsp;успешной записью на&nbsp;тренировку!</h3>
-                    <p className='lead pt-3'>Просим не&nbsp;опаздывать на&nbsp;тренировку и&nbsp;присутствовать в&nbsp;созданном дискорд-канале в&nbsp;назначенное время. Всю информацию о&nbsp;твоих тренировках ты&nbsp;можешь узнать в&nbsp;разделе &laquo;Мои тренировки&raquo;.</p>
-                    <button
-                        className='btn btn-hover mt-3'
-                        onClick={() => history.push({ pathname: '/dashboard' })}>
-                        Мои тренировки
-                    </button>
-                </div>
-            </div>
+        <div className='d-flex align-items-center justify-content-center' style={{ height: '100vh' }}>
+            <Spinner
+                variant='light'
+                animation='border'
+            />
         </div>
     );
 }
 
-export default withRouter(SlotBooked);
+export default SlotBooked;

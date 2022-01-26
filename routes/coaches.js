@@ -76,6 +76,7 @@ router.get('/:coachId', async (req, res) => {
             const user = await User.findOne({ _id:review.slot.user });
 
             response.reviews[i] = {
+                _id: review._id,
                 rating: review.rating,
                 comment: review.comment,
                 user: {
