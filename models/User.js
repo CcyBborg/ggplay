@@ -54,9 +54,6 @@ var UserSchema = new Schema({
     slots: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'LessonSlots'
-    }],
-    tournaments: [{
-        type: String
     }]
 });
      

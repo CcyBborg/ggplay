@@ -23,12 +23,13 @@ function DotaRegister({
             isShow={isShow}
             onHide={onHide}
             onSubmit={params => {
-                axios.post('/tournaments/dota', {
+                axios.post('/orders/tournament', {
                     ...params,
                     rating,
-                    roles: Object.keys(roles).filter(k => roles[k])
-                }).then(() => {
-                    window.location.reload();
+                    roles: Object.keys(roles).filter(k => roles[k]),
+                    tournament: 'dota'
+                }).then(({ data }) => {
+                    window.open(data.url, '_self');
                 });
             }}>
             <Form.Group>

@@ -3,6 +3,7 @@ const { ensureAuthenticated, persistGame } = require('../middleware');
 const passport = require('passport');
 const User = require('../models/User');
 const LessonSlot = require('../models/LessonSlot');
+const Tournament = require('../models/Tournament');
 
 const router = express.Router();
 
@@ -148,6 +149,8 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
             return isPast;
         });
 
+        const tournaments = await Tournament.find({ user: req.user._id }).populate('order') || [];
+
         res.json({
             id: req.user._id,
             nickname: req.user.nickname,
@@ -158,7 +161,7 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
                 present,
                 past
             },
-            tournaments: req.user.tournaments
+            tournaments
         });
     } catch (err) {
         console.log(err);

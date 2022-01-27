@@ -10,12 +10,13 @@ function CheckoutRouter() {
 
     useEffect(() => {
         axios.get(`/orders/${orderId}`).then(({ data: order }) => {
-            if (order.type === 'course') {
-                history.push({ pathname: '/course' });
-            } else if (order.type === 'tournament') {
-                history.push({ pathname: '/tournament' });
+            if (order.type === 'tournament') {
+                history.push({
+                    pathname: '/tournament',
+                    state: { isNotification: true }
+                });
             } else {
-                history.push({ pathname: '/coaching' });
+                history.push({ pathname: '/dashboard' });
             }
         });
     }, []);

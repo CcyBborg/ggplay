@@ -17,12 +17,13 @@ function CSRegister({
             isShow={isShow}
             onHide={onHide}
             onSubmit={params => {
-                axios.post('/tournaments/cs', {
+                axios.post('/orders/tournament', {
                     ...params,
                     rating,
-                    faceit
-                }).then(() => {
-                    window.location.reload();
+                    faceit,
+                    tournament: 'cs'
+                }).then(({ data }) => {
+                    window.open(data.url, '_self');
                 });
             }}>
             <Form.Group>

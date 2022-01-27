@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ScrollButton from '../../components/ScrollButton/ScrollButton';
 import TournamentCard from './components/TournamentCard/TournamentCard';
@@ -8,12 +8,15 @@ import csgoImage from './images/csgo.jpg';
 import styles from './tournament.module.css';
 import DotaRegister from './components/DotaRegister/DotaRegister';
 import CSRegister from './components/CSRegister/CSRegister';
+import { useLocation } from 'react-router-dom';
 
 function Tournament({
     user
 }) {
     const [isDota, setIsDota] = useState(false);
     const [isCS, setIsCS] = useState(false);
+
+    const location = useLocation();
 
     const handleRegisterClick = useCallback(open => {
         if (user.info) {
@@ -27,6 +30,15 @@ function Tournament({
 
     return (
         <>
+            {location.state?.isNotification && (
+                <Alert variant='success'>
+                    <Alert.Heading>Поздравляю! Вы&nbsp;успешно прошли регистрацию.</Alert.Heading>
+                    <p>
+                        Переходи в&nbsp;<a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer'>наше сообщество GGPLAY ВКонтакте</a>, где будет вся подробная информация о&nbsp;турнире.
+                    </p>
+                    <hr />
+                </Alert>
+            )}
             <div className={styles.banner}>
                 <Container>
                     <Row>

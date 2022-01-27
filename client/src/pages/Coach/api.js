@@ -5,7 +5,7 @@ export function fetchCoach(id) {
 }
 
 export function bookSlot(slotId) {
-    return axios.post('/slots/book', {
+    return axios.post('/orders/slot', {
         slotId
     });
 }
