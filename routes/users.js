@@ -4,6 +4,7 @@ const passport = require('passport');
 const User = require('../models/User');
 const LessonSlot = require('../models/LessonSlot');
 const Tournament = require('../models/Tournament');
+const Order = require('../models/Order');
 
 const router = express.Router();
 
@@ -161,7 +162,7 @@ router.get('/info', ensureAuthenticated, async (req, res) => {
                 present,
                 past
             },
-            tournaments
+            tournaments: tournaments.filter(t => t.order.status === 'confirmed').map(t => t.type)
         });
     } catch (err) {
         console.log(err);
