@@ -47,7 +47,7 @@ var UserSchema = new Schema({
         },
         avatar: {
             type: String,
-            default: '/images/small-logo.png',
+            default: '/images/default-avatar.jpg',
             required: true
         }
     },

@@ -33,16 +33,18 @@ function Tournament({
         <>
             <div className={styles.banner}>
                 <Container>
-                    <ToastContainer position='top-end'>
-                        <Toast className='d-inline-block m-1' show={isNotification} bg='light' delay={5000} onClose={() => setIsNotification(false)} autohide>
-                            <Toast.Header>
-                                <strong className='me-auto'>Ты участвуешь в турнире!</strong>
-                            </Toast.Header>
-                            <Toast.Body>
-                                Переходи в <a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer'>наше сообщество GGPLAY ВКонтакте</a>, где будет вся подробная информация о турнире.
-                            </Toast.Body>
-                        </Toast>
-                    </ToastContainer>
+                    {isNotification && (
+                        <ToastContainer position='top-end'>
+                            <Toast className='d-inline-block m-1' show={isNotification} bg='light' delay={5000} onClose={() => setIsNotification(false)} autohide>
+                                <Toast.Header>
+                                    <strong className='me-auto'>Ты участвуешь в турнире!</strong>
+                                </Toast.Header>
+                                <Toast.Body>
+                                    Переходи в <a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer'>наше сообщество GGPLAY ВКонтакте</a>, где будет вся подробная информация о турнире.
+                                </Toast.Body>
+                            </Toast>
+                        </ToastContainer>
+                    )}
                     <Row>
                         <Col md='4'>
                             <h1 className={styles.title}>участвуй в&nbsp;турнирах <span className={styles.highlight}>gg&nbsp;play</span></h1>
