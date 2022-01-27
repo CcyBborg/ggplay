@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Container, Row, Col, Toast, ToastContainer } from 'react-bootstrap';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ScrollButton from '../../components/ScrollButton/ScrollButton';
 import TournamentCard from './components/TournamentCard/TournamentCard';
@@ -33,18 +33,6 @@ function Tournament({
         <>
             <div className={styles.banner}>
                 <Container>
-                    {isNotification && (
-                        <ToastContainer position='top-end'>
-                            <Toast className='d-inline-block m-1' show={isNotification} bg='light' delay={5000} onClose={() => setIsNotification(false)} autohide>
-                                <Toast.Header>
-                                    <strong className='me-auto'>Ты участвуешь в турнире!</strong>
-                                </Toast.Header>
-                                <Toast.Body>
-                                    Переходи в <a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer'>наше сообщество GGPLAY ВКонтакте</a>, где будет вся подробная информация о турнире.
-                                </Toast.Body>
-                            </Toast>
-                        </ToastContainer>
-                    )}
                     <Row>
                         <Col md='4'>
                             <h1 className={styles.title}>участвуй в&nbsp;турнирах <span className={styles.highlight}>gg&nbsp;play</span></h1>
@@ -84,7 +72,7 @@ function Tournament({
             <Container className='d-md-flex justify-content-center mt-5'>
                 <TournamentCard
                     title='Турнир Dota2 2021'
-                    subtitle='22 ДЕК — НАЧАЛО В 18:00'
+                    subtitle='19 ФЕВ — НАЧАЛО В 16:00 по МСК'
                     registeredUsers={128}
                     totalUsers={320}
                     image={dotaImage}
@@ -93,7 +81,7 @@ function Tournament({
                     isRegistered={user.info?.tournaments.includes('dota')} />
                 <TournamentCard
                     title='Турнир CS:GO 2021'
-                    subtitle='16 ДЕК — НАЧАЛО В 18:00'
+                    subtitle='20 ФЕВ — НАЧАЛО В 16:00 по МСК'
                     registeredUsers={48}
                     totalUsers={320}
                     image={csgoImage}
@@ -107,6 +95,20 @@ function Tournament({
             <CSRegister
                 isShow={isCS}
                 onHide={() => setIsCS(false)} />
+
+            <Modal size='md' show={isNotification} onHide={() => setIsNotification(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        Ты участвуешь в турнире!
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className='text-center'>
+                    <p className='lead mb-5 mt-5'>
+                        Переходи в наше сообщество <a href='https://vk.com/ggplay_official' target='_blank' rel='noreferrer' style={{ fontWeight: 'bold' }}>GGPLAY&nbsp;ВКонтакте</a>, где будет вся подробная информация о турнире.
+                    </p>
+                    <Button variant='primary' onClick={() => setIsNotification(false)}>Отлично!</Button>
+                </Modal.Body>
+            </Modal>
         </>
     );
 }

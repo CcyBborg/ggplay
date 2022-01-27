@@ -47,7 +47,7 @@ function FullAccess({
                     <h3>Начни&nbsp;свой&nbsp;путь в&nbsp;киберспорт</h3>
                     <div className='d-flex align-items-center'>
                         <span className={styles.price}>
-                            <span className={styles.ruble}>₽</span>&nbsp;2699
+                            <span className={styles.ruble}>₽</span>&nbsp;2190
                         </span>
                         <span className={styles.priceLabel}>
                             единоразовый платёж

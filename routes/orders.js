@@ -39,7 +39,7 @@ router.post('/course', ensureAuthenticated, async (req, res) => {
 
         order = await order.save();
 
-        const price = 2600 * 100;
+        const price = 2190 * 100;
 
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
             TerminalKey: process.env.TERMINAL_DEV_KEY,

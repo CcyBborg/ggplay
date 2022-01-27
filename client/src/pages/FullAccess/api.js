@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export function orderCourse() {
-    return axios.post('/order/course');
+    return axios.post('/orders/course');
 }
