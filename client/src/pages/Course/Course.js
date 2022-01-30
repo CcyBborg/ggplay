@@ -21,7 +21,7 @@ function Course({
             {!isFullAccessed && (
                 <Banner />
             )}
-            <LazyLoad height={800} once>
+            <LazyLoad height={800} offset={200} once>
                 <PlayerSection
                     user={user}
                     history={history}
