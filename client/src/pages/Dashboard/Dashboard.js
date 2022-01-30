@@ -18,8 +18,6 @@ function Dashboard({
     isLoggedOut,
     onLogout
 }) {
-    const [isSettings, setIsSettings] = useState(false);
-
     const avatarUpload = useRef(null);
 
     useEffect(() => {
@@ -65,9 +63,9 @@ function Dashboard({
                         <div className={styles.profileNickname}>{user.info.nickname}</div>
                         <div className={styles.contact}>{user.info.email}</div>
                         <div className={styles.settingButtons}>
-                            <Button className={styles.settingButton} onClick={() => setIsSettings(true)}>
+                            {/* <Button className={styles.settingButton} onClick={() => setIsSettings(true)}>
                                 <Image src={editIcon} width='16' />
-                            </Button>
+                            </Button> */}
                             <Button className={styles.settingButton} onClick={onLogout}>
                                 <Image src={logoutIcon} width='16' />
                             </Button>

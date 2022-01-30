@@ -26,16 +26,6 @@ function Layout({ user, children, fetchUserInfo, history }) {
         }
     }, [user.info]);
 
-    const notification = user.info?.notification;
-
-    useEffect(() => {
-        if (notification) {
-            setIsNotification(true);
-        }
-    }, [notification]);
-
-    const [isNotification, setIsNotification] = useState(false);
-
     if (user.isLoading) {
         return (
             <div className='d-flex align-items-center justify-content-center' style={{ height: '100vh' }}>
