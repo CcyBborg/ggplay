@@ -66,12 +66,12 @@ function RegisterModal({
                         required />
                     <Form.Control
                         type='text'
-                        placeholder='Имя команды'
+                        placeholder='Имя команды *'
                         className={styles.input}
                         value={team}
                         onChange={e => setTeam(e.target.value)} />
                     <Form.Text className='d-block mb-4'>
-                        Заполнять если участвуете не&nbsp;в&nbsp;одиночку, 2-5
+                        *&nbsp;заполнять если участвуете не&nbsp;в&nbsp;одиночку, 2-5
                     </Form.Text>
                     <div className={styles.divider} />
                     <div className='mt-5'>
