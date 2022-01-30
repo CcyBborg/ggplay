@@ -42,7 +42,7 @@ router.post('/course', ensureAuthenticated, async (req, res) => {
         const price = 2190 * 100;
 
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
-            TerminalKey: process.env.TERMINAL_DEV_KEY,
+            TerminalKey: process.env.TERMINAL_PROD_KEY,
             Amount: price,
             Description: 'Мастер-класс Dota 2: "Цена времени"',
             OrderId: order._id,
@@ -98,7 +98,7 @@ router.post('/slot', ensureAuthenticated, async (req, res) => {
         const price = lessonSlot.lesson.price * 100;
 
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
-            TerminalKey: process.env.TERMINAL_DEV_KEY,
+            TerminalKey: process.env.TERMINAL_PROD_KEY,
             Amount: price,
             Description: lessonSlot.lesson.title,
             OrderId: order._id,
@@ -176,7 +176,7 @@ router.post('/tournament', ensureAuthenticated, async (req, res) => {
         const price = 599 * 100;
 
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
-            TerminalKey: process.env.TERMINAL_DEV_KEY,
+            TerminalKey: process.env.TERMINAL_PROD_KEY,
             Amount: price,
             Description: 'Взнос за участие в турнире от GGPlay',
             OrderId: order._id,
