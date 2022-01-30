@@ -43,7 +43,7 @@ export default [
     },
     {
         id: '61ed020685e84ef0fd21d4bf',
-        vimeoId: '668914650',
+        vimeoId: '671614752',
         title: '7. Тоноксти механик',
         previewImage: '/images/course/7.jpg',
         isLocked: true,
