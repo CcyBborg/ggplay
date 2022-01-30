@@ -70,7 +70,7 @@ function RegisterModal({
                         className={styles.input}
                         value={team}
                         onChange={e => setTeam(e.target.value)} />
-                    <Form.Text className='mb-4'>
+                    <Form.Text className='d-block mb-4'>
                         Заполнять если участвуете не&nbsp;в&nbsp;одиночку, 2-5
                     </Form.Text>
                     <div className={styles.divider} />
