@@ -6,7 +6,7 @@ import styles from './course-card.module.css';
 
 function CourseCard() {
     return (
-        <div className={styles.root}>
+        <div className={styles.root} onClick={() => history.push({ pathname: '/course' })}>
             <div>
                 <Image src={coursePreviewImage} className={styles.preview} />
             </div>
