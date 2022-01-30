@@ -149,24 +149,24 @@ router.post('/tournament', ensureAuthenticated, async (req, res) => {
         const tournament = new Tournament({
             user: req.user._id,
             order: order._id,
-            type: req.body.tournament
+            type: req.body.tournament,
+            nickname: req.body.nickname,
+            steam: req.body.steam,
+            phone: req.body.phone,
+            email: req.body.email,
         });
+
+        if (req.body.team) {
+            tournament.team = req.body.team;
+        }
 
         if (req.body.tournament === 'dota') {
             tournament.info = {
-                nickname: req.body.nickname,
-                steam: req.body.steam,
-                social: req.body.social,
-                email: req.body.email,
                 rating: req.body.rating,
                 roles: req.body.roles
             };
         } else if (req.body.tournament === 'cs') {
             tournament.info = {
-                nickname: req.body.nickname,
-                steam: req.body.steam,
-                social: req.body.social,
-                email: req.body.email,
                 rating: req.body.rating,
                 faceit: req.body.faceit
             };

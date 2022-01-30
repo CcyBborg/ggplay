@@ -13,7 +13,8 @@ function RegisterModal({
     const [nickname, setNickname] = useState('');
     const [email, setEmail] = useState('');
     const [steam, setSteam] = useState('');
-    const [social, setSocial] = useState('');
+    const [phone, setPhone] = useState('');
+    const [team, setTeam] = useState('');
 
     return (
         <Modal size='md' show={isShow} onHide={onHide}>
@@ -30,7 +31,8 @@ function RegisterModal({
                         nickname,
                         email,
                         steam,
-                        social
+                        phone,
+                        team
                     });
                 }}>
                     <p className={styles.legend}>Для участия в&nbsp;турнире заполните регистрационную форму</p>
@@ -50,6 +52,13 @@ function RegisterModal({
                         required />
                     <Form.Control
                         type='text'
+                        placeholder='Номер телефона'
+                        className={styles.input}
+                        value={phone}
+                        onChange={e => setPhone(e.target.value)}
+                        required />
+                    <Form.Control
+                        type='text'
                         placeholder='Ссылка на аккаунт в Steam'
                         className={styles.input}
                         value={steam}
@@ -57,11 +66,10 @@ function RegisterModal({
                         required />
                     <Form.Control
                         type='text'
-                        placeholder='Ссылка на аккаунт в социальной сети'
+                        placeholder='Имя команды (Необязательно)'
                         className='mb-4'
-                        value={social}
-                        onChange={e => setSocial(e.target.value)}
-                        required />
+                        value={team}
+                        onChange={e => setTeam(e.target.value)} />
                     <div className={styles.divider} />
                     <div className='mt-5'>
                         {children}

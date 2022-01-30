@@ -73,7 +73,7 @@ function Tournament({
                 <TournamentCard
                     title='Турнир Dota2 2021'
                     subtitle='19 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                    registeredUsers={128}
+                    registeredUsers={18}
                     totalUsers={320}
                     image={dotaImage}
                     icon='/images/games/logos/dota.svg'
@@ -82,7 +82,7 @@ function Tournament({
                 <TournamentCard
                     title='Турнир CS:GO 2021'
                     subtitle='20 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                    registeredUsers={48}
+                    registeredUsers={12}
                     totalUsers={320}
                     image={csgoImage}
                     icon='/images/games/logos/csgo.svg'

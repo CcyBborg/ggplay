@@ -3,8 +3,11 @@ import rockerIcon from './images/rocket.svg';
 import playIcon from './images/play.svg';
 import coursePreviewImage from './images/course-preview.jpg';
 import styles from './course-card.module.css';
+import { useHistory } from 'react-router-dom';
 
 function CourseCard() {
+    const history = useHistory();
+
     return (
         <div className={styles.root} onClick={() => history.push({ pathname: '/course' })}>
             <div>
