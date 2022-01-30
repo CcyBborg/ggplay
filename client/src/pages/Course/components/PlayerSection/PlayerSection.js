@@ -51,7 +51,7 @@ function PlayerSection({
                             <div className={styles.syllabusHeader}>
                                 <h5 className={styles.syllabusTitle}>План курса</h5>
                             </div>
-                            <LazyLoad offset={100}>
+                            <LazyLoad once>
                                 <LessonList
                                     selectedLesson={selectedLesson}
                                     lessons={LESSONS}

@@ -23,6 +23,13 @@
     display: flex;
 }
 
+.tg {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+}
+
 @media (max-width: 992px) {
     .footerLinks {
         flex-direction: column;

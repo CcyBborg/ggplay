@@ -6,6 +6,7 @@ import { fetchUserInfo } from './actions';
 import vkIcon from './images/vk.svg'
 import instagramIcon from './images/instagram.svg'
 import discordIcon from './images/discord.svg'
+import tgIcon from './images/tg.svg';
 import styles from './layout.module.css';
 
 function Layout({ user, children, fetchUserInfo, history }) {
@@ -116,6 +117,9 @@ function Layout({ user, children, fetchUserInfo, history }) {
                     </small></p>
                 </Container>
             </footer>
+            <a href='https://t.me/ggplay_support' className={styles.tg}>
+                <Image src={tgIcon} width={60} height={60} />
+            </a>
         </>
     );
 }

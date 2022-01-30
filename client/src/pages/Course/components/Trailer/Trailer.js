@@ -1,16 +1,26 @@
-import { Image, Button, Modal, CloseButton } from 'react-bootstrap';
-import playIcon from './images/play.svg';
+import { useState, useEffect } from 'react';
+import Vimeo from '@u-wave/react-vimeo';
+import { Button, Modal, CloseButton } from 'react-bootstrap';
 import styles from './trailer.module.css';
 
 function Trailer({ onHide }) {
+    const [player, setPlayer] = useState(null);
+
+    useEffect(() => {
+        if (player) {
+            player.play();
+        }
+    }, [player]);
+
     return (
         <Modal show={true} dialogClassName={styles.dialog} contentClassName={styles.root} onHide={onHide}>
-            <CloseButton variant='white' className='p-3' onClick={() => onHide()} />
-            <Button
-                variant='outline-secondary'
-                className={styles.playButton}>
-                <Image src={playIcon} width='42' height='60' />
-            </Button>
+            <CloseButton variant='white' className='p-3' onClick={() => onHide()} style={{ zIndex: 999 }} />
+            <Vimeo
+                video='671605341'
+                autoplay={false}
+                className={styles.player}
+                onReady={setPlayer}
+                responsive />
             <div className={styles.footer}>
                 <div className='d-flex align-items-center'>
                     <div>

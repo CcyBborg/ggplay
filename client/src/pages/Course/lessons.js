@@ -13,7 +13,7 @@ export default [
     },
     {
         id: '61dbeb334710975fcd864e51',
-        vimeoId: '665585622',
+        vimeoId: '671324424',
         title: '3. Ценность башен',
         previewImage: '/images/course/3.jpg',
         isLocked: true,
@@ -21,7 +21,7 @@ export default [
     },
     {
         id: '61dbeb384710975fcd864e52',
-        vimeoId: '665587537',
+        vimeoId: '671412686',
         title: '4. Где и почему стоит играть? (1)',
         previewImage: '/images/course/4.jpg',
         isLocked: true,
@@ -35,7 +35,7 @@ export default [
     },
     {
         id: '61e14c1eef7fc79e4972008a',
-        vimeoId: '668910220',
+        vimeoId: '671476742',
         title: '6. Макро Реплей',
         previewImage: '/images/course/6.jpg',
         isLocked: true,
