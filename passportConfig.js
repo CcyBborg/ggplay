@@ -45,7 +45,7 @@ module.exports = passport => {
                     nickname: profile.displayName,
                     vkontakte: profile.id,
                     profile: {
-                        avatar: profile.photos?.[0].value || '/images/small-logo.png'
+                        avatar: profile.photos?.[0].value || '/images/default-avatar.jpg'
                     }
                 });
 
@@ -91,7 +91,7 @@ module.exports = passport => {
                         yandex: profile.id,
                         email: profile.emails[0].value,
                         profile: {
-                            avatar: profile.photos?.[0].value || '/images/small-logo.png'
+                            avatar: profile.photos?.[0].value || '/images/default-avatar.jpg'
                         }
                     });
 
@@ -185,7 +185,7 @@ module.exports = passport => {
                     discord: profile.id,
                     email: profile.email,
                     profile: {
-                        avatar: profile?.avatar || '/images/small-logo.png'
+                        avatar: profile?.avatar || '/images//images/default-avatar.jpg'
                     }
                 });
                 newUser.save(function (err) {
