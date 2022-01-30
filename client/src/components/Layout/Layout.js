@@ -117,7 +117,7 @@ function Layout({ user, children, fetchUserInfo, history }) {
                     </small></p>
                 </Container>
             </footer>
-            <a href='https://t.me/ggplay_support' className={styles.tg}>
+            <a href='https://t.me/ggplay_support' target='_blank' className={styles.tg}>
                 <Image src={tgIcon} width={60} height={60} />
             </a>
         </>

@@ -8,7 +8,8 @@ import {
     FormControl,
     Button,
     Image,
-    Spinner
+    Spinner,
+    Pagination
 } from 'react-bootstrap';
 import sendIcon from './images/send.svg';
 import styles from './comments.module.css';
@@ -23,8 +24,10 @@ function Comments({
     addComment
 }) {
     const [comment, setComment] = useState('');
+    const [pagination, setPagination] = useState(0);
 
     useEffect(() => {
+        setPagination(0);
         fetchComments(lessonId);
     }, [lessonId]);
 
@@ -72,6 +75,15 @@ function Comments({
                 </p>
             )}
             <div className={styles.comments}>
+                {comments?.length > 5 && (
+                    <Pagination className='float-end'>
+                        {[...Array(Math.ceil(comments.length / 5)).keys()].map(n => (
+                            <Pagination.Item key={n} active={n === pagination} onClick={() => setPagination(n)}>
+                                {n + 1}
+                            </Pagination.Item>
+                        ))}
+                    </Pagination>
+                )}
                 {isLoading ? (
                     <div className='d-flex justify-content-center align-items-center' style={{ height: '300px' }}>
                         <Spinner
@@ -81,7 +93,7 @@ function Comments({
                     </div>
                 ) : (
                     <ul className={styles.commentsList}>
-                        {comments?.map(c => (
+                        {comments?.slice(pagination * 5, (pagination + 1) * 5).map(c => (
                             <li key={c._id}>
                                 <div className='d-flex align-items-center'>
                                     <div>

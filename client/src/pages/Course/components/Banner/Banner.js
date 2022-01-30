@@ -10,7 +10,7 @@ import styles from './banner.module.css';
 
 function Banner() {
     const [isTrailer, setIsTrailer] = useState(false);
-    const isDesktop = useMemo(() => window.innerWidth > 1000, window.innerWidth);
+    const isDesktop = useMemo(() => window.innerWidth > 1000, [window.innerWidth]);
 
     const [students, setStudents] = useState(0);
 
