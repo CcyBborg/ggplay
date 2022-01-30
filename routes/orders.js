@@ -150,14 +150,17 @@ router.post('/tournament', ensureAuthenticated, async (req, res) => {
             user: req.user._id,
             order: order._id,
             type: req.body.tournament,
+        });
+
+        const infoCommon = {
             nickname: req.body.nickname,
             steam: req.body.steam,
             phone: req.body.phone,
-            email: req.body.email,
-        });
+            email: req.body.email
+        };
 
         if (req.body.team) {
-            tournament.team = req.body.team;
+            infoCommon.team = req.body.team;
         }
 
         if (req.body.tournament === 'dota') {
@@ -171,6 +174,11 @@ router.post('/tournament', ensureAuthenticated, async (req, res) => {
                 faceit: req.body.faceit
             };
         }
+
+        tournament.info = {
+            ...infoCommon,
+            ...tournament.info
+        };
         await tournament.save();
 
         const price = 599 * 100;
