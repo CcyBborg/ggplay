@@ -19,7 +19,7 @@ function DotaRegister({
     return (
         <RegisterModal
             title='Турнир Dota2 2021'
-            subtitle='16 ДЕК — НАЧАЛО В 18:00'
+            subtitle='19 ФЕВ — НАЧАЛО В 16:00 ПО МСК'
             isShow={isShow}
             onHide={onHide}
             onSubmit={params => {
