@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
-import RegisterModal from '../RegisterModal/RegisterModal';
+import TournamentRegister from '../../components/TournamentRegister/TournamentRegister';
 
-function DotaRegister({
-    isShow,
-    onHide
-}) {
+function DotaRegister() {
     const [rating, setRating] = useState('');
     const [roles, setRoles] = useState({
         'Керри': false,
@@ -17,11 +14,9 @@ function DotaRegister({
     });
 
     return (
-        <RegisterModal
+        <TournamentRegister
             title='Турнир Dota2 2021'
             subtitle='19 ФЕВ — НАЧАЛО В 16:00 ПО МСК'
-            isShow={isShow}
-            onHide={onHide}
             onSubmit={params => {
                 axios.post('/orders/tournament', {
                     ...params,
@@ -60,7 +55,7 @@ function DotaRegister({
                     ))}
                 </div>
             </Form.Group>
-        </RegisterModal>
+        </TournamentRegister>
     );
 }
 

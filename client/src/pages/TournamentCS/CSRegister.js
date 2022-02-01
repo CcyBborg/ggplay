@@ -1,21 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import RegisterModal from '../RegisterModal/RegisterModal';
+import TournamentRegister from '../../components/TournamentRegister/TournamentRegister';
 
-function CSRegister({
-    isShow,
-    onHide
-}) {
+function CSRegister() {
     const [rating, setRating] = useState('');
     const [faceit, setFaceit] = useState('');
 
     return (
-        <RegisterModal
+        <TournamentRegister
             title='Турнир CS:GO 2021'
             subtitle='20 ФЕВ — НАЧАЛО В 16:00 ПО МСК'
-            isShow={isShow}
-            onHide={onHide}
             onSubmit={params => {
                 axios.post('/orders/tournament', {
                     ...params,
@@ -44,7 +39,7 @@ function CSRegister({
                     onChange={e => setFaceit(e.target.value)}
                     required />
             </Form.Group>
-        </RegisterModal>
+        </TournamentRegister>
     );
 }
 

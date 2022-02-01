@@ -6,26 +6,28 @@ import TournamentCard from './components/TournamentCard/TournamentCard';
 import dotaImage from './images/dota.jpg';
 import csgoImage from './images/csgo.jpg';
 import styles from './tournament.module.css';
-import DotaRegister from './components/DotaRegister/DotaRegister';
-import CSRegister from './components/CSRegister/CSRegister';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 function Tournament({
     user
 }) {
-    const [isDota, setIsDota] = useState(false);
-    const [isCS, setIsCS] = useState(false);
+    const history = useHistory();
 
     const location = useLocation();
     const [isNotification, setIsNotification] = useState(location.state?.isNotification);
 
-    const handleRegisterClick = useCallback(open => {
+    const handleRegisterClick = useCallback(game => {
         if (user.info) {
-            open(true);
+            history.push({
+                pathname: `/tournament/${game}`
+            });
         } else {
-            localStorage.setItem('auth-redirect', '/tournament');
+            localStorage.setItem('auth-redirect', `/tournament/${game}`);
 
-            window.open('/sign-in', '_self');
+            history.push({
+                pathname: '/sign-in',
+                state: { isTournament: true }
+            })
         }
     }, [user.info]);
 
@@ -77,7 +79,7 @@ function Tournament({
                     totalUsers={320}
                     image={dotaImage}
                     icon='/images/games/logos/dota.svg'
-                    onJoin={() => handleRegisterClick(setIsDota)}
+                    onJoin={() => handleRegisterClick('dota')}
                     isRegistered={user.info?.tournaments.includes('dota')} />
                 <TournamentCard
                     title='Турнир CS:GO 2021'
@@ -86,15 +88,9 @@ function Tournament({
                     totalUsers={320}
                     image={csgoImage}
                     icon='/images/games/logos/csgo.svg'
-                    onJoin={() => handleRegisterClick(setIsCS)}
+                    onJoin={() => handleRegisterClick('cs')}
                     isRegistered={user.info?.tournaments.includes('cs')} />
             </Container>
-            <DotaRegister
-                isShow={isDota}
-                onHide={() => setIsDota(false)} />
-            <CSRegister
-                isShow={isCS}
-                onHide={() => setIsCS(false)} />
 
             <Modal size='md' show={isNotification} onHide={() => setIsNotification(false)}>
                 <Modal.Header closeButton>

@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Modal, Form, Button } from 'react-bootstrap';
-import styles from './register-modal.module.css';
+import styles from './tournament-register.module.css';
 
-function RegisterModal({
+function TournamentRegister({
     title,
     subtitle,
     children,
-    isShow,
-    onHide,
+    history,
     onSubmit
 }) {
     const [nickname, setNickname] = useState('');
@@ -16,8 +16,14 @@ function RegisterModal({
     const [phone, setPhone] = useState('');
     const [team, setTeam] = useState('');
 
+    const handleClickBack = useCallback(() => {
+        history.push({
+            pathname: '/tournament'
+        })
+    }, [history]);
+
     return (
-        <Modal size='md' show={isShow} onHide={onHide}>
+        <Modal size='md' show={true} onHide={handleClickBack}>
             <Modal.Header closeButton>
                 <div>
                     <h4 className={styles.modalTitle}>{title}</h4>
@@ -90,4 +96,4 @@ function RegisterModal({
     );
 }
 
-export default RegisterModal;
+export default withRouter(TournamentRegister);

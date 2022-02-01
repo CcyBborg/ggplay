@@ -8,6 +8,8 @@ import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 import store from './store';
 import Layout from './components/Layout/Layout';
+import DotaRegister from './pages/TournamentDota/DotaRegister';
+import CSRegister from './pages/TournamentCS/CSRegister';
 
 export const Tournament = React.lazy(() => import('./pages/Tournament/Tournament'));
 export const Course = React.lazy(() => import('./pages/Course/Course'));
@@ -144,6 +146,20 @@ function App() {
       <Route path='*/full-access' render={props => (
         <React.Suspense fallback={<>...</>}>
           <FullAccess {...props} />
+        </React.Suspense>
+      )
+      } />
+
+      <Route path='/tournament/dota' render={props => (
+        <React.Suspense fallback={<>...</>}>
+          <DotaRegister {...props} />
+        </React.Suspense>
+      )
+      } />
+
+      <Route path='/tournament/cs' render={props => (
+        <React.Suspense fallback={<>...</>}>
+          <CSRegister {...props} />
         </React.Suspense>
       )
       } />
