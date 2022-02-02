@@ -29,14 +29,14 @@ function FullAccess({
             history.push({
                 pathname: '/sign-up',
                 state: { selectedGame: '6110f38fa9258e24cce20f65' }
-            })
+            });
         }
     }, [user.info?.course, history.push]);
 
     const handleClickBack = useCallback(() => {
         history.push({
             pathname: '/course'
-        })
+        });
     }, [history]);
 
     return (

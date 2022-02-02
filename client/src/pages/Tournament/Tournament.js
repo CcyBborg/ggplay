@@ -25,9 +25,9 @@ function Tournament({
             localStorage.setItem('auth-redirect', `/tournament/${game}`);
 
             history.push({
-                pathname: '/sign-in',
-                state: { isTournament: true }
-            })
+                pathname: '/sign-up',
+                state: { selectedGame: game === 'dota' ? '6110f38fa9258e24cce20f65' : '61112a5ed319f2ded84b1e42', isTournament: true }
+            });
         }
     }, [user.info]);
 

@@ -1,24 +1,20 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import cx from 'classnames';
 import AuthScreen from '../../components/AuthScreen/AuthScreen';
 import Oauth from '../../components/Oauth/Oauth';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import { useLocation, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { signInUser } from './actions';
 import styles from './sign-in.module.css';
 
 function SignIn({
     history,
-    isLoading,
     isUserSignedIn,
     error,
     signInUser
 }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
-
-    const isTournament = useLocation().state?.isTournament;
 
     useEffect(() => {
         if (isUserSignedIn) {
@@ -30,22 +26,6 @@ function SignIn({
         <AuthScreen>
             <Row>
                 <Col md='6'>
-                    {isTournament && (
-                        <div className={styles.steps}>
-                            <div className={cx(styles.step, styles.stepCompleted)}>
-                                <div className={styles.stepCounter}>1</div>
-                                <div className={styles.stepName}>Вход на GGPlay</div>
-                            </div>
-                            <div className={styles.step}>
-                                <div className={styles.stepCounter}>2</div>
-                                <div className={styles.stepName}>Регистрация на Турнир</div>
-                            </div>
-                            <div className={styles.step}>
-                                <div className={styles.stepCounter}>3</div>
-                                <div className={styles.stepName}>Оплата стоимости участия</div>
-                            </div>
-                        </div>
-                    )}
                     <div className={styles.form}>
                         <h2 className={styles.title}>С возвращением!</h2>
                         <p className={styles.loginLabel}>

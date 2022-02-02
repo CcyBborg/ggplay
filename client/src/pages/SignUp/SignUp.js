@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import cx from 'classnames';
 import { Spinner } from 'react-bootstrap';
 import AuthScreen from '../../components/AuthScreen/AuthScreen';
 import GameSelect from '../../components/GameSelect/GameSelect';
 import { fetchGames, createUser } from './actions';
 import styles from './sign-up.module.css';
 import SignUpForm from './components/SignUpForm/SignUpForm';
-import { withRouter } from 'react-router';
+import { withRouter, useLocation } from 'react-router';
 import { editUser } from './api';
 import Oauth from '../../components/Oauth/Oauth';
 
@@ -20,6 +21,7 @@ function SignUp({
     location
 }) {
     const [selectedGame, setSelectedGame] = useState(location.state?.selectedGame);
+    const isTournament = useLocation().state?.isTournament;
 
     useEffect(() => {
         if (!selectedGame) {
@@ -68,21 +70,39 @@ function SignUp({
                         />
                     </div>
                 ) : (
-                    <div className={styles.form}>
-                        <h2 className={styles.title}>Создать учётную запись</h2>
-                        <p className={styles.loginLabel}>
-                            Уже есть учётная запись?
-                            <a href='/sign-in' className={styles.loginLink}>Войти</a>
-                        </p>
-                        <SignUpForm onSubmit={params =>
-                            createUser({
-                                ...params,
-                                game: selectedGame
-                            })
-                        } />
-                        <Oauth selectedGame={selectedGame} />
-                        <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='/terms-of-service' target='_blank' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='/confidential-policy' target='_blank' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
-                    </div>
+                    <>
+                        {isTournament && (
+                            <div className={styles.steps}>
+                                <div className={cx(styles.step, styles.stepCompleted)}>
+                                    <div className={styles.stepCounter}>1</div>
+                                    <div className={styles.stepName}>Регистрация на GGPlay</div>
+                                </div>
+                                <div className={styles.step}>
+                                    <div className={styles.stepCounter}>2</div>
+                                    <div className={styles.stepName}>Регистрация на Турнир</div>
+                                </div>
+                                <div className={styles.step}>
+                                    <div className={styles.stepCounter}>3</div>
+                                    <div className={styles.stepName}>Оплата стоимости участия</div>
+                                </div>
+                            </div>
+                        )}
+                        <div className={styles.form}>
+                            <h2 className={styles.title}>Создать учётную запись</h2>
+                            <p className={styles.loginLabel}>
+                                Уже есть учётная запись?
+                                <a href='/sign-in' className={styles.loginLink}>Войти</a>
+                            </p>
+                            <SignUpForm onSubmit={params =>
+                                createUser({
+                                    ...params,
+                                    game: selectedGame
+                                })
+                            } />
+                            <Oauth selectedGame={selectedGame} />
+                            <p className={styles.legal}>Нажимая продолжить, Вы&nbsp;принимаете <a href='/terms-of-service' target='_blank' className={styles.legalLink}>Пользовательское&nbsp;Соглашение</a> и&nbsp;нашу <a href='/confidential-policy' target='_blank' className={styles.legalLink}>Политику&nbsp;Конфиденциальности</a>.</p>
+                        </div>
+                    </>
                 )
             )}
         </AuthScreen>
