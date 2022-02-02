@@ -73,18 +73,18 @@ function Tournament({
             </div>
             <Container className='d-md-flex justify-content-center mt-5'>
                 <TournamentCard
-                    title='Турнир Dota2 2021'
+                    title='Турнир Dota2 2022'
                     subtitle='19 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                    registeredUsers={18}
+                    registeredUsers={23}
                     totalUsers={320}
                     image={dotaImage}
                     icon='/images/games/logos/dota.svg'
                     onJoin={() => handleRegisterClick('dota')}
                     isRegistered={user.info?.tournaments.includes('dota')} />
                 <TournamentCard
-                    title='Турнир CS:GO 2021'
+                    title='Турнир CS:GO 2022'
                     subtitle='20 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                    registeredUsers={12}
+                    registeredUsers={15}
                     totalUsers={320}
                     image={csgoImage}
                     icon='/images/games/logos/csgo.svg'
