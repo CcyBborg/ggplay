@@ -5,6 +5,7 @@ import checkIcon from './images/check.svg';
 import styles from './tournament-card.module.css';
 
 function TournamentCard({
+    game,
     image,
     icon,
     title,
@@ -69,6 +70,7 @@ function TournamentCard({
                     </Button>
                 ) : (
                     <Button
+                        id={game}
                         variant='primary'
                         size='xs'
                         className={styles.footerBtn}
