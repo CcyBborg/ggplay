@@ -20,6 +20,22 @@ function InitStep({
     }
   }, [coach]);
 
+  const pluralizedReviewsLabel = useMemo(() => {
+    if (!coach?.reviews) {
+      return '';
+    }
+
+    const ending = coach.reviews.length % 10;
+
+    if (ending === 1) {
+      return 'отзыв';
+    } else if (ending > 0 && ending < 5) {
+      return 'отзыва';
+    }
+
+    return 'отзывов';
+  }, [coach?.reviews.length])
+
   return (
     <>
       {isLoading ? (
@@ -68,7 +84,7 @@ function InitStep({
                     name='rating' />
                   <span className={styles.ratingCount}>{coach.rating?.toFixed(1)}</span>
                 </div>
-                <div className={styles.attrSep}>{coach.reviews?.length} отзыва</div>
+                <div className={styles.attrSep}>{coach.reviews?.length}&nbsp;{pluralizedReviewsLabel}</div>
               </div>
             </div>
           </div>

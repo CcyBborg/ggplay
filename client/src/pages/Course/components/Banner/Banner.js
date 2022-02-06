@@ -14,6 +14,18 @@ function Banner() {
 
     const [students, setStudents] = useState(0);
 
+    const pluralizedStudentsLabel = useMemo(() => {
+        const ending = (students + 419) % 10;
+
+        if (ending === 1) {
+            return 'ученик';
+        } else if (ending > 0 && ending < 5) {
+            return 'ученика';
+        }
+
+        return 'учеников';
+    }, [students]);
+
     useEffect(() => {
         if (!students) {
             axios.get('/courses/count').then(res => setStudents(res.data.count));
@@ -49,7 +61,7 @@ function Banner() {
                                             </Col>
                                             <Col className={styles.feature} xs='9'>
                                                 <span>{students + 419}</span><br />
-                                                <span>учеников</span>
+                                                <span>{pluralizedStudentsLabel}</span>
                                             </Col>
                                         </Row>
                                     </Col>
