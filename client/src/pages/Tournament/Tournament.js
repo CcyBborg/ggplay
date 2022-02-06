@@ -76,7 +76,7 @@ function Tournament({
                     game='dota'
                     title='Турнир Dota2 2022'
                     subtitle='19 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                    registeredUsers={49}
+                    registeredUsers={67}
                     totalUsers={320}
                     image={dotaImage}
                     icon='/images/games/logos/dota.svg'
@@ -86,7 +86,7 @@ function Tournament({
                     game='cs'
                     title='Турнир CS:GO 2022'
                     subtitle='20 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                    registeredUsers={27}
+                    registeredUsers={35}
                     totalUsers={320}
                     image={csgoImage}
                     icon='/images/games/logos/csgo.svg'
