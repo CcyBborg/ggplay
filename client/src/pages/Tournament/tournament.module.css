@@ -57,7 +57,7 @@
 
 .about {
     background-image: url(./images/about-bg.png);
-    background-position: calc(top - 800px) center;
+    background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     height: 847px;
