@@ -1,0 +1,290 @@
+.banner {
+    padding: 86px 0;
+    background: top center / 728px 647px no-repeat url('./images/cs-foreground.png'),
+        center / cover no-repeat url('./images/banner-bg.png');
+    position: relative;
+}
+
+.dota .banner {
+    background: top center / 728px 647px no-repeat url('./images/dota-foreground.png'),
+    center / cover no-repeat url('./images/dota-bg.png');
+}
+
+.banner * {
+    z-index: 1;
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 320px;
+    background: linear-gradient(180deg, rgba(5, 7, 20, 0) 0%, rgba(5, 7, 20, 0.829268) 48.74%, #050714 59.09%, rgba(5, 7, 20, 0.8) 85.78%, rgba(5, 7, 20, 0) 100%), linear-gradient(180deg, rgba(5, 7, 19, 0) 0%, rgba(5, 7, 19, 0.40625) 65.62%, #050713 100%);
+}
+
+.terms {
+    background-image: url('./images/terms-bg.png');
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: -180px;
+    background-repeat: no-repeat;
+    padding: 260px 0 180px;
+    margin-top: -180px;
+    z-index: 1;
+    position: relative;
+}
+
+.termsP {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    text-transform: uppercase;
+}
+
+.termsContent {
+    max-width: 499px;
+    margin: 0 auto;
+}
+
+.termsPrice {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 69px;
+    margin-right: 20px;
+}
+
+.termsLabelPrimary {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+}
+
+.termsLabelSecondary {
+    font-size: 22px;
+    line-height: 32px;
+    color: #EBEBEB;
+}
+
+.banner .highlight {
+    font-size: 28px;
+    line-height: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.bannerTitle {
+    font-size: 72px;
+    line-height: 75px;
+    max-width: 664px;
+}
+
+.bannerP {
+    font-size: 20px;
+    line-height: 29px;
+    margin-bottom: 118px;
+}
+
+.bannerContent {
+    max-width: 367px;
+}
+
+.prizeSection {
+    padding: 120px 0 160px;
+    background: center / 540px no-repeat url('./images/bg-prize.png');
+    position: relative;
+    top: -100px;
+    margin-bottom: -50px;
+}
+
+.prizeHeader,
+.prizeBody {
+    background-color: #101221;
+    border: 1px solid #E50B74;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.prizeHeader {
+    z-index: 1;
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.prizeTotal {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    max-width: 620px;
+}
+
+.prizeTotal .prizeBody {
+    font-size: 60px;
+    line-height: 87px;
+}
+
+.prizeTotal .prizeHeader {
+    font-size: 20px;
+    line-height: 29px;
+}
+
+.prizeBody {
+    box-shadow: 0px 4px 30px 0px #35385E;
+    color: #EBEBEB;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.prizeHeader {
+    color: #E50B74;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.footer {
+    background-color: #101221;
+    padding: 60px 100px;
+    position: relative;
+}
+
+.footerTitle {
+    font-size: 32px;
+    line-height: 46px;
+}
+
+.footerP {
+    margin: 25px 0;
+    font-size: 20px;
+    line-height: 29px;
+    z-index: 1;
+    position: relative;
+}
+
+.footerImage {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.dotaFooterImage {
+    position: absolute;
+    right: 0;
+    bottom: -80px;
+}
+
+.footerBtn {
+    width: 100%;
+    z-index: 1;
+}
+
+.highlight,
+.termsPrice,
+.termsLabelPrimary {
+    text-shadow: none;
+    background: linear-gradient(90deg, #E50913 2.5%, #E60B74 97.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pistolImage {
+    position: absolute;
+    left: -120px;
+    top: -120px;
+}
+
+@media (max-width: 992px) {
+    .prizeSection {
+        padding-top: 80px;
+        padding-bottom: 20px;
+    }
+
+    .prizeHeader {
+        padding: 5px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .bannerTitle {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .banner .highlight {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .banner {
+        padding: 18px 0;
+        background:
+            linear-gradient(180deg, rgba(5, 7, 20, 0) 64.15%, #050714 100%),
+            linear-gradient(0deg, rgba(5, 7, 20, 0.35), rgba(5, 7, 20, 0.35)),
+            center / cover no-repeat url('./images/csgo-mobile-banner.jpg');
+        max-height: 462px;
+        overflow-y: visible;
+        margin-bottom: 280px;
+    }
+
+    .banner::after {
+        display: none;
+    }
+
+    .bannerP {
+        margin-top: 300px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    .termsP {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .terms {
+        background-position-y: bottom;
+        margin-top: 0;
+        padding-top: 40px;
+    }
+
+    .pistolImage {
+        position: static;
+        width: 100%;
+    }
+
+    .footer {
+        padding: 32px 20px 200px;
+    }
+
+    .footerTitle {
+        font-size: 24px;
+        line-height: 35px;
+    }
+
+    .footerP {
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    .footerImage {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .dotaFooterImage {
+        left: 0;
+        right: 0;
+        bottom: -80px;
+        width: 100%;
+    }
+}

@@ -4,6 +4,15 @@
     position: relative;
 }
 
+.bannerBtn {
+    width: 168px;
+    text-transform: none;
+}
+
+.bannerBtn:first-child {
+    margin-right: 26px;
+}
+
 .banner::after {
     content: '';
     position: absolute;
@@ -16,10 +25,20 @@
 , rgba(5, 7, 19, 0) 0%, rgba(5, 7, 19, 0.40625) 65.62%, #050713 100%);
 }
 
+.banner * {
+    z-index: 999;
+}
+
 .title {
     font-weight: 600;
-    font-size: 60px;
-    line-height: 66px;
+    font-size: 72px;
+    line-height: 78px;
+}
+
+.titleHighlight {
+    color: #101221;
+    text-shadow: -1px -1px 0 #E60B74, 1px -1px 0 #E60B74, -1px 1px 0 #E60B74, 1px 1px 0 #E60B74;
+    margin-left: 100px;
 }
 
 .highlight {
@@ -31,10 +50,41 @@
     -webkit-text-fill-color: transparent;
 }
 
+.smContainer {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about {
+    background-image: url(./images/about-bg.png);
+    background-position: calc(top - 800px) center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 847px;
+    padding-top: 400px;
+    margin-top: -250px;
+    z-index: 1;
+    position: relative;
+}
+
+.aboutContent {
+    max-width: 610px;
+}
+
+.about .highlight {
+    font-size: 60px;
+    line-height: 66px;
+}
+
+.aboutP {
+    font-size: 20px;
+    line-height: 24px;
+}
+
 .intro {
     font-size: 20px;
     line-height: 29px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .terms {
@@ -64,77 +114,191 @@
     margin-left: 20px;
 }
 
-.prizeSection {
-    padding: 120px 0;
-    background: center / 540px no-repeat url('./images/bg-prize.png');
-    position: relative;
-    top: -100px;
-    margin-bottom: -50px;
+.social {
+    background-image: url(./images/social-bg.png);
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 600px;
+    display: flex;
+    align-items: center;
 }
 
-.prizeHeader,
-.prizeBody {
-    background-color: #101221;
-    border: 1px solid #E50B74;
-    text-transform: uppercase;
-    text-align: center;
+.socialTitle {
+    font-size: 32px;
+    line-height: 46px;
+    margin-bottom: 25px;
 }
 
-.prizeHeader {
-    z-index: 1;
-    position: relative;
-    width: 70%;
-    margin: 0 auto;
-    position: relative;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+.socialAbout {
+    max-width: 408px;
 }
 
-.prizeTotal {
-    margin: 0 auto;
+.socialP {
+    font-size: 20px;
+    line-height: 28px;
     margin-bottom: 30px;
-    max-width: 620px;
 }
 
-.prizeTotal .prizeBody {
+.question .highlight {
     font-size: 60px;
-    line-height: 87px;
+    line-height: 66px;
 }
 
-.prizeTotal .prizeHeader {
+.question {
+    font-size: 24px;
+    line-height: 30px;
+    display: flex;
+}
+
+.answer {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.joinTerms {
+    padding: 206px 0;
+    background-image: url(./images/joinBg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: top;
+}
+
+.joinTerms .highlight {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 25px;
+}
+
+.joinTermsContainer {
+    max-width: 376px;
+}
+
+.joinTermsP {
     font-size: 20px;
     line-height: 29px;
 }
 
-.prizeBody {
-    box-shadow: 0px 4px 30px 0px #35385E;
-    color: #EBEBEB;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 40px;
-    padding: 10px;
-    border-radius: 5px;
+.akImage {
+    position: relative;
+    left: -200px;
 }
 
-.prizeHeader {
-    color: #E50B74;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 23px;
+.cupImage {
+    position: relative;
+    top: -60px;
+}
+
+.qas {
+    margin-top: -200px;
+}
+
+.tournaments {
+    background-image: url(./images/tournament-bg.png);
+    background-position-x: center;
+    background-position-y: -200px;
+    background-repeat: no-repeat;
+    background-size: 1044px 723px;
+    padding-top: 280px;
+    margin-top: -200px;
+}
+
+.tournaments .highlight {
+    font-size: 54px;
+    line-height: 66px;
 }
 
 @media (max-width: 992px) {
-    .title {
-        font-size: 28px;
-        line-height: 36px;
-    }
-    .banner {
-        padding: 100px 0;
-        text-align: center;
+    .smContainer {
+        padding: 0 12px;
     }
 
-    .banner * {
-        z-index: 1;
+    .about .highlight {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .title {
+        font-size: 52px;
+        line-height: 78px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .titleHighlight {
+        text-align: right;
+    }
+
+    .intro {
+        font-size: 16px;
+        line-height: 23px;
+        text-align: left;
+    }
+
+    .qas {
+        margin-top: 20px;
+    }
+
+    .qas img {
+        position: static;
+        width: 100%;
+    }
+
+    .question .highlight {
+        font-size: 40px;
+        line-height: 66px;
+    }
+    
+    .question {
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+    .penguinImage {
+        width: 100%!important;
+    }
+
+    .socialTitle {
+        font-size: 24px;
+        line-height: 35px;
+    }
+
+    .joinTerms .highlight {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 8px;
+    }
+    
+    .joinTermsContainerFirst {
+        text-align: left;
+    }
+
+    .joinTermsContainerSecond {
+        text-align: right;
+        margin-top: 32px;
+    }
+
+    .introBtns {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .about {
+        padding-top: 200px;
+        margin-top: -40px;
+        height: auto;
+    }
+
+    .bannerContent {
+        margin-top: 100px;
+    }
+
+    .banner {
+        padding: 100px 0 40px;
+        text-align: center;
     }
 
     .banner::after {
@@ -160,5 +324,11 @@
     }
     .terms {
         margin-top: 15px;
+    }
+
+    .tournaments .highlight {
+        font-size: 40px;
+        line-height: 46px;
+        text-align: left!important;
     }
 }

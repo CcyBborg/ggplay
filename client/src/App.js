@@ -23,6 +23,7 @@ export const Coaching = React.lazy(() => import('./pages/Coaching/Coaching'));
 export const ConfidentialPolicy = React.lazy(() => import('./pages/ConfidentialPolicy/ConfidentialPolicy'));
 export const FullAccess = React.lazy(() => import('./pages/FullAccess/FullAccess'));
 export const CheckoutRouter = React.lazy(() => import('./pages/CheckoutRouter/CheckoutRouter'));
+export const TournamentDetails = React.lazy(() => import('./pages/TournamentDetails/TournamentDetails'));
 
 function App() {
   return (
@@ -81,13 +82,23 @@ function App() {
             </Layout>
           </React.Suspense>
         )} />
-        <Route path='/tournament' render={props => (
+        <Route path='/tournament' exact render={props => (
           <React.Suspense fallback={<>...</>}>
             <Layout>
               <Helmet>
                 <title>Турниры по киберспорту | GGPlay</title>
               </Helmet>
               <Tournament {...props} />
+            </Layout>
+          </React.Suspense>
+        )} />
+        <Route path='/tournament/:game' render={props => (
+          <React.Suspense fallback={<>...</>}>
+            <Layout>
+              <Helmet>
+                <title>Командный турнир | GGPlay</title>
+              </Helmet>
+              <TournamentDetails {...props} />
             </Layout>
           </React.Suspense>
         )} />
@@ -150,14 +161,14 @@ function App() {
       )
       } />
 
-      <Route path='/tournament/dota' render={props => (
+      <Route path='/tournament/dota/register' render={props => (
         <React.Suspense fallback={<>...</>}>
           <DotaRegister {...props} />
         </React.Suspense>
       )
       } />
 
-      <Route path='/tournament/cs' render={props => (
+      <Route path='/tournament/cs/register' render={props => (
         <React.Suspense fallback={<>...</>}>
           <CSRegister {...props} />
         </React.Suspense>

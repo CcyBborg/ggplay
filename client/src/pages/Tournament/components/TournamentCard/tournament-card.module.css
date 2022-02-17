@@ -60,33 +60,6 @@
     line-height: 29px;
 }
 
-.meta {
-    padding: 20px 30px;
-    border-top: 3px solid #050714;
-}
-
-.p {
-    font-size: 16px;
-    line-height: 23px;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-.attrtitle {
-    display: inline-block;
-    color: #767698;
-    font-size: 16px;
-    line-height: 23px;
-    margin-bottom: 5px;
-}
-
-.attrcontent {
-    font-size: 20px;
-    line-height: 29px;
-    color: #EBEBEB;
-    margin-left: 15px;
-}
-
 .price {
     display: inline-block;
     margin-top: 15px;
@@ -103,17 +76,6 @@
     .about {
         padding: 15px;
     }
-    .meta {
-        padding: 15px;
-    }
-    .metaIcon {
-        width: 26px;
-        height: 26px;
-    }
-    .attrcontent {
-        font-size: 16px;
-    }
-
     .footerBtn {
         margin-bottom: 15px;
     }
