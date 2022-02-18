@@ -10,8 +10,7 @@ function TournamentCard({
     subtitle,
     registeredUsers,
     totalUsers,
-    isRegistered,
-    onJoin
+    isRegistered
 }) {
     return (
         <article className={styles.root}>
@@ -34,17 +33,17 @@ function TournamentCard({
                             height='20' />
                         Участвую
                     </Button>
-                ) : (// onClick={onJoin}>
+                ) : (
                     <Button
                         id={game}
                         variant='primary'
                         size='xs'
                         className={styles.footerBtn}
                         href={`/tournament/${game}`}>
-                Узнать больше
-            </Button>
+                        Узнать больше
+                    </Button>
                 )}
-        </div>
+            </div>
         </article >
     );
 }

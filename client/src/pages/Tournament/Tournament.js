@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Container, Row, Col, Button, Modal, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import TournamentCard from './components/TournamentCard/TournamentCard';
@@ -10,30 +10,13 @@ import sharkImage from './images/shark.png';
 import cupImage from './images/cup.png';
 import penguinImage from './images/penguin.png';
 import styles from './tournament.module.css';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function Tournament({
     user
 }) {
-    const history = useHistory();
-
     const location = useLocation();
     const [isNotification, setIsNotification] = useState(location.state?.isNotification);
-
-    const handleRegisterClick = useCallback(game => {
-        if (user.info) {
-            history.push({
-                pathname: `/tournament/${game}`
-            });
-        } else {
-            localStorage.setItem('auth-redirect', `/tournament/${game}`);
-
-            history.push({
-                pathname: '/sign-up',
-                state: { selectedGame: game === 'dota' ? '6110f38fa9258e24cce20f65' : '61112a5ed319f2ded84b1e42', isTournament: true }
-            });
-        }
-    }, [user.info]);
 
     return (
         <>
@@ -153,22 +136,20 @@ function Tournament({
                         <TournamentCard
                             game='dota'
                             title='Турнир Dota2 2022'
-                            subtitle='19 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                            registeredUsers={67}
+                            subtitle='3 МАР — НАЧАЛО В 16:00 по МСК'
+                            registeredUsers={68}
                             totalUsers={320}
                             image={dotaImage}
                             icon='/images/games/logos/dota.svg'
-                            onJoin={() => handleRegisterClick('dota')}
                             isRegistered={user.info?.tournaments.includes('dota')} />
                         <TournamentCard
                             game='cs'
                             title='Турнир CS:GO 2022'
-                            subtitle='20 ФЕВ — НАЧАЛО В 16:00 по МСК'
-                            registeredUsers={35}
+                            subtitle='4 МАР — НАЧАЛО В 16:00 по МСК'
+                            registeredUsers={53}
                             totalUsers={320}
                             image={csgoImage}
                             icon='/images/games/logos/csgo.svg'
-                            onJoin={() => handleRegisterClick('cs')}
                             isRegistered={user.info?.tournaments.includes('cs')} />
                     </div>
                 </Container>

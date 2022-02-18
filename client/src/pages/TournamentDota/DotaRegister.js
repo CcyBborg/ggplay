@@ -16,7 +16,8 @@ function DotaRegister() {
     return (
         <TournamentRegister
             title='Турнир Dota2 2022'
-            subtitle='19 ФЕВ — НАЧАЛО В 16:00 ПО МСК'
+            subtitle='3 МАР — НАЧАЛО В 16:00 ПО МСК'
+            game='dota'
             onSubmit={params => {
                 axios.post('/orders/tournament', {
                     ...params,

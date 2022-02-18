@@ -1,16 +1,19 @@
 import { Image } from 'react-bootstrap';
-import csImage from '../../images/csgo.svg';
 import styles from './participants.module.css';
 
-function Participants() {
+function Participants({
+    total,
+    current,
+    icon
+}) {
     return (
         <div className='d-flex'>
-            <div>
-                <Image src={csImage} width={48} height={48} />
+            <div className='d-flex align-items-center mr-2'>
+                <Image src={icon} width={48} height={48} />
             </div>
             <div className='d-flex flex-column'>
                 <span className={styles.label}>участников</span>
-                <span className={styles.counter}>128/200</span>
+                <span className={styles.counter}>{current}/{total}</span>
             </div>
         </div>
     );

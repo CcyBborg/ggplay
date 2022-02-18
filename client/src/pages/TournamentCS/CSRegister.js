@@ -10,7 +10,8 @@ function CSRegister() {
     return (
         <TournamentRegister
             title='Турнир CS:GO 2022'
-            subtitle='20 ФЕВ — НАЧАЛО В 16:00 ПО МСК'
+            subtitle='4 МАР — НАЧАЛО В 16:00 ПО МСК'
+            game='cs'
             onSubmit={params => {
                 axios.post('/orders/tournament', {
                     ...params,

@@ -8,6 +8,7 @@ function TournamentRegister({
     subtitle,
     children,
     history,
+    game,
     onSubmit
 }) {
     const [nickname, setNickname] = useState('');
@@ -18,7 +19,7 @@ function TournamentRegister({
 
     const handleClickBack = useCallback(() => {
         history.push({
-            pathname: '/tournament'
+            pathname: `/tournament/${game}`
         })
     }, [history]);
 
