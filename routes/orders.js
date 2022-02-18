@@ -181,7 +181,7 @@ router.post('/tournament', ensureAuthenticated, async (req, res) => {
         };
         await tournament.save();
 
-        const price = 599 * 100;
+        const price = 299 * 100;
 
         const response = await axios.post('https://securepay.tinkoff.ru/v2/Init', {
             TerminalKey: process.env.TERMINAL_PROD_KEY,

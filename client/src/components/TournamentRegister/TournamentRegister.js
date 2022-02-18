@@ -89,7 +89,7 @@ function TournamentRegister({
                         size='lg'
                         variant='primary'
                         type='submit'>
-                        Оплатить 599&nbsp;₽
+                        Оплатить 299&nbsp;₽
                     </Button>
                 </Form>
             </Modal.Body>
