@@ -26,6 +26,7 @@ export const CheckoutRouter = React.lazy(() => import('./pages/CheckoutRouter/Ch
 export const TournamentDetails = React.lazy(() => import('./pages/TournamentDetails/TournamentDetails'));
 
 function App() {
+
   return (
     <Provider store={store}>
       <Switch>

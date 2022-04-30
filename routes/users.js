@@ -60,21 +60,20 @@ router.post('/', async (req, res) => {
 router.post('/sign-in', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
-            console.log(err);
             res.status(500).json({
-                error: 'Произошла ошибка. Попробуйте позже.'
+                message: err.toString();
             });
         }
         if (!user) {
             res.status(401).json({
-                error: 'Неверное имя пользователя или пароль.'
+                message: err.toString();
             });
         } else {
             req.logIn(user, err => {
                 if (err) {
                     console.log(err);
                     res.status(500).json({
-                        error: 'Произошла ошибка. Попробуйте позже.'
+                        error: err.toString();
                     });
                 }
                 res.send('Logged In');
